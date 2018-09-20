@@ -34,32 +34,32 @@ public class ConfigMobs extends ConfigurationBaseMF {
         youngdragonFD = Integer.parseInt(config.get(MOB_DRAGON, "2Ab: Fire dmg", 2).getString());
         youngdragonFT = Integer.parseInt(config.get(MOB_DRAGON, "2Ac: Fire time", 10).getString());
 
-        dragonHP = Integer.parseInt(config.get(MOB_DRAGON, "2Ba: Health", 100, "Adult Dragon Stats").getString());
-        dragonMD = Integer.parseInt(config.get(MOB_DRAGON, "2Bb: Bite dmg", 7).getString());
-        dragonFD = Integer.parseInt(config.get(MOB_DRAGON, "2Bb: Fire dmg", 5).getString());
-        dragonFT = Integer.parseInt(config.get(MOB_DRAGON, "2Bc: Fire time", 40).getString());
+        dragonHP = Integer.parseInt(config.get(MOB_DRAGON, "2Ba: Health", 200, "Adult Dragon Stats").getString());
+        dragonMD = Integer.parseInt(config.get(MOB_DRAGON, "2Bb: Bite dmg", 12).getString());
+        dragonFD = Integer.parseInt(config.get(MOB_DRAGON, "2Bb: Fire dmg", 15).getString());
+        dragonFT = Integer.parseInt(config.get(MOB_DRAGON, "2Bc: Fire time", 60).getString());
 
         diredragonHP = Integer.parseInt(config.get(MOB_DRAGON, "2Ca: Health", 200, "Dire Dragon Stats").getString());
-        diredragonMD = Integer.parseInt(config.get(MOB_DRAGON, "2Cb: Bite dmg", 8).getString());
-        diredragonFD = Integer.parseInt(config.get(MOB_DRAGON, "2Cb: Fire dmg", 8).getString());
+        diredragonMD = Integer.parseInt(config.get(MOB_DRAGON, "2Cb: Bite dmg", 10).getString());
+        diredragonFD = Integer.parseInt(config.get(MOB_DRAGON, "2Cb: Fire dmg", 12).getString());
         diredragonFT = Integer.parseInt(config.get(MOB_DRAGON, "2Cc: Fire time", 40).getString());
 
-        elderdragonHP = Integer.parseInt(config.get(MOB_DRAGON, "2Da: Health", 500, "Elder Dragon Stats").getString());
-        elderdragonMD = Integer.parseInt(config.get(MOB_DRAGON, "2Db: Bite dmg", 14).getString());
-        elderdragonFD = Integer.parseInt(config.get(MOB_DRAGON, "2Db: Fire dmg", 10).getString());
-        elderdragonFT = Integer.parseInt(config.get(MOB_DRAGON, "2Dc: Fire time", 50).getString());
+        elderdragonHP = Integer.parseInt(config.get(MOB_DRAGON, "2Da: Health", 650, "Elder Dragon Stats").getString());
+        elderdragonMD = Integer.parseInt(config.get(MOB_DRAGON, "2Db: Bite dmg", 20).getString());
+        elderdragonFD = Integer.parseInt(config.get(MOB_DRAGON, "2Db: Fire dmg", 25).getString());
+        elderdragonFT = Integer.parseInt(config.get(MOB_DRAGON, "2Dc: Fire time", 80).getString());
 
         ancientdragonHP = Integer
-                .parseInt(config.get(MOB_DRAGON, "2Ea: Health", 1000, "Ancient Dragon Stats").getString());
-        ancientdragonMD = Integer.parseInt(config.get(MOB_DRAGON, "2Eb: Bite dmg", 20).getString());
-        ancientdragonFD = Integer.parseInt(config.get(MOB_DRAGON, "2Eb: Fire dmg", 10).getString());
-        ancientdragonFT = Integer.parseInt(config.get(MOB_DRAGON, "2Ec: Fire time", 100).getString());
+                .parseInt(config.get(MOB_DRAGON, "2Ea: Health", 1200, "Ancient Dragon Stats").getString());
+        ancientdragonMD = Integer.parseInt(config.get(MOB_DRAGON, "2Eb: Bite dmg", 35).getString());
+        ancientdragonFD = Integer.parseInt(config.get(MOB_DRAGON, "2Eb: Fire dmg", 40).getString());
+        ancientdragonFT = Integer.parseInt(config.get(MOB_DRAGON, "2Ec: Fire time", 120).getString());
 
-        dragonInterval = Integer.parseInt(config.get(MOB_DRAGON, "3A: Dragon Spawn Interval", 12000,
+        dragonInterval = Integer.parseInt(config.get(MOB_DRAGON, "3A: Dragon Spawn Interval", 6000,
                 "How many ticks between visits (12000 means 4 times a day), there is a chance for a dragon each time")
                 .getString());
         dragonChance = Float.parseFloat(config
-                .get(MOB_DRAGON, "3B: Spawn Chance", 5F, "A Percent (0-100) chance that a dragon spawns at set times")
+                .get(MOB_DRAGON, "3B: Spawn Chance", 15F, "A Percent (0-100) chance that a dragon spawns at set times")
                 .getString());
 
         dragonKillNPC = Boolean.parseBoolean(config.get(MOB_DRAGON, "4A: Kill NPC Grief", true,

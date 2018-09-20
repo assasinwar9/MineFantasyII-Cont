@@ -242,6 +242,49 @@ material.void.name=Void
 material.manasteel.name=Manasteel
 material.elvenelementium.name=Elementium
 material.terrasteel.name=Terrasteel
+
+NEW
+material.damascussteel.name=Damascus Steel
+material.atlarus.name=Atlarus
+material.platinum.name=Platinum
+material.angmallen.name=Angmallen
+material.vulcanite.name=Vulcanite
+material.orichalcum.name=Orichalcum
+material.haderoth.name=Haderoth
+material.tartarite.name=Tartarite
+material.shadowiron.name=Shadow Iron
+material.dwarfsteel.name=Dwarven Steel
+material.emerald.name=Emerald
+item.dwarvenforged_longsword.name=Dwarvenforged %1$s Longsword
+
+//NEW INGOTS
+item.ingotDwarfSteel.name=Dwarven Steel Ingot
+item.ingotEmerald.name=Emerald Ingot
+
+
+NEW BLOCKS
+tile.oreMithril.name=Mithril Ore
+
+NEW FUELS
+item.dwarven_fuel.name=Dwarven Fuel
+
+TABS
+itemGroup.MFdwarvenforged=[MF] DwarvenForged Style
+
+DESC
+knownledge.claymore.info=Claymores are great for defense and counter attacks.
+
+NEW WEAPONS
+item.standard_longsword.name=%1$s Longsword
+item.standard_saber.name=%1$s Saber
+item.standard_shortsword.name=%1$s Shortsword
+item.standard_gladius.name=%1$s Gladius
+item.standard_trident.name=%1$s Trident
+item.standard_nodachi.name=%1$s Nodachi
+item.standard_claymore.name=%1$s Claymore
+
+
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 /ITEM STATS/
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

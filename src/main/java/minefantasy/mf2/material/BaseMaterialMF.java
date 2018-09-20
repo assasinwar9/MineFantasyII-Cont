@@ -28,7 +28,7 @@ public class BaseMaterialMF {
     public static BaseMaterialMF stone, tin, pigiron, silver, gold, ornate, weakblacksteel, weakredsteel, weakbluesteel,
             tungsten;// Misc Mats
     public static BaseMaterialMF copper, bronze, iron, steel, encrusted, obsidian, blacksteel, bluesteel, redsteel,
-            dragonforge, adamantium, mithril, ignotumite, mithium, enderforge;// Tiers
+            dragonforge, adamantium, mithril, ignotumite, mithium, enderforge, dwarfsteel, emerald;// Tiers
     public static BaseMaterialMF cogworks, compositeAlloy;// Engineer
     private static float ACrounding = 10F; // round to nearest 10
     /*
@@ -176,7 +176,10 @@ public class BaseMaterialMF {
                 250);
         compositeAlloy = addArmourSpecificMaterial("CompositeAlloy", 4, 1800, 4.0F, 10, 2.00F, 85)
                 .setForgeStats(3, 3, 2.5F, 120, 250).setResistances(95F, 85F);
-
+        
+        //NEW name Tier dura, harvest sharpness enchant weight
+        dwarfsteel = addMaterial("DwarfSteel", 4, 1500, 4, 4.0F, 12, 0.85F, 50).setForgeStats(4, 4, 4.0F, 150, 350);// lvl
+        emerald = addMaterial("Emerald", 4, 1500, 4, 4.0F, 12, 0.85F, 50).setForgeStats(4, 4, 4.0F, 150, 350);// lvl
     }
 
     /**

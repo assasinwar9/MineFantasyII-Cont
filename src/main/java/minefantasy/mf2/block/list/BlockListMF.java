@@ -32,7 +32,12 @@ public class BlockListMF {
     public static Block oreTin = new BlockOreMF("oreTin", 0).setHardness(2.5F).setResistance(4.0F);
     public static Block oreSilver = new BlockOreMF("oreSilver", 2).setHardness(3.0F).setResistance(5.0F);
     public static Block oreMythic = new BlockMythicOre("oreMythic", false).setHardness(10.0F).setResistance(100.0F);
-
+    
+    //NEW ORES
+    public static Block oreMithril = new BlockMithrilOre("oreMithril", false).setHardness(10.0F).setResistance(100.0F);
+    
+    
+    //MF
     public static Block oreKaolinite = new BlockOreMF("oreKaolinite", 1, 0, ComponentListMF.kaolinite, 1, 1, 1)
             .setHardness(3.0F).setResistance(5.0F);
     public static Block oreNitre = new BlockOreMF("oreNitre", 2, 0, ComponentListMF.nitre, 1, 2, 1).setHardness(3.0F)

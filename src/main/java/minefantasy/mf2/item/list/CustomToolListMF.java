@@ -16,8 +16,9 @@ import net.minecraft.item.Item.ToolMaterial;
 public class CustomToolListMF {
     // STANDARD
     public static ItemWeaponMF standard_sword, standard_waraxe, standard_mace, standard_dagger, standard_spear;
-    public static ItemWeaponMF standard_greatsword, standard_battleaxe, standard_warhammer, standard_katana,
-            standard_halbeard, standard_lance;
+    public static ItemWeaponMF standard_longsword, standard_battleaxe, standard_warhammer, standard_katana,
+            standard_halbeard, standard_lance, standard_greatsword, standard_shortsword, standard_saber, standard_gladius, standard_trident,
+            standard_nodachi, standard_claymore;
     public static ItemPickMF standard_pick;
     public static ItemAxeMF standard_axe;
     public static ItemSpadeMF standard_spade;
@@ -52,8 +53,21 @@ public class CustomToolListMF {
         standard_mace = new ItemMaceMF(design + "_mace", ToolMaterial.IRON, 0, 1F).setCustom(design).setTab(tab);
         standard_spear = new ItemSpearMF(design + "_spear", ToolMaterial.IRON, 0, 1F).setCustom(design).setTab(tab);
         standard_katana = new ItemKatanaMF(design + "_katana", ToolMaterial.IRON, 0, 1F).setCustom(design).setTab(tab);
-        standard_greatsword = new ItemGreatswordMF(design + "_greatsword", ToolMaterial.IRON, 0, 1F).setCustom(design)
-                .setTab(tab);
+        standard_greatsword = new ItemGreatswordMF(design + "_greatsword", ToolMaterial.IRON, 0, 1F).setCustom(design).setTab(tab);
+        
+        //New Weapons
+        standard_longsword = new ItemLongswordMF(design + "_longsword", ToolMaterial.IRON, 0, 1F).setCustom(design).setTab(tab);
+        standard_saber = new ItemSaber(design + "_saber", ToolMaterial.IRON, 0, 1F).setCustom(design).setTab(tab);
+        standard_shortsword = new ItemShortsword(design + "_shortsword", ToolMaterial.IRON, 0, 1F).setCustom(design).setTab(tab);
+        standard_gladius = new ItemGladius(design + "_gladius", ToolMaterial.IRON, 0, 1F).setCustom(design).setTab(tab);
+        standard_trident = new ItemTrident(design + "_trident", ToolMaterial.IRON, 0, 1F).setCustom(design).setTab(tab);
+        standard_nodachi = new ItemNodachi(design + "_nodachi", ToolMaterial.IRON, 0, 1F).setCustom(design).setTab(tab);
+        standard_claymore = new ItemClaymoreMF(design + "_claymore", ToolMaterial.IRON, 0, 1F).setCustom(design).setTab(tab);
+        
+        
+        
+        
+        
         standard_battleaxe = new ItemBattleaxeMF(design + "_battleaxe", ToolMaterial.IRON, 0, 1F).setCustom(design)
                 .setTab(tab);
         standard_warhammer = new ItemWarhammerMF(design + "_warhammer", ToolMaterial.IRON, 0, 1F).setCustom(design)

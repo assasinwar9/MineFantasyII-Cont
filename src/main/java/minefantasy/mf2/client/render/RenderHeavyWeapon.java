@@ -58,7 +58,20 @@ public class RenderHeavyWeapon implements IItemRenderer {
         offset = 1.0F;
         return this;
     }
-
+    public RenderHeavyWeapon setLongsword() {
+        offset = 1.0F;
+        willStab = true;
+        return this;
+    }
+    public RenderHeavyWeapon setSaber() {
+        offset = 1.0F;
+        willStab = true;
+        return this;
+    }
+    public RenderHeavyWeapon setNodachi() {
+        offset = 0.75F;
+        return this;
+    }
     public RenderHeavyWeapon setAxe() {
         offset = 1.0F;
         return this;
@@ -66,6 +79,10 @@ public class RenderHeavyWeapon implements IItemRenderer {
 
     public RenderHeavyWeapon setBlunt() {
         offset = 1.2F;
+        return this;
+    }
+    public RenderHeavyWeapon setClaymore() {
+        offset = 0.75F;
         return this;
     }
 
@@ -180,5 +197,5 @@ public class RenderHeavyWeapon implements IItemRenderer {
         }
 
         GL11.glPopMatrix();
-    }
+	}
 }

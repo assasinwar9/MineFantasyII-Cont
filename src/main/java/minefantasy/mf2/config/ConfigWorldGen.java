@@ -124,6 +124,15 @@ public class ConfigWorldGen extends ConfigurationBaseMF {
     public static float ebonyMaxTemp;
     public static float ebonyMinRain;
     public static float ebonyMaxRain;
+    
+    //NEW ORES
+    public static String mithril = "6A: [Ore Gen] Mithril Ore";
+    public static float mithrilRarity;
+    public static int mithrilFrequencyMin;
+    public static int mithrilFrequencyMax;
+    public static int mithrilLayerMin;
+    public static int mithrilLayerMax;
+    public static int mithrilSize;
 
     public static String structure = "6A: [Structure Gen] General";
     public static int structureTickRate;
@@ -168,17 +177,17 @@ public class ConfigWorldGen extends ConfigurationBaseMF {
                 .parseInt(config.get(tin, "Tin Layer Max", 96, "Tin veins spawn below this layer").getString());
         tinSize = Integer.parseInt(config.get(tin, "Tin Size", 5, "How many blocks consist of the vein").getString());
 
-        silverRarity = Float.parseFloat(config.get(silver, "Silver Rarity", 1.0D,
+        silverRarity = Float.parseFloat(config.get(silver, "Silver Rarity", 1.1D,
                 "The chance for silver to spawn in a chunk. (0=never, 1.0=always), this means some chunks may not have any ")
                 .getString());
         silverFrequencyMin = Integer.parseInt(config
                 .get(silver, "Silver Frequency Min", 3, "Silver will try spawn between this and max veins per chunk")
                 .getString());
         silverFrequencyMax = Integer.parseInt(config
-                .get(silver, "Silver Frequency Max", 4, "Silver will try spawn between min and this veins per chunk")
+                .get(silver, "Silver Frequency Max", 8, "Silver will try spawn between min and this veins per chunk")
                 .getString());
         silverLayerMin = Integer
-                .parseInt(config.get(silver, "Silver Layer Min", 0, "Silver veins spawn above this layer").getString());
+                .parseInt(config.get(silver, "Silver Layer Min", 5, "Silver veins spawn above this layer").getString());
         silverLayerMax = Integer.parseInt(
                 config.get(silver, "Silver Layer Max", 32, "Silver veins spawn below this layer").getString());
         silverSize = Integer
@@ -198,14 +207,14 @@ public class ConfigWorldGen extends ConfigurationBaseMF {
         wolframiteSize = Integer.parseInt(
                 config.get(wolframite, "Wolframite Size", 7, "How many blocks consist of the vein").getString());
 
-        mythicRarity = Float.parseFloat(config.get(mythic, "Mythic Rarity", 0.05D,
+        mythicRarity = Float.parseFloat(config.get(mythic, "Mythic Rarity", 0.90D,
                 "The chance for mythic to spawn in a chunk. (0=never, 1.0=always), this means some chunks may not have any mythic")
                 .getString());
         mythicFrequencyMin = Integer.parseInt(config
-                .get(mythic, "Mythic Frequency Min", 2, "Mythic will try spawn between this and max veins per chunk")
+                .get(mythic, "Mythic Frequency Min", 3, "Mythic will try spawn between this and max veins per chunk")
                 .getString());
         mythicFrequencyMax = Integer.parseInt(config
-                .get(mythic, "Mythic Frequency Max", 5, "Mythic will try spawn between min and this veins per chunk")
+                .get(mythic, "Mythic Frequency Max", 6, "Mythic will try spawn between min and this veins per chunk")
                 .getString());
         mythicLayerMin = Integer
                 .parseInt(config.get(mythic, "Mythic Layer Min", 4, "Mythic veins spawn above this layer").getString());
@@ -214,7 +223,29 @@ public class ConfigWorldGen extends ConfigurationBaseMF {
         mythicSize = Integer
                 .parseInt(config.get(mythic, "Mythic Size", 8, "How many blocks consist of the vein").getString());
 
-        kaoliniteRarity = Float.parseFloat(config.get(kaolinite, "Kaolinite Rarity", 0.25D,
+        //NEW ORES 
+        mithrilRarity = Float.parseFloat(config.get(mithril, "Mithril Rarity", 0.95D,
+                "The chance for mithril to spawn in a chunk. (0=never, 1.0=always), this means some chunks may not have any mythic")
+                .getString());
+        mithrilFrequencyMin = Integer.parseInt(config
+                .get(mythic, "Mithril Frequency Min", 3, "Mythril will try spawn between this and max veins per chunk")
+                .getString());
+        mithrilFrequencyMax = Integer.parseInt(config
+                .get(mythic, "Mythril Frequency Max", 7, "Mithril will try spawn between min and this veins per chunk")
+                .getString());
+        mithrilLayerMin = Integer
+                .parseInt(config.get(mithril, "Mithril Layer Min", 8, "Mythril veins spawn above this layer").getString());
+        mithrilLayerMax = Integer
+                .parseInt(config.get(mithril, "Mithril Layer Max", 20, "Mythril veins spawn below this layer").getString());
+        mithrilSize = Integer
+                .parseInt(config.get(mithril, "Mithril Size", 5, "How many blocks consist of the vein").getString());
+
+        
+        
+        
+        
+        //MF
+        kaoliniteRarity = Float.parseFloat(config.get(kaolinite, "Kaolinite Rarity", 0.75D,
                 "The chance for kaolinite to spawn in a chunk. (0=never, 1.0=always), this means some chunks may not have any kaolinite")
                 .getString());
         kaoliniteFrequencyMin = Integer.parseInt(config.get(kaolinite, "Kaolinite Frequency Min", 1,
@@ -222,7 +253,7 @@ public class ConfigWorldGen extends ConfigurationBaseMF {
         kaoliniteFrequencyMax = Integer.parseInt(config.get(kaolinite, "Kaolinite Frequency Max", 1,
                 "Kaolinite will try spawn between min and this deposits per chunk").getString());
         kaoliniteLayerMin = Integer.parseInt(config
-                .get(kaolinite, "Kaolinite Layer Min", 48, "Kaolinite deposits spawn above this layer").getString());
+                .get(kaolinite, "Kaolinite Layer Min", 30, "Kaolinite deposits spawn above this layer").getString());
         kaoliniteLayerMax = Integer.parseInt(config
                 .get(kaolinite, "Kaolinite Layer Max", 72, "Kaolinite deposits spawn below this layer").getString());
         kaoliniteSize = Integer.parseInt(
@@ -291,7 +322,7 @@ public class ConfigWorldGen extends ConfigurationBaseMF {
         sulfurSize = Integer
                 .parseInt(config.get(sulfur, "Sulfur Size", 4, "How many blocks consist of the deposit").getString());
 
-        boraxRarity = Float.parseFloat(config.get(borax, "Borax Rarity", 0.1D,
+        boraxRarity = Float.parseFloat(config.get(borax, "Borax Rarity", 0.8D,
                 "The chance for borax to spawn in a chunk. (0=never, 1.0=always), this means some chunks may not have any borax")
                 .getString());
         boraxFrequencyMin = Integer.parseInt(config
@@ -301,7 +332,7 @@ public class ConfigWorldGen extends ConfigurationBaseMF {
                 .get(borax, "Borax Frequency Max", 10, "Borax will try spawn between min and this deposits per chunk")
                 .getString());
         boraxLayerMin = Integer.parseInt(
-                config.get(borax, "Borax Layer Min", 48, "Borax deposits spawn above this layer").getString());
+                config.get(borax, "Borax Layer Min", 36, "Borax deposits spawn above this layer").getString());
         boraxLayerMax = Integer.parseInt(
                 config.get(borax, "Borax Layer Max", 96, "Borax deposits spawn below this layer").getString());
         boraxSize = Integer

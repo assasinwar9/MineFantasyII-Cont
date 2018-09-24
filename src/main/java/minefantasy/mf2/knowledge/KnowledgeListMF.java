@@ -62,7 +62,7 @@ public class KnowledgeListMF {
             dragons, minotaurs;
     public static InformationBase bloomery, crucible, crucible2, smeltCopper, smeltBronze, smeltIron, coalflux, bigfurn,
             blastfurn, smeltPig, smeltSteel, encrusted, obsidian, smeltBlackSteel, smeltDragonforge, smeltBlueSteel,
-            smeltRedSteel, smeltMithril, smeltAdamant, smeltMaster, smeltMithium, smeltIgnotumite, smeltEnderforge;
+            smeltRedSteel, smeltMithril, smeltAdamant, smeltMaster, smeltMithium, smeltIgnotumite, smeltEnderforge, smeltEmerald;
     public static InformationBase bellows, trough, forge, anvil, bar, apron, craftTools, craftAdvTools, craftWeapons,
             craftAdvWeapons, arrows, craftOrnate, craftArmourLight, craftArmourMedium, craftArmourHeavy, arrowsBodkin,
             arrowsBroad, repair_basic, repair_advanced, repair_ornate;
@@ -88,13 +88,13 @@ public class KnowledgeListMF {
             bSalvageR, tannerRecipe, stoneAnvilRecipe, forgeRecipe, apronRecipe, woodTroughRecipe;
     public static ICarpenterRecipe researchTableRecipe, framedGlassR, windowR, thatchR, thatchStairR;
     public static IAnvilRecipe smokePipeR, framedStoneR, iframedStoneR, fluxR, nailR, rivetR;
-    public static IAnvilRecipe tinderboxR, flintAndSteelR;
+    public static IAnvilRecipe tinderboxR, flintAndSteelR, dwarvenfuelR;
     public static ICarpenterRecipe dirtRockR, lStripsR, threadR, stringR, sharpRocksR, stonePickR, stoneAxeR,
             stoneSpadeR, stoneHoeR, stoneSwordR, stoneWarR, stoneMaceR, stoneSpearR, stoneHammerR, stoneTongsR,
             boneNeedleR, stoneKnifeR, quernR, stoneovenRecipe;
     public static Alloy[] reStone, bronze, steel, obsidalloy, black, red, blue, mithril, adamantium, ignotumite,
-            mithium, enderforge, wolframiteR;
-    public static IAnvilRecipe coalfluxR, encrustedR, steelR, obsidianHunkR, diamondR;
+            mithium, enderforge, wolframiteR, dwarfsteel, emerald;
+    public static IAnvilRecipe coalfluxR, encrustedR, steelR, obsidianHunkR, diamondR, dwarfsteelR, dwarffuelR, emeraldR;
     public static ICarpenterRecipe nailPlanksR, nailStairR, refinedStairR, strongRackR, bellowsRecipe, bloomeryR,
             crucibleRecipe, advCrucibleRecipe, trilogyRecipe, chimneyRecipe, wideChimneyRecipe, extractChimneyRecipe;
     public static ICarpenterRecipe hideHelmR, hideChestR, hideLegsR, hideBootsR, roughHelmetR, roughChestR, roughLegsR,
@@ -102,7 +102,7 @@ public class KnowledgeListMF {
     public static IAnvilRecipe studHelmetR, studChestR, studLegsR, studBootsR;
     public static IAnvilRecipe pickR, axeR, spadeR, hoeR, shearsR;
     public static IAnvilRecipe daggerR, swordR, waraxeR, maceR, spearR, bowR, katanaR, gswordR, whammerR, battleaxeR,
-            halbeardR, lanceR;
+            halbeardR, lanceR, longswordR, shortswordR, saberR, gladiusR, tridentR, nodachiR, claymoreR;
     public static IAnvilRecipe trowR, hvyPickR, hvyShovelR, handpickR, scytheR, mattockR, lumberR;
     public static IAnvilRecipe hammerR, tongsR, hvyHammerR, needleR, sawsR, knifeR, spannerR;
     public static IAnvilRecipe arrowheadR, bodkinheadR, broadheadR, crossBoltR;
@@ -225,7 +225,10 @@ public class KnowledgeListMF {
         smeltAdamant = (new InformationBase("smeltAdamantium", 3, 12, 3, ComponentListMF.ingots[13], null))
                 .registerStat().setPage(artisanry).addSkill(SkillList.artisanry, 75)
                 .setDescriptValues(getMetalTier("adamantium"));
-
+        //new 
+       
+        
+        
         smeltMaster = (new InformationBase("smeltMaster", 4, 13, 3, new ItemStack(ComponentListMF.artefacts, 1, 3),
                 (InformationBase) null)).registerStat().setPage(artisanry).setSpecial().addSkill(SkillList.artisanry,
                 100);

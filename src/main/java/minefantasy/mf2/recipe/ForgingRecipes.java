@@ -4,6 +4,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import minefantasy.mf2.api.MineFantasyAPI;
 import minefantasy.mf2.api.crafting.Salvage;
 import minefantasy.mf2.api.crafting.anvil.IAnvilRecipe;
+import minefantasy.mf2.api.knowledge.InformationBase;
 import minefantasy.mf2.api.rpg.Skill;
 import minefantasy.mf2.api.rpg.SkillList;
 import minefantasy.mf2.block.list.BlockListMF;
@@ -32,12 +33,14 @@ public class ForgingRecipes {
     public static void init() {
         ForgedToolRecipes.init();
         ForgedArmourRecipes.init();
-        addCogworkParts();
+
 
         ItemStack ironbar = ComponentListMF.bar("Iron");
         ItemStack steelbar = ComponentListMF.bar("Steel");
         ItemStack goldbar = ComponentListMF.bar("Gold");
         ItemStack silverbar = ComponentListMF.bar("Silver");
+        ItemStack dwarvenbar = ComponentListMF.bar("dwarfsteel");
+        ItemStack emeraldbar = ComponentListMF.bar("emerald");
 
         // MISC
         BaseMaterialMF material;
@@ -498,5 +501,8 @@ public class ForgingRecipes {
         Salvage.addSalvage(BlockListMF.cogwork_legs, new ItemStack(ComponentListMF.iron_frame, 5),
                 new ItemStack(ComponentListMF.cogwork_shaft, 4), new ItemStack(ComponentListMF.rivet, 4));
 
+        
+        //NEW
+ 
     }
 }

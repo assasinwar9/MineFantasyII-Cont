@@ -30,7 +30,7 @@ public class AdvancedFuelHandlerMF implements IFuelHandler {
             return 2400;
         }
         if (fuel.getItem() == Items.coal) {
-            return 1200;
+            return 3650;
         }
         if (fuel.getItem() == Item.getItemFromBlock(Blocks.coal_block)) {
             return 10800;

@@ -26,7 +26,7 @@ import net.minecraftforge.oredict.OreDictionary;
 public class ComponentListMF {
     public static final String[] ingotMats = new String[]{"copper", "tin", "bronze", "pigiron", "steel", "encrusted",
             "blacksteelweak", "blacksteel", "silver", "redsteelweak", "redsteel", "bluesteelweak", "bluesteel",
-            "adamantium", "mithril", "ignotumite", "mithium", "ender", "tungsten", "obsidian"};
+            "adamantium", "mithril", "ignotumite", "mithium", "ender", "tungsten", "obsidian", "dwarfsteel", "emerald"};
 
     public static Item clay_pot = new ItemMFBowl("clay_pot").setStoragePlacement("pot", "pot");
     public static Item clay_pot_uncooked = new ItemComponentMF("clay_pot_uncooked", 0);
@@ -46,6 +46,7 @@ public class ComponentListMF {
 
     public static Item coalDust = new ItemComponentMF("coalDust", 0).setContainerItem(clay_pot);
     public static Item nitre = new ItemComponentMF("nitre", 0);
+    public static Item coal = new ItemComponentMF("coal", 0);
     public static Item sulfur = new ItemComponentMF("sulfur", 0);
     public static Item iron_prep = new ItemComponentMF("iron_prep", 0);
     public static Item blackpowder = new ItemBombComponent("blackpowder", 0, "powder", 0).setContainerItem(clay_pot);
@@ -73,6 +74,9 @@ public class ComponentListMF {
 
     public static Item coke = new ItemComponentMF("coke", 1);
     public static Item diamond_shards = new ItemComponentMF("diamond_shards", 0);
+    
+    //NEW FUEL
+    public static Item dwarven_fuel = new ItemComponentMF("dwarven_fuel", 1);
 
     public static Item clay_brick = new ItemComponentMF("clay_brick", 0);
     public static Item kaolinite = new ItemComponentMF("kaolinite", 0);
@@ -217,6 +221,7 @@ public class ComponentListMF {
         MineFantasyFuels.addForgeFuel(Items.fire_charge, 1200, 3500, true);// 3500C , 1m
         MineFantasyFuels.addForgeFuel(Items.lava_bucket, 2400, 5000, true);// 5000C , 2m
         MineFantasyFuels.addForgeFuel(Items.magma_cream, 2400, 4000, true, true);// 4000C , 2m
+        MineFantasyFuels.addForgeFuel(ComponentListMF.dwarven_fuel, 2050, 3650);
 
         MineFantasyFuels.addForgeFuel(ComponentListMF.coke, 1200, 2500, false, true);// 2500C , 1m
         MineFantasyFuels.addForgeFuel(ComponentListMF.magma_cream_refined, 2400, 5000, true, true);// 5000C , 2m

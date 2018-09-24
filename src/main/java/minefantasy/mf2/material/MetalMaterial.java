@@ -66,7 +66,7 @@ public class MetalMaterial extends CustomMaterial {
                 .setArmourStats(1.0F, 1.0F, 1.0F);// Standard
         getOrAddMetal("PigIron", 2, 2.0F, 0.8F, 2.0F, 20F, 2.5F, 120, 95, 95).setCrafterTiers(2).setMeltingPoint(1200)
                 .setArmourStats(1.1F, 0.8F, 1.1F);// Less Blunt for more cutting/piercing
-        getOrAddMetal("Steel", 3, 3.0F, 1.0F, 2.5F, 30F, 2.5F, 168, 168, 168).setCrafterTiers(3).setMeltingPoint(1500);
+        getOrAddMetal("Steel", 4, 3.5F, 1.0F, 3.0F, 35F, 2.5F, 168, 168, 168).setCrafterTiers(3).setMeltingPoint(1500);
         getOrAddMetal("Encrusted", 4, 8.0F, 1.0F, 3.0F, 35F, 3.0F, 64, 255, 255).setCrafterTiers(3)
                 .setMeltingPoint(1800).setArmourStats(1.0F, 1.0F, 1.2F);// Better Piercing
         getOrAddMetal("Obsidian", 4, 8.0F, 1.0F, 3.0F, 35F, 3.0F, 90, 45, 90).setCrafterTiers(3).setMeltingPoint(2000)
@@ -74,7 +74,7 @@ public class MetalMaterial extends CustomMaterial {
         getOrAddMetal("Tungsten", 4, 8.0F, 0.8F, 3.0F, 35F, 4.0F, 66, 86, 65).setCrafterTiers(3).setMeltingPoint(2000)
                 .setArmourStats(1.3F, 1.0F, 1.3F);// Better Cutting/Piercing
         getOrAddMetal("BlackSteel", 5, 6.0F, 1.0F, 4.0F, 50F, 3.0F, 80, 80, 80).setCrafterTiers(4).setMeltingPoint(2000)
-                .setArmourStats(1.0F, 1.0F, 1.0F);// Standard
+                .setArmourStats(1.1F, 1.2F, 1.0F);// Standard
         getOrAddMetal("BlueSteel", 6, 7.0F, 1.2F, 5.0F, 65F, 2.0F, 28, 31, 159).setCrafterTiers(5).setMeltingPoint(2000)
                 .setArmourStats(1.0F, 1.2F, 0.8F);// Better Blunt and Resist
         getOrAddMetal("RedSteel", 6, 8.0F, 0.8F, 6.0F, 50F, 3.5F, 219, 56, 56).setCrafterTiers(5).setMeltingPoint(2000)
@@ -85,7 +85,7 @@ public class MetalMaterial extends CustomMaterial {
         getOrAddMetal("Gold", 0, 2.0F, 1.0F, 0.0F, 40F, 3.5F, 243, 222, 49).setMeltingPoint(1200);
 
         // Mythic Mats Name T Dur Flx Shp Rst Wg
-        getOrAddMetal("Mithril", 7, 10.0F, 0.8F, 7.0F, 90F, 2.0F, 250, 180, 250).setMeltingPoint(2500)
+        getOrAddMetal("Mithril", 7, 10.0F, 0.8F, 7.0F, 90F, 1.0F, 102, 204, 255).setMeltingPoint(2500)
                 .setCrafterTiers(6).setRarity(1);
         getOrAddMetal("Adamantium", 7, 12.0F, 0.8F, 8.0F, 80F, 3.5F, 100, 200, 100).setMeltingPoint(2500)
                 .setCrafterTiers(6).setRarity(1);
@@ -111,7 +111,41 @@ public class MetalMaterial extends CustomMaterial {
                 .setArmourStats(1.1F, 1.0F, 1.1F).setCrafterTiers(2);// Similar to Manasteel, Slightly stronger
         getOrAddMetal("Terrasteel", 4, 6.0F, 1.0F, 4.0F, 40F, 2.5F, 88, 250, 150).setMeltingPoint(1500)
                 .setArmourStats(1.0F, 0.9F, 1.0F).setCrafterTiers(3);
-
+        
+        
+        //String name, int tier, float durability, float flexibility,
+        //float sharpness, float resistance, float density, int red, int green, int blue
+        
+        
+        
+        
+        //NEW METALLURGY Name T Dur Flx Shp Rst Wg
+        getOrAddMetal("Atlarus", 5, 4.0F, 8.0F, 4.5F, 40F, 2.5F, 216, 183, 17).setMeltingPoint(2400)
+        	.setArmourStats(0.9F, 0.8F, 0.7F).setCrafterTiers(4);
+        getOrAddMetal("DamascusSteel", 3, 3.3F, 2.6F, 2.5F, 30F, 2.5F, 131, 98, 45).setMeltingPoint(2100)
+        	.setArmourStats(1.0F, 0.9F, 0.8F).setCrafterTiers(3);
+        getOrAddMetal("Vulcanite", 6, 13.0F, 11.0F, 5.5F, 40F, 2.5F, 187, 68, 8).setMeltingPoint(2250)
+    		.setArmourStats(1.4F, 1.2F, 1.1F).setCrafterTiers(5);
+        getOrAddMetal("Platinum", 3, 2.0F, 7.0F, 3.5F, 40F, 2.5F, 51, 102, 153).setMeltingPoint(1800)
+    		.setArmourStats(0.9F, 0.8F, 0.5F).setCrafterTiers(3);
+        getOrAddMetal("Angmallen", 3, 3.2F, 12.0F, 3.0F, 40F, 2.5F, 255, 255, 102).setMeltingPoint(2050)
+			.setArmourStats(0.9F, 0.8F, 0.7F).setCrafterTiers(3);
+        getOrAddMetal("Orichalcum", 6, 16.0F, 12.0F, 6.0F, 40F, 2.5F, 28, 125, 45).setMeltingPoint(2350)
+			.setArmourStats(1.3F, 1.3F, 1.2F).setCrafterTiers(5);
+        getOrAddMetal("Haderoth", 6, 16.0F, 12.0F, 6.5F, 40F, 2.5F, 102, 68, 0).setMeltingPoint(2350)
+			.setArmourStats(1.4F, 1.4F, 1.3F).setCrafterTiers(5);
+        getOrAddMetal("Tartarite", 7, 16.0F, 12.0F, 6.0F, 40F, 2.5F, 255, 0, 0).setMeltingPoint(2450)
+			.setArmourStats(1.6F, 1.6F, 1.4F).setCrafterTiers(5);
+        getOrAddMetal("ShadowIron", 2, 2.0F, 2.0F, 3.0F, 40F, 2.5F, 32, 28, 31).setMeltingPoint(645)
+		.setArmourStats(0.6F, 0.6F, 0.5F).setCrafterTiers(2);
+        
+        //NEW
+        getOrAddMetal("DwarfSteel", 5, 6.5F, 1.6F, 3.6F, 50F, 3.5F, 84, 95, 132).setCrafterTiers(3).setMeltingPoint(2100)
+        	.setArmourStats(1.1F, 1.1F, 0.9F);// Better than steel
+        getOrAddMetal("Emerald", 4, 8.0F, 1.0F, 3.0F, 35F, 3.0F, 25, 255, 0).setCrafterTiers(3)
+        	.setMeltingPoint(1800).setArmourStats(1.1F, 1.0F, 1.1F);// Better Piercing
+        
+        
         // Alloy
         getOrAddMetal("CompositeAlloy", 4, 4.5F, 10.0F, 1.0F, 2.5F, 75F, 4.0F, 65, 75, 65).setMeltingPoint(2500)
                 .setRarity(1).setCrafterTiers(3).modifyCraftTime(5.0F);// Powerful All-Rounder

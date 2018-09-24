@@ -48,8 +48,8 @@ import java.io.File;
 @Mod(modid = MineFantasyII.MODID, name = MineFantasyII.NAME, dependencies = "required-after:Forge@[7.0,);" + "required-after:FML@[5.0.5,);" + "after:NotEnoughItems;" + "after:MineTweaker3;" + "after:BuildCraft|Core;" + "after:CoFHCore;" + "after:battlegear2", version = MineFantasyII.VERSION)
 public class MineFantasyII {
     public static final String MODID = "minefantasy2";
-    public static final String NAME = "MineFantasyII";
-    public static final String VERSION = "@VERSION@";
+    public static final String NAME = "MineFantasyII EbK";
+    public static final String VERSION = "0.5";
     public static final WorldGenMFBase worldGenManager = new WorldGenMFBase();
 
     @SidedProxy(clientSide = "minefantasy.mf2.network.ClientProxyMF", serverSide = "minefantasy.mf2.network.CommonProxyMF")

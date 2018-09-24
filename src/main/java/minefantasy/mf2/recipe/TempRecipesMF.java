@@ -54,7 +54,6 @@ public class TempRecipesMF {
                 new Object[]{"GGG", "GGG", 'G', BlockListMF.framed_glass});
         GameRegistry.addShapedRecipe(new ItemStack(BlockListMF.window_pane, 16),
                 new Object[]{"GGG", "GGG", 'G', BlockListMF.window});
-
     }
 
     private static void assembleWoodVariations(CustomMaterial material) {

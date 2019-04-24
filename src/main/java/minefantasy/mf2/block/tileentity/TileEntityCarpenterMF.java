@@ -7,13 +7,18 @@ import minefantasy.mf2.api.crafting.carpenter.ShapelessCarpenterRecipes;
 import minefantasy.mf2.api.helpers.ToolHelper;
 import minefantasy.mf2.api.knowledge.ResearchLogic;
 import minefantasy.mf2.api.rpg.Skill;
+import minefantasy.mf2.block.list.BlockListMF;
 import minefantasy.mf2.container.ContainerCarpenterMF;
 import minefantasy.mf2.item.armour.ItemArmourMF;
+import minefantasy.mf2.item.food.FoodListMF;
+import minefantasy.mf2.item.list.ComponentListMF;
 import minefantasy.mf2.network.NetworkUtils;
 import minefantasy.mf2.network.packet.CarpenterPacket;
 import minefantasy.mf2.util.MFLogUtil;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
@@ -21,6 +26,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.WorldServer;
+
 
 import java.util.Random;
 
@@ -45,16 +51,24 @@ public class TileEntityCarpenterMF extends TileEntity implements IInventory, ICa
     private ItemStack recipe;
     private int hammerTierRequired;
     private int CarpenterTierRequired;
+    private ItemStack secResult;
+    private ItemStack advConsume;
+    private int advConsumeCount;
 
     public TileEntityCarpenterMF() {
         this(0);
     }
 
     public TileEntityCarpenterMF(int tier) {
-        inventory = new ItemStack[width * height + 5];
+        inventory = new ItemStack[width * height + 6];
         this.tier = tier;
         setContainer(new ContainerCarpenterMF(this));
     }
+
+    //private int getStackSize(ItemStack slot) {
+    //    return slot.getMaxStackSize();
+  // }
+
 
     @Override
     public void readFromNBT(NBTTagCompound nbt) {
@@ -265,10 +279,33 @@ public class TileEntityCarpenterMF extends TileEntity implements IInventory, ICa
         return craftSound;
     }
 
+    private ItemStack getSecResultItem (ItemStack result) {
+        //checking result item
+        if (result.isItemEqual(new ItemStack(BlockListMF.gr_log_acacia)) ||
+                result.isItemEqual(new ItemStack(BlockListMF.gr_log_big_oak)) ||
+                result.isItemEqual(new ItemStack(BlockListMF.gr_log_birch)) ||
+                result.isItemEqual(new ItemStack(BlockListMF.gr_log_jungle)) ||
+                result.isItemEqual(new ItemStack(BlockListMF.gr_log_oak)) ||
+                result.isItemEqual(new ItemStack(BlockListMF.gr_log_spruce))
+        ) {
+            secResult = new ItemStack(ComponentListMF.bark, (rand.nextInt(3)+1)); //define secondary result item
+        }
+        if (result.isItemEqual(new ItemStack(Blocks.planks, 4, 0)) ||
+                result.isItemEqual(new ItemStack(Blocks.planks, 4, 1)) ||
+                result.isItemEqual(new ItemStack(Blocks.planks, 4, 2)) ||
+                result.isItemEqual(new ItemStack(Blocks.planks, 4, 3)) ||
+                result.isItemEqual(new ItemStack(Blocks.planks, 4, 4)) ||
+                result.isItemEqual(new ItemStack(Blocks.planks, 4, 5))) {
+            secResult = new ItemStack(ComponentListMF.bark, (rand.nextInt(3)+1));
+        }
+        return secResult;
+    }
+
     private void craftItem(EntityPlayer user) {
         if (this.canCraft()) {
             addXP(user);
             ItemStack result = recipe.copy();
+            //ItemStack secResult = null;
             if (result != null && result.getItem() instanceof ItemArmourMF) {
                 result = modifyArmour(result);
             }
@@ -279,16 +316,45 @@ public class TileEntityCarpenterMF extends TileEntity implements IInventory, ICa
                     getNBT(result).setString("MF_CraftedByName", lastPlayerHit);
                 }
                 this.inventory[output] = result;
+
+
             } else if (this.inventory[output].getItem() == result.getItem()) {
                 this.inventory[output].stackSize += result.stackSize; // Forge BugFix: Results may have multiple items
             }
+            // secondary craft result
+            getSecResultItem(result);
+            //get secResult item
+            int secOutput = getSecOutputSlotNum();
+            if (secResult != null) {
+                if (this.inventory[secOutput] == null) {
+                    this.setInventorySlotContents(secOutput, secResult);
+                } else {
+                    if (this.inventory[secOutput].isItemEqual(secResult) && ItemStack.areItemStackTagsEqual(this.inventory[secOutput], secResult)) {
+                        if (this.inventory[secOutput].stackSize + secResult.stackSize <= secResult.getMaxStackSize()) {
+                            this.inventory[secOutput].stackSize += secResult.stackSize;
+                        } else {
+                            dropItem(secResult);
+                        }
+                    } else {
+                        dropItem(secResult);
+                    }
+                }
+            }
+
+
             consumeResources();
+
+            advSlotConsume(result); //advanced consume resources from additional 4 slot (left)
         }
         onInventoryChanged();
         progress = 0;
     }
 
     private int getOutputSlotNum() {
+        return getSizeInventory() - 6;
+    }
+
+    private int getSecOutputSlotNum() {
         return getSizeInventory() - 5;
     }
 
@@ -394,6 +460,25 @@ public class TileEntityCarpenterMF extends TileEntity implements IInventory, ICa
 
     public int getCarpenterTierNeeded() {
         return this.CarpenterTierRequired;
+    }
+
+    public void advSlotConsume(ItemStack result) {
+        if (result.getItem() == ComponentListMF.buildingCompound) {
+            advConsumeCount = 1;
+            advConsume = new ItemStack(ComponentListMF.clay_pot, advConsumeCount);
+        } else advConsume = null;
+        if (advConsume != null)
+        for (int slot = getSecOutputSlotNum() + 1; slot <= getSizeInventory(); slot++) {
+            ItemStack item = getStackInSlot(slot);
+            if (item.getItem() == advConsume.getItem()) {
+                if (item.stackSize == 1) {
+                    this.setInventorySlotContents(slot, null);
+                } else {
+                    this.decrStackSize(slot, advConsumeCount);
+                }
+            }
+        }
+        //this.onInventoryChanged();
     }
 
     public void consumeResources() {

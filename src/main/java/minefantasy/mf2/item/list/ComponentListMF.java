@@ -28,12 +28,26 @@ public class ComponentListMF {
             "blacksteelweak", "blacksteel", "silver", "redsteelweak", "redsteel", "bluesteelweak", "bluesteel",
             "adamantium", "mithril", "ignotumite", "mithium", "ender", "tungsten", "obsidian"};
 
+
+
+    public static Item schichtCopper = new ItemSchichts("schichtCopper", -1);
+    public static Item schichtTin = new ItemSchichts("schichtTin", -1);
+    public static Item schichtIron = new ItemSchichts("schichtIron", 0);
+    public static Item schichtSilver = new ItemSchichts("schichtSilver", 0);
+    public static Item schichtGold = new ItemSchichts("schichtGold", 0);
+
     public static Item clay_pot = new ItemMFBowl("clay_pot").setStoragePlacement("pot", "pot");
     public static Item clay_pot_uncooked = new ItemComponentMF("clay_pot_uncooked", 0);
     public static Item ingot_mould = new ItemComponentMF("ingot_mould").setStoragePlacement("bar", "mould");
     public static Item ingot_mould_uncooked = new ItemComponentMF("ingot_mould_uncooked", 0);
     public static Item pie_tray_uncooked = new ItemComponentMF("pie_tray_uncooked", 0);
-
+    //zs items
+    public static Item tar = new ItemComponentMF("tar", 0).setTextureName("minefantasy2:zsItems/tar").setContainerItem(clay_pot);
+    public static Item bark = new ItemComponentMF("bark", 0).setTextureName("minefantasy2:zsItems/bark");;
+    public static Item buildingCompound = new ItemComponentMF("buildingCompound", 0).setTextureName("minefantasy2:zsItems/buildingCompound").setContainerItem(clay_pot);
+    public static Item slag = new ItemComponentMF("slag", 0).setTextureName("minefantasy2:zsItems/slag");
+    public static Item slag_pot = new ItemComponentMF("slag_pot", 0).setTextureName("minefantasy2:zsItems/slag_pot").setContainerItem(clay_pot);
+    //
     public static ItemComponentMF[] ingots = new ItemComponentMF[ingotMats.length];
 
     public static ItemComponentMF plank = new ItemComponentMF("plank").setCustom(1, "wood").setStoragePlacement("plank",
@@ -41,8 +55,8 @@ public class ComponentListMF {
     public static Item vine = new ItemComponentMF("vine", -1);
     public static Item sharp_rock = new ItemComponentMF("sharp_rock", -1);
 
-    public static Item flux = new ItemComponentMF("flux", 0);
-    public static Item flux_strong = new ItemComponentMF("flux_strong", 0);
+    public static Item limestone_item = new ItemComponentMF("limestone_item", 0);
+    public static Item borax = new ItemComponentMF("borax", 0);
 
     public static Item coalDust = new ItemComponentMF("coalDust", 0).setContainerItem(clay_pot);
     public static Item nitre = new ItemComponentMF("nitre", 0);
@@ -163,7 +177,7 @@ public class ComponentListMF {
     public static ItemCustomComponent bar = (ItemCustomComponent) new ItemCustomComponent("bar", 1F, "metal")
             .setStoragePlacement("bar", "bar").setCreativeTab(CreativeTabMF.tabMaterialsMF);
 
-    public static Item flux_pot = new ItemComponentMF("flux_pot", 0).setContainerItem(clay_pot);
+    public static Item limestone_item_pot = new ItemComponentMF("limestone_item_pot", 0).setContainerItem(clay_pot);
     public static Item coal_flux = new ItemComponentMF("coal_flux", 0);
 
     public static Item copper_coin = new ItemComponentMF("copper_coin", 0);
@@ -226,10 +240,10 @@ public class ComponentListMF {
 
     private static void addRandomDrops() {
         RandomOre.addOre(new ItemStack(kaolinite), 1.5F, Blocks.stone, -1, 32, 128, false);
-        RandomOre.addOre(new ItemStack(flux), 2F, Blocks.stone, -1, 0, 128, false);
-        RandomOre.addOre(new ItemStack(flux_strong), 1F, Blocks.stone, 2, 0, 128, false);
-        RandomOre.addOre(new ItemStack(flux), 20F, BlockListMF.limestone, 0, -1, 0, 256, true);
-        RandomOre.addOre(new ItemStack(flux_strong), 10F, BlockListMF.limestone, 0, 2, 0, 256, true);
+        RandomOre.addOre(new ItemStack(limestone_item), 2F, Blocks.stone, -1, 0, 128, false);
+        RandomOre.addOre(new ItemStack(borax), 1F, Blocks.stone, 2, 0, 128, false);
+        RandomOre.addOre(new ItemStack(limestone_item), 20F, BlockListMF.limestone, 0, -1, 0, 256, true);
+        RandomOre.addOre(new ItemStack(borax), 10F, BlockListMF.limestone, 0, 2, 0, 256, true);
         RandomOre.addOre(new ItemStack(Items.coal), 2F, Blocks.stone, -1, 0, 128, false);
         RandomOre.addOre(new ItemStack(sulfur), 2F, Blocks.stone, -1, 0, 16, false);
         RandomOre.addOre(new ItemStack(nitre), 3F, Blocks.stone, -1, 0, 64, false);

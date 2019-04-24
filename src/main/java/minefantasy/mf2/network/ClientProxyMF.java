@@ -98,6 +98,10 @@ public class ClientProxyMF extends CommonProxyMF {
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityResearch.class, new TileEntityResearchRenderer());
         RenderingRegistry.registerBlockHandler(new RenderTrough());
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityTrough.class, new TileEntityTroughRenderer());
+
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySoakingTrough.class, new TileEntitySoakingTroughRenderer());
+        RenderingRegistry.registerBlockHandler(new RenderSoakingTrough());
+
         RenderingRegistry.registerBlockHandler(new RenderBombPress());
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityBombPress.class, new TileEntityBombPressRenderer());
         RenderingRegistry.registerBlockHandler(new RenderBloomery());
@@ -156,6 +160,9 @@ public class ClientProxyMF extends CommonProxyMF {
 
             if (tile == null) {
                 return null;
+            }
+            if (tile instanceof TileEntityTarKiln) {
+                return new GuiTarKiln(player.inventory, (TileEntityTarKiln) tile);
             }
 
             if (tile instanceof TileEntityAnvilMF) {

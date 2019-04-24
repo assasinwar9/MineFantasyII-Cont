@@ -105,11 +105,11 @@ public class CarpenterRecipes {
                 new Object[]{"SSS",  "SBS",  "SSS",  'S',  Blocks.stone,  'B',  ComponentListMF.buildingCompound,});
         //building compound
         MineFantasyAPI.addCarpenterRecipe(construction, new ItemStack(ComponentListMF.buildingCompound, 1), mixing, "hands", -1,  3,
-                new Object[]{"CC",  "LE",  'C',  Items.clay_ball,  'L',  ComponentListMF.limestone_item_pot,  'E',  Items.egg,});
+                new Object[]{"CC",  "LE", "P",  'C',  Items.clay_ball,  'L',  ComponentListMF.limestone_item_pot,  'E',  Items.egg, 'P', ComponentListMF.clay_pot,});
         MineFantasyAPI.addCarpenterRecipe(construction, new ItemStack(ComponentListMF.buildingCompound, 1), mixing, "hands", -1,  3,
-                new Object[]{"CS",  "LE",  'C',  Items.clay_ball, 'S', ComponentListMF.slag_pot,  'L',  ComponentListMF.limestone_item_pot,  'E',  Items.egg,});
+                new Object[]{"CS",  "LE", "P", 'C',  Items.clay_ball, 'S', ComponentListMF.slag_pot,  'L',  ComponentListMF.limestone_item_pot,  'E',  Items.egg, 'P', ComponentListMF.clay_pot,});
         MineFantasyAPI.addCarpenterRecipe(construction, new ItemStack(ComponentListMF.buildingCompound, 1), mixing, "hands", -1,  3,
-                new Object[]{"SS",  "LE", 'S', ComponentListMF.slag_pot,  'L',  ComponentListMF.limestone_item_pot,  'E',  Items.egg,});
+                new Object[]{"SS",  "LE", "P", 'S', ComponentListMF.slag_pot,  'L',  ComponentListMF.limestone_item_pot,  'E',  Items.egg, 'P', ComponentListMF.clay_pot,});
 
         //grinded logs
         MineFantasyAPI.addCarpenterRecipe(null, new ItemStack(BlockListMF.gr_log_oak), "",

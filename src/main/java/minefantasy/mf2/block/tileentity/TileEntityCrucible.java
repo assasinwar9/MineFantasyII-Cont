@@ -8,6 +8,9 @@ import minefantasy.mf2.api.refine.SmokeMechanics;
 import minefantasy.mf2.block.list.BlockListMF;
 import minefantasy.mf2.block.refining.BlockCrucible;
 import minefantasy.mf2.block.tileentity.blastfurnace.TileEntityBlastFH;
+import minefantasy.mf2.config.ConfigHardcore;
+import minefantasy.mf2.item.ItemComponentMF;
+import minefantasy.mf2.item.list.ComponentListMF;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockEndPortalFrame;
 import net.minecraft.block.material.Material;
@@ -15,6 +18,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ISidedInventory;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
@@ -61,9 +65,9 @@ public class TileEntityCrucible extends TileEntity implements IInventory, ISided
             SmokeMechanics.emitSmokeIndirect(worldObj, xCoord, yCoord, zCoord, 1);
         }
 
-        if (isHot != getIsHot()) {
-            BlockCrucible.updateFurnaceBlockState(getTemperature() > 0, worldObj, xCoord, yCoord, zCoord);
-        }
+        if (!worldObj.isRemote)
+            BlockCrucible.updateFurnaceBlockState(inv[getOutSlot()] != null && !(inv[getOutSlot()].getItem() instanceof ItemBlock), this.worldObj, this.xCoord, this.yCoord, this.zCoord);
+
     }
 
     private boolean getIsHot() {
@@ -188,14 +192,14 @@ public class TileEntityCrucible extends TileEntity implements IInventory, ISided
         if (getTier() >= 2) {
             return 500;
         }
-        Block under = worldObj.getBlock(xCoord, yCoord - 1, zCoord);
+        /*Block under = worldObj.getBlock(xCoord, yCoord - 1, zCoord);
 
         if (under.getMaterial() == Material.fire) {
             return 10F;
         }
         if (under.getMaterial() == Material.lava) {
             return 50F;
-        }
+        }*/
         TileEntity tile = worldObj.getTileEntity(xCoord, yCoord - 1, zCoord);
         if (tile != null && tile instanceof TileEntityForge) {
             return ((TileEntityForge) tile).getBlockTemperature();

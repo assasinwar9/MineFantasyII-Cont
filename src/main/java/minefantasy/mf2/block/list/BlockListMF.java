@@ -7,6 +7,7 @@ import minefantasy.mf2.block.food.BlockBerryBush;
 import minefantasy.mf2.block.food.BlockCakeMF;
 import minefantasy.mf2.block.food.BlockPie;
 import minefantasy.mf2.block.refining.*;
+import minefantasy.mf2.block.tree.BlockGrindedLogs;
 import minefantasy.mf2.block.tree.BlockLeavesMF;
 import minefantasy.mf2.block.tree.BlockLogMF;
 import minefantasy.mf2.block.tree.BlockSaplingMF;
@@ -28,6 +29,41 @@ public class BlockListMF {
     public static final String[] anvils = new String[]{"bronze", "iron", "steel", "blacksteel", "bluesteel",
             "redsteel"};
 
+    public static Block zs_block = new BasicBlockMF("zs_block", Material.rock).setLightLevel(5.0F).setBlockUnbreakable()
+            .setStepSound(Block.soundTypeStone).setBlockTextureName("minefantasy2:zsAddon/zs_block");
+    public static Block ae_block = new BasicBlockMF("ae_block", Material.rock).setLightLevel(8.0F).setBlockUnbreakable()
+            .setStepSound(Block.soundTypeStone).setBlockTextureName("minefantasy2:zsAddon/ae_block");
+    public static Block limestone_friable = new BasicBlockMF("limestone_friable", Material.rock).setHardness(3.0F).setResistance(1.0F)
+            .setStepSound(Block.soundTypeGravel).setBlockTextureName("minefantasy2:zsAddon/limestone_friable");
+
+    public static Block dense_gravel = new BlockDenseGravel("dense_gravel");
+
+    public static Block soaking_trough = new BlockSoakingTrough("soaking_trough");
+
+    public static Block stonebrick_white = new BasicBlockMF("stonebrick_white", Material.rock).setHardness(3.0F).setResistance(4.0F)
+            .setStepSound(Block.soundTypeStone);
+    public static Block stonebrick_white_stair = new ConstructionBlockMF.StairsConstBlock("stonebrick_white_stair", stonebrick_white)
+            .register("stonebrick_white_stair");
+    public static Block stonebrick_white_slab = new ConstructionBlockMF.SlabConstBlock("stonebrick_white_slab", stonebrick_white)
+            .register("stonebrick_white_slab");
+    public static Block stonebrick_dark = new BasicBlockMF("stonebrick_dark", Material.rock).setHardness(3.0F).setResistance(4.0F)
+            .setStepSound(Block.soundTypeStone);
+    public static Block stonebrick_dark_stair = new ConstructionBlockMF.StairsConstBlock("stonebrick_dark_stair", stonebrick_dark)
+            .register("stonebrick_dark_stair");
+    public static Block stonebrick_dark_slab = new ConstructionBlockMF.SlabConstBlock("stonebrick_white_slab", stonebrick_dark)
+            .register("stonebrick_dark_slab");
+
+    //grinded logs
+    public static Block gr_log_acacia = new BlockGrindedLogs("gr_log_acacia", "acacia");
+    public static Block gr_log_big_oak = new BlockGrindedLogs("gr_log_big_oak", "big_oak");
+    public static Block gr_log_birch = new BlockGrindedLogs("gr_log_birch", "birch");
+    public static Block gr_log_jungle = new BlockGrindedLogs("gr_log_jungle", "jungle");
+    public static Block gr_log_oak = new BlockGrindedLogs("gr_log_oak", "oak");
+    public static Block gr_log_spruce = new BlockGrindedLogs("gr_log_spruce", "spruce");
+    //
+    public static Block tarKiln = new BlockTarKiln(false);
+    public static Block tarKiln_filled = new BlockTarKiln(true);
+
     public static Block oreCopper = new BlockOreMF("oreCopper", 0, -1).setHardness(2.0F).setResistance(3.0F);
     public static Block oreTin = new BlockOreMF("oreTin", 0).setHardness(2.5F).setResistance(4.0F);
     public static Block oreSilver = new BlockOreMF("oreSilver", 2).setHardness(3.0F).setResistance(5.0F);
@@ -39,7 +75,7 @@ public class BlockListMF {
             .setResistance(5.0F);
     public static Block oreSulfur = new BlockOreMF("oreSulfur", 2, 0, ComponentListMF.sulfur, 1, 4, 2).setHardness(3.0F)
             .setResistance(2.0F);
-    public static Block oreBorax = new BlockOreMF("oreBorax", 2, 1, ComponentListMF.flux_strong, 1, 8, 4)
+    public static Block oreBorax = new BlockOreMF("oreBorax", 2, 1, ComponentListMF.borax, 1, 8, 4)
             .setHardness(3.0F).setResistance(2.0F);
     public static Block oreTungsten = new BlockOreMF("oreTungsten", 3, 1, ComponentListMF.oreTungsten, 1, 1, 4)
             .setHardness(4.0F).setResistance(2.5F);

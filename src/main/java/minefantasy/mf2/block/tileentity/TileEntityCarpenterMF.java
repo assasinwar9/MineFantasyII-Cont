@@ -52,8 +52,6 @@ public class TileEntityCarpenterMF extends TileEntity implements IInventory, ICa
     private int hammerTierRequired;
     private int CarpenterTierRequired;
     private ItemStack secResult;
-    private ItemStack advConsume;
-    private int advConsumeCount;
 
     public TileEntityCarpenterMF() {
         this(0);
@@ -343,8 +341,6 @@ public class TileEntityCarpenterMF extends TileEntity implements IInventory, ICa
 
 
             consumeResources();
-
-            advSlotConsume(result); //advanced consume resources from additional 4 slot (left)
         }
         onInventoryChanged();
         progress = 0;
@@ -462,24 +458,6 @@ public class TileEntityCarpenterMF extends TileEntity implements IInventory, ICa
         return this.CarpenterTierRequired;
     }
 
-    public void advSlotConsume(ItemStack result) {
-        if (result.getItem() == ComponentListMF.buildingCompound) {
-            advConsumeCount = 1;
-            advConsume = new ItemStack(ComponentListMF.clay_pot, advConsumeCount);
-        } else advConsume = null;
-        if (advConsume != null)
-        for (int slot = getSecOutputSlotNum() + 1; slot <= getSizeInventory(); slot++) {
-            ItemStack item = getStackInSlot(slot);
-            if (item.getItem() == advConsume.getItem()) {
-                if (item.stackSize == 1) {
-                    this.setInventorySlotContents(slot, null);
-                } else {
-                    this.decrStackSize(slot, advConsumeCount);
-                }
-            }
-        }
-        //this.onInventoryChanged();
-    }
 
     public void consumeResources() {
         resetRecipe = true;

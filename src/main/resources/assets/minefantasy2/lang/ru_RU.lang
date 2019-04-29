@@ -379,22 +379,22 @@ item.gold_coin.name=Золотая монета
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 /COMPONENT/
-item.colormat_black.name=&7Черный краситель
-item.colormat_red.name=&7Красный краситель
-item.colormat_green.name=&7Зеленый краситель
-item.colormat_brown.name=&7Коричневый краситель
-item.colormat_blue.name=&7Синий краситель
-item.colormat_purple.name=&7Фиолетовый краситель
-item.colormat_cyan.name=&7Бирюзовый краситель
-item.colormat_light_gray.name=&7Светло-серый краситель
-item.colormat_gray.name=&7Серый краситель
-item.colormat_pink.name=&7Розовый краситель
-item.colormat_lime.name=&7Лаймовый краситель
-item.colormat_yellow.name=&7Желтый краситель
-item.colormat_light_blue.name=&7Голубой краситель
-item.colormat_magenta.name=&7Сиреневый краситель
-item.colormat_orange.name=&7Оранжевый краситель
-item.colormat_white.name=&7Белый краситель
+item.colormat_black.name=Черный краситель
+item.colormat_red.name=Красный краситель
+item.colormat_green.name=Зеленый краситель
+item.colormat_brown.name=Коричневый краситель
+item.colormat_blue.name=Синий краситель
+item.colormat_purple.name=Фиолетовый краситель
+item.colormat_cyan.name=Бирюзовый краситель
+item.colormat_light_gray.name=Светло-серый краситель
+item.colormat_gray.name=Серый краситель
+item.colormat_pink.name=Розовый краситель
+item.colormat_lime.name=Лаймовый краситель
+item.colormat_yellow.name=Желтый краситель
+item.colormat_light_blue.name=Голубой краситель
+item.colormat_magenta.name=Сиреневый краситель
+item.colormat_orange.name=Оранжевый краситель
+item.colormat_white.name=Белый краситель
 
 item.schichtCopper.name=Медная литейная шихта
 item.schichtTin.name=Оловяная литейная шихта

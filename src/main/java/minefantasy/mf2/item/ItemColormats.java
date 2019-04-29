@@ -6,7 +6,7 @@ import minefantasy.mf2.item.list.CreativeTabMF;
 
 public class ItemColormats extends ItemComponentMF {
     public ItemColormats(String name) {
-        super(0);
+        super(1);
         setTextureName("minefantasy2:zsItems/colormats/" + name);
         this.setCreativeTab(CreativeTabMF.tabMaterialsMF);
         GameRegistry.registerItem(this, "MF_" + name, MineFantasyII.MODID);

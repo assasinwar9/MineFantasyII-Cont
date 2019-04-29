@@ -47,6 +47,23 @@ public class ComponentListMF {
     public static Item buildingCompound = new ItemComponentMF("buildingCompound", 0).setTextureName("minefantasy2:zsItems/buildingCompound").setContainerItem(clay_pot);
     public static Item slag = new ItemComponentMF("slag", 0).setTextureName("minefantasy2:zsItems/slag");
     public static Item slag_pot = new ItemComponentMF("slag_pot", 0).setTextureName("minefantasy2:zsItems/slag_pot").setContainerItem(clay_pot);
+    //new color materials (zs items)
+    public static Item colormat_black = new ItemColormats("colormat_black");
+    public static Item colormat_red = new ItemColormats("colormat_red");
+    public static Item colormat_green = new ItemColormats("colormat_green");
+    public static Item colormat_brown = new ItemColormats("colormat_brown");
+    public static Item colormat_blue = new ItemColormats("colormat_blue");
+    public static Item colormat_purple = new ItemColormats("colormat_purple");
+    public static Item colormat_cyan = new ItemColormats("colormat_cyan");
+    public static Item colormat_light_gray = new ItemColormats("colormat_light_gray");
+    public static Item colormat_gray = new ItemColormats("colormat_gray");
+    public static Item colormat_pink = new ItemColormats("colormat_pink");
+    public static Item colormat_lime = new ItemColormats("colormat_lime");
+    public static Item colormat_yellow = new ItemColormats("colormat_yellow");
+    public static Item colormat_light_blue = new ItemColormats("colormat_light_blue");
+    public static Item colormat_magenta = new ItemColormats("colormat_magenta");
+    public static Item colormat_orange = new ItemColormats("colormat_orange");
+    public static Item colormat_white = new ItemColormats("colormat_white");
     //
     public static ItemComponentMF[] ingots = new ItemComponentMF[ingotMats.length];
 

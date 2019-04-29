@@ -323,14 +323,14 @@ item.nail.name=钉子
 item.thread.name=丝线
 item.lime_rock.name=石灰岩
 item.borax_rock.name=硼砂
-item.flux.name=熔剂
-item.flux_strong.name=强力熔剂
+item.limestone_item.name=熔剂
+item.borax.name=强力熔剂
 item.coal_prep.name=精煤
 item.coke.name=焦炭
 item.blackpowder.name=黑火药
 item.blackpowder_advanced.name=高级黑火药
 item.bolt.name=螺栓
-item.flux_pot.name=优良熔剂
+item.limestone_item_pot.name=优良熔剂
 item.coal_flux.name=含煤熔剂
 
 item.ingotCopper.name=铜锭
@@ -1307,7 +1307,7 @@ knowledge.gettingStarted.tanning=$h制革-$r^目前为止你可能收集了一�
 knowledge.gettingStarted.forging=$h锻造-$r^锻造是制作物品的主要方法。几乎每一个工具和金属物件都是通过这一工序制作的。首先你需要做一个石头锻造炉、砧和一些工具，然后将砧放在靠近石头锻造炉和水的地方。“工艺”一栏包含了完整的关于如何进行锻造工作的信息，在这之前你得先做一个最基础的引火器 (干燥岩石) ，别忘了穿上围裙！(参考“工艺”一栏的“锻铁炉”一节来了解如何把那些金属原矿处理成能用的金属条)
 
 knowledge.gettingStarted.forgingbars=大多数配方需要的是金属条而不是金属锭。金属条是从金属锭加工出的易于加工的材料，把加热后的金属锭放在砧中然后用锤子砸之即可获得金属条 (右键砧的顶部或者直接左键砸) 。
-knowledge.gettingStarted.flux=熔剂在锻造金属时扮演着重要的净化剂角色。原则上来说这个物品是处理锻造过程中的金属以及制作合金用的。但是制作某些金属片和金属板时同样需要熔剂，一些工具和护甲也是。^熔剂的最好来源是石灰岩。在你云游四方的时候最好留意一下。
+knowledge.gettingStarted.limestone_item=熔剂在锻造金属时扮演着重要的净化剂角色。原则上来说这个物品是处理锻造过程中的金属以及制作合金用的。但是制作某些金属片和金属板时同样需要熔剂，一些工具和护甲也是。^熔剂的最好来源是石灰岩。在你云游四方的时候最好留意一下。
 knowledge.gettingStarted.3=现在你需要一些皮革条来做工具。收集2个铜 (把它们处理成铜条) ，2个木材和1个皮革然后做把铜剪刀。
 knowledge.gettingStarted.4=拿起你的剪刀，然后把皮革放在木匠工作台或制革架上右键切割制成皮革条。
 
@@ -1365,7 +1365,7 @@ knowledge.commodities.plank=木材是原木中上好的那一部分，一种常�
 
 knowledge.commodities.refinedplank=一些木材可以用植物油进行精制，使其硬化。精制木材将被用于更高级的合成。只有1级木材可以进行精制。
 
-knowledge.commodities.flux=熔剂通常用于精炼金属。基础熔剂可以用于设备--比如高炉--来制作精炼金属锭。强力熔剂则用于高级合金合成。
+knowledge.commodities.limestone_item=熔剂通常用于精炼金属。基础熔剂可以用于设备--比如高炉--来制作精炼金属锭。强力熔剂则用于高级合金合成。
 
 knowledge.commodities.hunks=对于那些较小的制品，要使用金属片。你可以在熔剂的辅助下把金属条做成片，也可以把用剩的金属片做回条。
 
@@ -1554,9 +1554,9 @@ knowledge.smeltEnderforge.desc=等级 %1$s，大师级材料
 
 knowledge.smeltEnderforge.1=总有一些东西比那些末地来的生命还要奇怪……而这个发现也许会引导你到它们的起源，也许是它们造出了这种制品，尽管无从解释，因为末影生命并没有高度的文明。^末影锭被视为秘银和艾达曼两种材料的折中产物，兼具二者的优点。在将两种材料融为一体的过程中，末影珍珠起了催化作用。^这一材料只能在大师级坩埚里锻造。
 
-knowledge.coalflux=含煤熔剂
-knowledge.coalflux.desc=勤俭持家
-knowledge.coalflux.1=在冶炼过程中，要引发正确的化学反应需要的煤炭量实在是太巨大了。这个问题现在越发严重，以至于如果没有充足的煤炭储备，要熔炼大量金属是非常困难的。^你相信在熔剂中混入煤炭可以减少这些反应中的燃料消耗，每一份熔剂都可以将冶炼过程需要的燃料用量减半，使得等量的燃料可以烧出双份成品。^这个过程并非毫无代价，虽然制作熔剂时用到了煤，但是熔剂本身已不再能作为燃料使用了。
+knowledge.coal_flux=含煤熔剂
+knowledge.coal_flux.desc=勤俭持家
+knowledge.coal_flux.1=在冶炼过程中，要引发正确的化学反应需要的煤炭量实在是太巨大了。这个问题现在越发严重，以至于如果没有充足的煤炭储备，要熔炼大量金属是非常困难的。^你相信在熔剂中混入煤炭可以减少这些反应中的燃料消耗，每一份熔剂都可以将冶炼过程需要的燃料用量减半，使得等量的燃料可以烧出双份成品。^这个过程并非毫无代价，虽然制作熔剂时用到了煤，但是熔剂本身已不再能作为燃料使用了。
 
 knowledge.bigfurn=冶炼炉
 knowledge.bigfurn.desc=大量生产

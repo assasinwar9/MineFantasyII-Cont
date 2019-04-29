@@ -3,13 +3,20 @@ package minefantasy.mf2.block.decor;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import javafx.scene.paint.Material;
+import minefantasy.mf2.api.material.CustomMaterial;
+import minefantasy.mf2.block.list.BlockListMF;
 import minefantasy.mf2.block.tileentity.decor.TileEntityTrough;
 import minefantasy.mf2.block.tileentity.decor.TileEntityWoodDecor;
+import minefantasy.mf2.block.decor.ItemBlockTrough;
 import minefantasy.mf2.item.list.CreativeTabMF;
+import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
@@ -18,6 +25,7 @@ import net.minecraft.world.World;
 
 public class BlockTrough extends BlockWoodDecor {
     public static final String NBT_fill = "Fill_Level";
+    public static final String NBT_liquid = "LiquidType";
     public static int trough_RI = 107;
 
     public BlockTrough(String name) {
@@ -67,12 +75,12 @@ public class BlockTrough extends BlockWoodDecor {
         int direction = MathHelper.floor_double(user.rotationYaw * 4.0F / 360.0F + 0.5D) & 3;
         world.setBlockMetadataWithNotify(x, y, z, direction, 2);
 
-        TileEntityTrough tile = getTile(world, x, y, z);
+        /*TileEntityTrough tile = getTile(world, x, y, z);
         if (tile != null) {
             if (item.hasTagCompound() && item.getTagCompound().hasKey(NBT_fill)) {
                 tile.fill = item.getTagCompound().getInteger(NBT_fill);
             }
-        }
+        }*/
         super.onBlockPlacedBy(world, x, y, z, user, item);
     }
 
@@ -105,15 +113,27 @@ public class BlockTrough extends BlockWoodDecor {
         return null;
     }
 
-    @Override
+   /* @Override
+    public void breakBlock(World world, int x, int y, int z, Block block, int meta) {
+        TileEntity tile = world.getTileEntity(x, y, z);
+        if (tile instanceof TileEntityTrough)
+            if (((TileEntityTrough) tile).fill > 0)
+                world.setBlock(x, y, z, Blocks.water);
+
+        /*if (!world.isRemote) {
+            ItemStack trough = ;
+            EntityItem drop = new EntityItem(world, x, y, z, Item.getItemFromBlock());
+            drop.delayBeforeCanPickup = 0;
+            world.spawnEntityInWorld(drop);
+        }
+    }*/
+
+   @Override
     protected ItemStack modifyDrop(TileEntityWoodDecor tile, ItemStack item) {
-        return modifyFill((TileEntityTrough) tile, super.modifyDrop(tile, item));
+       return modifyFill((TileEntityTrough) tile, super.modifyDrop(tile, item));
     }
 
     private ItemStack modifyFill(TileEntityTrough tile, ItemStack item) {
-        if (tile != null && item != null) {
-            item.getTagCompound().setInteger(NBT_fill, tile.fill);
-        }
         return item;
     }
 }

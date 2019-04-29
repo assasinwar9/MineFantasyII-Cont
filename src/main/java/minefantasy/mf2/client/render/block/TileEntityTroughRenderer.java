@@ -12,6 +12,8 @@ import java.util.Random;
 
 public class TileEntityTroughRenderer extends TileEntitySpecialRenderer {
     private ModelTrough model;
+    private float red, green, blue;
+
 
     public TileEntityTroughRenderer() {
         model = new ModelTrough();
@@ -71,8 +73,12 @@ public class TileEntityTroughRenderer extends TileEntitySpecialRenderer {
             GL11.glEnable(GL11.GL_BLEND);
             GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 
-            bindTextureByName("textures/models/tileentity/" + tile.getTexName() + "_water.png"); // texture
-            GL11.glColor4f(1F, 1F, 1F, 0.5F);
+            //String liquidType = tile.liquid;
+            String texture = getLiquidTex(tile.liquid);
+            bindTextureByName(texture); // texture
+
+            getLiquidColor(tile.liquid);
+            GL11.glColor4f(red, green, blue, 0.9F);
             GL11.glTranslatef(0F, -height * 0.35F, 0F);
             model.renderWater(0.0625F);
         }
@@ -80,6 +86,108 @@ public class TileEntityTroughRenderer extends TileEntitySpecialRenderer {
         GL11.glColor3f(255, 255, 255);
         GL11.glPopMatrix(); // end
 
+    }
+
+    private String getLiquidTex (String liquid) {
+        if (liquid == "water") {
+            return "textures/blocks/zsAddon/liquid_water.png";
+        }
+        else return "textures/blocks/zsAddon/liquid_colordef.png";
+    }
+
+    //  1 / 255 = 0.00392
+    private void getLiquidColor (String liquid) {
+        float k = 0.00392F;
+        if (liquid == "water") {
+            red = 1.0F;
+            green = 1.0F;
+            blue = 1.0F;
+        }
+        if (liquid == "black") {
+            red = 0.05F;
+            green = 0.05F;
+            blue = 0.05F;
+        }
+        if (liquid == "red") {
+            red = k * 176;
+            green = k * 46;
+            blue = k * 38;
+        }
+        if (liquid == "green") {
+            red = k * 94;
+            green = k * 124;
+            blue = k * 22;
+        }
+        if (liquid == "brown") {
+            red = k * 131;
+            green = k * 84;
+            blue = k * 50;
+        }
+        if (liquid == "blue") {
+            red = k * 60;
+            green = k * 68;
+            blue = k * 170;
+        }
+        if (liquid == "purple") {
+            red = k * 137;
+            green = k * 50;
+            blue = k * 184;
+        }
+        if (liquid == "cyan") {
+            red = k * 22;
+            green = k * 156;
+            blue = k * 156;
+        }
+        if (liquid == "light_gray") {
+            red = k * 157;
+            green = k * 157;
+            blue = k * 151;
+        }
+        if (liquid == "gray") {
+            red = k * 71;
+            green = k * 79;
+            blue = k * 82;
+        }
+        if (liquid == "pink") {
+            red = k * 243;
+            green = k * 139;
+            blue = k * 170;
+        }
+        if (liquid == "lime") {
+            red = k * 128;
+            green = k * 199;
+            blue = k * 31;
+        }
+        if (liquid == "yellow") {
+            red = k * 254;
+            green = k * 216;
+            blue = k * 61;
+        }
+        if (liquid == "light_blue") {
+            red = k * 58;
+            green = k * 179;
+            blue = k * 218;
+        }
+        if (liquid == "magenta") {
+            red = k * 199;
+            green = k * 78;
+            blue = k * 189;
+        }
+        if (liquid == "orange") {
+            red = k * 249;
+            green = k * 128;
+            blue = k * 29;
+        }
+        if (liquid == "white") {
+            red = 1.0F;
+            green = 1.0F;
+            blue = 1.0F;
+        }
+        /*else {
+            red = 1.0F;
+            green = 1.0F;
+            blue = 1.0F;
+        }*/
     }
 
     public void renderInvModel(String tex, CustomMaterial material, double d, double d1, double d2) {

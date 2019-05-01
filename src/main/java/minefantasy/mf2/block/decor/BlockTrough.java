@@ -99,11 +99,27 @@ public class BlockTrough extends BlockWoodDecor {
                 world.playSoundEffect(x + 0.5D, y + 0.5D, z + 0.5D, "random.splash",
                         0.125F + user.getRNG().nextFloat() / 4F, 0.5F + user.getRNG().nextFloat());
                 ((TileEntityTrough) tile).syncData();
+                if (held.isItemEqual(new ItemStack(Blocks.wool, 1, 0))) {
+                    --held.stackSize;
+                }
                 return true;
             }
         }
         return false;
     }
+
+  /*  @Override
+    public void onBlockClicked(World world, int x, int y, int z, EntityPlayer user) {
+        ItemStack held = user.getHeldItem();
+        TileEntity tile = world.getTileEntity(x, y, z);
+        if (tile != null && tile instanceof TileEntityTrough) {
+            if (((TileEntityTrough) tile).interact(user, held)) {
+                world.playSoundEffect(x + 0.5D, y + 0.5D, z + 0.5D, "random.splash",
+                        0.125F + user.getRNG().nextFloat() / 4F, 0.5F + user.getRNG().nextFloat());
+                ((TileEntityTrough) tile).syncData();
+            }
+        }
+    }*/
 
     private TileEntityTrough getTile(World world, int x, int y, int z) {
         TileEntity tile = world.getTileEntity(x, y, z);

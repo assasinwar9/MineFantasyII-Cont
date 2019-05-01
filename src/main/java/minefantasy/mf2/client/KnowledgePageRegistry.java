@@ -55,8 +55,8 @@ public class KnowledgePageRegistry {
                 new EntryPageRecipeCarpenter(KnowledgeListMF.apronRecipe));
         KnowledgeListMF.gettingStarted.addPages(new EntryPageText("knowledge.gettingStarted.forgingbars"),
                 new EntryPageRecipeAnvil(KnowledgeListMF.barR));
-        KnowledgeListMF.gettingStarted.addPages(new EntryPageText("knowledge.gettingStarted.flux"),
-                new EntryPageRecipeAnvil(KnowledgeListMF.fluxR));
+        KnowledgeListMF.gettingStarted.addPages(new EntryPageText("knowledge.gettingStarted.limestone_item"),
+                new EntryPageRecipeAnvil(KnowledgeListMF.limestone_itemR));
         KnowledgeListMF.gettingStarted.addPages(new EntryPageText("knowledge.gettingStarted.3"),
                 new EntryPageRecipeAnvil(KnowledgeListMF.shearsR), new EntryPageText("knowledge.gettingStarted.4"),
                 new EntryPageText("knowledge.gettingStarted.5"), new EntryPageRecipeAnvil(KnowledgeListMF.hammerR),
@@ -131,8 +131,8 @@ public class KnowledgePageRegistry {
                 new EntryPageSmelting(FoodListMF.jug_uncooked, FoodListMF.jug_empty),
                 new EntryPageRecipeBase(KnowledgeListMF.plantOilR),
                 new EntryPageRecipeCarpenter(KnowledgeListMF.refinedPlankR));
-        KnowledgeListMF.commodities.addPages(new EntryPageText("knowledge.commodities.flux"),
-                new EntryPageRecipeAnvil(KnowledgeListMF.fluxR));
+        KnowledgeListMF.commodities.addPages(new EntryPageText("knowledge.commodities.limestone_item"),
+                new EntryPageRecipeAnvil(KnowledgeListMF.limestone_itemR));
         KnowledgeListMF.commodities.addPages(new EntryPageText("knowledge.bar.1"));
         KnowledgeListMF.commodities.addPages(new EntryPageRecipeAnvil(KnowledgeListMF.barR),
                 new EntryPageRecipeAnvil(KnowledgeListMF.baringotR));
@@ -352,9 +352,9 @@ public class KnowledgePageRegistry {
                 new EntryPageRecipeAnvil(KnowledgeListMF.plateLegsR),
                 new EntryPageRecipeAnvil(KnowledgeListMF.plateBootsR));
 
-        KnowledgeListMF.coalflux.addPages(new EntryPageText("knowledge.coalflux.1"),
-                new EntryPageGrind(new ItemStack(ComponentListMF.flux), new ItemStack(ComponentListMF.flux_pot)),
-                new EntryPageRecipeAnvil(KnowledgeListMF.coalfluxR));
+        KnowledgeListMF.coal_flux.addPages(new EntryPageText("knowledge.coal_flux.1"),
+                new EntryPageGrind(new ItemStack(ComponentListMF.limestone_item), new ItemStack(ComponentListMF.limestone_item_pot)),
+                new EntryPageRecipeAnvil(KnowledgeListMF.coal_fluxR));
 
         KnowledgeListMF.bigfurn.addPages(assembleSimpleImgPage("furnace_example", "knowledge.bigfurn.1"),
                 new EntryPageText("knowledge.bigfurn.2"));

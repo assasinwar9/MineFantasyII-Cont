@@ -38,7 +38,6 @@ public class BlockListMF {
 
     public static Block dense_gravel = new BlockDenseGravel("dense_gravel");
 
-    public static Block soaking_trough = new BlockSoakingTrough("soaking_trough");
 
     public static Block stonebrick_white = new BasicBlockMF("stonebrick_white", Material.rock).setHardness(3.0F).setResistance(4.0F)
             .setStepSound(Block.soundTypeStone);

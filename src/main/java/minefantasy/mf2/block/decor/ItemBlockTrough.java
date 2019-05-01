@@ -34,12 +34,12 @@ public class ItemBlockTrough extends ItemBlock implements IStorageBlock {
     @SideOnly(Side.CLIENT)
     @Override
     public void addInformation(ItemStack item, EntityPlayer user, List list, boolean info) {
-        if (item.hasTagCompound() && item.getTagCompound().hasKey(BlockTrough.NBT_fill)) {
+        /*if (item.hasTagCompound() && item.getTagCompound().hasKey(BlockTrough.NBT_fill)) {
             int stock = item.getTagCompound().getInteger(BlockTrough.NBT_fill);
             if (stock > 0) {
                 list.add(StatCollector.translateToLocalFormatted("attribute.fill", stock));
             }
-        }
+        }*/
         CustomMaterial material = CustomMaterial.getMaterialFor(item, CustomToolHelper.slot_main);
         if (material != null) {
             list.add(StatCollector.translateToLocalFormatted("attribute.fill.capacity.name",
@@ -49,7 +49,7 @@ public class ItemBlockTrough extends ItemBlock implements IStorageBlock {
 
     @Override
     public void getSubItems(Item item, CreativeTabs tab, List list) {
-        if (MineFantasyII.isDebug()) {
+        if (MineFantasyII.isDebug()) { //MineFantasyII.isDebug()
             ArrayList<CustomMaterial> wood = CustomMaterial.getList("wood");
             Iterator iteratorWood = wood.iterator();
             while (iteratorWood.hasNext()) {
@@ -92,18 +92,18 @@ public class ItemBlockTrough extends ItemBlock implements IStorageBlock {
                     return super.onItemUse(item, player, world, x, y, z, side, f, f1, f2);
                 }
 
-                if (isWaterSource(world, i, j, k)) {
+                /*if (isWaterSource(world, i, j, k)) {
                     gather(player);
                     world.playSoundAtEntity(player, "random.splash", 0.125F + rand.nextFloat() / 4F,
                             0.5F + rand.nextFloat());
                     return false;
-                }
+                }*/
             }
             return super.onItemUse(item, player, world, x, y, z, side, f, f1, f2);
         }
     }
 
-    private void gather(EntityPlayer player) {
+    /*private void gather(EntityPlayer player) {
         ItemStack item = player.getHeldItem();
         if (item != null) {
             int tier = 0;
@@ -118,7 +118,7 @@ public class ItemBlockTrough extends ItemBlock implements IStorageBlock {
 
     }
 
-    private NBTTagCompound getNBT(ItemStack item) {
+   */ private NBTTagCompound getNBT(ItemStack item) {
         if (!item.hasTagCompound()) {
             item.setTagCompound(new NBTTagCompound());
         }

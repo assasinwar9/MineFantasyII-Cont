@@ -3,7 +3,9 @@ package minefantasy.mf2.block.basic;
 import cpw.mods.fml.common.registry.GameRegistry;
 import minefantasy.mf2.MineFantasyII;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockSlab;
 import net.minecraft.block.BlockStairs;
+import net.minecraft.block.BlockStoneSlab;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -19,6 +21,7 @@ public class ConstructionBlockMF extends Block {
     public static final String[] m_names = new String[]{"", "_cobblestone", "_brick", "_pavement"};
     public IIcon[] m_icons = new IIcon[4];
     public Block[] stairblocks = new Block[4];
+    //public Block[] slabblocks = new Block [4];
 
     public ConstructionBlockMF(String unlocName) {
         this(unlocName, new String[]{"", "_cobblestone", "_brick", "_pavement"});
@@ -159,6 +162,47 @@ public class ConstructionBlockMF extends Block {
         }
     }
 
+    public static class SlabConstBlock extends BlockSlab {
+        private final Block base;
+
+        public SlabConstBlock(String unlocalizedName, Block baseBlock, int metaOfBaseBlock) {
+            super(false, baseBlock.getMaterial());
+            this.setBlockName(unlocalizedName);
+            this.setCreativeTab(CreativeTabs.tabBlock);
+            this.setHardness(3.0F);
+            this.setResistance(4.0F);
+            this.setLightOpacity(0);// They seem to render shadows funny
+            this.base = baseBlock;
+        }
+
+        public SlabConstBlock(String unlocalizedName, Block baseBlock) {
+            this(unlocalizedName, baseBlock, 0);
+        }
+
+        public void addRecipe() {
+            GameRegistry.addRecipe(new ItemStack(this, 6), new Object[]{"BBB", 'B', this.base});
+        }
+
+        public Block register(String name) {
+            GameRegistry.registerBlock(this, name);
+            return this;
+        }
+
+        private static final String[] field_150006_b = new String[] {"stonebrick_white"};
+       @Override
+        public String func_150002_b(int p_150002_1_) {
+            if (p_150002_1_ < 0 || p_150002_1_ >= field_150006_b.length)
+            {
+                p_150002_1_ = 0;
+            }
+
+            return super.getUnlocalizedName() + "." + field_150006_b[p_150002_1_];
+        }
+
+    }
+
+
+
     public static class ItemConstBlock extends ItemBlockWithMetadata {
 
         public ItemConstBlock(Block block) {
@@ -184,5 +228,7 @@ public class ConstructionBlockMF extends Block {
             return d;
         }
     }
+
+
 
 }

@@ -49,6 +49,10 @@ public class CommonProxyMF implements IGuiHandler, ISmokeHandler {
             if (tile == null) {
                 return null;
             }
+            if (tile instanceof TileEntityTarKiln) {
+                return new ContainerTarKiln(player.inventory, (TileEntityTarKiln) tile);
+            }
+
 
             if (tile instanceof TileEntityAnvilMF) {
                 return new ContainerAnvilMF(player.inventory, (TileEntityAnvilMF) tile);
@@ -105,6 +109,8 @@ public class CommonProxyMF implements IGuiHandler, ISmokeHandler {
     }
 
     protected void registerTileEntities() {
+        GameRegistry.registerTileEntity(TileEntityTarKiln.class, "MF_TarKiln");
+
         GameRegistry.registerTileEntity(TileEntityAnvilMF.class, "MF_Anvil");
         GameRegistry.registerTileEntity(TileEntityCarpenterMF.class, "MF_CarpenterBench");
         GameRegistry.registerTileEntity(TileEntityBombBench.class, "MF_BombBench");

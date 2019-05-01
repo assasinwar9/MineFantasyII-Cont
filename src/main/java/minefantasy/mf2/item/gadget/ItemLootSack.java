@@ -100,7 +100,7 @@ public class ItemLootSack extends Item {
         ChestGenHooks.addItem(loot, new WeightedRandomChestContent(new ItemStack(BlockListMF.repair_ornate), 1, 1, 5));
 
         ChestGenHooks.addItem(loot,
-                new WeightedRandomChestContent(new ItemStack(ComponentListMF.flux_strong), 12, 32, 20));
+                new WeightedRandomChestContent(new ItemStack(ComponentListMF.borax), 12, 32, 20));
         ChestGenHooks.addItem(loot, new WeightedRandomChestContent(new ItemStack(Items.diamond), 4, 8, 20));
         ChestGenHooks.addItem(loot, new WeightedRandomChestContent(new ItemStack(Items.emerald), 4, 8, 20));
         ChestGenHooks.addItem(loot, new WeightedRandomChestContent(new ItemStack(Items.ender_eye), 4, 8, 20));

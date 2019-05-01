@@ -42,6 +42,8 @@ import net.minecraftforge.common.config.Configuration;
 
 import java.io.File;
 
+//zs-edition
+
 /**
  * @author Anonymous Productions
  */

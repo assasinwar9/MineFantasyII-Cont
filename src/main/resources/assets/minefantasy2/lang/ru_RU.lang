@@ -2297,3 +2297,7 @@ knowledge.doctor=Доктор
 knowledge.doctor.desc=Спасая жизни
 knowledge.doctor.1=Постоянная врачебная практика помогла Вам увеличить эффективность использования повязок. Теперь вы излечиваете ими на 50% лучше.
 
+
+item.mfrucksack.tier_0.name=Обычный рюкзак
+item.mfrucksack.tier_1.name=Рюкзак из юфти
+item.mfrucksack.tier_2.name=Укреплённый рюкзак

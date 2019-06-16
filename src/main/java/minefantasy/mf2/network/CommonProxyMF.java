@@ -23,6 +23,7 @@ import minefantasy.mf2.integration.minetweaker.MTCompat;
 import minefantasy.mf2.item.archery.ArrowFireFlint;
 import minefantasy.mf2.item.archery.ArrowFirerMF;
 import minefantasy.mf2.mechanics.*;
+import minefantasy.mf2.player.ContainerMF2Player;
 import minefantasy.mf2.util.XSTRandom;
 import minetweaker.MineTweakerAPI;
 import net.minecraft.entity.player.EntityPlayer;
@@ -41,7 +42,9 @@ public class CommonProxyMF implements IGuiHandler, ISmokeHandler {
 
     @Override
     public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
-        if (ID == 1 && x == 1 && player.getHeldItem() != null) {
+    	if (ID == 1 && x == 10) {
+    		return new ContainerMF2Player(player);
+    	} else if (ID == 1 && x == 1 && player.getHeldItem() != null) {
             return new ContainerReload(player.inventory, player.getHeldItem());
         } else if (ID == 0) {
             TileEntity tile = world.getTileEntity(x, y, z);

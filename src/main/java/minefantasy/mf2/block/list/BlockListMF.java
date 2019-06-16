@@ -86,9 +86,9 @@ public class BlockListMF {
      */
     public static Block carxanium_stage_1 = new BlockPlantsMF("plants_carxanium",  0, null, null, 80, 1);
     public static Block carxanium_stage_2 = new BlockPlantsMF("plants_carxanium",  0, null, null, 80, 2);
-    public static Block carxanium_stage_3 = new BlockPlantsMF("plants_carxanium",  0, ComponentListMF.carxanium_root, ComponentListMF.carxanium_items, 80, 3).setSecondHarvestCount(5);
+    /*public static Block carxanium_stage_3 = new BlockPlantsMF("plants_carxanium",  0, ComponentListMF.carxanium_root, ComponentListMF.carxanium_items, 80, 3).setSecondHarvestCount(5);
 
-    public static Block silverhead = new BlockPlantsMF("plants_silverhead", 0, ComponentListMF.silverhead_harvest, null, 0, 0).setFirstHarvestChance(50);
+    public static Block silverhead = new BlockPlantsMF("plants_silverhead", 0, ComponentListMF.silverhead_harvest, null, 0, 0).setFirstHarvestChance(50);*/
     public static Block silverhead_empty = new BlockPlantsMF("plants_silverhead_empty",80,  null, null, 0, 0);
     //
 

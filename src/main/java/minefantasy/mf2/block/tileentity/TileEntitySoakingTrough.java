@@ -1,27 +1,19 @@
 package minefantasy.mf2.block.tileentity;
 
-import minefantasy.mf2.api.helpers.CustomToolHelper;
-import minefantasy.mf2.block.crafting.BlockSoakingTrough;
-import minefantasy.mf2.block.list.BlockListMF;
+import java.util.Random;
+
 import minefantasy.mf2.item.ItemColormats;
 import minefantasy.mf2.item.list.ComponentListMF;
-import minefantasy.mf2.network.NetworkUtils;
-import minefantasy.mf2.network.packet.SoakingTroughPacket;
 import net.minecraft.block.Block;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.world.WorldServer;
-
-import java.util.Random;
 
 public class TileEntitySoakingTrough extends TileEntity implements IInventory {
     public float progress = 0, progressMax = 100;
@@ -75,12 +67,12 @@ public class TileEntitySoakingTrough extends TileEntity implements IInventory {
     }
 
     private ItemStack getSoakingResult () {
-        if (inv[0].getItem() == ComponentListMF.hideSmall)
-            return new ItemStack(ComponentListMF.hideSmall_limed, inv[0].stackSize);
-        if (inv[0].getItem() == ComponentListMF.hideMedium)
-            return new ItemStack(ComponentListMF.hideMedium_limed, inv[0].stackSize);
-        if (inv[0].getItem() == ComponentListMF.hideLarge)
-            return new ItemStack(ComponentListMF.hideLarge_limed, inv[0].stackSize);
+        if (inv[0].getItem() == ComponentListMF.rawhideSmall)
+            return new ItemStack(ComponentListMF.hideSmall, inv[0].stackSize);
+        if (inv[0].getItem() == ComponentListMF.rawhideMedium)
+            return new ItemStack(ComponentListMF.hideMedium, inv[0].stackSize);
+        if (inv[0].getItem() == ComponentListMF.rawhideLarge)
+            return new ItemStack(ComponentListMF.hideLarge, inv[0].stackSize);
         else return null;
     }
 

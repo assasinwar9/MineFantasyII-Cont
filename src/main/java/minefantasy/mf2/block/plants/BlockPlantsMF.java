@@ -66,11 +66,13 @@ public class BlockPlantsMF extends BlockBush implements IGrowable {
 
             if (world.getBlockLightValue(x, y + 1, z) >= 9) {
                 if (block == BlockListMF.silverhead_empty)
-                    initGrow(world, x, y, z, true, BlockListMF.silverhead);
+                    //initGrow(world, x, y, z, true, BlockListMF.silverhead);
+                	;
                 if (block == BlockListMF.carxanium_stage_1)
                     initGrow(world, x, y, z, false, BlockListMF.carxanium_stage_2);
                 if (block == BlockListMF.carxanium_stage_2)
-                    initGrow(world, x, y, z, false, BlockListMF.carxanium_stage_3);
+                    //initGrow(world, x, y, z, false, BlockListMF.carxanium_stage_3);;
+                	;
             }
         }
     }
@@ -96,11 +98,11 @@ public class BlockPlantsMF extends BlockBush implements IGrowable {
                                     float yOffset, float zOffset) {
         Block block = world.getBlock(x, y, z);
         if (block instanceof BlockPlantsMF) {
-            if (block == BlockListMF.silverhead) {
+            /*if (block == BlockListMF.silverhead) {
                 dropItems(world, x, y, z, new ItemStack(ComponentListMF.silverhead_harvest, (rand.nextInt(3) + 1)));
                 world.setBlock(x, y, z, BlockListMF.silverhead_empty);
                 return true;
-            }
+            }*/
         }
         return false;
     }

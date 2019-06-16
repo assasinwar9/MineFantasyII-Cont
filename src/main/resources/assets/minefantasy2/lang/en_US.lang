@@ -2272,3 +2272,6 @@ knowledge.doctor=Doctor
 knowledge.doctor.desc=Duty to benefit
 knowledge.doctor.1=Your constant use of aiding your fellow humans has yielded you experience in medicine.^Bandages heal 50% more damage.
 
+item.mfrucksack.tier_0.name=Common bag
+item.mfrucksack.tier_1.name=Yuft bag
+item.mfrucksack.tier_2.name=Reinforced bag

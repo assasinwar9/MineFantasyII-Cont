@@ -27,6 +27,7 @@ import minefantasy.mf2.block.tileentity.TileEntityForge;
 import minefantasy.mf2.block.tileentity.TileEntityQuern;
 import minefantasy.mf2.block.tileentity.TileEntityResearch;
 import minefantasy.mf2.block.tileentity.TileEntityRoast;
+import minefantasy.mf2.block.tileentity.TileEntitySoakingTrough;
 import minefantasy.mf2.block.tileentity.TileEntityTanningRack;
 import minefantasy.mf2.block.tileentity.TileEntityTarKiln;
 import minefantasy.mf2.block.tileentity.blastfurnace.TileEntityBlastFC;
@@ -88,6 +89,7 @@ import minefantasy.mf2.client.render.block.RenderRack;
 import minefantasy.mf2.client.render.block.RenderResearch;
 import minefantasy.mf2.client.render.block.RenderRoast;
 import minefantasy.mf2.client.render.block.RenderSmokePipe;
+import minefantasy.mf2.client.render.block.RenderSoakingTrough;
 import minefantasy.mf2.client.render.block.RenderTanningRack;
 import minefantasy.mf2.client.render.block.RenderTrough;
 import minefantasy.mf2.client.render.block.TileEntityAmmoBoxRenderer;
@@ -224,6 +226,8 @@ public class ClientProxyMF extends CommonProxyMF {
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityAmmoBox.class, new TileEntityAmmoBoxRenderer());
         RenderingRegistry.registerBlockHandler(new RenderSmokePipe());
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityChimney.class, new TileEntitySmokePipeRenderer());
+        RenderingRegistry.registerBlockHandler(new RenderSoakingTrough());
+        // ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySoakingTrough.class, new TileEntitySoakingTroughRenderer());
 
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityComponent.class, new TileEntityComponentRenderer());
         

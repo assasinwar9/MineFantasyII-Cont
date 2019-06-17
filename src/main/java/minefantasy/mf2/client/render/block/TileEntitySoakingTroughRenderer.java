@@ -1,13 +1,12 @@
 package minefantasy.mf2.client.render.block;
 
+import org.lwjgl.opengl.GL11;
+
 import minefantasy.mf2.api.helpers.TextureHelperMF;
-import minefantasy.mf2.api.material.CustomMaterial;
 import minefantasy.mf2.block.tileentity.TileEntitySoakingTrough;
-import minefantasy.mf2.block.tileentity.decor.TileEntityTrough;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
-import org.lwjgl.opengl.GL11;
 
 public class TileEntitySoakingTroughRenderer extends TileEntitySpecialRenderer {
     private ModelSoakingTrough model;
@@ -16,7 +15,7 @@ public class TileEntitySoakingTroughRenderer extends TileEntitySpecialRenderer {
 
     public TileEntitySoakingTroughRenderer() {
         model = new ModelSoakingTrough();
-    }
+    }	
 
     public void renderAModelAt(TileEntitySoakingTrough tile, double d, double d1, double d2, float f) {
         int i = 0;
@@ -87,7 +86,7 @@ public class TileEntitySoakingTroughRenderer extends TileEntitySpecialRenderer {
     }
 
     private String getLiquidTex (String liquid) {
-        if (liquid == "water") {
+        if (liquid.equals("water")) {
             return "textures/models/zsModels/soaking_liquid_water.png";
         }
         else return "textures/models/zsModels/soaking_liquid_colordef.png";
@@ -96,92 +95,92 @@ public class TileEntitySoakingTroughRenderer extends TileEntitySpecialRenderer {
     //  1 / 255 = 0.00392
     private void getLiquidColor (String liquid) {
         float k = 0.00392F;
-        if (liquid == "water") {
+        if (liquid.equals("water")) {
             red = 1.0F;
             green = 1.0F;
             blue = 1.0F;
         }
-        if (liquid == "black") {
+        if (liquid.equals("black")) {
             red = 0.05F;
             green = 0.05F;
             blue = 0.05F;
         }
-        if (liquid == "red") {
+        if (liquid.equals("red")) {
             red = k * 176;
             green = k * 46;
             blue = k * 38;
         }
-        if (liquid == "green") {
+        if (liquid.equals("green")) {
             red = k * 94;
             green = k * 124;
             blue = k * 22;
         }
-        if (liquid == "brown") {
+        if (liquid.equals("brown")) {
             red = k * 131;
             green = k * 84;
             blue = k * 50;
         }
-        if (liquid == "blue") {
+        if (liquid.equals("blue")) {
             red = k * 60;
             green = k * 68;
             blue = k * 170;
         }
-        if (liquid == "purple") {
+        if (liquid.equals("purple")) {
             red = k * 137;
             green = k * 50;
             blue = k * 184;
         }
-        if (liquid == "cyan") {
+        if (liquid.equals("cyan")) {
             red = k * 22;
             green = k * 156;
             blue = k * 156;
         }
-        if (liquid == "light_gray") {
+        if (liquid.equals("light_gray")) {
             red = k * 157;
             green = k * 157;
             blue = k * 151;
         }
-        if (liquid == "gray") {
+        if (liquid.equals("gray")) {
             red = k * 71;
             green = k * 79;
             blue = k * 82;
         }
-        if (liquid == "pink") {
+        if (liquid.equals("pink")) {
             red = k * 243;
             green = k * 139;
             blue = k * 170;
         }
-        if (liquid == "lime") {
+        if (liquid.equals("lime")) {
             red = k * 128;
             green = k * 199;
             blue = k * 31;
         }
-        if (liquid == "yellow") {
+        if (liquid.equals("yellow")) {
             red = k * 254;
             green = k * 216;
             blue = k * 61;
         }
-        if (liquid == "light_blue") {
+        if (liquid.equals("light_blue")) {
             red = k * 58;
             green = k * 179;
             blue = k * 218;
         }
-        if (liquid == "magenta") {
+        if (liquid.equals("magenta")) {
             red = k * 199;
             green = k * 78;
             blue = k * 189;
         }
-        if (liquid == "orange") {
+        if (liquid.equals("orange")) {
             red = k * 249;
             green = k * 128;
             blue = k * 29;
         }
-        if (liquid == "white") {
+        if (liquid.equals("white")) {
             red = 1.0F;
             green = 1.0F;
             blue = 1.0F;
         }
-        if (liquid == "limestone") {
+        if (liquid.equals("limestone")) {
             red = k * 234;
             green = k * 225;
             blue = k * 200;

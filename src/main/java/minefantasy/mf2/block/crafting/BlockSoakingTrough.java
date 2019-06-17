@@ -1,10 +1,12 @@
 package minefantasy.mf2.block.crafting;
 
+import java.util.Random;
+
+import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import minefantasy.mf2.MineFantasyII;
-import minefantasy.mf2.block.tileentity.TileEntityCarpenterMF;
 import minefantasy.mf2.block.tileentity.TileEntitySoakingTrough;
 import minefantasy.mf2.item.list.CreativeTabMF;
 import net.minecraft.block.Block;
@@ -14,29 +16,28 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.common.util.ForgeDirection;
-
-import java.util.Random;
 
 public class BlockSoakingTrough extends BlockContainer {
-    public static int soaking_RI = 201;
+    public static int soaking_RI = RenderingRegistry.getNextAvailableRenderId();
 
     @SideOnly(Side.CLIENT)
     public int CarpenterRenderSide;
     private int tier = 0;
     private Random rand = new Random();
+    public IIcon liquidIconWater, liquidIconColordef;
 
     public BlockSoakingTrough() {
         super(Material.wood);
 
         GameRegistry.registerBlock(this, "MF_SoakingTrough");
+        setBlockTextureName("minefantasy2:zsAddon/SoakingTroughTex");
         setBlockName("soakingTrough");
         this.setStepSound(Block.soundTypeWood);
         this.setHardness(4F);
@@ -52,7 +53,7 @@ public class BlockSoakingTrough extends BlockContainer {
 
     @Override
     public boolean isOpaqueCube() {
-        return true;
+        return false;
     }
 
     @Override
@@ -134,17 +135,20 @@ public class BlockSoakingTrough extends BlockContainer {
 
         super.breakBlock(world, x, y, z, block, meta);
     }
-
+    
+    /*@Override
+    public IIcon getIcon(IBlockAccess p_149673_1_, int p_149673_2_, int p_149673_3_, int p_149673_4_, int side) {
+    	if(side == 0) return super.getIcon(p_149673_1_, p_149673_2_, p_149673_3_, p_149673_4_, side);
+    	else if(side == 1) return liquidIconWater;
+    	else if(side == 2) return liquidIconColordef;
+    	else return null;
+    }*/
+    
     @Override
-    @SideOnly(Side.CLIENT)
-    public IIcon getIcon(int side, int meta) {
-        return Blocks.planks.getIcon(side, meta);
-    }
-
-    @Override
-    @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister reg) {
-
+    	super.registerBlockIcons(reg);
+    	liquidIconWater = reg.registerIcon("minefantasy2:zsAddon/soaking_liquid_water");
+    	liquidIconColordef = reg.registerIcon("minefantasy2:zsAddon/soaking_liquid_colordef");
     }
 
     @Override

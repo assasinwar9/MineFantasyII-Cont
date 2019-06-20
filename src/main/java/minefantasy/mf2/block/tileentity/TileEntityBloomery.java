@@ -10,7 +10,9 @@ import minefantasy.mf2.api.refine.SmokeMechanics;
 import minefantasy.mf2.api.rpg.RPGElements;
 import minefantasy.mf2.api.rpg.SkillList;
 import minefantasy.mf2.block.tileentity.blastfurnace.TileEntityBlastFC;
+import minefantasy.mf2.item.ItemSchichts;
 import minefantasy.mf2.item.heatable.ItemHeated;
+import minefantasy.mf2.item.list.ComponentListMF;
 import minefantasy.mf2.knowledge.KnowledgeListMF;
 import minefantasy.mf2.network.NetworkUtils;
 import minefantasy.mf2.network.packet.BloomeryPacket;
@@ -34,6 +36,7 @@ public class TileEntityBloomery extends TileEntity implements IInventory {
     private ItemStack[] inv = new ItemStack[3];
     private Random rand = new Random();
     private int ticksExisted;
+    private boolean isSchicht;
 
     public static boolean isInput(ItemStack input) {
         return getResult(input) != null;
@@ -47,28 +50,28 @@ public class TileEntityBloomery extends TileEntity implements IInventory {
         ItemStack input = inv[0];
         ItemStack coal = inv[1];
 
+        isSchicht = input.getItem() instanceof ItemSchichts;
+
         if (hasBloom())
             return null;// Cannot smelt if a bloom exists
         if (input == null || coal == null)
             return null;// Needs input
 
-        if (!hasEnoughCarbon(input, coal)) {
+        if (!hasEnoughRawMat(input, coal)) {
             return null;
         }
 
         return getResult(input);
     }
 
-    private boolean hasEnoughCarbon(ItemStack input, ItemStack coal) {
+
+    private boolean hasEnoughRawMat(ItemStack input, ItemStack coal) {
         int amount = input.stackSize;
-        int uses = MineFantasyFuels.getCarbon(coal);
-        if (uses > 0) {
-            int coalNeeded = (int) Math.ceil((float) amount / (float) uses);
-            MFLogUtil.logDebug("Required Coal: " + coalNeeded);
-            return coal.stackSize == coalNeeded;
-        }
-        return false;
+        int coalCount = coal.stackSize;
+        MFLogUtil.logDebug("Required Coal: " + amount);
+        return isSchicht ? amount == coalCount : amount > 1 && amount == coalCount;
     }
+
 
     @Override
     public void updateEntity() {
@@ -126,7 +129,7 @@ public class TileEntityBloomery extends TileEntity implements IInventory {
 
     private int getTime(ItemStack itemStack) {
         return 300;
-    }
+    } //20
 
     /**
      * Consumes ALL input and sets output
@@ -138,6 +141,9 @@ public class TileEntityBloomery extends TileEntity implements IInventory {
             res2.stackSize = inv[0].stackSize;
             inv[0] = inv[1] = null;
             inv[2] = res2;
+            if (!isSchicht) {
+                inv[2].stackSize /= 2;
+            }
         }
         isActive = false;
         progress = progressMax = 0;
@@ -179,6 +185,9 @@ public class TileEntityBloomery extends TileEntity implements IInventory {
                 drop = ItemHeated.createHotItem(drop, 1200);
                 entityDropItem(worldObj, xCoord, yCoord, zCoord, drop);
                 syncData();
+                if (rand.nextInt(10) < 5){
+                    entityDropItem(worldObj, xCoord, yCoord, zCoord, getSlag());
+                }
             }
             worldObj.playSoundEffect(xCoord + 0.5D, yCoord + 0.5D, zCoord + 0.5D, "minefantasy2:block.anvilsucceed",
                     0.25F, 1.0F);
@@ -198,6 +207,10 @@ public class TileEntityBloomery extends TileEntity implements IInventory {
         } else {
             return null;
         }
+    }
+
+    private ItemStack getSlag () {
+        return new ItemStack(ComponentListMF.slag, isSchicht ? (rand.nextInt(2) + 1) : 1);
     }
 
     public boolean hasBloom() {

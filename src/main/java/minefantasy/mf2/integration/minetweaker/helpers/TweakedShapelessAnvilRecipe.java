@@ -80,8 +80,8 @@ public class TweakedShapelessAnvilRecipe implements IAnvilRecipe {
 
     @Override
     public boolean matches(AnvilCraftMatrix inv) {
-        boolean matches[] = new boolean[this.ingreds.length];
-        boolean items[][] = new boolean[6][4];
+        boolean[] matches = new boolean[this.ingreds.length];
+        boolean[][] items = new boolean[6][4];
         for (int a = 0; a < this.ingreds.length; a++) {
             IIngredient i = this.ingreds[a];
             for (IItemStack s : i.getItems()) {

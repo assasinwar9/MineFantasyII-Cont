@@ -18,6 +18,7 @@ import org.bukkit.plugin.RegisteredListener;
 import java.lang.reflect.Method;
 import java.util.List;
 
+@SuppressWarnings("JavaReflectionMemberAccess")
 public final class BukkitUtils {
 
     private static final Method getBukkitEntity;

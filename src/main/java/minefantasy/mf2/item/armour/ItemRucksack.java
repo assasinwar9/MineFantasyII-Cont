@@ -1,7 +1,5 @@
 package minefantasy.mf2.item.armour;
 
-import java.util.List;
-
 import minefantasy.mf2.api.armour.IRucksack;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -9,9 +7,11 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 
+import java.util.List;
+
 public class ItemRucksack extends Item implements IRucksack {
-	
-	protected IIcon icons[];
+
+	protected IIcon[] icons;
 	protected int numTiers;
 	
 	public ItemRucksack(int numTiers) {

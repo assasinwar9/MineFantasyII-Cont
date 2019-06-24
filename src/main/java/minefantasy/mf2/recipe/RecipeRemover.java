@@ -2,12 +2,9 @@ package minefantasy.mf2.recipe;
 
 import minefantasy.mf2.config.ConfigHardcore;
 import minefantasy.mf2.util.MFLogUtil;
-import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
-import net.minecraft.item.ItemBlockWithMetadata;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;

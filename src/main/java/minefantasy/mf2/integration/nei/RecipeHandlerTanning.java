@@ -8,7 +8,7 @@ import minefantasy.mf2.api.crafting.tanning.TanningRecipe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 
-import java.util.Arrays;
+import java.util.Collections;
 
 public class RecipeHandlerTanning extends TemplateRecipeHandler {
 
@@ -37,7 +37,7 @@ public class RecipeHandlerTanning extends TemplateRecipeHandler {
         TanningRecipe recipe = TanningRecipe.getRecipe(ingredient);
         if (recipe != null) {
             TanningPair cachedRecipe = new TanningPair(recipe);
-            cachedRecipe.setIngredientPermutation(Arrays.asList(cachedRecipe.input), ingredient);
+            cachedRecipe.setIngredientPermutation(Collections.singletonList(cachedRecipe.input), ingredient);
             arecipes.add(cachedRecipe);
         }
     }

@@ -7,7 +7,7 @@ public enum EnumPowderType {
     public float damageModifier;
     public float rangeModifier;
 
-    private EnumPowderType(String name, float damage, float range) {
+    EnumPowderType(String name, float damage, float range) {
         this.name = name;
         this.damageModifier = damage;
         this.rangeModifier = range;

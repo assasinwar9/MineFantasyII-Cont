@@ -8,8 +8,6 @@ import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
 import org.lwjgl.opengl.GL11;
 
-import java.util.Random;
-
 public class TileEntityTroughRenderer extends TileEntitySpecialRenderer {
     private ModelTrough model;
     private float red, green, blue;
@@ -44,9 +42,6 @@ public class TileEntityTroughRenderer extends TileEntitySpecialRenderer {
             j = 180;
         }
 
-        if (i == 0) {
-            j = 90;
-        }
         if (i == 0) {
             j = 90;
         }

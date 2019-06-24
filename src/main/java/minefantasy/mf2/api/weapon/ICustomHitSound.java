@@ -10,5 +10,5 @@ public interface ICustomHitSound {
      *
      * @return true if it makes it's own sound
      */
-    public boolean playHitSound(ItemStack item, EntityLivingBase attacker, Entity target);
+    boolean playHitSound(ItemStack item, EntityLivingBase attacker, Entity target);
 }

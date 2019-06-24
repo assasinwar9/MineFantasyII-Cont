@@ -89,7 +89,7 @@ public abstract class EntityFlyingMF extends EntityLiving {
      * returns true if this entity is by a ladder, false otherwise
      */
     public boolean isOnLadder() {
-        return isTerrestrial() ? super.isOnLadder() : false;
+        return isTerrestrial() && super.isOnLadder();
     }
 
     public abstract boolean isTerrestrial();

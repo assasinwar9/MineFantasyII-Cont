@@ -1,10 +1,8 @@
 package minefantasy.mf2.block.crafting;
 
-import codechicken.lib.world.TileChunkLoadHook;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import minefantasy.mf2.MineFantasyII;
 import minefantasy.mf2.block.tileentity.TileEntityCauldronMF;
 import minefantasy.mf2.item.list.CreativeTabMF;
 import net.minecraft.block.Block;

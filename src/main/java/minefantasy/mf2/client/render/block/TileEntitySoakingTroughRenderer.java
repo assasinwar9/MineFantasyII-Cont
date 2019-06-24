@@ -1,12 +1,11 @@
 package minefantasy.mf2.client.render.block;
 
-import org.lwjgl.opengl.GL11;
-
 import minefantasy.mf2.api.helpers.TextureHelperMF;
 import minefantasy.mf2.block.tileentity.TileEntitySoakingTrough;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
+import org.lwjgl.opengl.GL11;
 
 public class TileEntitySoakingTroughRenderer extends TileEntitySpecialRenderer {
     private ModelSoakingTrough model;

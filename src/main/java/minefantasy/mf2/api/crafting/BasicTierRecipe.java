@@ -18,7 +18,7 @@ public class BasicTierRecipe extends ShapedRecipes {
     }
 
     public static BasicTierRecipe add(ItemStack result, Object... input) {
-        String var3 = "";
+        StringBuilder var3 = new StringBuilder();
         int var4 = 0;
         int var5 = 0;
         int var6 = 0;
@@ -26,21 +26,20 @@ public class BasicTierRecipe extends ShapedRecipes {
 
         if (input[var4] instanceof String[]) {
             String[] var7 = ((String[]) input[var4++]);
-            String[] var8 = var7;
             var9 = var7.length;
 
             for (int var10 = 0; var10 < var9; ++var10) {
-                String var11 = var8[var10];
+                String var11 = var7[var10];
                 ++var6;
                 var5 = var11.length();
-                var3 = var3 + var11;
+                var3.append(var11);
             }
         } else {
             while (input[var4] instanceof String) {
                 String var13 = (String) input[var4++];
                 ++var6;
                 var5 = var13.length();
-                var3 = var3 + var13;
+                var3.append(var13);
             }
         }
 

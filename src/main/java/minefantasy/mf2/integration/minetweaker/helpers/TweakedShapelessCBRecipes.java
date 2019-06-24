@@ -86,8 +86,8 @@ public class TweakedShapelessCBRecipes implements ICarpenterRecipe {
 
     @Override
     public boolean matches(CarpenterCraftMatrix inv) {
-        boolean matches[] = new boolean[this.ingreds.length];
-        boolean items[][] = new boolean[4][4];
+        boolean[] matches = new boolean[this.ingreds.length];
+        boolean[][] items = new boolean[4][4];
         for (int a = 0; a < this.ingreds.length; a++) {
             IIngredient i = this.ingreds[a];
             for (IItemStack s : i.getItems()) {

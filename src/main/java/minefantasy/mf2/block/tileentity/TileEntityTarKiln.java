@@ -3,20 +3,15 @@ package minefantasy.mf2.block.tileentity;
 import minefantasy.mf2.api.crafting.IHeatUser;
 import minefantasy.mf2.api.helpers.CustomToolHelper;
 import minefantasy.mf2.api.refine.SmokeMechanics;
-import minefantasy.mf2.block.list.BlockListMF;
 import minefantasy.mf2.block.refining.BlockTarKiln;
 import minefantasy.mf2.block.tileentity.blastfurnace.TileEntityBlastFH;
 import minefantasy.mf2.item.list.ComponentListMF;
-import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.world.IBlockAccess;
 
 import java.util.Random;
 

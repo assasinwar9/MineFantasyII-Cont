@@ -1,10 +1,5 @@
 package minefantasy.mf2.client.render.block;
 
-import java.awt.Color;
-import java.util.Map;
-
-import org.lwjgl.opengl.GL11;
-
 import codechicken.lib.render.CCModel;
 import codechicken.lib.render.CCRenderState;
 import codechicken.lib.render.uv.IconTransformation;
@@ -17,9 +12,12 @@ import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
-import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.IBlockAccess;
+import org.lwjgl.opengl.GL11;
+
+import java.awt.*;
+import java.util.Map;
 
 public class RenderSoakingTrough implements ISimpleBlockRenderingHandler {
 	// private static final TileEntitySoakingTroughRenderer invModel = new

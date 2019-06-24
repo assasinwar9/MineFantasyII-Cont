@@ -326,11 +326,10 @@ public class MineFantasyAPI {
 
     private static List convertList(Object[] in) {
         ArrayList arraylist = new ArrayList();
-        Object[] aobject = in;
         int i = in.length;
 
         for (int j = 0; j < i; ++j) {
-            Object object1 = aobject[j];
+            Object object1 = in[j];
 
             if (object1 instanceof ItemStack) {
                 arraylist.add(((ItemStack) object1).copy());

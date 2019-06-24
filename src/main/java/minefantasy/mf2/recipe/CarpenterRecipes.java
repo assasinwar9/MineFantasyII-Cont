@@ -8,7 +8,6 @@ import minefantasy.mf2.api.crafting.refine.QuernRecipes;
 import minefantasy.mf2.api.material.CustomMaterial;
 import minefantasy.mf2.api.rpg.Skill;
 import minefantasy.mf2.api.rpg.SkillList;
-import minefantasy.mf2.block.basic.BasicBlockMF;
 import minefantasy.mf2.block.decor.BlockWoodDecor;
 import minefantasy.mf2.block.list.BlockListMF;
 import minefantasy.mf2.config.ConfigHardcore;

@@ -2,7 +2,6 @@ package minefantasy.mf2.network.packet;
 
 import io.netty.buffer.ByteBuf;
 import minefantasy.mf2.block.tileentity.TileEntitySoakingTrough;
-import minefantasy.mf2.block.tileentity.decor.TileEntityTrough;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 

@@ -39,9 +39,7 @@ public class AI_MinotaurFindTarget extends EntityAITarget {
                 if (target instanceof EntityMinotaur) {
                     return false;
                 }
-                return !(target instanceof EntityLivingBase) ? false
-                        : (selector != null && !selector.isEntityApplicable(target) ? false
-                        : AI_MinotaurFindTarget.this.isSuitableTarget((EntityLivingBase) target, false));
+                return target instanceof EntityLivingBase && ((selector == null || selector.isEntityApplicable(target)) && AI_MinotaurFindTarget.this.isSuitableTarget((EntityLivingBase) target, false));
             }
         };
     }

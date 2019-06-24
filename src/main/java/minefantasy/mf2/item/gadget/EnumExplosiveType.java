@@ -7,7 +7,7 @@ public enum EnumExplosiveType {
     public float damage;
     public float range;
 
-    private EnumExplosiveType(String name, float damage, float range) {
+    EnumExplosiveType(String name, float damage, float range) {
         this.name = name;
         this.damage = damage;
         this.range = range;

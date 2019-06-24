@@ -35,8 +35,6 @@ public class BlockBedMF extends BlockDirectional {
     @SideOnly(Side.CLIENT)
     private IIcon baseTex;
 
-    private float height = 0.25F;
-
     public BlockBedMF(String name) {
         super(Material.cloth);
         this.setBlockName(name);
@@ -278,6 +276,7 @@ public class BlockBedMF extends BlockDirectional {
     }
 
     private void resetBounds() {
+        float height = 0.25F;
         this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, height, 1.0F);
     }
 

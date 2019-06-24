@@ -6,7 +6,6 @@ import minefantasy.mf2.api.crafting.tanning.TanningRecipe;
 import minefantasy.mf2.api.material.CustomMaterial;
 import minefantasy.mf2.block.basic.ConstructionBlockMF;
 import minefantasy.mf2.block.list.BlockListMF;
-import minefantasy.mf2.block.tree.BlockGrindedLogs;
 import minefantasy.mf2.config.ConfigHardcore;
 import minefantasy.mf2.item.food.FoodListMF;
 import minefantasy.mf2.item.list.ComponentListMF;

@@ -217,9 +217,7 @@ public class CustomMaterial {
     }
 
     public void addOreDict(String name) {
-        for (ItemStack item : OreDictionary.getOres(name)) {
-            items.add(item);
-        }
+        items.addAll(OreDictionary.getOres(name));
     }
 
     public boolean isItemApplicable(ItemStack item) {

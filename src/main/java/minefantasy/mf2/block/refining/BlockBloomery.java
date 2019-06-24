@@ -6,7 +6,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 import minefantasy.mf2.MineFantasyII;
 import minefantasy.mf2.block.list.BlockListMF;
 import minefantasy.mf2.block.tileentity.TileEntityBloomery;
-import minefantasy.mf2.item.list.ComponentListMF;
 import minefantasy.mf2.item.list.CreativeTabMF;
 import minefantasy.mf2.item.tool.ItemLighterMF;
 import net.minecraft.block.Block;

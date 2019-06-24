@@ -29,34 +29,34 @@ public class EntryPageImage extends EntryPage {
     @Override
     public void render(GuiScreen parent, int x, int y, float f, int posX, int posY, boolean onTick) {
         String local = StatCollector.translateToLocal(paragraph);
-        String text = "";
+        StringBuilder text = new StringBuilder();
         String temp = "";
         boolean prefix = false;
         for (int a = 0; a < local.length(); a++) {
             char c = local.charAt(a);
             if (a == local.length() - 1) {
-                text = text + temp + c;
+                text.append(temp).append(c);
                 temp = "";
             } else if (prefix) {
                 if (c == "h".charAt(0)) {
-                    text = text + temp + EnumChatFormatting.DARK_BLUE + EnumChatFormatting.BOLD;
+                    text.append(temp).append(EnumChatFormatting.DARK_BLUE).append(EnumChatFormatting.BOLD);
                     temp = "";
                 } else if (c == "d".charAt(0)) {
-                    text = text + temp + EnumChatFormatting.DARK_RED;
+                    text.append(temp).append(EnumChatFormatting.DARK_RED);
                     temp = "";
                 } else if (c == "y".charAt(0)) {
-                    text = text + temp + EnumChatFormatting.GOLD;
+                    text.append(temp).append(EnumChatFormatting.GOLD);
                     temp = "";
                 } else if (c == "u".charAt(0)) {
-                    text = text + temp + EnumChatFormatting.UNDERLINE;
+                    text.append(temp).append(EnumChatFormatting.UNDERLINE);
                     temp = "";
                 } else if (c == "r".charAt(0)) {
-                    text = text + temp + EnumChatFormatting.RESET + EnumChatFormatting.BLACK;
+                    text.append(temp).append(EnumChatFormatting.RESET).append(EnumChatFormatting.BLACK);
                     temp = "";
                 }
                 prefix = false;
             } else if (c == "^".charAt(0)) {
-                text = text + temp + "\n\n";
+                text.append(temp).append("\n\n");
                 temp = "";
             } else if (c == "$".charAt(0)) {
                 prefix = true;
@@ -65,7 +65,7 @@ public class EntryPageImage extends EntryPage {
             }
         }
 
-        mc.fontRenderer.drawSplitString(text, posX + 14, posY + 117, 155, 0);
+        mc.fontRenderer.drawSplitString(text.toString(), posX + 14, posY + 117, 155, 0);
     }
 
     @Override

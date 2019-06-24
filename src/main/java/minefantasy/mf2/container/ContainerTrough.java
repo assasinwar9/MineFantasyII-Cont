@@ -1,13 +1,9 @@
 package minefantasy.mf2.container;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import minefantasy.mf2.block.tileentity.decor.TileEntityTrough;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
-import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
-import net.minecraft.item.ItemStack;
 
 public class ContainerTrough extends Container {
     private TileEntityTrough tile;

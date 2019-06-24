@@ -1,15 +1,11 @@
 package minefantasy.mf2.block.tileentity;
 
-import java.awt.Color;
-import java.util.Random;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import minefantasy.mf2.block.crafting.BlockSoakingTrough;
 import minefantasy.mf2.item.ItemColormats;
 import minefantasy.mf2.item.list.ComponentListMF;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockBeacon;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -23,6 +19,9 @@ import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
+
+import java.awt.*;
+import java.util.Random;
 
 public class TileEntitySoakingTrough extends TileEntity implements IInventory {
 	public float progress = 0, progressMax = 100;

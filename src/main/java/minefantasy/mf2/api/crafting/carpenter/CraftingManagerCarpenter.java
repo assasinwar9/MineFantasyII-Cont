@@ -51,7 +51,7 @@ public class CraftingManagerCarpenter {
      */
     public ICarpenterRecipe addRecipe(ItemStack result, Skill skill, String research, String sound, float exp,
                                       String tool, int hammer, int anvil, int time, byte id, Object... input) {
-        String var3 = "";
+        StringBuilder var3 = new StringBuilder();
         int var4 = 0;
         int var5 = 0;
         int var6 = 0;
@@ -66,14 +66,14 @@ public class CraftingManagerCarpenter {
                 String var11 = var8[var10];
                 ++var6;
                 var5 = var11.length();
-                var3 = var3 + var11;
+                var3.append(var11);
             }
         } else {
             while (input[var4] instanceof String) {
                 String var13 = (String) input[var4++];
                 ++var6;
                 var5 = var13.length();
-                var3 = var3 + var13;
+                var3.append(var13);
             }
         }
 

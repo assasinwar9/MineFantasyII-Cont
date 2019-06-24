@@ -1,7 +1,5 @@
 package minefantasy.mf2.block.crafting;
 
-import java.util.Random;
-
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
@@ -21,8 +19,9 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+
+import java.util.Random;
 
 public class BlockSoakingTrough extends BlockContainer {
     public static int soaking_RI = RenderingRegistry.getNextAvailableRenderId();

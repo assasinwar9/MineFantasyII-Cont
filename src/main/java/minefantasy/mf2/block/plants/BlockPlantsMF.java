@@ -2,11 +2,6 @@ package minefantasy.mf2.block.plants;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import minefantasy.mf2.block.list.BlockListMF;
-import minefantasy.mf2.item.list.ComponentListMF;
-import minefantasy.mf2.mechanics.worldGen.WorldGenMFTree;
-import net.minecraft.block.BlockContainer;
-import net.minecraft.item.Item;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.IGrowable;
@@ -14,12 +9,10 @@ import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import net.minecraft.world.gen.feature.WorldGenerator;
 
 import java.util.ArrayList;
 import java.util.Random;

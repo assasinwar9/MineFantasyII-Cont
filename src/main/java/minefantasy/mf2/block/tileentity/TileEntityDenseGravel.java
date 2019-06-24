@@ -4,7 +4,6 @@ import minefantasy.mf2.block.basic.BlockDenseGravel;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.world.IBlockAccess;
 
 import java.util.Random;
 

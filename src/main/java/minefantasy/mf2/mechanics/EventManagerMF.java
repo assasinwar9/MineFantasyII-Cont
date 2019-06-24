@@ -793,7 +793,7 @@ public class EventManagerMF {
         EntityPlayer player = event.entityPlayer;
         if (event.item != null && event.item.getItemUseAction() == EnumAction.block) {
             if ((StaminaBar.isSystemActive && TacticalManager.shouldStaminaBlock
-                    && !StaminaBar.isAnyStamina(player, false)) || !CombatMechanics.isParryAvailable(player)) {
+                    && !StaminaBar.isAnyStamina(player, false)) || CombatMechanics.isParryAvailable(player)) {
                 event.setCanceled(true);
             }
         }

@@ -1,8 +1,5 @@
 package minefantasy.mf2.client.gui.tabs;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
@@ -12,6 +9,9 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.inventory.GuiInventory;
 import net.minecraft.network.play.client.C0DPacketCloseWindow;
 import net.minecraftforge.client.event.GuiScreenEvent;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class TabRegistry {
 	private static ArrayList<AbstractTab> tabList = new ArrayList<AbstractTab>();
@@ -85,7 +85,7 @@ public class TabRegistry {
 							return 60;
 						}
 					}
-				} catch (Exception e) {
+				} catch (Exception ignored) {
 				}
 			} else {
 				// If NEI is not installed, offset the tabs

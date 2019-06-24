@@ -19,7 +19,7 @@ import net.minecraftforge.common.util.ForgeDirection;
 import java.util.List;
 
 public class TileEntityRack extends TileEntityWoodDecor implements IInventory {
-    private ItemStack inv[];
+    private ItemStack[] inv;
     private int ticksExisted;
 
     public TileEntityRack() {

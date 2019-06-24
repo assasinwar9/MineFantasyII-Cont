@@ -558,7 +558,6 @@ public class MineFantasyHUD extends Gui {
                 bindTexture("textures/gui/hud_overlay.png");
                 int xPos = width / 2 + 12;
                 int yPos = height / 2 - 6;
-                ;
 
                 this.drawTexturedModalRect(xPos, yPos, tile.isLocked ? 0 : 8, 20, 8, 12);
                 GL11.glPopMatrix();

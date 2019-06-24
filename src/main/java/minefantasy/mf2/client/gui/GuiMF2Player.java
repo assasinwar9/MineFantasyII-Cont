@@ -1,8 +1,5 @@
 package minefantasy.mf2.client.gui;
 
-import org.lwjgl.opengl.GL11;
-
-import cpw.mods.fml.client.registry.RenderingRegistry;
 import minefantasy.mf2.api.armour.IRucksack;
 import minefantasy.mf2.client.gui.tabs.InventoryTabMF2;
 import minefantasy.mf2.client.gui.tabs.TabRegistry;
@@ -12,6 +9,7 @@ import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.gui.inventory.GuiInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import org.lwjgl.opengl.GL11;
 
 public class GuiMF2Player extends GuiContainer {
 

@@ -43,8 +43,7 @@ public class AlloyRecipes {
         for (int a = 1; a <= levels; a++) {
             List list2 = createDupeList(in, a);
             ItemStack out2 = out.copy();
-            int ss = Math.min(out2.getMaxStackSize(), out2.stackSize * a);
-            out2.stackSize = ss;
+            out2.stackSize = Math.min(out2.getMaxStackSize(), out2.stackSize * a);
             alloys[a - 1] = addAlloy(out2, level, list2);
         }
         return alloys;
@@ -60,9 +59,7 @@ public class AlloyRecipes {
         }
         List list2 = new ArrayList();
         for (int a = 0; a < dupe; a++) {
-            for (int b = 0; b < list.size(); b++) {
-                list2.add(list.get(b));
-            }
+            list2.addAll(list);
         }
         return list2;
     }

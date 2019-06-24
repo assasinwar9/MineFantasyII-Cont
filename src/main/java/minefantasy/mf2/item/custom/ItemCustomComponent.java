@@ -34,7 +34,6 @@ public class ItemCustomComponent extends Item implements ITieredComponent {
     private boolean canDamage = false;
     // STORAGE
     private String blocktex;
-    ;
     private String storageType;
 
     public ItemCustomComponent(String name, String type) {

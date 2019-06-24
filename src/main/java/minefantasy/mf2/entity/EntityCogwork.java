@@ -351,7 +351,6 @@ public class EntityCogwork extends EntityLivingBase implements IPowerArmour {
 
     public void setJumpControl(boolean b) {
         this.jumpControl = b;
-        ;
     }
 
     protected void applyEntityAttributes() {

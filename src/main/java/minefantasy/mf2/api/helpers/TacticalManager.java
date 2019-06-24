@@ -8,6 +8,7 @@ import minefantasy.mf2.api.weapon.IParryable;
 import minefantasy.mf2.api.weapon.ISpecialCombatMob;
 import minefantasy.mf2.entity.EntityArrowMF;
 import minefantasy.mf2.mechanics.CombatMechanics;
+import minefantasy.mf2.util.XSTRandom;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityWitch;
@@ -20,9 +21,6 @@ import net.minecraft.potion.Potion;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EntityDamageSourceIndirect;
 import net.minecraft.util.MathHelper;
-
-import java.util.Random;
-
 /**
  * This calculates different tactical contexts for combat like flanking and
  * blocking
@@ -36,7 +34,7 @@ public class TacticalManager {
      */
     public static boolean shouldStaminaBlock = false;
     public static boolean newBalanceSystem = false;
-    private static Random rand = new Random();
+    private static XSTRandom rand = new XSTRandom();
 
     /**
      * Determines if the defender is hit in the front (180degree arc)
@@ -105,7 +103,7 @@ public class TacticalManager {
             }
         }
 
-        if (!CombatMechanics.isParryAvailable(user)) {
+        if (CombatMechanics.isParryAvailable(user)) {
             return false;
         }
         int confusion = 0;

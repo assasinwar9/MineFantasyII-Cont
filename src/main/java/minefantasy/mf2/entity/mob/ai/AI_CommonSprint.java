@@ -25,10 +25,7 @@ public class AI_CommonSprint extends EntityAIBase {
         PathEntity path = this.entity.getNavigator().getPath();
         if (path != null) {
             PathPoint end = path.getFinalPathPoint();
-            if (path != null) {
-                distance = this.entity.getDistanceSq(end.xCoord, end.yCoord, end.zCoord);
-            }
-
+            distance = this.entity.getDistanceSq(end.xCoord, end.yCoord, end.zCoord);
         }
         boolean isSprinting = this.entity.isSprinting();
         boolean shouldSprint = distance >= this.range;

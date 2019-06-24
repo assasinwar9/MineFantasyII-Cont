@@ -34,10 +34,7 @@ public class AI_HoundBeg extends EntityAIBase {
      * Returns whether an in-progress EntityAIBase should continue executing
      */
     public boolean continueExecuting() {
-        return !this.thePlayer.isEntityAlive() ? false
-                : (this.theWolf.getDistanceSqToEntity(this.thePlayer) > this.minPlayerDistance * this.minPlayerDistance
-                ? false
-                : this.field_75384_e > 0 && this.hasPlayerGotBoneInHand(this.thePlayer));
+        return this.thePlayer.isEntityAlive() && (!(this.theWolf.getDistanceSqToEntity(this.thePlayer) > this.minPlayerDistance * this.minPlayerDistance) && (this.field_75384_e > 0 && this.hasPlayerGotBoneInHand(this.thePlayer)));
     }
 
     /**
@@ -71,8 +68,6 @@ public class AI_HoundBeg extends EntityAIBase {
      */
     private boolean hasPlayerGotBoneInHand(EntityPlayer p_75382_1_) {
         ItemStack itemstack = p_75382_1_.inventory.getCurrentItem();
-        return itemstack == null ? false
-                : (!this.theWolf.isTamed() && itemstack.getItem() == Items.bone ? true
-                : this.theWolf.isBreedingItem(itemstack));
+        return itemstack != null && (!this.theWolf.isTamed() && itemstack.getItem() == Items.bone || this.theWolf.isBreedingItem(itemstack));
     }
 }

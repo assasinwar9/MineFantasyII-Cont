@@ -25,7 +25,6 @@ import minefantasy.mf2.item.archery.ArrowFirerMF;
 import minefantasy.mf2.mechanics.*;
 import minefantasy.mf2.player.ContainerMF2Player;
 import minefantasy.mf2.util.XSTRandom;
-import minetweaker.MineTweakerAPI;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;

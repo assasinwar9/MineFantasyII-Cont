@@ -3,7 +3,6 @@ package minefantasy.mf2.container;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import minefantasy.mf2.block.tileentity.TileEntitySoakingTrough;
-import minefantasy.mf2.block.tileentity.TileEntityTarKiln;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;

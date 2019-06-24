@@ -74,11 +74,7 @@ public class ContainerMF2Player extends Container {
 							return false;
 						} else if (!(ruckSackStack.getItem() instanceof IRucksack)) { // WHAT THE FUCK
 							return false;
-						} else if (i1 * 7 + j1 < ((IRucksack) ruckSackStack.getItem()).getRucksackSize(ruckSackStack)) {
-							return true;
-						} else {
-							return false;
-						}
+						} else return i1 * 7 + j1 < ((IRucksack) ruckSackStack.getItem()).getRucksackSize(ruckSackStack);
 					}
 				});
 			}

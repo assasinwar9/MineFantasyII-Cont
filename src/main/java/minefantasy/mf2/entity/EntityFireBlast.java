@@ -109,7 +109,7 @@ public class EntityFireBlast extends EntityFireball {
                         ++i;
                 }
 
-                if (!worldObj.isRemote && this.worldObj.isAirBlock(i, j, k) && rand.nextFloat() < getPyro()) {
+                if (this.worldObj.isAirBlock(i, j, k) && rand.nextFloat() < getPyro()) {
                     this.worldObj.setBlock(i, j, k, Blocks.fire);
                 }
                 boolean tnt = worldObj.getBlock(pos.blockX, pos.blockY, pos.blockZ).getMaterial() == Material.tnt;

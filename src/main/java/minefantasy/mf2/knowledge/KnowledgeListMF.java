@@ -109,7 +109,7 @@ public class KnowledgeListMF {
     public static ICarpenterRecipe fletchingR, fletchingR2, malletR, spoonR;
     public static IAnvilRecipe ironPrepR, ironPrepR2, coalPrepR;
     public static IAnvilRecipe blastChamR, blastHeatR, bigFurnR, bigHeatR;
-    public static ICarpenterRecipe padding[] = new ICarpenterRecipe[4];
+    public static ICarpenterRecipe[] padding = new ICarpenterRecipe[4];
     public static ICarpenterRecipe repairBasicR, repairAdvancedR, repairOrnateR;
     public static ICarpenterRecipe spyglassR, bombBenchCraft, bombPressCraft, advancedForgeR, engTannerR, autoCrucibleR;
     public static ICarpenterRecipe crudeBombR, bombFuseR, longFuseR;

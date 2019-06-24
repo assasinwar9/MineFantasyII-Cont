@@ -8,7 +8,6 @@ import minefantasy.mf2.block.tileentity.TileEntityTarKiln;
 import minefantasy.mf2.container.ContainerTarKiln;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
-
 import org.lwjgl.opengl.GL11;
 
 @SideOnly(Side.CLIENT)

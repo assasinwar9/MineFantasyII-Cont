@@ -2,7 +2,6 @@ package minefantasy.mf2.block.tileentity;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import minefantasy.mf2.api.crafting.MineFantasyFuels;
 import minefantasy.mf2.api.crafting.refine.BloomRecipe;
 import minefantasy.mf2.api.helpers.ToolHelper;
 import minefantasy.mf2.api.knowledge.ResearchLogic;

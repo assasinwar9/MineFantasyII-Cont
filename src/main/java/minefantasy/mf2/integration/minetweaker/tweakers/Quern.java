@@ -107,9 +107,7 @@ public class Quern {
 
         @Override
         public void undo() {
-            for (QuernRecipes recipe : recipesToRemove) {
-                QuernRecipes.recipeList.add(recipe);
-            }
+            QuernRecipes.recipeList.addAll(recipesToRemove);
         }
 
         @Override

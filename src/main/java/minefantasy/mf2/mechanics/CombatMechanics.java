@@ -102,14 +102,14 @@ public class CombatMechanics {
             return false;
         }
         if (user instanceof EntityPlayer) {
-            if (!isFightStance(user))
+            if (isFightStance(user))
                 return false;
         }
         return user.fallDistance > 0 && !user.isOnLadder();
     }
 
     private static boolean isFightStance(EntityLivingBase user) {
-        return user.isSneaking();
+        return !user.isSneaking();
     }
 
     public static void applyUndeadBane(EntityLivingBase living) {
@@ -160,7 +160,7 @@ public class CombatMechanics {
     }
 
     public static boolean isParryAvailable(EntityLivingBase user) {
-        return getParryCooldown(user) <= 0;
+        return getParryCooldown(user) > 0;
     }
 
     public static void setPostHitCooldown(EntityLivingBase user, int ticks) {
@@ -790,7 +790,7 @@ public class CombatMechanics {
                 return false;
             }
 
-            if (!isFightStance(user)) {
+            if (isFightStance(user)) {
                 return false;
             }
         } else {

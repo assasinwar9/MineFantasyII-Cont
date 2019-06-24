@@ -1,14 +1,11 @@
 package minefantasy.mf2.block.tileentity.decor;
 
 import minefantasy.mf2.api.heating.IQuenchBlock;
-import minefantasy.mf2.api.helpers.CustomToolHelper;
 import minefantasy.mf2.container.ContainerTrough;
 import minefantasy.mf2.item.ItemColormats;
-import minefantasy.mf2.item.food.FoodListMF;
 import minefantasy.mf2.item.list.ComponentListMF;
 import minefantasy.mf2.network.NetworkUtils;
 import minefantasy.mf2.network.packet.TroughPacket;
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;

@@ -186,10 +186,7 @@ public class ItemArmourMF extends ItemArmourMFBase implements IElementalResistan
      */
     @Override
     public boolean hasColor(ItemStack item) {
-        return !canColour() ? false
-                : (!item.hasTagCompound() ? false
-                : (!item.getTagCompound().hasKey("display", 10) ? false
-                : item.getTagCompound().getCompoundTag("display").hasKey("color", 3)));
+        return canColour() && (item.hasTagCompound() && (item.getTagCompound().hasKey("display", 10) && item.getTagCompound().getCompoundTag("display").hasKey("color", 3)));
     }
 
     /**

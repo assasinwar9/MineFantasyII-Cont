@@ -3,7 +3,6 @@ package minefantasy.mf2.block.decor;
 import minefantasy.mf2.api.helpers.CustomToolHelper;
 import minefantasy.mf2.api.material.CustomMaterial;
 import minefantasy.mf2.block.tileentity.decor.TileEntityWoodDecor;
-import minefantasy.mf2.material.BaseMaterialMF;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
@@ -83,8 +82,7 @@ public abstract class BlockWoodDecor extends BlockContainer {
 
     @Override
     public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune) {
-        ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
-        return ret;
+        return new ArrayList<ItemStack>();
     }
 
     public String getFullTexName() {

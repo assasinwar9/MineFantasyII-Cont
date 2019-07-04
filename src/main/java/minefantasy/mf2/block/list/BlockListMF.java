@@ -6,7 +6,8 @@ import minefantasy.mf2.block.decor.*;
 import minefantasy.mf2.block.food.BlockBerryBush;
 import minefantasy.mf2.block.food.BlockCakeMF;
 import minefantasy.mf2.block.food.BlockPie;
-import minefantasy.mf2.block.plants.BlockPlantsMF;
+import minefantasy.mf2.block.herbs.BlockHerbCarxanium;
+import minefantasy.mf2.block.herbs.BlockHerbsMF;
 import minefantasy.mf2.block.refining.*;
 import minefantasy.mf2.block.tree.BlockGrindedLogs;
 import minefantasy.mf2.block.tree.BlockLeavesMF;
@@ -14,12 +15,14 @@ import minefantasy.mf2.block.tree.BlockLogMF;
 import minefantasy.mf2.block.tree.BlockSaplingMF;
 import minefantasy.mf2.item.food.FoodListMF;
 import minefantasy.mf2.item.list.ComponentListMF;
+import minefantasy.mf2.item.list.ToolListMF;
 import minefantasy.mf2.material.BaseMaterialMF;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.oredict.OreDictionary;
 
 import java.util.Random;
@@ -71,26 +74,14 @@ public class BlockListMF {
     //
     public static Block tarKiln = new BlockTarKiln(false);
     public static Block tarKiln_filled = new BlockTarKiln(true);
-    //plants
-    /*
-    name = name of plants
-    fruitGenChance = chance of generation harvest on ever tick
-    harvest_1 = first harvest item, default: 100% chance to drop 1 item
-    harvest_2 - second harvest item, default: random drop of 0-2 items
-    .setFirstHarvestChance(chance) default: 100
-    .setSecondHarvestChance(chance) default: 100
-    .setFirstHarvestCount(count) default: 1
-    .setSecondHarvestCount(count)  default: rand 3 (0-2 items)
-    growChance = chance of plants go to next grow stage on ever tick
-    growStage = current grow stage of this plants
-     */
-    public static Block carxanium_stage_1 = new BlockPlantsMF("plants_carxanium",  0, null, null, 80, 1);
-    public static Block carxanium_stage_2 = new BlockPlantsMF("plants_carxanium",  0, null, null, 80, 2);
-    /*public static Block carxanium_stage_3 = new BlockPlantsMF("plants_carxanium",  0, ComponentListMF.carxanium_root, ComponentListMF.carxanium_items, 80, 3).setSecondHarvestCount(5);
 
-    public static Block silverhead = new BlockPlantsMF("plants_silverhead", 0, ComponentListMF.silverhead_harvest, null, 0, 0).setFirstHarvestChance(50);*/
-    public static Block silverhead_empty = new BlockPlantsMF("plants_silverhead_empty",80,  null, null, 0, 0);
-    //
+    //herbs
+
+    public static Block herb_carxanium_1 = new BlockHerbCarxanium(1);
+    public static Block herb_carxanium_2 = new BlockHerbCarxanium(2);
+    public static Block herb_carxanium_3 = new BlockHerbCarxanium(3);
+
+    // orig mf blocks
 
     public static Block oreCopper = new BlockOreMF("oreCopper", 0, -1).setHardness(2.0F).setResistance(3.0F);
     public static Block oreTin = new BlockOreMF("oreTin", 0).setHardness(2.5F).setResistance(4.0F);

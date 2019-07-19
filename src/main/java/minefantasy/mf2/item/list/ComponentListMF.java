@@ -28,7 +28,9 @@ public class ComponentListMF {
             "blacksteelweak", "blacksteel", "silver", "redsteelweak", "redsteel", "bluesteelweak", "bluesteel",
             "adamantium", "mithril", "ignotumite", "mithium", "ender", "tungsten", "obsidian"};
 
+    public static Item non_defined_item = new ItemComponentMF("non-defined", -1).setTextureName("minefantasy2:zsItems/non-defined");
 
+    public static Item dull_ember = new ItemComponentMF("dull_ember", -1).setTextureName("minefantasy2:zsItems/dull_ember");
 
     public static Item schichtCopper = new ItemSchichts("schichtCopper", -1);
     public static Item schichtTin = new ItemSchichts("schichtTin", -1);
@@ -43,10 +45,20 @@ public class ComponentListMF {
     public static Item pie_tray_uncooked = new ItemComponentMF("pie_tray_uncooked", 0);
     //zs items
     public static Item tar = new ItemComponentMF("tar", 0).setTextureName("minefantasy2:zsItems/tar").setContainerItem(clay_pot);
-    public static Item bark = new ItemComponentMF("bark", 0).setTextureName("minefantasy2:zsItems/bark");
+    public static Item bark = new ItemComponentMF("bark", 0).setTextureName("minefantasy2:zsItems/bark");;
     public static Item buildingCompound = new ItemComponentMF("buildingCompound", 0).setTextureName("minefantasy2:zsItems/buildingCompound").setContainerItem(clay_pot);
     public static Item slag = new ItemComponentMF("slag", 0).setTextureName("minefantasy2:zsItems/slag");
     public static Item slag_pot = new ItemComponentMF("slag_pot", 0).setTextureName("minefantasy2:zsItems/slag_pot").setContainerItem(clay_pot);
+    //hide
+    public static Item hideSmall_limed = new ItemComponentMF("hideSmall_limed", 0).setTextureName("minefantasy2:zsItems/hideSmall_limed");
+    public static Item hideMedium_limed = new ItemComponentMF("hideMedium_limed", 0).setTextureName("minefantasy2:zsItems/hideMedium_limed");
+    public static Item hideLarge_limed = new ItemComponentMF("hideLarge_limed", 0).setTextureName("minefantasy2:zsItems/hideLarge_limed");
+    public static Item rawhideSmall_washed = new ItemComponentMF("rawhideSmall_washed", 0).setTextureName("minefantasy2:zsItems/rawhideSmall_washed");
+    public static Item rawhideMedium_washed = new ItemComponentMF("rawhideMedium_washed", 0).setTextureName("minefantasy2:zsItems/rawhideMedium_washed");
+    public static Item rawhideLarge_washed = new ItemComponentMF("rawhideLarge_washed", 0).setTextureName("minefantasy2:zsItems/rawhideLarge_washed");
+
+    public static Item leather_clear = new ItemComponentMF("leather_clear", -1).setTextureName("minefantasy2:zsItems/leather_clear");
+
     //new color materials (zs items)
     public static Item colormat_black = new ItemColormats("colormat_black");
     public static Item colormat_red = new ItemColormats("colormat_red");
@@ -64,7 +76,11 @@ public class ComponentListMF {
     public static Item colormat_magenta = new ItemColormats("colormat_magenta");
     public static Item colormat_orange = new ItemColormats("colormat_orange");
     public static Item colormat_white = new ItemColormats("colormat_white");
-    //
+    //herbs
+    public static Item silverhead_harvest = new ItemHerbMF("silverhead_harvest", 0, null).setTextureName("minefantasy2:herbs/herb_silverhead_harvest");
+    public static Item carxanium_items = new ItemHerbMF("carxanium_items", 0, BlockListMF.herb_carxanium_1);
+    public static Item carxanium_root = new ItemHerbMF("carxanium_root", 0, BlockListMF.herb_carxanium_1);
+    //orig mf items
     public static ItemComponentMF[] ingots = new ItemComponentMF[ingotMats.length];
 
     public static ItemComponentMF plank = new ItemComponentMF("plank").setCustom(1, "wood").setStoragePlacement("plank",
@@ -115,9 +131,9 @@ public class ComponentListMF {
     public static Item hideSmall = new ItemComponentMF("hideSmall", 0);
     public static Item hideMedium = new ItemComponentMF("hideMedium", 0);
     public static Item hideLarge = new ItemComponentMF("hideLarge", 0);
-    public static Item rawhideSmall = new ItemHide("rawhideSmall", hideSmall, 1.0F);
-    public static Item rawhideMedium = new ItemHide("rawhideMedium", hideMedium, 1.5F);
-    public static Item rawhideLarge = new ItemHide("rawhideLarge", hideLarge, 3.0F);
+    public static Item rawhideSmall = new ItemHide("rawhideSmall", rawhideSmall_washed, 1.0F);
+    public static Item rawhideMedium = new ItemHide("rawhideMedium", rawhideMedium_washed, 1.5F);
+    public static Item rawhideLarge = new ItemHide("rawhideLarge", rawhideLarge_washed, 3.0F);
 
     public static Item dragon_heart = new ItemSpecialDesign("dragon_heart", 1, "dragon");
 

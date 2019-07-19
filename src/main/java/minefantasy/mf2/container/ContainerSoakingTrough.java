@@ -3,6 +3,7 @@ package minefantasy.mf2.container;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import minefantasy.mf2.block.tileentity.TileEntitySoakingTrough;
+import minefantasy.mf2.block.tileentity.TileEntityTarKiln;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -76,7 +77,7 @@ public class ContainerSoakingTrough extends Container {
             }
         }
     }
-
+/*
     @Override
     @SideOnly(Side.CLIENT)
     public void updateProgressBar(int id, int value) {
@@ -91,7 +92,7 @@ public class ContainerSoakingTrough extends Container {
         if (id == 2) {
             tile.temperature = value;
         }
-    }
+    }*/
 
     @Override
     public ItemStack transferStackInSlot(EntityPlayer user, int currentSlot) {

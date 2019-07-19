@@ -4,8 +4,6 @@ import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import minefantasy.mf2.api.MineFantasyAPI;
 import minefantasy.mf2.api.helpers.ClientTickHandler;
 import minefantasy.mf2.api.knowledge.InformationList;
@@ -17,9 +15,6 @@ import minefantasy.mf2.block.tileentity.decor.TileEntityRack;
 import minefantasy.mf2.block.tileentity.decor.TileEntityTrough;
 import minefantasy.mf2.client.KnowledgePageRegistry;
 import minefantasy.mf2.client.gui.*;
-import minefantasy.mf2.client.gui.tabs.InventoryTabMF2;
-import minefantasy.mf2.client.gui.tabs.InventoryTabVanilla;
-import minefantasy.mf2.client.gui.tabs.TabRegistry;
 import minefantasy.mf2.client.render.*;
 import minefantasy.mf2.client.render.block.*;
 import minefantasy.mf2.client.render.block.component.TileEntityComponentRenderer;
@@ -34,7 +29,6 @@ import minefantasy.mf2.item.list.styles.DragonforgedStyle;
 import minefantasy.mf2.item.list.styles.OrnateStyle;
 import minefantasy.mf2.mechanics.ExtendedReachMF;
 import minefantasy.mf2.mechanics.PlayerTickHandlerMF;
-import minefantasy.mf2.player.IEEPMF2;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -47,7 +41,6 @@ import org.lwjgl.input.Keyboard;
 /**
  * @author Anonymous Productions
  */
-@SideOnly(Side.CLIENT)
 public class ClientProxyMF extends CommonProxyMF {
 
     /**
@@ -106,6 +99,13 @@ public class ClientProxyMF extends CommonProxyMF {
         RenderingRegistry.registerBlockHandler(new RenderTrough());
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityTrough.class, new TileEntityTroughRenderer());
 
+        RenderingRegistry.registerBlockHandler(new RenderSoakingTrough());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySoakingTrough.class, new TileEntitySoakingTroughRenderer());
+        RenderingRegistry.registerBlockHandler(new RenderMagicPedestal());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityMagicPedestal.class, new TileEntityMagicPedestalRenderer());
+        //RenderingRegistry.registerBlockHandler(new RenderCauldronMF());
+        //ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCauldronMF.class, new TileEntityCauldronMFRenderer());
+
         RenderingRegistry.registerBlockHandler(new RenderBombPress());
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityBombPress.class, new TileEntityBombPressRenderer());
         RenderingRegistry.registerBlockHandler(new RenderBloomery());
@@ -127,16 +127,13 @@ public class ClientProxyMF extends CommonProxyMF {
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityAmmoBox.class, new TileEntityAmmoBoxRenderer());
         RenderingRegistry.registerBlockHandler(new RenderSmokePipe());
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityChimney.class, new TileEntitySmokePipeRenderer());
-        RenderingRegistry.registerBlockHandler(new RenderSoakingTrough());
-        // ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySoakingTrough.class, new TileEntitySoakingTroughRenderer());
 
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityComponent.class, new TileEntityComponentRenderer());
-        
-        MinecraftForge.EVENT_BUS.register(new TabRegistry());
+		
+		MinecraftForge.EVENT_BUS.register(new TabRegistry());
         MinecraftForge.EVENT_BUS.register(new IEEPMF2.Handler());
         TabRegistry.registerTab(new InventoryTabVanilla());
         TabRegistry.registerTab(new InventoryTabMF2());
-        
     }
 
     public void registerEntityRenderer() {
@@ -176,6 +173,10 @@ public class ClientProxyMF extends CommonProxyMF {
             if (tile instanceof TileEntityTarKiln) {
                 return new GuiTarKiln(player.inventory, (TileEntityTarKiln) tile);
             }
+            if (tile instanceof TileEntitySoakingTrough) {
+                return new GuiSoakingTrough(player.inventory, (TileEntitySoakingTrough) tile);
+            }
+
 
             if (tile instanceof TileEntityAnvilMF) {
                 return new GuiAnvilMF(player.inventory, (TileEntityAnvilMF) tile);
@@ -225,7 +226,7 @@ public class ClientProxyMF extends CommonProxyMF {
             if (x == 1 && player.getHeldItem() != null) {
                 return new GuiReload(player.inventory, player.getHeldItem());
             }
-            if (x == 10) {
+			if (x == 10) {
             	return new GuiMF2Player();
             }
         }

@@ -14,6 +14,7 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -25,18 +26,18 @@ import java.util.Random;
 
 public class BlockSoakingTrough extends BlockContainer {
     public static int soaking_RI = RenderingRegistry.getNextAvailableRenderId();
-
+/*
     @SideOnly(Side.CLIENT)
     public int CarpenterRenderSide;
-    private int tier = 0;
+    private int tier = 0;*/
     private Random rand = new Random();
-    public IIcon liquidIconWater, liquidIconColordef;
+    //public IIcon liquidIconWater, liquidIconColordef;
 
     public BlockSoakingTrough() {
         super(Material.wood);
 
         GameRegistry.registerBlock(this, "MF_SoakingTrough");
-        setBlockTextureName("minefantasy2:zsAddon/SoakingTroughTex");
+        //setBlockTextureName("minefantasy2:zsAddon/SoakingTroughTex");
         setBlockName("soakingTrough");
         this.setStepSound(Block.soundTypeWood);
         this.setHardness(4F);
@@ -134,21 +135,27 @@ public class BlockSoakingTrough extends BlockContainer {
 
         super.breakBlock(world, x, y, z, block, meta);
     }
-    
-    /*@Override
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public IIcon getIcon(int side, int meta) {
+        return Blocks.planks.getIcon(side, meta);
+    }
+    /*
+    @Override
     public IIcon getIcon(IBlockAccess p_149673_1_, int p_149673_2_, int p_149673_3_, int p_149673_4_, int side) {
     	if(side == 0) return super.getIcon(p_149673_1_, p_149673_2_, p_149673_3_, p_149673_4_, side);
     	else if(side == 1) return liquidIconWater;
     	else if(side == 2) return liquidIconColordef;
     	else return null;
     }*/
-    
+    /*
     @Override
     public void registerBlockIcons(IIconRegister reg) {
     	super.registerBlockIcons(reg);
     	liquidIconWater = reg.registerIcon("minefantasy2:zsAddon/soaking_liquid_water");
     	liquidIconColordef = reg.registerIcon("minefantasy2:zsAddon/soaking_liquid_colordef");
-    }
+    }*/
 
     @Override
     public int getRenderType() {

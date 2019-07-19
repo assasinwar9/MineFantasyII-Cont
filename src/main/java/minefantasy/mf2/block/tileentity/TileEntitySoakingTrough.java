@@ -25,15 +25,15 @@ import java.util.Random;
 
 public class TileEntitySoakingTrough extends TileEntity implements IInventory {
 	public float progress = 0, progressMax = 100;
-	public float temperature; // UNUSED
 	private ItemStack[] inv = new ItemStack[1];
 	private Random rand = new Random();
 	public int fill;
 	public int capacity = 8;
-	public String liquid = "water";
+	public String liquid = "water", reqLiquid;
 
 	public ItemStack soakingItems;
 	public float soakTimeScale;
+	public float recipeTimeScale = 1;
 	public ItemStack result;
 
 	public boolean soakingMode = false;
@@ -45,9 +45,10 @@ public class TileEntitySoakingTrough extends TileEntity implements IInventory {
 		super.updateEntity();
 
 		// soaking
+
 		result = getSoakingResult();
 
-		if (result != null && !liquid.equals("water")) {
+		if (result != null && soakingMode && liquid.equals(reqLiquid)) {
 			soakingItem();
 		}
 		// syncData();
@@ -76,13 +77,14 @@ public class TileEntitySoakingTrough extends TileEntity implements IInventory {
 	}
 
 	private void soakingItem() {
-		progressMax *= getSoakTimeScale(); // *5
-		if (liquid.equals("limestone"))
-			progress += 1;
+		progressMax = 100;
+		progressMax *= (getSoakTimeScale() * recipeTimeScale); // *5
+		progress += 1;
 
 		if (progress >= progressMax) {
 			progress = 0;
-			this.setInventorySlotContents(0, getSoakingResult());
+			setCap(-1);
+			this.setInventorySlotContents(0, result);
 		}
 
 	}
@@ -95,14 +97,43 @@ public class TileEntitySoakingTrough extends TileEntity implements IInventory {
 	}
 
 	private ItemStack getSoakingResult() {
-		if (inv[0] != null && inv[0].getItem() == ComponentListMF.rawhideSmall)
-			return new ItemStack(ComponentListMF.hideSmall, inv[0].stackSize);
-		if (inv[0] != null && inv[0].getItem() == ComponentListMF.rawhideMedium)
-			return new ItemStack(ComponentListMF.hideMedium, inv[0].stackSize);
-		if (inv[0] != null && inv[0].getItem() == ComponentListMF.rawhideLarge)
-			return new ItemStack(ComponentListMF.hideLarge, inv[0].stackSize);
-		else
-			return null;
+		if (inv[0] != null) {
+			//hide cleaning
+			if (inv[0].getItem() == ComponentListMF.rawhideSmall) {
+				reqLiquid = "water";
+				return new ItemStack(ComponentListMF.rawhideSmall_washed, inv[0].stackSize);
+			}
+			if (inv[0].getItem() == ComponentListMF.rawhideMedium) {
+				reqLiquid = "water";
+				return new ItemStack(ComponentListMF.rawhideMedium_washed, inv[0].stackSize);
+			}
+			if (inv[0].getItem() == ComponentListMF.rawhideLarge) {
+				reqLiquid = "water";
+				return new ItemStack(ComponentListMF.rawhideLarge_washed, inv[0].stackSize);
+			}
+			//hide liming
+			if (inv[0].getItem() == ComponentListMF.rawhideSmall_washed) {
+				reqLiquid = "limestone";
+				return new ItemStack(ComponentListMF.hideSmall_limed, inv[0].stackSize);
+			}
+			if (inv[0].getItem() == ComponentListMF.rawhideMedium_washed) {
+				reqLiquid = "limestone";
+				return new ItemStack(ComponentListMF.hideMedium_limed, inv[0].stackSize);
+			}
+			if (inv[0].getItem() == ComponentListMF.rawhideLarge_washed) {
+				reqLiquid = "limestone";
+				return new ItemStack(ComponentListMF.hideLarge_limed, inv[0].stackSize);
+			}
+			//tanning
+			if (inv[0].getItem() == ComponentListMF.leather_clear) {
+				reqLiquid = "tanning";
+				recipeTimeScale = 2; // 10
+				return new ItemStack(Items.leather, inv[0].stackSize);
+			}
+
+			else return null;
+		}
+		else return null;
 	}
 
 	public void consumeLiquid() {
@@ -119,9 +150,16 @@ public class TileEntitySoakingTrough extends TileEntity implements IInventory {
 					soakingMode = false;
 					return true;
 				}
+				if (held.getItem() == Items.emerald) { //only for test !
+					--held.stackSize;
+					setCap(4);
+					liquid = "water";
+					soakingMode = false;
+					return true;
+				}
 			}
 			// of color materials
-			if (held.getItem() instanceof ItemColormats && fill > 0 && liquid == "water") {
+			if (held.getItem() instanceof ItemColormats && fill > 0 && liquid.equals("water")) {
 				if (held.getItem() == ComponentListMF.colormat_black)
 					liquid = "black";
 				if (held.getItem() == ComponentListMF.colormat_red)
@@ -169,6 +207,14 @@ public class TileEntitySoakingTrough extends TileEntity implements IInventory {
 				--held.stackSize;
 				dropItems(user, new ItemStack(ComponentListMF.clay_pot));
 
+				soakingMode = true;
+				return true;
+			}
+			//set tanning fluid
+			if (held.getItem() == ComponentListMF.bark && fill > 0 && liquid.equals("water")) {
+				liquid = "tanning";
+
+				--held.stackSize;
 				soakingMode = true;
 				return true;
 			}
@@ -327,7 +373,7 @@ public class TileEntitySoakingTrough extends TileEntity implements IInventory {
 
 	@Override
 	public int getInventoryStackLimit() {
-		return 64;
+		return 4;
 	}
 
 	@Override
@@ -347,7 +393,7 @@ public class TileEntitySoakingTrough extends TileEntity implements IInventory {
 	public boolean isItemValidForSlot(int slot, ItemStack item) {
 		return true;
 	}
-
+/*
 	@SideOnly(Side.CLIENT)
     public IIcon getLiquidTex (String liquid) {
 		BlockSoakingTrough block = ((BlockSoakingTrough)worldObj.getBlock(xCoord, yCoord, zCoord));
@@ -355,7 +401,7 @@ public class TileEntitySoakingTrough extends TileEntity implements IInventory {
             return block.liquidIconWater;
         }
         else return block.liquidIconColordef;
-    }
+    }*/
 	
 	@SideOnly(Side.CLIENT)
     public Color getLiquidColor (String liquid) {

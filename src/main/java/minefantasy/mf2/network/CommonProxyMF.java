@@ -23,7 +23,6 @@ import minefantasy.mf2.integration.minetweaker.MTCompat;
 import minefantasy.mf2.item.archery.ArrowFireFlint;
 import minefantasy.mf2.item.archery.ArrowFirerMF;
 import minefantasy.mf2.mechanics.*;
-import minefantasy.mf2.player.ContainerMF2Player;
 import minefantasy.mf2.util.XSTRandom;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
@@ -41,7 +40,7 @@ public class CommonProxyMF implements IGuiHandler, ISmokeHandler {
 
     @Override
     public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
-    	if (ID == 1 && x == 10) {
+        if (ID == 1 && x == 10) {
     		return new ContainerMF2Player(player);
     	} else if (ID == 1 && x == 1 && player.getHeldItem() != null) {
             return new ContainerReload(player.inventory, player.getHeldItem());
@@ -53,6 +52,9 @@ public class CommonProxyMF implements IGuiHandler, ISmokeHandler {
             }
             if (tile instanceof TileEntityTarKiln) {
                 return new ContainerTarKiln(player.inventory, (TileEntityTarKiln) tile);
+            }
+            if (tile instanceof TileEntitySoakingTrough) {
+                return new ContainerSoakingTrough(player.inventory, (TileEntitySoakingTrough) tile);
             }
 
 
@@ -126,6 +128,10 @@ public class CommonProxyMF implements IGuiHandler, ISmokeHandler {
         GameRegistry.registerTileEntity(TileEntityBellows.class, "MF_Bellows");
         GameRegistry.registerTileEntity(TileEntityResearch.class, "MF_Research");
         GameRegistry.registerTileEntity(TileEntityTrough.class, "MF_Trough");
+
+        GameRegistry.registerTileEntity(TileEntitySoakingTrough.class, "MF_SoakingTrough");
+        GameRegistry.registerTileEntity(TileEntityCauldronMF.class, "MF_CauldronMF");
+
         GameRegistry.registerTileEntity(TileEntityBombPress.class, "MF_BombPress");
         GameRegistry.registerTileEntity(TileEntityBloomery.class, "MF_Bloomery");
         GameRegistry.registerTileEntity(TileEntityQuern.class, "MF_Quern");

@@ -1,96 +1,92 @@
-package minefantasy.mf2.client.render.block;
+package minefantasy.mf2.client.render.block;//Made with Blockbench
 
 import net.minecraft.client.model.ModelBase;
+import net.minecraft.client.model.ModelBox;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
+//by flyse emberlight
+public class ModelSoakingTrough extends ModelBase {
+	private ModelRenderer bone;
+	private ModelRenderer lq_1, lq_2, lq_3, lq_4, lq_5, lq_6, lq_7, lq_8, lq_9, lq_10, lq_11, lq_12;
 
 
-public class ModelSoakingTrough extends ModelBase
-{
-    //fields
-    ModelRenderer Side1;
-    ModelRenderer Side2;
-    ModelRenderer Side3;
-    ModelRenderer Side4;
-    ModelRenderer Bottom;
-    ModelRenderer Liquid;
+	public ModelSoakingTrough() {
+		textureWidth = 128;
+		textureHeight = 128;
 
-    public ModelSoakingTrough()
-    {
-        textureWidth = 64;
-        textureHeight = 32;
+		bone = new ModelRenderer(this);
+		bone.setRotationPoint(0.0F, 24.0F, 0.0F);
+		bone.cubeList.add(new ModelBox(bone, 37, 0, 7.0F, -19.0F, -7.0F, 1, 15, 14, 0.0F));
+		bone.cubeList.add(new ModelBox(bone, 0, 13, -8.0F, -19.0F, -8.0F, 16, 15, 1, 0.0F));
+		bone.cubeList.add(new ModelBox(bone, 3, 0, -8.0F, -19.0F, -7.0F, 1, 15, 14, 0.0F));
+		bone.cubeList.add(new ModelBox(bone, 34, 13, -8.0F, -19.0F, 7.0F, 16, 15, 1, 0.0F));
+		bone.cubeList.add(new ModelBox(bone, 7, 14, -7.0F, -5.0F, -7.0F, 14, 1, 14, 0.0F));
 
-        Side1 = new ModelRenderer(this, 17, 15);
-        Side1.addBox(0F, 0F, 0F, 16, 15, 1);
-        Side1.setRotationPoint(-8F, -14F, -8F);
-        Side1.setTextureSize(64, 32);
-        Side1.mirror = true;
-        setRotation(Side1, 0F, 0F, 0F);
-        Side2 = new ModelRenderer(this, 0, 15);
-        Side2.addBox(0F, 0F, 0F, 16, 15, 1);
-        Side2.setRotationPoint(-8F, -14F, 7F);
-        Side2.setTextureSize(64, 32);
-        Side2.mirror = true;
-        setRotation(Side2, 0F, 0F, 0F);
-        Side4 = new ModelRenderer(this, 3, 2);
-        Side4.addBox(0F, 0F, 0F, 1, 15, 14);
-        Side4.setRotationPoint(7F, -14F, -7F);
-        Side4.setTextureSize(64, 32);
-        Side4.mirror = true;
-        setRotation(Side4, 0F, 0F, 0F);
-        Bottom = new ModelRenderer(this, 1, 1);
-        Bottom.addBox(0F, -5F, 0F, 14, 2, 14);
-        Bottom.setRotationPoint(-7F, 4F, -7F);
-        Bottom.setTextureSize(64, 32);
-        Bottom.mirror = true;
-        setRotation(Bottom, 0F, 0F, 0F);
-        Liquid = new ModelRenderer(this, 36, 18);
-        Liquid.addBox(0F, 0F, 0F, 14, 1, 14);
-        Liquid.setRotationPoint(-7F, -2F, -7F);
-        Liquid.setTextureSize(64, 32);
-        Liquid.mirror = true;
-        setRotation(Liquid, 0F, 0F, 0F);
-        Side3 = new ModelRenderer(this, 20, 2);
-        Side3.addBox(0F, 0F, 0F, 1, 15, 14);
-        Side3.setRotationPoint(-8F, -14F, -7F);
-        Side3.setTextureSize(64, 32);
-        Side3.mirror = true;
-        setRotation(Side3, 0F, 0F, 0F);
-    }
+		//liquid levels
+		lq_1 = new ModelRenderer(this);
+		lq_1.setRotationPoint(-8.0F, 16.0F, 8.0F);
+		lq_1.cubeList.add(new ModelBox(lq_1, 4, 29, 1.0F, 1.0F, -15.0F, 14, 1, 14, 0.0F));
+		lq_2 = new ModelRenderer(this);
+		lq_2.setRotationPoint(-8.0F, 16.0F, 8.0F);
+		lq_2.cubeList.add(new ModelBox(lq_2, 4, 29, 1.0F, 0.0F, -15.0F, 14, 1, 14, 0.0F));
+		lq_3 = new ModelRenderer(this);
+		lq_3.setRotationPoint(-8.0F, 16.0F, 8.0F);
+		lq_3.cubeList.add(new ModelBox(lq_3, 4, 29, 1.0F, -1.0F, -15.0F, 14, 1, 14, 0.0F));
+		lq_4 = new ModelRenderer(this);
+		lq_4.setRotationPoint(-8.0F, 16.0F, 8.0F);
+		lq_4.cubeList.add(new ModelBox(lq_4, 4, 29, 1.0F, -2.0F, -15.0F, 14, 1, 14, 0.0F));
+		lq_5 = new ModelRenderer(this);
+		lq_5.setRotationPoint(-8.0F, 16.0F, 8.0F);
+		lq_5.cubeList.add(new ModelBox(lq_5, 4, 29, 1.0F, -3.0F, -15.0F, 14, 1, 14, 0.0F));
+		lq_6 = new ModelRenderer(this);
+		lq_6.setRotationPoint(-8.0F, 16.0F, 8.0F);
+		lq_6.cubeList.add(new ModelBox(lq_6, 4, 29, 1.0F, -4.0F, -15.0F, 14, 1, 14, 0.0F));
+		lq_7 = new ModelRenderer(this);
+		lq_7.setRotationPoint(-8.0F, 16.0F, 8.0F);
+		lq_7.cubeList.add(new ModelBox(lq_7, 4, 29, 1.0F, -5.0F, -15.0F, 14, 1, 14, 0.0F));
+		lq_8 = new ModelRenderer(this);
+		lq_8.setRotationPoint(-8.0F, 16.0F, 8.0F);
+		lq_8.cubeList.add(new ModelBox(lq_8, 4, 29, 1.0F, -6.0F, -15.0F, 14, 1, 14, 0.0F));
+		lq_9 = new ModelRenderer(this);
+		lq_9.setRotationPoint(-8.0F, 16.0F, 8.0F);
+		lq_9.cubeList.add(new ModelBox(lq_9, 4, 29, 1.0F, -7.0F, -15.0F, 14, 1, 14, 0.0F));
+		lq_10 = new ModelRenderer(this);
+		lq_10.setRotationPoint(-8.0F, 16.0F, 8.0F);
+		lq_10.cubeList.add(new ModelBox(lq_10, 4, 29, 1.0F, -8.0F, -15.0F, 14, 1, 14, 0.0F));
+		lq_11 = new ModelRenderer(this);
+		lq_11.setRotationPoint(-8.0F, 16.0F, 8.0F);
+		lq_11.cubeList.add(new ModelBox(lq_11, 4, 29, 1.0F, -9.0F, -15.0F, 14, 1, 14, 0.0F));
+		lq_12 = new ModelRenderer(this);
+		lq_12.setRotationPoint(-8.0F, 16.0F, 8.0F);
+		lq_12.cubeList.add(new ModelBox(lq_12, 4, 29, 1.0F, -10.0F, -15.0F, 14, 1, 14, 0.0F));
 
-    public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
-    {
-        super.render(entity, f, f1, f2, f3, f4, f5);
-        setRotationAngles(f, f1, f2, f3, f4, f5, entity);
-        Side1.render(f5);
-        Side2.render(f5);
-        Side3.render(f5);
-        Side4.render(f5);
-        Bottom.render(f5);
-        Liquid.render(f5);
-    }
+	}
 
-    private void setRotation(ModelRenderer model, float x, float y, float z)
-    {
-        model.rotateAngleX = x;
-        model.rotateAngleY = y;
-        model.rotateAngleZ = z;
-    }
+	@Override
+	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+		super.render(entity, f, f1, f2, f3, f4, f5);
+		setRotationAngles(f, f1, f2, f3, f4, f5, entity);
+		renderModel(f5);
+	}
+	public void setRotation(ModelRenderer modelRenderer, float x, float y, float z) {
+		modelRenderer.rotateAngleX = x;
+		modelRenderer.rotateAngleY = y;
+		modelRenderer.rotateAngleZ = z;
+	}
+	public void renderModel(float f) {
+		bone.render(f);
+	}
+	public void renderLqLvl_1 (float f) { lq_1.render(f); }
+	public void renderLqLvl_2 (float f) { lq_2.render(f); }
+	public void renderLqLvl_3 (float f) { lq_3.render(f); }
+	public void renderLqLvl_4 (float f) { lq_4.render(f); }
+	public void renderLqLvl_5 (float f) { lq_5.render(f); }
+	public void renderLqLvl_6 (float f) { lq_6.render(f); }
+	public void renderLqLvl_7 (float f) { lq_7.render(f); }
+	public void renderLqLvl_8 (float f) { lq_8.render(f); }
+	public void renderLqLvl_9 (float f) { lq_9.render(f); }
+	public void renderLqLvl_10 (float f) { lq_10.render(f); }
+	public void renderLqLvl_11 (float f) { lq_11.render(f); }
+	public void renderLqLvl_12 (float f) { lq_12.render(f); }
 
-    public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity)
-    {
-        super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
-    }
-
-    public void renderModel(float f) {
-        Side1.render(f);
-        Side2.render(f);
-        Side3.render(f);
-        Side4.render(f);
-        Bottom.render(f);
-    }
-
-    public void renderLiquid(float f) {
-        Liquid.render(f);
-    }
 }

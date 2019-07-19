@@ -10,7 +10,7 @@ import org.lwjgl.opengl.GL11;
 public class TileEntitySoakingTroughRenderer extends TileEntitySpecialRenderer {
     private ModelSoakingTrough model;
     private float red, green, blue;
-
+    private int height;
 
     public TileEntitySoakingTroughRenderer() {
         model = new ModelSoakingTrough();
@@ -48,25 +48,20 @@ public class TileEntitySoakingTroughRenderer extends TileEntitySpecialRenderer {
             j = 90;
         }
 
+
         GL11.glPushMatrix(); // start
-        float scale = 1.0F;
-        float yOffset = 1 / 16F;
-        GL11.glTranslatef((float) d + 0.5F, (float) d1 + yOffset, (float) d2 + 0.5F); // size
-        GL11.glRotatef(j, 0.0F, 1.0F, 0.0F); // rotate based on metadata
-        GL11.glScalef(scale, -scale, -scale); // if you read this comment out this line and you can see what happens
+        GL11.glTranslatef((float) d + 0.5F, (float) d1 + 1.25F, (float) d2 + 0.5F); // size
+        GL11.glRotatef(j + 180F, 0.0F, 1.0F, 0.0F); // rotate based on metadata
+        GL11.glScalef(1F, -1F, -1F); // if you read this comment out this line and you can see what happens
         GL11.glPushMatrix();
-        float level = 0F;
-
-        //CustomMaterial material = tile.getMaterial();
-        //GL11.glColor3f(material.colourRGB[0] / 255F, material.colourRGB[1] / 255F, material.colourRGB[2] / 255F);
-
-        bindTextureByName("textures/models/zsModels/SoakingTroughTex.png"); // texture
         model.renderModel(0.0625F);
 
-        GL11.glColor3f(1F, 1F, 1F);
+        bindTextureByName("textures/models/zsModels/soaking_trough.png"); // texture
+        model.renderModel(0.0625F);
 
-        float height = (float) tile.fill;
-        if (tile.fill > 0) {
+        height = tile.fill;
+        if (height > 0) {
+
             GL11.glEnable(GL11.GL_BLEND);
             GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 
@@ -75,8 +70,19 @@ public class TileEntitySoakingTroughRenderer extends TileEntitySpecialRenderer {
 
             getLiquidColor(tile.liquid);
             GL11.glColor4f(red, green, blue, 0.9F);
-            GL11.glTranslatef(0F, -height * 0.08F, 0F);
-            model.renderLiquid(0.0625F);
+            GL11.glTranslatef(0F, 0F, 0F);
+            if (height == 1) model.renderLqLvl_1(0.0625F);
+            if (height == 2) model.renderLqLvl_2(0.0625F);
+            if (height == 3) model.renderLqLvl_3(0.0625F);
+            if (height == 4) model.renderLqLvl_4(0.0625F);
+            if (height == 5) model.renderLqLvl_5(0.0625F);
+            if (height == 6) model.renderLqLvl_6(0.0625F);
+            if (height == 7) model.renderLqLvl_7(0.0625F);
+            if (height == 8) model.renderLqLvl_8(0.0625F);
+            if (height == 9) model.renderLqLvl_9(0.0625F);
+            if (height == 10) model.renderLqLvl_10(0.0625F);
+            if (height == 11) model.renderLqLvl_11(0.0625F);
+            if (height == 12) model.renderLqLvl_12(0.0625F);
         }
         GL11.glPopMatrix();
         GL11.glColor3f(255, 255, 255);
@@ -85,10 +91,13 @@ public class TileEntitySoakingTroughRenderer extends TileEntitySpecialRenderer {
     }
 
     private String getLiquidTex (String liquid) {
-        if (liquid.equals("water")) {
-            return "textures/models/zsModels/soaking_liquid_water.png";
-        }
-        else return "textures/models/zsModels/soaking_liquid_colordef.png";
+        if (liquid.equals("water"))
+            return "textures/models/zsModels/soaking_trough_water.png";
+        if (liquid.equals("limestone"))
+            return "textures/models/zsModels/soaking_trough_limestone.png";
+        if (liquid.equals("tanning"))
+            return "textures/models/zsModels/soaking_trough_tanning.png";
+        else return "textures/models/zsModels/soaking_trough_colordef.png";
     }
 
     //  1 / 255 = 0.00392
@@ -184,7 +193,13 @@ public class TileEntitySoakingTroughRenderer extends TileEntitySpecialRenderer {
             green = k * 225;
             blue = k * 200;
         }
-        /*else {
+        if (liquid.equals("tanning")) {
+            red = k * 255;
+            green = k * 225;
+            blue = k * 255;
+        }
+        /*
+        else {
             red = 1.0F;
             green = 1.0F;
             blue = 1.0F;
@@ -197,14 +212,14 @@ public class TileEntitySoakingTroughRenderer extends TileEntitySpecialRenderer {
         GL11.glPushMatrix(); // start
         float scale = 1.0F;
         float yOffset = 1 / 16F;
-        GL11.glTranslatef((float) d + 0.5F, (float) d1 + yOffset, (float) d2 + 0.5F); // size
+        GL11.glTranslatef((float) d + 0.5F, (float) d1 + 1.25F, (float) d2 + 0.5F); // size
         GL11.glRotatef(j, 0.0F, 1.0F, 0.0F); // rotate based on metadata
         GL11.glScalef(scale, -scale, -scale); // if you read this comment out this line and you can see what happens
         GL11.glPushMatrix();
 
         GL11.glColor3f(1F, 1F, 1F);
 
-        bindTextureByName("textures/models/zsModels/SoakingTroughTex.png"); // texture
+        bindTextureByName("textures/models/zsModels/soaking_trough.png"); // texture
         model.renderModel(0.0625F);
 
         GL11.glColor3f(1F, 1F, 1F);

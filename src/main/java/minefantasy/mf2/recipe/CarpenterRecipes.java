@@ -8,6 +8,7 @@ import minefantasy.mf2.api.crafting.refine.QuernRecipes;
 import minefantasy.mf2.api.material.CustomMaterial;
 import minefantasy.mf2.api.rpg.Skill;
 import minefantasy.mf2.api.rpg.SkillList;
+import minefantasy.mf2.block.basic.BasicBlockMF;
 import minefantasy.mf2.block.decor.BlockWoodDecor;
 import minefantasy.mf2.block.list.BlockListMF;
 import minefantasy.mf2.config.ConfigHardcore;
@@ -89,7 +90,7 @@ public class CarpenterRecipes {
         MineFantasyAPI.addCarpenterRecipe(provisioning, new ItemStack(FoodListMF.dead_porridge), "",
                 grinding, "spoon", -1, 10,
                 new Object[]{"O", "P", "Z", "X", 'O', Blocks.dirt, 'P', Items.bone, 'Z', FoodListMF.salt, 'X', Items.bowl,});
-        MineFantasyAPI.addCarpenterRecipe(null, new ItemStack(ComponentListMF.limestone_item, 2), "",
+        MineFantasyAPI.addCarpenterRecipe(null, new ItemStack(ComponentListMF.limestone_item, 2), "limestone_farm",
                 grinding, "hvyhammer", -1, 10,
                 new Object[]{"O", 'O', BlockListMF.limestone_friable,});
         MineFantasyAPI.addCarpenterRecipe(null, new ItemStack(Blocks.gravel, 1), "",

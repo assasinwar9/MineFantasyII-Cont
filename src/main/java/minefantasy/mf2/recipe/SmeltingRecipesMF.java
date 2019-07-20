@@ -53,6 +53,14 @@ public class SmeltingRecipesMF {
             MineFantasyAPI.addFurnaceRecipe(new ItemStack(Blocks.gold_ore), gold, 0);
         }
 
+        //schicht to bloomery
+        BloomRecipe.addRecipe(new ItemStack(ComponentListMF.schichtCopper), copper);
+        BloomRecipe.addRecipe(new ItemStack(ComponentListMF.schichtGold), gold);
+        BloomRecipe.addRecipe(new ItemStack(ComponentListMF.schichtIron), iron);
+        BloomRecipe.addRecipe(new ItemStack(ComponentListMF.schichtSilver), silver);
+        BloomRecipe.addRecipe(new ItemStack(ComponentListMF.schichtTin), tin);
+
+
         refineRawOre(ComponentListMF.oreCopper, copper);
         refineRawOre(ComponentListMF.oreTin, tin);
         refineRawOre(ComponentListMF.oreIron, iron);

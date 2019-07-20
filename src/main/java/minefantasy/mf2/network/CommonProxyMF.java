@@ -23,6 +23,7 @@ import minefantasy.mf2.integration.minetweaker.MTCompat;
 import minefantasy.mf2.item.archery.ArrowFireFlint;
 import minefantasy.mf2.item.archery.ArrowFirerMF;
 import minefantasy.mf2.mechanics.*;
+import minefantasy.mf2.player.ContainerMF2Player;
 import minefantasy.mf2.util.XSTRandom;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
@@ -129,6 +130,7 @@ public class CommonProxyMF implements IGuiHandler, ISmokeHandler {
         GameRegistry.registerTileEntity(TileEntityResearch.class, "MF_Research");
         GameRegistry.registerTileEntity(TileEntityTrough.class, "MF_Trough");
 
+        GameRegistry.registerTileEntity(TileEntityRunicPillar.class, "MF_RunicPillar");
         GameRegistry.registerTileEntity(TileEntitySoakingTrough.class, "MF_SoakingTrough");
         GameRegistry.registerTileEntity(TileEntityCauldronMF.class, "MF_CauldronMF");
 

@@ -14,6 +14,7 @@ import minefantasy.mf2.block.tree.BlockLeavesMF;
 import minefantasy.mf2.block.tree.BlockLogMF;
 import minefantasy.mf2.block.tree.BlockSaplingMF;
 import minefantasy.mf2.block.wizardry.BlockMagicPedestal;
+import minefantasy.mf2.block.wizardry.BlockRunicPillar;
 import minefantasy.mf2.item.food.FoodListMF;
 import minefantasy.mf2.item.list.ComponentListMF;
 import minefantasy.mf2.material.BaseMaterialMF;
@@ -51,6 +52,9 @@ public class BlockListMF {
     public static Block ref_furnace_active = new BlockRefFurnace(true).setLightLevel(8.0F);
 
     public static Block magic_pedestal = new BlockMagicPedestal();
+    public static Block runic_pillar_anc = new BlockRunicPillar("anc");
+    public static Block runic_pillar_fire = new BlockRunicPillar("fire");
+
 
     public static Block stonebrick_white = new BasicBlockMF("stonebrick_white", Material.rock).setHardness(3.0F).setResistance(4.0F)
             .setStepSound(Block.soundTypeStone);

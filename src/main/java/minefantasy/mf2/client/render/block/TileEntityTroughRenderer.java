@@ -8,6 +8,8 @@ import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
 import org.lwjgl.opengl.GL11;
 
+import java.util.Random;
+
 public class TileEntityTroughRenderer extends TileEntitySpecialRenderer {
     private ModelTrough model;
     private float red, green, blue;
@@ -45,6 +47,9 @@ public class TileEntityTroughRenderer extends TileEntitySpecialRenderer {
         if (i == 0) {
             j = 90;
         }
+        if (i == 0) {
+            j = 90;
+        }
 
         GL11.glPushMatrix(); // start
         float scale = 1.0F;
@@ -69,11 +74,11 @@ public class TileEntityTroughRenderer extends TileEntitySpecialRenderer {
             GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 
             //String liquidType = tile.liquid;
-            String texture = getLiquidTex(tile.liquid);
+            String texture = getLiquidTex();
             bindTextureByName(texture); // texture
 
-            getLiquidColor(tile.liquid);
-            GL11.glColor4f(red, green, blue, 0.9F);
+            //getLiquidColor(tile.liquid);
+            GL11.glColor4f(1F, 1F, 1F, 0.9F);
             GL11.glTranslatef(0F, -height * 0.35F, 0F);
             model.renderWater(0.0625F);
         }
@@ -83,15 +88,13 @@ public class TileEntityTroughRenderer extends TileEntitySpecialRenderer {
 
     }
 
-    private String getLiquidTex (String liquid) {
-        if (liquid == "water") {
+    private String getLiquidTex () {
             return "textures/blocks/zsAddon/liquid_water.png";
-        }
-        else return "textures/blocks/zsAddon/liquid_colordef.png";
+
     }
 
     //  1 / 255 = 0.00392
-    private void getLiquidColor (String liquid) {
+   /* private void getLiquidColor (String liquid) {
         float k = 0.00392F;
         if (liquid == "water") {
             red = 1.0F;
@@ -178,12 +181,17 @@ public class TileEntityTroughRenderer extends TileEntitySpecialRenderer {
             green = 1.0F;
             blue = 1.0F;
         }
-        /*else {
+        if (liquid == "limestone") {
+            red = k * 234;
+            green = k * 225;
+            blue = k * 200;
+        }
+        else {
             red = 1.0F;
             green = 1.0F;
             blue = 1.0F;
-        }*/
-    }
+        }
+    }*/
 
     public void renderInvModel(String tex, CustomMaterial material, double d, double d1, double d2) {
         int j = 90;

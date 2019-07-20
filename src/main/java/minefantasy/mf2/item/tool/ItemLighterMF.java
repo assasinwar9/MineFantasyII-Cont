@@ -3,6 +3,7 @@ package minefantasy.mf2.item.tool;
 import cpw.mods.fml.common.registry.GameRegistry;
 import minefantasy.mf2.MineFantasyII;
 import minefantasy.mf2.api.tool.ILighter;
+import minefantasy.mf2.item.list.ComponentListMF;
 import minefantasy.mf2.item.list.CreativeTabMF;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;

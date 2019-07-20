@@ -1,5 +1,7 @@
 package minefantasy.mf2.container;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import minefantasy.mf2.block.tileentity.TileEntityTarKiln;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -18,7 +20,7 @@ public class ContainerTarKiln extends Container {
     public ContainerTarKiln(InventoryPlayer user, TileEntityTarKiln tile) {
         this.tile = tile;
 
-        this.addSlotToContainer(new Slot(tile, 0, 81, 58));
+        this.addSlotToContainer(new Slot(tile, 0, 81, 27));
         //this.addSlotToContainer(new Slot(tile, 1, 81, 18));
 
         int i;
@@ -43,7 +45,7 @@ public class ContainerTarKiln extends Container {
 
    @Override
     public void detectAndSendChanges() {
-        /*for (int i = 0; i < this.crafters.size(); ++i) {
+        for (int i = 0; i < this.crafters.size(); ++i) {
             ICrafting icrafting = (ICrafting) this.crafters.get(i);
 
             if (this.lastProgress != (int) tile.progress) {
@@ -55,7 +57,7 @@ public class ContainerTarKiln extends Container {
             if (this.lastTemp != (int) tile.temperature) {
                 icrafting.sendProgressBarUpdate(this, 2, (int) tile.temperature);
             }
-        }*/
+        }
         this.lastProgress = (int) tile.progress;
         this.lastProgressMax = (int) tile.progressMax;
         this.lastTemp = (int) tile.temperature;
@@ -76,6 +78,22 @@ public class ContainerTarKiln extends Container {
             }
         }
     }
+
+   /* @Override
+    @SideOnly(Side.CLIENT)
+    public void updateProgressBar(int id, int value) {
+        if (id == 0) {
+            tile.progress = value;
+        }
+
+        if (id == 1) {
+            tile.progressMax = value;
+        }
+
+        if (id == 2) {
+            tile.temperature = value;
+        }
+    }*/
 
     @Override
     public ItemStack transferStackInSlot(EntityPlayer user, int currentSlot) {

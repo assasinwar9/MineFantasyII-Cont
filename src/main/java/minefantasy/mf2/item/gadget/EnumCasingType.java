@@ -9,7 +9,7 @@ public enum EnumCasingType {
     public float rangeModifier;
     public float weightModifier;
 
-    EnumCasingType(String name, float damage, float range, float weight) {
+    private EnumCasingType(String name, float damage, float range, float weight) {
         this.name = name;
         this.damageModifier = damage;
         this.rangeModifier = range;

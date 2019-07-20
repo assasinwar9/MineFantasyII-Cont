@@ -6,7 +6,7 @@ public enum EnumFuseType {
     public String name;
     public int time;
 
-    EnumFuseType(String name, int time) {
+    private EnumFuseType(String name, int time) {
         this.name = name;
         this.time = time;
     }

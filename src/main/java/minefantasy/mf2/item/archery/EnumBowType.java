@@ -22,7 +22,7 @@ public enum EnumBowType {
      * @param durability modifies the durability (1.0=normal)
      * @param velocity   modifies the speed of the fired projectile
      */
-    EnumBowType(float dam, float time, float durability, float velocity, float spread) {
+    private EnumBowType(float dam, float time, float durability, float velocity, float spread) {
         this.damageModifier = dam;
         this.chargeTime = time * 20F;
         this.durabilityModifier = durability;

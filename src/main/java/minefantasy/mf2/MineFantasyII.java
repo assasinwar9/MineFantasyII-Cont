@@ -20,6 +20,7 @@ import minefantasy.mf2.config.*;
 import minefantasy.mf2.integration.minetweaker.MTCompat;
 import minefantasy.mf2.item.gadget.ItemLootSack;
 import minefantasy.mf2.item.list.ComponentListMF;
+import minefantasy.mf2.item.list.HerbalicListMF;
 import minefantasy.mf2.item.list.ToolListMF;
 import minefantasy.mf2.knowledge.ArtefactListMF;
 import minefantasy.mf2.knowledge.KnowledgeListMF;
@@ -33,7 +34,9 @@ import minefantasy.mf2.recipe.BasicRecipesMF;
 import minefantasy.mf2.recipe.RecipeRemover;
 import minefantasy.mf2.util.BukkitUtils;
 import minefantasy.mf2.util.MFLogUtil;
+import net.minecraft.client.Minecraft;
 import net.minecraft.init.Items;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
@@ -118,6 +121,7 @@ public class MineFantasyII {
         RecipeRemover.removeRecipes();
         ToolListMF.load();
         ComponentListMF.load();
+
     }
 
     @EventHandler

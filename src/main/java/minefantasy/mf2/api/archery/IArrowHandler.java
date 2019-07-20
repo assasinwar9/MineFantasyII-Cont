@@ -10,6 +10,6 @@ public interface IArrowHandler {
      *
      * @return true if the arrow has been fired
      */
-    boolean onFireArrow(World world, ItemStack arrow, ItemStack bow, EntityPlayer user, float charge,
-                        boolean infinite);
+    public boolean onFireArrow(World world, ItemStack arrow, ItemStack bow, EntityPlayer user, float charge,
+                               boolean infinite);
 }

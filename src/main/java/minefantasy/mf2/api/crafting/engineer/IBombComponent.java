@@ -5,10 +5,10 @@ public interface IBombComponent {
     /**
      * The type of component only supported types (minecase, bombcase, filling)
      */
-    String getComponentType();
+    public String getComponentType();
 
     /**
      * The tier, this depends on the component type
      */
-    byte getTier();
+    public byte getTier();
 }

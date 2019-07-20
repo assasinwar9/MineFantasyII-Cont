@@ -7,5 +7,5 @@ public interface IGasProtector {
      * Applies ONLY to helmets, gets the percentage (1-100) of gas protection from
      * smoke
      */
-    float getGasProtection(ItemStack item);
+    public float getGasProtection(ItemStack item);
 }

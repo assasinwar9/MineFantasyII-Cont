@@ -7,10 +7,10 @@ public interface IArrowRetrieve {
      * Gets if the arrow will be dropped by a killed mob (this pretty much connects
      * to the canBePickedUp variable)
      */
-    boolean canBePickedUp();
+    public boolean canBePickedUp();
 
     /**
      * Gets the item dropped when the enemy is killed (the arrow item used)
      */
-    ItemStack getDroppedItem();
+    public ItemStack getDroppedItem();
 }

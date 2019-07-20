@@ -470,8 +470,9 @@ public class ArmourCalculator {
         float reduction = 0.8F;
 
         if (percentQuality < reduction) {
+            float mod = Math.max(0.1F, percentQuality / reduction);
 
-            return Math.max(0.1F, percentQuality / reduction);
+            return mod;
         }
         return 1.0F;
     }

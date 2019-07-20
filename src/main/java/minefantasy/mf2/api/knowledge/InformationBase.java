@@ -14,7 +14,6 @@ import net.minecraft.stats.IStatStringFormat;
 import net.minecraft.util.StatCollector;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class InformationBase {
     public static boolean easyResearch;
@@ -221,7 +220,9 @@ public class InformationBase {
     }
 
     public void addPages(EntryPage... info) {
-        pages.addAll(Arrays.asList(info));
+        for (EntryPage page : info) {
+            pages.add(page);
+        }
     }
 
     public ArrayList<EntryPage> getPages() {

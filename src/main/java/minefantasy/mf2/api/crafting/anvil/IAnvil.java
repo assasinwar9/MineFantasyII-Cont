@@ -19,7 +19,7 @@ public interface IAnvil {
 
     void setSkill(Skill skill);
 
-    void setResearch(String research);
+    public void setResearch(String research);
 
     int getRecipeHammer();
 

@@ -12,6 +12,7 @@ public class SkillList {
     public static Skill construction = new Skill("construction").register();
     public static Skill provisioning = new Skill("provisioning").register();
     public static Skill combat = new Skill("combat").register();
+    public static Skill alchemy = new Skill("alchemy").register();
 
     // OFFENSE
     // public static Skill unarmed = new Skill("unarmed").register();

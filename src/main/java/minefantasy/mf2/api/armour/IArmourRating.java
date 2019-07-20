@@ -7,5 +7,5 @@ public interface IArmourRating {
      * Gets the scale in relation for the total suit (0-4 = head, chest, legs,
      * boots)
      */
-    float scalePiece(ItemStack item);
+    public float scalePiece(ItemStack item);
 }

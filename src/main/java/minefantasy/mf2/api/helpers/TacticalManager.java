@@ -8,7 +8,6 @@ import minefantasy.mf2.api.weapon.IParryable;
 import minefantasy.mf2.api.weapon.ISpecialCombatMob;
 import minefantasy.mf2.entity.EntityArrowMF;
 import minefantasy.mf2.mechanics.CombatMechanics;
-import minefantasy.mf2.util.XSTRandom;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityWitch;
@@ -21,6 +20,9 @@ import net.minecraft.potion.Potion;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EntityDamageSourceIndirect;
 import net.minecraft.util.MathHelper;
+
+import java.util.Random;
+
 /**
  * This calculates different tactical contexts for combat like flanking and
  * blocking
@@ -34,7 +36,7 @@ public class TacticalManager {
      */
     public static boolean shouldStaminaBlock = false;
     public static boolean newBalanceSystem = false;
-    private static XSTRandom rand = new XSTRandom();
+    private static Random rand = new Random();
 
     /**
      * Determines if the defender is hit in the front (180degree arc)
@@ -103,7 +105,7 @@ public class TacticalManager {
             }
         }
 
-        if (CombatMechanics.isParryAvailable(user)) {
+        if (!CombatMechanics.isParryAvailable(user)) {
             return false;
         }
         int confusion = 0;
@@ -274,7 +276,7 @@ public class TacticalManager {
     }
 
     /**
-     * Gets the modifer for magic resistance 1.0=no effect
+     * Gets the modifer for wizardry resistance 1.0=no effect
      */
     public static float resistMagic(EntityLivingBase user, DamageSource source) {
         float resistance = 100F;
@@ -345,7 +347,7 @@ public class TacticalManager {
     }
 
     /**
-     * Gets the modifer for base resistance(non magic/fire)
+     * Gets the modifer for base resistance(non wizardry/fire)
      */
     public static float resistBase(EntityLivingBase user, DamageSource source) {
         float resistance = 100F;

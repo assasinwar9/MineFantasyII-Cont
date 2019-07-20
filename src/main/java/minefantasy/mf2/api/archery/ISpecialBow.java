@@ -13,11 +13,11 @@ public interface ISpecialBow {
      * @param arrow the arrow fired(use a cast to determine what class it is)
      * @return the same arrow, but modified
      */
-    Entity modifyArrow(ItemStack bow, Entity arrow);
+    public Entity modifyArrow(ItemStack bow, Entity arrow);
 
-    float getMaxCharge();
+    public float getMaxCharge();
 
-    float getRange(ItemStack bow);
+    public float getRange(ItemStack bow);
 
-    float getSpread(ItemStack bow);
+    public float getSpread(ItemStack bow);
 }

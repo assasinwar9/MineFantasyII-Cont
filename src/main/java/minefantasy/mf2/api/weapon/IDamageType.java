@@ -9,7 +9,7 @@ public interface IDamageType {
      *                  "Entity" for projectiles This can therefore be implemented by
      *                  projectile entities and items
      */
-    float[] getDamageRatio(Object... implement);
+    public float[] getDamageRatio(Object... implement);
 
     /**
      * Gets the "Penetration" level: this modifies the armour rating of supported
@@ -19,5 +19,5 @@ public interface IDamageType {
      *                  "Entity" for projectiles This can therefore be implemented by
      *                  projectile entities and items
      */
-    float getPenetrationLevel(Object implement);
+    public float getPenetrationLevel(Object implement);
 }

@@ -7,18 +7,18 @@ public interface IArrowMF {
     /**
      * Gets the damage modifier (1.0 = Flint arrow)
      */
-    float getDamageModifier(ItemStack arrow);
+    public abstract float getDamageModifier(ItemStack arrow);
 
     /**
      * Gets the weight (1.0 = regular fall speed)
      */
-    float getGravityModifier(ItemStack arrow);
+    public abstract float getGravityModifier(ItemStack arrow);
 
     /**
      * Gets the chance the arrow will break on impace (0.0 = no chance, 1.0 = 100%
      * chance)
      */
-    float getBreakChance(Entity entityArrow, ItemStack arrow);
+    public abstract float getBreakChance(Entity entityArrow, ItemStack arrow);
 
-    void onHitEntity(Entity arrowInstance, Entity shooter, Entity hit, float damage);
+    public abstract void onHitEntity(Entity arrowInstance, Entity shooter, Entity hit, float damage);
 }

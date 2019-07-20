@@ -9,7 +9,7 @@ public interface IArmourMF {
      * Gets how heavy the piece is. (mesured in Kg). this is used for slowing
      * movement, and stamina decay
      */
-    float getPieceWeight(ItemStack item, int slot);
+    public float getPieceWeight(ItemStack item, int slot);
 
     /**
      * This is if the suit is light or heavy armour (pretty much anything above 50kg
@@ -17,5 +17,5 @@ public interface IArmourMF {
      *
      * @return "light" "medium" or "heavy"
      */
-    String getSuitWeigthType(ItemStack item);
+    public String getSuitWeigthType(ItemStack item);
 }

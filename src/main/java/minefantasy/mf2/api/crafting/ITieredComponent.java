@@ -6,5 +6,5 @@ public interface ITieredComponent {
     /**
      * is it made of "wood", "metal", etc
      */
-    String getMaterialType(ItemStack item);
+    public String getMaterialType(ItemStack item);
 }

@@ -1,5 +1,6 @@
 package minefantasy.mf2.block.list;
 
+import minefantasy.mf2.block.alchemy.BlockRefFurnace;
 import minefantasy.mf2.block.basic.*;
 import minefantasy.mf2.block.crafting.*;
 import minefantasy.mf2.block.decor.*;
@@ -7,22 +8,20 @@ import minefantasy.mf2.block.food.BlockBerryBush;
 import minefantasy.mf2.block.food.BlockCakeMF;
 import minefantasy.mf2.block.food.BlockPie;
 import minefantasy.mf2.block.herbs.BlockHerbCarxanium;
-import minefantasy.mf2.block.herbs.BlockHerbsMF;
 import minefantasy.mf2.block.refining.*;
 import minefantasy.mf2.block.tree.BlockGrindedLogs;
 import minefantasy.mf2.block.tree.BlockLeavesMF;
 import minefantasy.mf2.block.tree.BlockLogMF;
 import minefantasy.mf2.block.tree.BlockSaplingMF;
+import minefantasy.mf2.block.wizardry.BlockMagicPedestal;
 import minefantasy.mf2.item.food.FoodListMF;
 import minefantasy.mf2.item.list.ComponentListMF;
-import minefantasy.mf2.item.list.ToolListMF;
 import minefantasy.mf2.material.BaseMaterialMF;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.oredict.OreDictionary;
 
 import java.util.Random;
@@ -50,6 +49,8 @@ public class BlockListMF {
 
     public static Block ref_furnace = new BlockRefFurnace(false);
     public static Block ref_furnace_active = new BlockRefFurnace(true).setLightLevel(8.0F);
+
+    public static Block magic_pedestal = new BlockMagicPedestal();
 
     public static Block stonebrick_white = new BasicBlockMF("stonebrick_white", Material.rock).setHardness(3.0F).setResistance(4.0F)
             .setStepSound(Block.soundTypeStone);

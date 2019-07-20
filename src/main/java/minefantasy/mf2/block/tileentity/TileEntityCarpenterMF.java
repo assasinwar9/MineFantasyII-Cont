@@ -10,6 +10,7 @@ import minefantasy.mf2.api.rpg.Skill;
 import minefantasy.mf2.block.list.BlockListMF;
 import minefantasy.mf2.container.ContainerCarpenterMF;
 import minefantasy.mf2.item.armour.ItemArmourMF;
+import minefantasy.mf2.item.food.FoodListMF;
 import minefantasy.mf2.item.list.ComponentListMF;
 import minefantasy.mf2.network.NetworkUtils;
 import minefantasy.mf2.network.packet.CarpenterPacket;
@@ -17,6 +18,7 @@ import minefantasy.mf2.util.MFLogUtil;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
@@ -24,6 +26,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.WorldServer;
+
 
 import java.util.Random;
 

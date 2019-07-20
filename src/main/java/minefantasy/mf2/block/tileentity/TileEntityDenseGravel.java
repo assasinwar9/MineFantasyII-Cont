@@ -4,13 +4,14 @@ import minefantasy.mf2.block.basic.BlockDenseGravel;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.IBlockAccess;
 
 import java.util.Random;
 
 public class TileEntityDenseGravel extends TileEntity {
     private Random rand = new Random();
     private float progress = 0;
-    private float progressMax = 100 + rand.nextInt(50);
+    private float progressMax = 400 + rand.nextInt(50);
 
 
     @Override

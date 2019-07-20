@@ -1,11 +1,14 @@
 package minefantasy.mf2.block.tileentity.decor;
 
 import minefantasy.mf2.api.heating.IQuenchBlock;
+import minefantasy.mf2.api.helpers.CustomToolHelper;
 import minefantasy.mf2.container.ContainerTrough;
 import minefantasy.mf2.item.ItemColormats;
+import minefantasy.mf2.item.food.FoodListMF;
 import minefantasy.mf2.item.list.ComponentListMF;
 import minefantasy.mf2.network.NetworkUtils;
 import minefantasy.mf2.network.packet.TroughPacket;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -20,13 +23,14 @@ public class TileEntityTrough extends TileEntityWoodDecor implements IQuenchBloc
     public static int capacityScale = 8;
     public int fill;
     private int ticksExisted;
-    public String liquid; //liquid type: water, black
-    public boolean soakingMode;
+    public String liquid = "water"; //liquid type: water, black
+    public boolean soakingMode = false;
     public ItemStack[] inv = new ItemStack[1];
     public final ContainerTrough container;
-    public float progress = 0, progressMax = 500;
-    public int itemCount;
+    public float progress = 0, progressMax = 1200; //default progress max = 1 minute
+
     public ItemStack soakingItems;
+    public float soakTimeScale;
 
 
     public TileEntityTrough() {
@@ -56,52 +60,6 @@ public class TileEntityTrough extends TileEntityWoodDecor implements IQuenchBloc
                     return true;
                 }
             }
-                //of color materials
-            if (held.getItem() instanceof ItemColormats && fill > 0 && liquid == "water") {
-                if (held.getItem() == ComponentListMF.colormat_black) liquid = "black";
-                if (held.getItem() == ComponentListMF.colormat_red) liquid = "red";
-                if (held.getItem() == ComponentListMF.colormat_green) liquid = "green";
-                if (held.getItem() == ComponentListMF.colormat_brown) liquid = "brown";
-                if (held.getItem() == ComponentListMF.colormat_blue) liquid = "blue";
-                if (held.getItem() == ComponentListMF.colormat_purple) liquid = "purple";
-                if (held.getItem() == ComponentListMF.colormat_cyan) liquid = "cyan";
-                if (held.getItem() == ComponentListMF.colormat_light_gray) liquid = "light_gray";
-                if (held.getItem() == ComponentListMF.colormat_gray) liquid = "gray";
-                if (held.getItem() == ComponentListMF.colormat_pink) liquid = "pink";
-                if (held.getItem() == ComponentListMF.colormat_lime) liquid = "lime";
-                if (held.getItem() == ComponentListMF.colormat_yellow) liquid = "yellow";
-                if (held.getItem() == ComponentListMF.colormat_light_blue) liquid = "light_blue";
-                if (held.getItem() == ComponentListMF.colormat_magenta) liquid = "magenta";
-                if (held.getItem() == ComponentListMF.colormat_orange) liquid = "orange";
-                if (held.getItem() == ComponentListMF.colormat_white) liquid = "white";
-
-                --held.stackSize;
-                if (held.stackSize <= 0)
-                    user.setCurrentItemOrArmor(0, null);
-                givePlayerItem(user, held, new ItemStack(ComponentListMF.clay_pot));
-
-                soakingMode = true;
-                return true;
-            }
-             //soaking
-            if (soakingMode)
-                if (inv[0] == null || inv[0].stackSize < 4) {
-                    //wool
-                    if (held.getItem() == Item.getItemFromBlock(Blocks.wool) && held.getItemDamage() == 0)
-                        soakingItems = new ItemStack(Blocks.wool, 1, 0);
-                    else
-                        soakingItems = null;
-                    if (soakingItems != null) {
-
-                        if (this.inv[0] == null)
-                            this.setInventorySlotContents(0, soakingItems);
-
-                        else if (this.inv[0].isItemEqual(soakingItems))
-                            ++this.inv[0].stackSize;
-                        //setSoakingItems(user, held);
-                        return true;
-                    }
-                }
 
             // Take
             if (fill >= 1 && held.getItem() == Items.glass_bottle && held.getItemDamage() == 0 && !soakingMode) {
@@ -121,32 +79,23 @@ public class TileEntityTrough extends TileEntityWoodDecor implements IQuenchBloc
             user.entityDropItem(inv[0].copy(), 0F);
             setInventorySlotContents(0, null);
             return true;
-        }
+    }
         return false;
     }
 
-   /* private void setSoakingItems (EntityPlayer user, ItemStack held) {
-        //max items for soaking = 4
-        //itemCount = held.stackSize;
+   private void setPlayerItems (EntityPlayer user, ItemStack held) {
+       //max items for soaking = 4
+       //itemCount = held.stackSize;
 
+       --held.stackSize;
+       if (held.stackSize <= 0)
+           user.setCurrentItemOrArmor(0, null);
+       if (!user.worldObj.isRemote) {
+           user.entityDropItem(new ItemStack(ComponentListMF.clay_pot), 0F);
+       }
+   }
 
-        if (held.stackSize == 1) {
-            user.setCurrentItemOrArmor(0, null);
-        }
-        if (held.stackSize > 1) {
-            --held.stackSize;
-        }
-
-        if (held.getItem() == inv[0].getItem())
-            inv[0].stackSize += 1;
-
-        if (inv[0] == null) {
-            setinvSlotContents(0, held);
-            inv[0].stackSize = 1;
-        }
-    }*/
-
-    private void givePlayerItem(EntityPlayer user, ItemStack held, ItemStack jug) {
+       private void givePlayerItem(EntityPlayer user, ItemStack held, ItemStack jug) {
         if (held.stackSize == 1) {
             user.setCurrentItemOrArmor(0, jug);
             return;
@@ -162,6 +111,7 @@ public class TileEntityTrough extends TileEntityWoodDecor implements IQuenchBloc
 
     @Override
     public void updateEntity() {
+        super.updateEntity();
         ++ticksExisted;
         if (ticksExisted == 20 || ticksExisted % 100 == 0) {
             syncData();
@@ -176,19 +126,6 @@ public class TileEntityTrough extends TileEntityWoodDecor implements IQuenchBloc
         super.writeToNBT(nbt);
         nbt.setInteger("fill", fill);
         nbt.setString("liquid", liquid);
-        nbt.setBoolean("soakingMode", soakingMode);
-
-        NBTTagList savedItems = new NBTTagList();
-        for (int i = 0; i < this.inv.length; ++i) {
-            if (this.inv[i] != null) {
-                NBTTagCompound savedSlot = new NBTTagCompound();
-                savedSlot.setByte("Slot", (byte) i);
-                this.inv[i].writeToNBT(savedSlot);
-                savedItems.appendTag(savedSlot);
-            }
-        }
-        nbt.setTag("Items", savedItems);
-
     }
 
     @Override
@@ -196,19 +133,7 @@ public class TileEntityTrough extends TileEntityWoodDecor implements IQuenchBloc
         super.readFromNBT(nbt);
         fill = nbt.getInteger("fill");
         liquid = nbt.getString("liquid");
-        soakingMode = nbt.getBoolean("soakingMode");
 
-        NBTTagList savedItems = nbt.getTagList("Items", 10);
-        this.inv = new ItemStack[this.getSizeInventory()];
-
-        for (int i = 0; i < savedItems.tagCount(); ++i) {
-            NBTTagCompound savedSlot = savedItems.getCompoundTagAt(i);
-            byte slotNum = savedSlot.getByte("Slot");
-
-            if (slotNum >= 0 && slotNum < this.inv.length) {
-                this.inv[slotNum] = ItemStack.loadItemStackFromNBT(savedSlot);
-            }
-        }
     }
 
     private void addCapacity(int i) {

@@ -3,13 +3,20 @@ package minefantasy.mf2.block.decor;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import javafx.scene.paint.Material;
+import minefantasy.mf2.api.material.CustomMaterial;
+import minefantasy.mf2.block.list.BlockListMF;
 import minefantasy.mf2.block.tileentity.decor.TileEntityTrough;
 import minefantasy.mf2.block.tileentity.decor.TileEntityWoodDecor;
+import minefantasy.mf2.block.decor.ItemBlockTrough;
 import minefantasy.mf2.item.list.CreativeTabMF;
+import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
@@ -92,9 +99,9 @@ public class BlockTrough extends BlockWoodDecor {
                 world.playSoundEffect(x + 0.5D, y + 0.5D, z + 0.5D, "random.splash",
                         0.125F + user.getRNG().nextFloat() / 4F, 0.5F + user.getRNG().nextFloat());
                 ((TileEntityTrough) tile).syncData();
-                if (held.isItemEqual(new ItemStack(Blocks.wool, 1, 0))) {
+                /*if (held.isItemEqual(new ItemStack(Blocks.wool, 1, 0))) {
                     --held.stackSize;
-                }
+                }*/
                 return true;
             }
         }

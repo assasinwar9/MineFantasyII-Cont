@@ -8,8 +8,12 @@ import minefantasy.mf2.api.refine.SmokeMechanics;
 import minefantasy.mf2.block.list.BlockListMF;
 import minefantasy.mf2.block.refining.BlockCrucible;
 import minefantasy.mf2.block.tileentity.blastfurnace.TileEntityBlastFH;
+import minefantasy.mf2.config.ConfigHardcore;
+import minefantasy.mf2.item.ItemComponentMF;
+import minefantasy.mf2.item.list.ComponentListMF;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockEndPortalFrame;
+import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.inventory.IInventory;
@@ -147,7 +151,9 @@ public class TileEntityCrucible extends TileEntity implements IInventory, ISided
 
     private ItemStack getRecipe() {
         ItemStack[] input = new ItemStack[getSizeInventory() - 1];
-        System.arraycopy(inv, 0, input, 0, 9);
+        for (int a = 0; a < 9; a++) {
+            input[a] = inv[a];
+        }
         Alloy alloy = AlloyRecipes.getResult(input);
         if (alloy != null) {
             if (alloy.getLevel() <= getTier()) {

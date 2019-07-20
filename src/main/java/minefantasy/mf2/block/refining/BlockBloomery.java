@@ -6,6 +6,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import minefantasy.mf2.MineFantasyII;
 import minefantasy.mf2.block.list.BlockListMF;
 import minefantasy.mf2.block.tileentity.TileEntityBloomery;
+import minefantasy.mf2.item.list.ComponentListMF;
 import minefantasy.mf2.item.list.CreativeTabMF;
 import minefantasy.mf2.item.tool.ItemLighterMF;
 import net.minecraft.block.Block;
@@ -123,14 +124,14 @@ public class BlockBloomery extends BlockContainer {
                         return true;
                     if (l == 1 && tile.light(user)) {
                         held.damageItem(1, user);
+                        return true;
                     }
-                    return true;
+                    if (held.getItem() == ComponentListMF.dull_ember) {
+                        if (tile.light(user))
+                            --held.stackSize;
+                        return true;
+                    }
                 }
-                //light by dull ember
-                /*if (!tile.isActive && held.getItem() == ComponentListMF.dull_ember) {
-                    --held.stackSize;
-                    tile.light(user);
-                }*/
             }
             // GUI
             if (!world.isRemote && !tile.isActive && !tile.hasBloom()) {

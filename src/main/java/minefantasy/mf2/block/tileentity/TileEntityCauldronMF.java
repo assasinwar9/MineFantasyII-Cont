@@ -1,8 +1,12 @@
 package minefantasy.mf2.block.tileentity;
 
+import minefantasy.mf2.item.ItemColormats;
+import minefantasy.mf2.item.list.ComponentListMF;
 import net.minecraft.block.Block;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;

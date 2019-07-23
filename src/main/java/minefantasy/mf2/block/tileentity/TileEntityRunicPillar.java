@@ -13,7 +13,7 @@ public class TileEntityRunicPillar extends TileEntity {
     private Random rand = new Random();
     private float progress = 0;
     private float progressMax = 400 + rand.nextInt(50);
-    private Block upperBlock, lowerBlock;
+    private Block upperBlock, lowerBlock, currentBlock;
     public boolean isActive;
 
     private TileEntity tile;
@@ -22,17 +22,6 @@ public class TileEntityRunicPillar extends TileEntity {
     public void updateEntity() {
         super.updateEntity();
 
-        /*if (isPillar(world, x, y, z)) {
-            world.setBlockMetadataWithNotify(x, y, z, 1, 2);
-        }*/
-
-        if (worldObj.getBlock(xCoord, yCoord, zCoord + 1) == Blocks.dirt)
-            activation();
-        if (worldObj.getBlock(xCoord, yCoord, zCoord + 1) == Blocks.stone)
-            deactivation();
-
-
-        int l = worldObj.getBlockMetadata(xCoord, yCoord, zCoord);
         /*meta:
         0 = simple side tex
         1 = top side tex
@@ -88,11 +77,13 @@ public class TileEntityRunicPillar extends TileEntity {
 
 
     public boolean isTopBlock () {
+        currentBlock = worldObj.getBlock(xCoord, yCoord, zCoord);
         upperBlock = worldObj.getBlock(xCoord, yCoord + 1, zCoord);
         lowerBlock = worldObj.getBlock(xCoord, yCoord - 1, zCoord);
         return  (!(upperBlock instanceof BlockRunicPillar) && lowerBlock instanceof BlockRunicPillar);
     }
     public boolean isBottomBlock () {
+        currentBlock = worldObj.getBlock(xCoord, yCoord, zCoord);
         upperBlock = worldObj.getBlock(xCoord, yCoord + 1, zCoord);
         lowerBlock = worldObj.getBlock(xCoord, yCoord - 1, zCoord);
         return  (upperBlock instanceof BlockRunicPillar && !(lowerBlock instanceof BlockRunicPillar));

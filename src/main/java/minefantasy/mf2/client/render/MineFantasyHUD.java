@@ -96,9 +96,9 @@ public class MineFantasyHUD extends Gui {
                 if (tile instanceof TileEntityAnvilMF) {
                     this.renderCraftMetre(world, player, (TileEntityAnvilMF) tile);
                 }
-                if (tile instanceof TileEntityCraftingAltar) {
-                    this.renderCraftMetre(world, player, (TileEntityCraftingAltar) tile);
-                    this.renderCraftingAltarBalance(world, player, (TileEntityCraftingAltar) tile);
+                if (tile instanceof TileEntityMagicChalice) {
+                    this.renderCraftMetre(world, player, (TileEntityMagicChalice) tile);
+                    this.renderCraftingAltarBalance(world, player, (TileEntityMagicChalice) tile);
                 }
                 if (tile instanceof TileEntityCarpenterMF) {
                     this.renderCraftMetre(world, player, (TileEntityCarpenterMF) tile);
@@ -431,7 +431,7 @@ public class MineFantasyHUD extends Gui {
         GL11.glPopMatrix();
     }
 
-    private void renderCraftMetre(World world, EntityPlayer player, TileEntityCraftingAltar tile) {
+    private void renderCraftMetre(World world, EntityPlayer player, TileEntityMagicChalice tile) {
         //boolean knowsCraft = tile.doesPlayerKnowCraft(player);
         GL11.glPushMatrix();
         ScaledResolution scaledresolution = new ScaledResolution(MineFantasyHUD.mc, MineFantasyHUD.mc.displayWidth,
@@ -463,7 +463,7 @@ public class MineFantasyHUD extends Gui {
         GL11.glPopMatrix();
     }
 
-    private void renderCraftingAltarBalance(World world, EntityPlayer player, TileEntityCraftingAltar tile) {
+    private void renderCraftingAltarBalance(World world, EntityPlayer player, TileEntityMagicChalice tile) {
         GL11.glPushMatrix();
         ScaledResolution scaledresolution = new ScaledResolution(MineFantasyHUD.mc, MineFantasyHUD.mc.displayWidth,
                 MineFantasyHUD.mc.displayHeight);

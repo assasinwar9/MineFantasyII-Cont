@@ -13,6 +13,7 @@ import minefantasy.mf2.block.tree.BlockGrindedLogs;
 import minefantasy.mf2.block.tree.BlockLeavesMF;
 import minefantasy.mf2.block.tree.BlockLogMF;
 import minefantasy.mf2.block.tree.BlockSaplingMF;
+import minefantasy.mf2.block.wizardry.BlockMagicChalice;
 import minefantasy.mf2.block.wizardry.BlockMagicPedestal;
 import minefantasy.mf2.block.wizardry.BlockRunicPillar;
 import minefantasy.mf2.item.food.FoodListMF;
@@ -51,6 +52,8 @@ public class BlockListMF {
     public static Block ref_furnace = new BlockRefFurnace(false);
     public static Block ref_furnace_active = new BlockRefFurnace(true).setLightLevel(8.0F);
 
+    //wizardry
+    public static Block magic_chalice = new BlockMagicChalice(1, "fire");
     public static Block magic_pedestal = new BlockMagicPedestal();
     public static Block runic_pillar_anc = new BlockRunicPillar("anc");
     public static Block runic_pillar_fire = new BlockRunicPillar("fire");

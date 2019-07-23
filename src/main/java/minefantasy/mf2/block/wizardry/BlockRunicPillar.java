@@ -22,7 +22,8 @@ import net.minecraft.world.World;
 import java.util.Random;
 
 public class BlockRunicPillar extends BlockContainer {
-    private String name, modification;
+    private String name;
+    public String modification;
     private IIcon topTex, topSTex, midSTex, botSTex, topActiveSTex, midActiveSTex, botActiveSTex;
     private int l;
     private TileEntity tile;
@@ -107,6 +108,7 @@ public class BlockRunicPillar extends BlockContainer {
         else world.setBlockMetadataWithNotify(x, y, z, 4, 2);
     }*/
 
+
     @Override
     public Item getItemDropped(int meta, Random rand, int i) {
         return Item.getItemFromBlock(this);
@@ -116,6 +118,10 @@ public class BlockRunicPillar extends BlockContainer {
     @Override
     public boolean canSilkHarvest(World world, EntityPlayer player, int x, int y, int z, int metadata) {
         return false;
+    }
+
+    public String getModification () {
+        return this.modification;
     }
 
     /*

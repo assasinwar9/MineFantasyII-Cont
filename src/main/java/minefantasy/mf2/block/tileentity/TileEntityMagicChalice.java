@@ -8,6 +8,8 @@ import minefantasy.mf2.api.refine.SmokeMechanics;
 import minefantasy.mf2.block.list.BlockListMF;
 import minefantasy.mf2.block.refining.BlockCrucible;
 import minefantasy.mf2.block.tileentity.blastfurnace.TileEntityBlastFH;
+import minefantasy.mf2.block.wizardry.BlockMagicChalice;
+import minefantasy.mf2.block.wizardry.BlockMagicPedestal;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockEndPortalFrame;
 import net.minecraft.entity.item.EntityItem;
@@ -26,7 +28,7 @@ import net.minecraft.world.World;
 
 import java.util.Random;
 
-public class TileEntityCraftingAltar extends TileEntity implements IInventory {
+public class TileEntityMagicChalice extends TileEntity implements IInventory {
     private ItemStack[] inv = new ItemStack[1];
     private Random rand = new Random();
     private int downMaxCraftLimit = -60;
@@ -39,6 +41,12 @@ public class TileEntityCraftingAltar extends TileEntity implements IInventory {
 
     private int progress = 0;
     private int progressMax = 800;
+    private Block currentBlock;
+
+    private int level;
+    private String modification;
+    private TileEntity tile;
+    private TileEntityMagicPedestal magicPedestal;
 
     private int speed; //pixel per second
     private int tickExisted;
@@ -51,28 +59,27 @@ public class TileEntityCraftingAltar extends TileEntity implements IInventory {
     public void updateEntity() {
         super.updateEntity();
 
+        ++tickExisted;
+        if (tickExisted >= 20) {
+            tickExisted = 0;
+            checkStructure();
+        }
+
+
         if (markerPos >= upCraftLimit || markerPos <= downCraftLimit) {
             craftFinalization(true);
             progress = 0;
         }
-        /*
-        ++tickExisted;
-        if (craftingPhase && tickExisted >= 2) {
-            markerPos += direction * speed;
-            tickExisted = 0;
-        }*/
+
         if (craftingPhase) {
             speed = clickCount > 4 ? 2 : 1;
             ++progress;
-            ++tickExisted;
             markerPos += direction * speed;
             if (progress >= progressMax) {
                 craftFinalization(false);
                 progress = 0;
             }
-            if (tickExisted >= 20) {
 
-            }
         }
 
     }
@@ -89,49 +96,56 @@ public class TileEntityCraftingAltar extends TileEntity implements IInventory {
         return true;
     }*/
 
-   public boolean interract (World world, int x, int y, int z, EntityPlayer user) {
-       ItemStack held = user.getHeldItem();
-       
-       if(!craftingPhase) {
-           if (held != null && held.getItem() == Items.emerald) {
-               --held.stackSize;
-               craftingPhase  = true;
-               direction = 1;
-               speed = 1;
-               upCraftLimit = upMaxCraftLimit;
-               downCraftLimit = downMaxCraftLimit;
-               return true;
-           }
-       }
-       if (craftingPhase) {
-           if (held != null && held.getItem() == Items.stick) {
-               if (direction == 1) {
-                   upCraftLimit = markerPos;
-                   markerPos -= 1;
-                   ++clickCount;
-               }
-               if (direction == -1) {
-                   downCraftLimit = markerPos;
-                   markerPos += 1;
-                   ++clickCount;
-               }
-               direction *= -1;
-               return true;
-           }
-       }
-       return false;
-       
-   }
+    public boolean interract (World world, int x, int y, int z, EntityPlayer user) {
+        ItemStack held = user.getHeldItem();
 
-   private void craftFinalization (boolean ruin) {
-       craftingPhase = false;
-       markerPos = 0;
-       clickCount = 0;
-       upCraftLimit = upMaxCraftLimit;
-       downCraftLimit = downMaxCraftLimit;
-       dropItem(worldObj, xCoord, yCoord, zCoord, ruin ? Item.getItemFromBlock(Blocks.dirt) : Items.diamond, 4, false, false);
+        if(!craftingPhase && magicPedestal != null && magicPedestal.validStructure) {
+            if (held != null && held.getItem() == Items.emerald) {
+                --held.stackSize;
+                activation();
+                return true;
+            }
+        }
+        if (craftingPhase) {
+            if (held != null && held.getItem() == Items.stick) {
+                if (direction == 1) {
+                    upCraftLimit = markerPos;
+                    markerPos -= 1;
+                    ++clickCount;
+                }
+                if (direction == -1) {
+                    downCraftLimit = markerPos;
+                    markerPos += 1;
+                    ++clickCount;
+                }
+                direction *= -1;
+                return true;
+            }
+        }
+        return false;
 
-   }
+    }
+
+    public void activation () {
+        craftingPhase  = true;
+        direction = 1;
+        speed = 1;
+        upCraftLimit = upMaxCraftLimit;
+        downCraftLimit = downMaxCraftLimit;
+        magicPedestal.isActive = true;
+    }
+
+    private void craftFinalization (boolean ruin) {
+        craftingPhase = false;
+        markerPos = 0;
+        clickCount = 0;
+        upCraftLimit = upMaxCraftLimit;
+        downCraftLimit = downMaxCraftLimit;
+        magicPedestal.isActive = false;
+        dropItem(worldObj, xCoord, yCoord, zCoord, ruin ? Item.getItemFromBlock(Blocks.dirt) : Items.diamond, 4, false, false);
+        if (worldObj.getBlock(xCoord, yCoord, zCoord) instanceof BlockMagicChalice)
+            ((BlockMagicChalice) worldObj.getBlock(xCoord, yCoord, zCoord)).spawnFinalParticle(worldObj, xCoord, yCoord, zCoord, "flame", "smoke");
+    }
 
     public void dropItem(World world, int x, int y, int z, Item item, int count, boolean isRandom, boolean noLoss) {
         dropCount = isRandom ? rand.nextInt(count) : count;
@@ -148,30 +162,50 @@ public class TileEntityCraftingAltar extends TileEntity implements IInventory {
         }
     }
 
-    public int getProgressBar () {
-       return (int) Math.floor(progress * 115 / progressMax);
+    private void checkStructure () {
+        tile = worldObj.getTileEntity(xCoord, yCoord - 1, zCoord);
+        if (tile != null && tile instanceof TileEntityMagicPedestal)
+            magicPedestal = (TileEntityMagicPedestal) tile;
+        else magicPedestal = null;
+    }
+
+    public int getLevel () {
+        if (this.getBlockType() != null && this.getBlockType() instanceof BlockMagicChalice)
+            return  ((BlockMagicChalice) this.getBlockType()).getLvl();
+        else return 0;
+    }
+
+    public String getModification () {
+        if (this.getBlockType() != null && this.getBlockType() instanceof BlockMagicChalice)
+            return  ((BlockMagicChalice) this.getBlockType()).getModification();
+        else return "error";
     }
 
 
-   public boolean isCraftingPhase () {
-       return craftingPhase;
-   }
+    public int getProgressBar () {
+        return (int) Math.floor(progress * 115 / progressMax);
+    }
 
-   public int getMarkerPosition () {
-       return markerPos;
-   }
 
-   public void moveMarker (int move) {
-       markerPos += move;
-   }
+    public boolean isCraftingPhase () {
+        return craftingPhase;
+    }
 
-   public int getDownCraftLimit () {
-       return downCraftLimit;
-   }
+    public int getMarkerPosition () {
+        return markerPos;
+    }
 
-   public int getUpCraftLimit () {
-       return upCraftLimit;
-   }
+    public void moveMarker (int move) {
+        markerPos += move;
+    }
+
+    public int getDownCraftLimit () {
+        return downCraftLimit;
+    }
+
+    public int getUpCraftLimit () {
+        return upCraftLimit;
+    }
 
     @Override
     public Block getBlockType() {
@@ -281,4 +315,5 @@ public class TileEntityCraftingAltar extends TileEntity implements IInventory {
         return tile != null && tile instanceof TileEntityBlastFH;
     }
 
-    }
+}
+

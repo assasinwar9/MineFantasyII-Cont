@@ -48,6 +48,7 @@ public class TileEntitySoakingTroughRenderer extends TileEntitySpecialRenderer {
             j = 90;
         }
 
+        bindTextureByName("textures/models/zsModels/soaking_trough.png"); // texture
 
         GL11.glPushMatrix(); // start
         GL11.glTranslatef((float) d + 0.5F, (float) d1 + 1.25F, (float) d2 + 0.5F); // size
@@ -56,8 +57,7 @@ public class TileEntitySoakingTroughRenderer extends TileEntitySpecialRenderer {
         GL11.glPushMatrix();
         model.renderModel(0.0625F);
 
-        bindTextureByName("textures/models/zsModels/soaking_trough.png"); // texture
-        model.renderModel(0.0625F);
+        //model.renderModel(0.0625F);
 
         height = tile.fill;
         if (height > 0) {

@@ -39,7 +39,7 @@ public class BlockHerbMoonflower extends BlockHerbsMF {
                 for (int i = 0; i < 3; i++) {
                     partOffsetX = (double) (random.nextInt(5) + 1) / 10;
                     partOffsetZ = (double) (random.nextInt(5) + 1) / 10;
-                    partOffsetY = (double) (random.nextInt(4) + 1) / 10;
+                    partOffsetY = (double) (random.nextInt(6) + 1) / 10;
                     world.spawnParticle("enchantmenttable", x + 0.3D + partOffsetX, y + 0.8D + partOffsetY, z + 0.3D + partOffsetZ, 0.0D, 0.0D, 0.0D);
                 }
             }

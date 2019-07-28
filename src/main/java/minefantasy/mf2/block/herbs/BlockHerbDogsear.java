@@ -25,9 +25,7 @@ public class BlockHerbDogsear extends BlockHerbsMF {
 
     public BlockHerbDogsear() {
         setBlockName("herb_" + name);
-        //this.stage = maxMeta;
 
-        //setBlockTextureName("minefantasy2:herbs/herb_carxanium_stage_0");
         GameRegistry.registerBlock(this, "herb_" + name);
     }
 
@@ -76,7 +74,7 @@ public class BlockHerbDogsear extends BlockHerbsMF {
 
     @Override
     public int getMaxMeta () {
-        return 2; // 0, 1, 2, total = 3 stages
+        return 1;
     }
 
     @SideOnly(Side.CLIENT)

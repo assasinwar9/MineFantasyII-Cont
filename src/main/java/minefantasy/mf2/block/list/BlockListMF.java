@@ -7,7 +7,7 @@ import minefantasy.mf2.block.decor.*;
 import minefantasy.mf2.block.food.BlockBerryBush;
 import minefantasy.mf2.block.food.BlockCakeMF;
 import minefantasy.mf2.block.food.BlockPie;
-import minefantasy.mf2.block.herbs.BlockHerbCarxanium;
+import minefantasy.mf2.block.herbs.*;
 import minefantasy.mf2.block.refining.*;
 import minefantasy.mf2.block.tree.BlockGrindedLogs;
 import minefantasy.mf2.block.tree.BlockLeavesMF;
@@ -85,9 +85,17 @@ public class BlockListMF {
 
     //herbs
 
-    public static Block herb_carxanium_1 = new BlockHerbCarxanium(1);
-    public static Block herb_carxanium_2 = new BlockHerbCarxanium(2);
-    public static Block herb_carxanium_3 = new BlockHerbCarxanium(3);
+    public static Block herb_carxanium = new BlockHerbCarxanium();
+    public static Block herb_sinister_grass = new BlockHerbSinisterGrass();
+    public static Block herb_endure_root = new BlockHerbEndureRoot();
+    public static Block herb_dogsear = new BlockHerbDogsear();
+    public static Block herb_flameflower = new BlockHerbFlameflower();
+    public static Block herb_wispflock = new BlockHerbWispflock();
+    public static Block herb_moonflower = new BlockHerbMoonflower();
+    public static Block herb_sadblossom = new BlockHerbSadblossom();
+    public static Block herb_boneberry = new BlockHerbBoneberry();
+    public static Block herb_thorn_root = new BlockHerbThornRoot();
+    public static Block herb_savyire = new BlockHerbSavyire();
 
     // orig mf blocks
 

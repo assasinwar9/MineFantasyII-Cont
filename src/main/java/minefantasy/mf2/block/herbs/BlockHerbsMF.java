@@ -24,6 +24,8 @@ import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 
 public abstract class BlockHerbsMF extends BlockBush {
+    @SideOnly(Side.CLIENT)
+    private IIcon[] icons;
     private String name;
     private int dropCount;
     private Random rand = new Random();
@@ -93,11 +95,16 @@ public abstract class BlockHerbsMF extends BlockBush {
 
     @Override
     public void updateTick(World world, int x, int y, int z, Random random) {
-        if(world.getBlockLightValue(x, y, z) >=9) {
-            if (isGrowingHerb())
-                if (random.nextInt(100) <= getGrowChance())
-                    world.setBlock(x, y, z, getNextGrowStage());
-
+        super.updateTick(world, x, y, z, random);
+        int l = world.getBlockMetadata(x, y, z);
+        if(isGrowingHerb()) {
+            if (world.getBlockLightValue(x, y, z) >= getMinReqLightLvl())
+                if (random.nextInt(100) <= getGrowChance()) {
+                    if (l < getMaxMeta()) {
+                        ++l;
+                        world.setBlockMetadataWithNotify(x, y, z, l, 2);
+                    }
+                }
         }
     }
 
@@ -119,12 +126,16 @@ public abstract class BlockHerbsMF extends BlockBush {
         return null;
     }
 
+
     @Override
     protected void checkAndDropBlock (World world, int x, int y, int z) { }
 
     /*protected void checkAndDropBlock(World world, int x, int y, int z) {
         world.setBlockToAir(x, y, z);
     }*/
+
+    //return herb texture
+    //abstract String getTexture ();
 
     //is action for onBlockActivated event
     abstract boolean interract (World world, int x, int y, int z, EntityPlayer user);
@@ -146,11 +157,17 @@ public abstract class BlockHerbsMF extends BlockBush {
     //define the drop for breakBlock event
     abstract void getCustomDrop (World world, int x, int y, int z, Block block);
 
+    //return max count of grow stages
+    abstract int getMaxMeta ();
     //return next grow stage block
-    abstract Block getNextGrowStage();
+    //abstract Block getNextGrowStage();
     //return block, which previous of mature herb
-    abstract Block getPrevGrowStage();
+    //abstract Block getPrevGrowStage();
 
+
+    public int getMinReqLightLvl () {
+        return 9;
+    }
 
     // ???
     abstract public boolean isRightSoil(Block ground);

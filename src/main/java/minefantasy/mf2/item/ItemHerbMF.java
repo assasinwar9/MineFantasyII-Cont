@@ -18,11 +18,16 @@ public class ItemHerbMF extends Item {
     protected int itemRarity;
     private Block plantableBlock;
 
+    public ItemHerbMF(String name, int rarity) {
+        this (name, rarity, Blocks.air);
+    }
+
+
     public ItemHerbMF(String name, int rarity, Block plantableBlock) {
         itemRarity = rarity;
         this.plantableBlock = plantableBlock;
         this.name = name;
-        setTextureName("minefantasy2:herbs/herb_" + name);
+        setTextureName("minefantasy2:herbs/" + name);
         this.setCreativeTab(CreativeTabMF.tabDecorations);
 
         GameRegistry.registerItem(this, "MF_Herb_" + name, MineFantasyII.MODID);
@@ -32,6 +37,9 @@ public class ItemHerbMF extends Item {
 
     public boolean onItemUse(ItemStack held, EntityPlayer user, World world, int x, int y, int z, int side, float xOffset, float yOffset, float zOffset)
     {
+        if (plantableBlock == Blocks.air) {
+            return false;
+        }
         if (side != 1)
         {
             return false;
@@ -41,6 +49,7 @@ public class ItemHerbMF extends Item {
             if (world.isAirBlock(x, y + 1, z) && user.canPlayerEdit(x, y, z, side, held) && user.canPlayerEdit(x, y + 1, z, side, held)
                     && ((BlockHerbsMF) plantableBlock).isRightSoil(target)) {
                 world.setBlock(x, y + 1, z, plantableBlock);
+                world.setBlockMetadataWithNotify(x, y + 1, z, 0, 2);
                 --held.stackSize;
                 return true;
             }

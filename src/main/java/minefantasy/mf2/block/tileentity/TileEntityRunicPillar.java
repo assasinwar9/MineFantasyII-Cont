@@ -31,14 +31,15 @@ public class TileEntityRunicPillar extends TileEntity {
         5 = bottom side tex
         6 = bottom active side tex
         */
-
-        if (isTopBlock()) {
-            BlockRunicPillar.updateBlockState(worldObj, xCoord, yCoord, zCoord, isActive ? 2 : 1);
-        }
-        else if (isBottomBlock()) {
-            BlockRunicPillar.updateBlockState(worldObj, xCoord, yCoord, zCoord, isActive ? 6 : 5);
-        }
-        else BlockRunicPillar.updateBlockState(worldObj, xCoord, yCoord, zCoord, isActive ? 4 : 3);
+        //if(!worldObj.isRemote) {
+            if (isTopBlock()) {
+                BlockRunicPillar.updateBlockState(worldObj, xCoord, yCoord, zCoord, isActive ? 2 : 1);
+            }
+            else if (isBottomBlock()) {
+                BlockRunicPillar.updateBlockState(worldObj, xCoord, yCoord, zCoord, isActive ? 6 : 5);
+            }
+            else BlockRunicPillar.updateBlockState(worldObj, xCoord, yCoord, zCoord, isActive ? 4 : 3);
+        //}
 
     }
 

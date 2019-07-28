@@ -42,18 +42,20 @@ public class TileEntityMagicPedestal extends TileEntity {
     public void updateEntity() {
         super.updateEntity();
 
-        ++ticksExisted;
-        if (ticksExisted >= 20) {
-            ticksExisted = 0;
-            validStructure = checkStructure();
-        }
+        //if (!worldObj.isRemote) {
+            ++ticksExisted;
+            if (ticksExisted >= 20) {
+                ticksExisted = 0;
+                validStructure = checkStructure();
+            }
 
-        if (isActive && validStructure) {
-            structureActivation(true);
-        }
-        else {
-            structureActivation(false);
-        }
+            if (isActive && validStructure) {
+                structureActivation(true);
+            }
+            else {
+                structureActivation(false);
+            }
+        //}
     }
 
 

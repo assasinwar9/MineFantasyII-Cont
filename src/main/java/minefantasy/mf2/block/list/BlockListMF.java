@@ -97,6 +97,12 @@ public class BlockListMF {
     public static Block herb_thorn_root = new BlockHerbThornRoot();
     public static Block herb_savyire = new BlockHerbSavyire();
 
+    //zsEdition ores
+
+    public static Block mineral_ore_1 = new BlockMineralOreMF("mineral_ore_1", 1, Items.coal, 3, Items.diamond, 2);
+    public static Block mineral_ore_2 = new BlockMineralOreMF("mineral_ore_2", 1, Items.coal, 5, ComponentListMF.borax, 2, ComponentListMF.limestone_item, 4);
+    public static Block mineral_ore_3 = new BlockMineralOreMF("mineral_ore_3", 1, Items.bone, 4);
+    public static Block salt_deposit = new BlockMineralOreMF("salt_deposit", 0, ComponentListMF.halite, 2);
     // orig mf blocks
 
     public static Block oreCopper = new BlockOreMF("oreCopper", 0, -1).setHardness(2.0F).setResistance(3.0F);

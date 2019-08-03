@@ -44,6 +44,7 @@ public class ComponentListMF {
     public static Item ingot_mould_uncooked = new ItemComponentMF("ingot_mould_uncooked", 0);
     public static Item pie_tray_uncooked = new ItemComponentMF("pie_tray_uncooked", 0);
     //zs items
+    public static Item halite = new ItemComponentMF("halite", -1).setTextureName("minefantasy2:zsItems/halite");
     public static Item tar = new ItemComponentMF("tar", 0).setTextureName("minefantasy2:zsItems/tar").setContainerItem(clay_pot);
     public static Item bark = new ItemComponentMF("bark", 0).setTextureName("minefantasy2:zsItems/bark");;
     public static Item buildingCompound = new ItemComponentMF("buildingCompound", 0).setTextureName("minefantasy2:zsItems/buildingCompound").setContainerItem(clay_pot);

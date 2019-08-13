@@ -450,7 +450,7 @@ public class TileEntityAnvilMF extends TileEntity implements IInventory, IAnvil,
         if (isTool) {
             ToolHelper.setQuality(result, CraftingQualityHelper.getToolQualityByQualityType(qualityType));
             if (result.isItemStackDamageable()) {
-                result.setItemDamage((int) (CraftingQualityHelper.getDamageByQualityType(qualityType)));
+                result.setItemDamage((int) (CraftingQualityHelper.getDamageByQualityType(qualityType, result.getMaxDamage())));
                 return result;
             }
         }

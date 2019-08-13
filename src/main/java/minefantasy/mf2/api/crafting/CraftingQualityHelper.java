@@ -15,11 +15,11 @@ public class CraftingQualityHelper {
         return EnumCraftingQualityType.FLAWLESS;
     }
 
-    public static float getDamageByQualityType(EnumCraftingQualityType qualityType) {
+    public static float getDamageByQualityType(EnumCraftingQualityType qualityType, float maxDamage) {
         if (qualityType == EnumCraftingQualityType.FLAWED)
-            return 75F;
+            return 0.75F * maxDamage;
         else if (qualityType == EnumCraftingQualityType.POOR)
-            return 50F;
+            return 0.5F * maxDamage;
         return 0;
     }
 

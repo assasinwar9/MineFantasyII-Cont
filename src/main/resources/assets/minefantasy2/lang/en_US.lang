@@ -16,9 +16,6 @@ attribute.kit.repairRate_normal.name=Repair Value (Normal Items)
 attribute.kit.repairChance.name=Repair Success Rate
 attribute.kit.breakChance.name=Kit Break Chance
 
-attribute.inferior.name=Inferior
-attribute.superior.name=Superior
-
 item.infobook.name=Research Book
 item.research_scroll.name=Research Scroll
 item.research_scroll_complete.name=Completed Research
@@ -54,6 +51,14 @@ research.null=There is nothing to learn from this.
 research.addArtefact=Added Knowledge to %1$s (%2$s/%3$s)
 research.finishResearch=Finished Research for %1$s
 research.cluecount= (%1$s/%2$s)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/CRAFTING QUALITIES/
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+attribute.flawed.name=Flawed
+attribute.poor.name=Poor
+attribute.ordinary.name=Ordinary
+attribute.perfect.name=Perfect
+attribute.flawless.name=Flawless
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 /MOBS/
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

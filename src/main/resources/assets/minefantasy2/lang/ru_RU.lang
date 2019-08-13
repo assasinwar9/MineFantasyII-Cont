@@ -21,9 +21,6 @@ attribute.kit.repairRate_normal.name=Шанс починки (Не зачаро�
 attribute.kit.repairChance.name=Шанс успешной починки
 attribute.kit.breakChance.name=Шанс поломки набора
 
-attribute.inferior.name=Плохого качества
-attribute.superior.name=Отличного качества
-
 item.infobook.name=Книга исследований
 item.research_scroll.name=Свиток исследований
 item.research_scroll_complete.name=Завершённое исследование
@@ -60,6 +57,14 @@ research.null=Больше нечего изучать
 research.addArtefact=Добавлено знание: %1$s (%2$s/%3$s)
 research.finishResearch=Исследовано: "%1$s"
 research.cluecount= (%1$s/%2$s)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/CRAFTING QUALITIES/
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+attribute.flawed.name=Поврежденный
+attribute.poor.name=Ветхий
+attribute.ordinary.name=Простой
+attribute.perfect.name=Отличный
+attribute.flawless.name=Безупречный
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 /MOBS/
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

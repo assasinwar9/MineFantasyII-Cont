@@ -444,18 +444,6 @@ public class CustomToolHelper {
         return true;
     }
 
-    public static boolean isMythic(ItemStack result) {
-        CustomMaterial main1 = getCustomPrimaryMaterial(result);
-        CustomMaterial haft1 = getCustomPrimaryMaterial(result);
-        if (main1 != null && main1.isUnbrekable()) {
-            return true;
-        }
-        if (haft1 != null && haft1.isUnbrekable()) {
-            return true;
-        }
-        return false;
-    }
-
     public static void writeToPacket(ByteBuf packet, ItemStack stack) {
         packet.writeInt(stack != null ? Item.getIdFromItem(stack.getItem()) : 0);
         packet.writeInt(stack != null ? stack.stackSize : 0);

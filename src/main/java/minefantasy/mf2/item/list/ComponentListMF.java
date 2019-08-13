@@ -44,6 +44,7 @@ public class ComponentListMF {
     public static Item ingot_mould_uncooked = new ItemComponentMF("ingot_mould_uncooked", 0);
     public static Item pie_tray_uncooked = new ItemComponentMF("pie_tray_uncooked", 0);
     //zs items
+    public static Item halite = new ItemComponentMF("halite", -1).setTextureName("minefantasy2:zsItems/halite");
     public static Item tar = new ItemComponentMF("tar", 0).setTextureName("minefantasy2:zsItems/tar").setContainerItem(clay_pot);
     public static Item bark = new ItemComponentMF("bark", 0).setTextureName("minefantasy2:zsItems/bark");;
     public static Item buildingCompound = new ItemComponentMF("buildingCompound", 0).setTextureName("minefantasy2:zsItems/buildingCompound").setContainerItem(clay_pot);
@@ -78,8 +79,19 @@ public class ComponentListMF {
     public static Item colormat_white = new ItemColormats("colormat_white");
     //herbs
     public static Item silverhead_harvest = new ItemHerbMF("silverhead_harvest", 0, null).setTextureName("minefantasy2:herbs/herb_silverhead_harvest");
-    public static Item carxanium_items = new ItemHerbMF("carxanium_items", 0, BlockListMF.herb_carxanium_1);
-    public static Item carxanium_root = new ItemHerbMF("carxanium_root", 0, BlockListMF.herb_carxanium_1);
+    public static Item carxanium_items = new ItemHerbMF("carxanium_items", 0, BlockListMF.herb_carxanium);
+    public static Item carxanium_root = new ItemHerbMF("carxanium_root", 0, BlockListMF.herb_carxanium);
+    public static Item sinister_grass_item = new ItemHerbMF("sinister_grass_item", 0);
+    public static Item endure_root_item = new ItemHerbMF("endure_root_item", 0, BlockListMF.herb_endure_root);
+    public static Item dogsear_item = new ItemHerbMF("dogsear_item", 0);
+    public static Item flameflower_item = new ItemHerbMF("flameflower_item", 1, BlockListMF.herb_flameflower);
+    public static Item wispflock_item = new ItemHerbMF("wispflock_item", 0);
+    public static Item moonflower_item = new ItemHerbMF("moonflower_item", 1, BlockListMF.herb_moonflower);
+    public static Item sadblossom_item = new ItemHerbMF("sadblossom_item", 0);
+    public static Item boneberry_item = new ItemHerbMF("boneberry_item", 0);
+    public static Item thorn_root_item = new ItemHerbMF("thorn_root_item", 0, BlockListMF.herb_thorn_root);
+    public static Item savyire_item = new ItemHerbMF("savyire_item", 0, BlockListMF.herb_savyire);
+
     //orig mf items
     public static ItemComponentMF[] ingots = new ItemComponentMF[ingotMats.length];
 

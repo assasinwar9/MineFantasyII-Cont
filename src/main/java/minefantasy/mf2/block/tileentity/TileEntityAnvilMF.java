@@ -1,5 +1,7 @@
 package minefantasy.mf2.block.tileentity;
 
+import minefantasy.mf2.api.crafting.CraftingQualityHelper;
+import minefantasy.mf2.api.crafting.EnumCraftingQualityType;
 import minefantasy.mf2.api.crafting.IQualityBalance;
 import minefantasy.mf2.api.crafting.anvil.AnvilCraftMatrix;
 import minefantasy.mf2.api.crafting.anvil.CraftingManagerAnvil;
@@ -31,6 +33,7 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.WorldServer;
 
+import javax.tools.Tool;
 import java.util.Random;
 
 public class TileEntityAnvilMF extends TileEntity implements IInventory, IAnvil, IQualityBalance {
@@ -58,6 +61,7 @@ public class TileEntityAnvilMF extends TileEntity implements IInventory, IAnvil,
     private ItemStack recipe;
     private int hammerTierRequired;
     private int anvilTierRequired;
+    private EnumCraftingQualityType qualityType;
 
     public TileEntityAnvilMF() {
         this(0, "Iron");
@@ -438,44 +442,19 @@ public class TileEntityAnvilMF extends TileEntity implements IInventory, IAnvil,
             }
         }
 
-        if (isPerfectItem() && !isMythicRecipe()) {
-            this.setTrait(result, "MF_Inferior", false);
-            if (CustomToolHelper.isMythic(result)) {
-                result.getTagCompound().setBoolean("Unbreakable", true);
-            } else {
-                ToolHelper.setQuality(result, 200.0F);
-            }
-            return result;
-        }
+        int threshold = (int) (100F * thresholdPosition / 2F);
+        int total = (int) (100F * getAbsoluteBalance() - threshold);
+        qualityType = CraftingQualityHelper.getQualityType(threshold, total);
+        this.setTrait(result, qualityType.toString(), true);
+
         if (isTool) {
-            result = modifyQualityComponents(result);
+            ToolHelper.setQuality(result, CraftingQualityHelper.getToolQualityByQualityType(qualityType));
+            if (result.isItemStackDamageable()) {
+                result.setItemDamage((int) (CraftingQualityHelper.getDamageByQualityType(qualityType, result.getMaxDamage())));
+                return result;
+            }
         }
         return damageItem(result);
-    }
-
-    private ItemStack modifyQualityComponents(ItemStack result) {
-        float totalPts = 0F;
-        int totalItems = 0;
-        for (ItemStack item : inventory) {
-            if (item != null && item.hasTagCompound()) {
-                if (item.getTagCompound().hasKey("MF_Inferior")) {
-                    ++totalItems;
-                    boolean inf = item.getTagCompound().getBoolean("MF_Inferior");
-                    totalPts += (inf ? -50F : 100F);
-                }
-            }
-        }
-        if (totalItems > 0 && totalPts > 0) {
-            totalPts /= totalItems;
-            ToolHelper.setQuality(result, ToolHelper.getQualityLevel(result) + totalPts);
-            if (totalPts <= -85F) {
-                this.setTrait(result, "MF_Inferior", true);
-            }
-            if (totalPts >= 80) {
-                this.setTrait(result, "MF_Inferior", false);
-            }
-        }
-        return result;
     }
 
     private int averageTemp() {
@@ -686,10 +665,6 @@ public class TileEntityAnvilMF extends TileEntity implements IInventory, IAnvil,
     }
 
     public boolean canCraft() {
-        if (this.isMythicRecipe() && !this.isMythicReady()) {
-            return false;
-        }
-
         if (progressMax > 0 && recipe != null && recipe instanceof ItemStack) {
             return this.canFitResult(recipe);
         }
@@ -740,14 +715,6 @@ public class TileEntityAnvilMF extends TileEntity implements IInventory, IAnvil,
         this.researchRequired = research;
     }
 
-    private boolean isMythicRecipe() {
-        return false;// this.hammerTierRequired >= 6;
-    }
-
-    private boolean isMythicReady() {
-        return true;
-    }
-
     public String getTextureName() {
         return texName;
     }
@@ -787,13 +754,6 @@ public class TileEntityAnvilMF extends TileEntity implements IInventory, IAnvil,
         return 0F;
     }
 
-    private boolean isPerfectItem() {
-        int threshold = (int) (100F * getSuperThresholdPosition() / 2F);
-        int total = (int) (100F * getAbsoluteBalance() - threshold);
-
-        return total <= threshold;
-    }
-
     private ItemStack damageItem(ItemStack item) {
         float itemdam = getItemDamage();
         if (itemdam > 0.5F) {
@@ -805,11 +765,6 @@ public class TileEntityAnvilMF extends TileEntity implements IInventory, IAnvil,
         if (item.isItemStackDamageable()) {
             if (damage > 0) {
                 item.setItemDamage((int) (damage));
-                if (isMythicRecipe()) {
-                    setTrait(item, "MF_Inferior");
-                }
-            } else if (isMythicRecipe()) {
-                setTrait(item, "Unbreakable");
             }
         }
         return item;
@@ -837,7 +792,7 @@ public class TileEntityAnvilMF extends TileEntity implements IInventory, IAnvil,
         }
 
         float baseThreshold = worldObj.difficultySetting.getDifficultyId() >= 2 ? 7.5F : 10F;
-        thresholdPosition = (isMythicRecipe() ? 0.05F : baseThreshold / 100F) * modifier;
+        thresholdPosition = (baseThreshold / 100F) * modifier;
     }
 
     public void upset(EntityPlayer user) {

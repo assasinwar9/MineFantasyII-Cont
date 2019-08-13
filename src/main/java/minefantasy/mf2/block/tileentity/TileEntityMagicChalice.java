@@ -59,28 +59,29 @@ public class TileEntityMagicChalice extends TileEntity implements IInventory {
     public void updateEntity() {
         super.updateEntity();
 
-        ++tickExisted;
-        if (tickExisted >= 20) {
-            tickExisted = 0;
-            checkStructure();
-        }
+        //if(!worldObj.isRemote) {
+            ++tickExisted;
+            if (tickExisted >= 20) {
+                tickExisted = 0;
+                checkStructure();
+            }
 
 
-        if (markerPos >= upCraftLimit || markerPos <= downCraftLimit) {
-            craftFinalization(true);
-            progress = 0;
-        }
-
-        if (craftingPhase) {
-            speed = clickCount > 4 ? 2 : 1;
-            ++progress;
-            markerPos += direction * speed;
-            if (progress >= progressMax) {
-                craftFinalization(false);
+            if (markerPos >= upCraftLimit || markerPos <= downCraftLimit) {
+                craftFinalization(true);
                 progress = 0;
             }
 
-        }
+            if (craftingPhase) {
+                speed = clickCount > 4 ? 2 : 1;
+                ++progress;
+                markerPos += direction * speed;
+                if (progress >= progressMax) {
+                    craftFinalization(false);
+                    progress = 0;
+                }
+            }
+       // }
 
     }
 

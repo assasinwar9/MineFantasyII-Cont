@@ -3,32 +3,27 @@ package minefantasy.mf2.block.herbs;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import minefantasy.mf2.block.list.BlockListMF;
 import minefantasy.mf2.item.list.ComponentListMF;
-import minefantasy.mf2.item.list.HerbalicListMF;
-import minefantasy.mf2.item.list.ToolListMF;
+import minefantasy.mf2.item.tool.ItemShearsMF;
 import minefantasy.mf2.item.tool.ItemSpadeMF;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.BiomeDictionary;
 
-public class BlockHerbCarxanium extends BlockHerbsMF {
-    private int meta, maxMeta = 2;
-    private Block block;
-    private String name = "carxanium";
+public class BlockHerbSavyire extends BlockHerbsMF {
+    private int meta;
+    private String name = "savyire";
     @SideOnly(Side.CLIENT)
     private IIcon[] icons;
 
-    public BlockHerbCarxanium () {
+    public BlockHerbSavyire() {
         setBlockName("herb_" + name);
-
         GameRegistry.registerBlock(this, "herb_" + name);
     }
 
@@ -37,14 +32,8 @@ public class BlockHerbCarxanium extends BlockHerbsMF {
         ItemStack held = user.getEquipmentInSlot(0);
         meta = world.getBlockMetadata(x, y, z);
 
-        if (held != null && held.getItem() instanceof ItemSpadeMF) {
-            if (meta == 2) {
-                dropItem(world, x, y, z, ComponentListMF.carxanium_root, 1, false, false);
-                dropItem(world, x, y, z, ComponentListMF.carxanium_items, 3, true, true);
-            }
-            if (meta == 1) {
-                dropItem(world, x, y, z, ComponentListMF.carxanium_root, 1, false, false);
-            }
+        if (held != null && held.getItem() instanceof ItemShearsMF) {
+            dropItem(world, x, y, z, ComponentListMF.savyire_item, 1, false, false);
             held.damageItem(1, user);
             if (held.getItemDamage() >= held.getMaxDamage()) {
                 if (world.isRemote)
@@ -54,40 +43,19 @@ public class BlockHerbCarxanium extends BlockHerbsMF {
             world.setBlock(x, y, z, Blocks.air);
             return true;
         }
-        if (meta == 2) {
-            dropItem(world, x, y, z, ComponentListMF.carxanium_items, 3, true, true);
-            --meta;
-            world.setBlockMetadataWithNotify(x, y, z, meta, 2);
-            return true;
-        }
         return false;
     }
 
     @Override
     public void getCustomDrop (World world, int x, int y, int z, Block block) {
         meta = world.getBlockMetadata(x, y, z);
-        dropItem(world, x, y, z, ComponentListMF.carxanium_items, 3, true, true);
-        if (meta == 1 || meta == 2)
-            dropItem(world, x, y, z, ComponentListMF.carxanium_root, 1, false, false);
+        if (meta == 1)
+            dropItem(world, x, y, z, ComponentListMF.savyire_item, 1, false, false);
     }
-/*
-    @Override
-    public Block getNextGrowStage () {
-        if (stage == 1)
-            return BlockListMF.herb_carxanium_2;
-        if (stage == 2)
-            return BlockListMF.herb_carxanium_3;
-        else return BlockListMF.herb_carxanium_3;
-    }
-
-    @Override
-    public Block getPrevGrowStage () {
-        return BlockListMF.herb_carxanium_2;
-    }*/
 
     @Override
     public int getMaxMeta () {
-        return maxMeta; // 0, 1, 2, total = 3 stages
+        return 1;
     }
 
     @SideOnly(Side.CLIENT)
@@ -107,7 +75,7 @@ public class BlockHerbCarxanium extends BlockHerbsMF {
     @Override
     public void registerBlockIcons(IIconRegister reg)
     {
-        icons = new IIcon[3];
+        icons = new IIcon[2];
 
         for (int i = 0; i < icons.length; ++i)
         {
@@ -115,7 +83,11 @@ public class BlockHerbCarxanium extends BlockHerbsMF {
         }
     }
 
-    //@Override
+    @Override
+    public int getMinReqLightLvl () {
+        return 0;
+    }
+
     public String getTexture () {
         return "minefantasy2:herbs/" + name + "_stage_";
     }
@@ -132,11 +104,8 @@ public class BlockHerbCarxanium extends BlockHerbsMF {
 
     @Override
     public boolean isRightSoil (Block ground) {
-        return ((ground == Blocks.stone) || (ground == Blocks.stonebrick) || (ground == Blocks.cobblestone));
+        return ((ground == Blocks.dirt) || (ground == Blocks.farmland) || (ground == Blocks.grass));
     }
-    //for normal ground
-          //  return ((ground == Blocks.dirt) || (ground == Blocks.farmland) || (ground == Blocks.grass));
-
 
     @Override
     public int getSizeFactor () {
@@ -153,7 +122,7 @@ public class BlockHerbCarxanium extends BlockHerbsMF {
 
     @Override
     public boolean canPlaceBlockOn(Block ground) {
-        return ((ground == Blocks.stone) || (ground == Blocks.stonebrick) || (ground == Blocks.cobblestone));
+        return ((ground == Blocks.dirt) || (ground == Blocks.farmland) || (ground == Blocks.grass));
     }
 
 

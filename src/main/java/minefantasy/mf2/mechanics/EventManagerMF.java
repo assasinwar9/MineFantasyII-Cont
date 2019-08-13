@@ -7,6 +7,7 @@ import minefantasy.mf2.MineFantasyII;
 import minefantasy.mf2.api.armour.IPowerArmour;
 import minefantasy.mf2.api.armour.ISpecialArmourMF;
 import minefantasy.mf2.api.armour.ItemArmourMFBase;
+import minefantasy.mf2.api.crafting.EnumCraftingQualityType;
 import minefantasy.mf2.api.heating.IHotItem;
 import minefantasy.mf2.api.heating.TongsHelper;
 import minefantasy.mf2.api.helpers.*;
@@ -664,16 +665,19 @@ public class EventManagerMF {
                 }
             }
 
-            if (event.itemStack.hasTagCompound() && event.itemStack.getTagCompound().hasKey("MF_Inferior")) {
-                if (event.itemStack.getTagCompound().getBoolean("MF_Inferior")) {
-                    event.toolTip
-                            .add(EnumChatFormatting.RED + StatCollector.translateToLocal("attribute.inferior.name"));
-                }
-                if (!event.itemStack.getTagCompound().getBoolean("MF_Inferior")) {
-                    event.toolTip
-                            .add(EnumChatFormatting.GREEN + StatCollector.translateToLocal("attribute.superior.name"));
-                }
+            if (event.itemStack.hasTagCompound()) {
+                if (event.itemStack.getTagCompound().hasKey(EnumCraftingQualityType.FLAWED.toString()))
+                    event.toolTip.add(EnumChatFormatting.DARK_GRAY + StatCollector.translateToLocal("attribute.flawed.name"));
+                else if (event.itemStack.getTagCompound().hasKey(EnumCraftingQualityType.POOR.toString()))
+                    event.toolTip.add(EnumChatFormatting.GRAY + StatCollector.translateToLocal("attribute.poor.name"));
+                else if (event.itemStack.getTagCompound().hasKey(EnumCraftingQualityType.ORDINARY.toString()))
+                    event.toolTip.add(EnumChatFormatting.WHITE + StatCollector.translateToLocal("attribute.ordinary.name"));
+                else if (event.itemStack.getTagCompound().hasKey(EnumCraftingQualityType.PERFECT.toString()))
+                    event.toolTip.add(EnumChatFormatting.GREEN + StatCollector.translateToLocal("attribute.perfect.name"));
+                else if (event.itemStack.getTagCompound().hasKey(EnumCraftingQualityType.FLAWLESS.toString()))
+                    event.toolTip.add(EnumChatFormatting.LIGHT_PURPLE + StatCollector.translateToLocal("attribute.flawless.name"));
             }
+
             if (event.itemStack.getItem() instanceof ItemArmor
                     && (!(event.itemStack.getItem() instanceof ItemArmourMFBase) || ClientItemsMF.showSpecials(
                     event.itemStack, event.entityPlayer, event.toolTip, event.showAdvancedItemTooltips))) {

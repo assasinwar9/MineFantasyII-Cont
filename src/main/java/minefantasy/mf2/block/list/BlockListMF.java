@@ -39,17 +39,8 @@ import minefantasy.mf2.block.decor.BlockTrough;
 import minefantasy.mf2.block.food.BlockBerryBush;
 import minefantasy.mf2.block.food.BlockCakeMF;
 import minefantasy.mf2.block.food.BlockPie;
-import minefantasy.mf2.block.herbs.BlockHerbCarxanium;
-import minefantasy.mf2.block.refining.BlockBFC;
-import minefantasy.mf2.block.refining.BlockBFH;
-import minefantasy.mf2.block.refining.BlockBellows;
-import minefantasy.mf2.block.refining.BlockBigFurnace;
-import minefantasy.mf2.block.refining.BlockBloomery;
-import minefantasy.mf2.block.refining.BlockChimney;
-import minefantasy.mf2.block.refining.BlockCrucible;
-import minefantasy.mf2.block.refining.BlockForge;
-import minefantasy.mf2.block.refining.BlockQuern;
-import minefantasy.mf2.block.refining.BlockTarKiln;
+import minefantasy.mf2.block.herbs.*;
+import minefantasy.mf2.block.refining.*;
 import minefantasy.mf2.block.tree.BlockGrindedLogs;
 import minefantasy.mf2.block.tree.BlockLeavesMF;
 import minefantasy.mf2.block.tree.BlockLogMF;
@@ -125,10 +116,24 @@ public class BlockListMF {
 
     //herbs
 
-    public static Block herb_carxanium_1 = new BlockHerbCarxanium(1);
-    public static Block herb_carxanium_2 = new BlockHerbCarxanium(2);
-    public static Block herb_carxanium_3 = new BlockHerbCarxanium(3);
+    public static Block herb_carxanium = new BlockHerbCarxanium();
+    public static Block herb_sinister_grass = new BlockHerbSinisterGrass();
+    public static Block herb_endure_root = new BlockHerbEndureRoot();
+    public static Block herb_dogsear = new BlockHerbDogsear();
+    public static Block herb_flameflower = new BlockHerbFlameflower();
+    public static Block herb_wispflock = new BlockHerbWispflock();
+    public static Block herb_moonflower = new BlockHerbMoonflower();
+    public static Block herb_sadblossom = new BlockHerbSadblossom();
+    public static Block herb_boneberry = new BlockHerbBoneberry();
+    public static Block herb_thorn_root = new BlockHerbThornRoot();
+    public static Block herb_savyire = new BlockHerbSavyire();
 
+    //zsEdition ores
+
+    public static Block mineral_ore_1 = new BlockMineralOreMF("mineral_ore_1", 1, Items.coal, 3, Items.diamond, 2);
+    public static Block mineral_ore_2 = new BlockMineralOreMF("mineral_ore_2", 1, Items.coal, 5, ComponentListMF.borax, 2, ComponentListMF.limestone_item, 4);
+    public static Block mineral_ore_3 = new BlockMineralOreMF("mineral_ore_3", 1, Items.bone, 4);
+    public static Block salt_deposit = new BlockMineralOreMF("salt_deposit", 0, ComponentListMF.halite, 2);
     // orig mf blocks
 
     public static Block oreCopper = new BlockOreMF("oreCopper", 0, -1).setHardness(2.0F).setResistance(3.0F);

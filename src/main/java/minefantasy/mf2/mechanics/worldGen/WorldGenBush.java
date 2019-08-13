@@ -1,5 +1,6 @@
 package minefantasy.mf2.mechanics.worldGen;
 
+import minefantasy.mf2.block.herbs.BlockHerbsMF;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
@@ -25,7 +26,11 @@ public class WorldGenBush extends WorldGenerator {
             int k1 = z + rand.nextInt(8) - rand.nextInt(8);
 
             if (world.isAirBlock(i1, j1, k1) && world.getBlock(i1, j1 - 1, k1) == Blocks.grass
-                    && block.canPlaceBlockAt(world, i1, j1, k1)) {
+                    && block.canPlaceBlockAt(world, i1, j1, k1) && !(block instanceof BlockHerbsMF)) {
+                world.setBlock(i1, j1, k1, block, meta, 2);
+            }
+            if (world.isAirBlock(i1, j1, k1) && block.canPlaceBlockAt(world, i1, j1, k1)
+                    && block instanceof BlockHerbsMF && ((BlockHerbsMF) block).isRightSoil(world.getBlock(i1, j1 - 1, k1))) {
                 world.setBlock(i1, j1, k1, block, meta, 2);
             }
         }

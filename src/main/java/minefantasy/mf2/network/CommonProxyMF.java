@@ -58,7 +58,6 @@ public class CommonProxyMF implements IGuiHandler, ISmokeHandler {
                 return new ContainerSoakingTrough(player.inventory, (TileEntitySoakingTrough) tile);
             }
 
-
             if (tile instanceof TileEntityAnvilMF) {
                 return new ContainerAnvilMF(player.inventory, (TileEntityAnvilMF) tile);
             }
@@ -146,6 +145,7 @@ public class CommonProxyMF implements IGuiHandler, ISmokeHandler {
         GameRegistry.registerTileEntity(TileEntityWorldGenMarker.class, "MF_WorldGenFlag");
         GameRegistry.registerTileEntity(TileEntityComponent.class, "MF_ComponentTile");
         GameRegistry.registerTileEntity(TileEntityRoad.class, "MF_Road");
+        GameRegistry.registerTileEntity(TileEntityTotem.class, "MF_Totem");
     }
 
     public void preInit() {

@@ -7,6 +7,7 @@ import minefantasy.mf2.block.basic.BasicBlockMF;
 import minefantasy.mf2.block.basic.BlockDenseGravel;
 import minefantasy.mf2.block.basic.BlockMetalBarsMF;
 import minefantasy.mf2.block.basic.BlockMetalMF;
+import minefantasy.mf2.block.basic.BlockMineralOreMF;
 import minefantasy.mf2.block.basic.BlockMythicDecor;
 import minefantasy.mf2.block.basic.BlockMythicOre;
 import minefantasy.mf2.block.basic.BlockOreMF;

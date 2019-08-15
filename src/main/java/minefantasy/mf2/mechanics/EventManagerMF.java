@@ -7,6 +7,7 @@ import minefantasy.mf2.MineFantasyII;
 import minefantasy.mf2.api.armour.IPowerArmour;
 import minefantasy.mf2.api.armour.ISpecialArmourMF;
 import minefantasy.mf2.api.armour.ItemArmourMFBase;
+import minefantasy.mf2.api.crafting.CraftingQualityHelper;
 import minefantasy.mf2.api.crafting.EnumCraftingQualityType;
 import minefantasy.mf2.api.heating.IHotItem;
 import minefantasy.mf2.api.heating.TongsHelper;
@@ -78,6 +79,8 @@ import net.minecraftforge.oredict.OreDictionary;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
+import static minefantasy.mf2.api.crafting.CraftingQualityHelper.getQualityTypeByItemStack;
 
 public class EventManagerMF {
 
@@ -665,17 +668,9 @@ public class EventManagerMF {
                 }
             }
 
-            if (event.itemStack.hasTagCompound()) {
-                if (event.itemStack.getTagCompound().hasKey(EnumCraftingQualityType.FLAWED.toString()))
-                    event.toolTip.add(EnumChatFormatting.DARK_GRAY + StatCollector.translateToLocal("attribute.flawed.name"));
-                else if (event.itemStack.getTagCompound().hasKey(EnumCraftingQualityType.POOR.toString()))
-                    event.toolTip.add(EnumChatFormatting.GRAY + StatCollector.translateToLocal("attribute.poor.name"));
-                else if (event.itemStack.getTagCompound().hasKey(EnumCraftingQualityType.ORDINARY.toString()))
-                    event.toolTip.add(EnumChatFormatting.WHITE + StatCollector.translateToLocal("attribute.ordinary.name"));
-                else if (event.itemStack.getTagCompound().hasKey(EnumCraftingQualityType.PERFECT.toString()))
-                    event.toolTip.add(EnumChatFormatting.GREEN + StatCollector.translateToLocal("attribute.perfect.name"));
-                else if (event.itemStack.getTagCompound().hasKey(EnumCraftingQualityType.FLAWLESS.toString()))
-                    event.toolTip.add(EnumChatFormatting.LIGHT_PURPLE + StatCollector.translateToLocal("attribute.flawless.name"));
+            EnumCraftingQualityType qualityType = getQualityTypeByItemStack(event.itemStack);
+            if (qualityType != null) {
+                event.toolTip.add(CraftingQualityHelper.getFormattedTooltipByQualityType(qualityType));
             }
 
             if (event.itemStack.getItem() instanceof ItemArmor

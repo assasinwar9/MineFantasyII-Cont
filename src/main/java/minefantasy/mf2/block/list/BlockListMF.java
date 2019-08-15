@@ -1,9 +1,42 @@
 package minefantasy.mf2.block.list;
 
+import java.util.Random;
+
 import minefantasy.mf2.block.alchemy.BlockRefFurnace;
-import minefantasy.mf2.block.basic.*;
-import minefantasy.mf2.block.crafting.*;
-import minefantasy.mf2.block.decor.*;
+import minefantasy.mf2.block.basic.BasicBlockMF;
+import minefantasy.mf2.block.basic.BlockDenseGravel;
+import minefantasy.mf2.block.basic.BlockMetalBarsMF;
+import minefantasy.mf2.block.basic.BlockMetalMF;
+import minefantasy.mf2.block.basic.BlockMineralOreMF;
+import minefantasy.mf2.block.basic.BlockMythicDecor;
+import minefantasy.mf2.block.basic.BlockMythicOre;
+import minefantasy.mf2.block.basic.BlockOreMF;
+import minefantasy.mf2.block.basic.BlockPaneMF;
+import minefantasy.mf2.block.basic.BlockReinforcedStone;
+import minefantasy.mf2.block.basic.BlockWorldGenMarker;
+import minefantasy.mf2.block.basic.ConstructionBlockMF;
+import minefantasy.mf2.block.crafting.BlockAnvilMF;
+import minefantasy.mf2.block.crafting.BlockBombBench;
+import minefantasy.mf2.block.crafting.BlockBombPress;
+import minefantasy.mf2.block.crafting.BlockCarpenter;
+import minefantasy.mf2.block.crafting.BlockCogwork;
+import minefantasy.mf2.block.crafting.BlockCrossbowBench;
+import minefantasy.mf2.block.crafting.BlockEngineerTanner;
+import minefantasy.mf2.block.crafting.BlockFirepit;
+import minefantasy.mf2.block.crafting.BlockFrame;
+import minefantasy.mf2.block.crafting.BlockRepairKit;
+import minefantasy.mf2.block.crafting.BlockResearchStation;
+import minefantasy.mf2.block.crafting.BlockRoast;
+import minefantasy.mf2.block.crafting.BlockSalvage;
+import minefantasy.mf2.block.crafting.BlockSoakingTrough;
+import minefantasy.mf2.block.crafting.BlockTanningRack;
+import minefantasy.mf2.block.decor.BlockAmmoBox;
+import minefantasy.mf2.block.decor.BlockBedMF;
+import minefantasy.mf2.block.decor.BlockComponent;
+import minefantasy.mf2.block.decor.BlockRack;
+import minefantasy.mf2.block.decor.BlockRoad;
+import minefantasy.mf2.block.decor.BlockSchematic;
+import minefantasy.mf2.block.decor.BlockTrough;
 import minefantasy.mf2.block.food.BlockBerryBush;
 import minefantasy.mf2.block.food.BlockCakeMF;
 import minefantasy.mf2.block.food.BlockPie;
@@ -16,6 +49,7 @@ import minefantasy.mf2.block.tree.BlockSaplingMF;
 import minefantasy.mf2.block.wizardry.BlockMagicChalice;
 import minefantasy.mf2.block.wizardry.BlockMagicPedestal;
 import minefantasy.mf2.block.wizardry.BlockRunicPillar;
+import minefantasy.mf2.block.wizardry.BlockTotem;
 import minefantasy.mf2.item.food.FoodListMF;
 import minefantasy.mf2.item.list.ComponentListMF;
 import minefantasy.mf2.material.BaseMaterialMF;
@@ -25,8 +59,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
-
-import java.util.Random;
 
 public class BlockListMF {
     static Random rand = new Random();
@@ -318,6 +350,8 @@ public class BlockListMF {
     public static Block WG_Mark = new BlockWorldGenMarker();
     public static Block components = new BlockComponent();
     public static Block schematic_general = new BlockSchematic("schematic_general");
+    
+    public static Block totem = new BlockTotem();
 
     public static void load() {
         anvilStone = new BlockAnvilMF(BaseMaterialMF.getMaterial("stone"));

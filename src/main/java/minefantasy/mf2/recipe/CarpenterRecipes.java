@@ -379,6 +379,7 @@ public class CarpenterRecipes {
     private static void addDusts() {
         QuernRecipes.addRecipe(Items.bone, new ItemStack(Items.dye, 3, 15), 0, false);
         QuernRecipes.addRecipe(ComponentListMF.slag, new ItemStack(ComponentListMF.slag_pot), 0, true);
+        QuernRecipes.addRecipe(ComponentListMF.halite, new ItemStack(FoodListMF.salt), 0, true);
 
         QuernRecipes.addRecipe(new ItemStack(Items.dye, 1, 3), new ItemStack(FoodListMF.coca_powder), 0, true);// ItemDye
         QuernRecipes.addRecipe(Items.wheat, new ItemStack(FoodListMF.flour), 0, true);

@@ -54,6 +54,8 @@ public class WorldGenGeological {
                 ConfigWorldGen.limestoneRarity, ConfigWorldGen.limestoneLayerMin, ConfigWorldGen.limestoneLayerMax);
         //clay layer
         generateClayLayer(seed, chunkX, chunkZ, world);
+        //salt deposits
+        generateSaltDeposit(seed, chunkX, chunkZ, world);
     }
 
     /**
@@ -167,6 +169,15 @@ public class WorldGenGeological {
                 }
             }
 
+        }
+    }
+
+    private static void generateSaltDeposit(Random seed, int chunkX, int chunkZ, World world) {
+        if (seed.nextInt(10) < 1) {
+            int x = chunkX * 16 + seed.nextInt(16);
+            int z = chunkZ * 16 + seed.nextInt(16);
+            int y = world.getTopSolidOrLiquidBlock(x, z) - 5 - seed.nextInt(10);
+            (new WorldGenSaltDeposit()).generate(world, seed, x, y, z);
         }
     }
 }

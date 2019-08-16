@@ -20,6 +20,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -296,6 +297,8 @@ public class TileEntityCarpenterMF extends TileEntity implements IInventory, ICa
                 result.isItemEqual(new ItemStack(Blocks.planks, 4, 5))) {
             secResult = new ItemStack(ComponentListMF.bark, (rand.nextInt(3)+1));
         }
+        if (result.getItem() == Item.getItemFromBlock(Blocks.glass) || result.getItem() == Items.glass_bottle || result.getItem() == Item.getItemFromBlock(Blocks.glass_pane))
+            secResult = new ItemStack(ComponentListMF.crushed_chamotte, (rand.nextInt(2) + 1));
         return secResult;
     }
 

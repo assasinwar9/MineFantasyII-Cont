@@ -50,6 +50,21 @@ public class ComponentListMF {
     public static Item buildingCompound = new ItemComponentMF("buildingCompound", 0).setTextureName("minefantasy2:zsItems/buildingCompound").setContainerItem(clay_pot);
     public static Item slag = new ItemComponentMF("slag", 0).setTextureName("minefantasy2:zsItems/slag");
     public static Item slag_pot = new ItemComponentMF("slag_pot", 0).setTextureName("minefantasy2:zsItems/slag_pot").setContainerItem(clay_pot);
+    public static Item crushed_chamotte = new ItemComponentMF("crushed_chamotte", -1).setTextureName("minefantasy2:zsItems/crushed_chamotte");
+    //glass mould
+
+    public static Item glassmould_block_uncooked = new ItemComponentMF("glassmould_block_uncooked", 0).setTextureName("minefantasy2:zsItems/glass_mould_block_uncooked");
+    public static Item glassmould_bottle_uncooked = new ItemComponentMF("glassmould_bottle_uncooked", 0).setTextureName("minefantasy2:zsItems/glass_mould_bottle_uncooked");
+    public static Item glassmould_panel_uncooked = new ItemComponentMF("glassmould_panel_uncooked", 0).setTextureName("minefantasy2:zsItems/glass_mould_panel_uncooked");
+
+    public static Item glassmould_block = new ItemComponentMF("glassmould_block", 0).setTextureName("minefantasy2:zsItems/glass_mould_block");
+    public static Item glassmould_bottle = new ItemComponentMF("glassmould_bottle", 0).setTextureName("minefantasy2:zsItems/glass_mould_bottle");
+    public static Item glassmould_panel = new ItemComponentMF("glassmould_panel", 0).setTextureName("minefantasy2:zsItems/glass_mould_panel");
+
+    public static Item glassmould_block_filled = new ItemComponentMF("glassmould_block_filled", 0).setTextureName("minefantasy2:zsItems/glass_mould_block_filled");
+    public static Item glassmould_bottle_filled = new ItemComponentMF("glassmould_bottle_filled", 0).setTextureName("minefantasy2:zsItems/glass_mould_bottle_filled");
+    public static Item glassmould_panel_filled = new ItemComponentMF("glassmould_panel_filled", 0).setTextureName("minefantasy2:zsItems/glass_mould_panel_filled");
+
     //hide
     public static Item hideSmall_limed = new ItemComponentMF("hideSmall_limed", 0).setTextureName("minefantasy2:zsItems/hideSmall_limed");
     public static Item hideMedium_limed = new ItemComponentMF("hideMedium_limed", 0).setTextureName("minefantasy2:zsItems/hideMedium_limed");

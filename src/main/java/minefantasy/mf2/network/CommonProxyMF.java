@@ -57,6 +57,9 @@ public class CommonProxyMF implements IGuiHandler, ISmokeHandler {
             if (tile instanceof TileEntitySoakingTrough) {
                 return new ContainerSoakingTrough(player.inventory, (TileEntitySoakingTrough) tile);
             }
+            if (tile instanceof TileEntityGlasscaster) {
+                return new ContainerGlasscaster(player.inventory, (TileEntityGlasscaster) tile);
+            }
 
             if (tile instanceof TileEntityAnvilMF) {
                 return new ContainerAnvilMF(player.inventory, (TileEntityAnvilMF) tile);
@@ -132,6 +135,8 @@ public class CommonProxyMF implements IGuiHandler, ISmokeHandler {
         GameRegistry.registerTileEntity(TileEntityMagicChalice.class, "MF_MagicChalice");
         GameRegistry.registerTileEntity(TileEntityRunicPillar.class, "MF_RunicPillar");
         GameRegistry.registerTileEntity(TileEntitySoakingTrough.class, "MF_SoakingTrough");
+        GameRegistry.registerTileEntity(TileEntityGlasscaster.class, "MF_Glasscaster");
+        GameRegistry.registerTileEntity(TileEntityGlassmould.class, "Mf_Glassmould");
         GameRegistry.registerTileEntity(TileEntityCauldronMF.class, "MF_CauldronMF");
 
         GameRegistry.registerTileEntity(TileEntityBombPress.class, "MF_BombPress");

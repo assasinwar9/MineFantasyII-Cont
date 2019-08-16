@@ -3,33 +3,8 @@ package minefantasy.mf2.block.list;
 import java.util.Random;
 
 import minefantasy.mf2.block.alchemy.BlockRefFurnace;
-import minefantasy.mf2.block.basic.BasicBlockMF;
-import minefantasy.mf2.block.basic.BlockDenseGravel;
-import minefantasy.mf2.block.basic.BlockMetalBarsMF;
-import minefantasy.mf2.block.basic.BlockMetalMF;
-import minefantasy.mf2.block.basic.BlockMineralOreMF;
-import minefantasy.mf2.block.basic.BlockMythicDecor;
-import minefantasy.mf2.block.basic.BlockMythicOre;
-import minefantasy.mf2.block.basic.BlockOreMF;
-import minefantasy.mf2.block.basic.BlockPaneMF;
-import minefantasy.mf2.block.basic.BlockReinforcedStone;
-import minefantasy.mf2.block.basic.BlockWorldGenMarker;
-import minefantasy.mf2.block.basic.ConstructionBlockMF;
-import minefantasy.mf2.block.crafting.BlockAnvilMF;
-import minefantasy.mf2.block.crafting.BlockBombBench;
-import minefantasy.mf2.block.crafting.BlockBombPress;
-import minefantasy.mf2.block.crafting.BlockCarpenter;
-import minefantasy.mf2.block.crafting.BlockCogwork;
-import minefantasy.mf2.block.crafting.BlockCrossbowBench;
-import minefantasy.mf2.block.crafting.BlockEngineerTanner;
-import minefantasy.mf2.block.crafting.BlockFirepit;
-import minefantasy.mf2.block.crafting.BlockFrame;
-import minefantasy.mf2.block.crafting.BlockRepairKit;
-import minefantasy.mf2.block.crafting.BlockResearchStation;
-import minefantasy.mf2.block.crafting.BlockRoast;
-import minefantasy.mf2.block.crafting.BlockSalvage;
-import minefantasy.mf2.block.crafting.BlockSoakingTrough;
-import minefantasy.mf2.block.crafting.BlockTanningRack;
+import minefantasy.mf2.block.basic.*;
+import minefantasy.mf2.block.crafting.*;
 import minefantasy.mf2.block.decor.BlockAmmoBox;
 import minefantasy.mf2.block.decor.BlockBedMF;
 import minefantasy.mf2.block.decor.BlockComponent;
@@ -92,17 +67,18 @@ public class BlockListMF {
 
 
     public static Block stonebrick_white = new BasicBlockMF("stonebrick_white", Material.rock).setHardness(3.0F).setResistance(4.0F)
-            .setStepSound(Block.soundTypeStone);
+            .setStepSound(Block.soundTypeStone).setBlockTextureName("minefantasy2:zsAddon/stonebrick_white");
     public static Block stonebrick_white_stair = new ConstructionBlockMF.StairsConstBlock("stonebrick_white_stair", stonebrick_white)
-            .register("stonebrick_white_stair");
-    public static Block stonebrick_white_slab = new ConstructionBlockMF.SlabConstBlock("stonebrick_white_slab", stonebrick_white)
-            .register("stonebrick_white_slab");
+            .register("stonebrick_white_stair").setBlockTextureName("minefantasy2:zsAddon/stonebrick_white");
+
     public static Block stonebrick_dark = new BasicBlockMF("stonebrick_dark", Material.rock).setHardness(3.0F).setResistance(4.0F)
             .setStepSound(Block.soundTypeStone);
     public static Block stonebrick_dark_stair = new ConstructionBlockMF.StairsConstBlock("stonebrick_dark_stair", stonebrick_dark)
             .register("stonebrick_dark_stair");
     public static Block stonebrick_dark_slab = new ConstructionBlockMF.SlabConstBlock("stonebrick_white_slab", stonebrick_dark)
             .register("stonebrick_dark_slab");
+
+    public static Block stonebrick_white_slab = new BlockSlabMF("stonebrick_white", Material.rock);
 
     //grinded logs
     public static Block gr_log_acacia = new BlockGrindedLogs("gr_log_acacia", "acacia");
@@ -114,6 +90,15 @@ public class BlockListMF {
     //
     public static Block tarKiln = new BlockTarKiln(false);
     public static Block tarKiln_filled = new BlockTarKiln(true);
+
+    public static Block glasscaster = new BlockGlasscaster();
+    public static Block glassmould_block_ready = new BlockGlassmouldMF("glassmould_block_ready", null);
+    public static Block glassmould_block_melted = new BlockGlassmouldMF("glassmould_block_melted", glassmould_block_ready);
+    public static Block glassmould_bottle_ready = new BlockGlassmouldMF("glassmould_bottle_ready", null);
+    public static Block glassmould_bottle_melted = new BlockGlassmouldMF("glassmould_bottle_melted", glassmould_bottle_ready);
+    public static Block glassmould_panel_ready = new BlockGlassmouldMF("glassmould_panel_ready", null);
+    public static Block glassmould_panel_melted = new BlockGlassmouldMF("glassmould_panel_melted", glassmould_panel_ready);
+
 
     //herbs
 

@@ -25,14 +25,14 @@ import net.minecraftforge.oredict.OreDictionary;
 import java.util.List;
 import java.util.Random;
 
-public class BlockSlabMF extends BlockStoneSlab {
+public class BlockSlabMF extends BlockSlab {
     private String name;
     private Random rand = new Random();
     @SideOnly(Side.CLIENT)
     private IIcon sideIcon, topIcon, bottomIcon;
 
-    public BlockSlabMF(String name) {
-        super(false);
+    public BlockSlabMF(String name, Material material) {
+        super(false, material);
 
         GameRegistry.registerBlock(this,"MF_slab_" + name);
         setBlockName("MF_slab_" + name);

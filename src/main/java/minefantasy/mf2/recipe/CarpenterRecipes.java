@@ -111,6 +111,28 @@ public class CarpenterRecipes {
         MineFantasyAPI.addCarpenterRecipe(construction, new ItemStack(ComponentListMF.buildingCompound, 1), mixing, "hands", -1,  3,
                 new Object[]{"SS  ",  "LE  ", "P   ", 'S', ComponentListMF.slag_pot,  'L',  ComponentListMF.limestone_item_pot,  'E',  Items.egg, 'P', ComponentListMF.clay_pot,});
 
+        //glass casting
+        MineFantasyAPI.addCarpenterRecipe(construction, new ItemStack(ComponentListMF.glassmould_block_uncooked, 4), mixing, "hands", -1,  2,
+                new Object[]{" CC ", "C  C", "C  C", " CC ", 'C', Items.clay_ball,});
+        MineFantasyAPI.addCarpenterRecipe(construction, new ItemStack(ComponentListMF.glassmould_bottle_uncooked, 4), mixing, "hands", -1,  2,
+                new Object[]{"    ", "CCCC", "C  C", " CC ", 'C', Items.clay_ball,});
+        MineFantasyAPI.addCarpenterRecipe(construction, new ItemStack(ComponentListMF.glassmould_panel_uncooked, 4), mixing, "hands", -1,  2,
+                new Object[]{"    ", "C  C", "CCCC", " CC ", 'C', Items.clay_ball,});
+
+        MineFantasyAPI.addCarpenterRecipe(construction, new ItemStack(ComponentListMF.glassmould_block_filled, 1), mixing, "hands", -1,  2,
+                new Object[]{"S", "G", 'G', ComponentListMF.glassmould_block, 'S', Blocks.sand});
+        MineFantasyAPI.addCarpenterRecipe(construction, new ItemStack(ComponentListMF.glassmould_bottle_filled, 1), mixing, "hands", -1,  2,
+                new Object[]{"S", "G", 'G', ComponentListMF.glassmould_bottle, 'S', Blocks.sand});
+        MineFantasyAPI.addCarpenterRecipe(construction, new ItemStack(ComponentListMF.glassmould_panel_filled, 1), mixing, "hands", -1,  2,
+                new Object[]{"S", "G", 'G', ComponentListMF.glassmould_panel, 'S', Blocks.sand});
+
+        MineFantasyAPI.addCarpenterRecipe(construction, new ItemStack(Blocks.glass, 1), primitive, "mallet", -1,  4,
+                new Object[]{"G", 'G', BlockListMF.glassmould_block_ready,});
+        MineFantasyAPI.addCarpenterRecipe(construction, new ItemStack(Blocks.glass_pane, 4), primitive, "mallet", -1,  4,
+                new Object[]{"G", 'G', BlockListMF.glassmould_panel_ready,});
+        MineFantasyAPI.addCarpenterRecipe(construction, new ItemStack(Items.glass_bottle, 4), primitive, "mallet", -1,  4,
+                new Object[]{"G", 'G', BlockListMF.glassmould_bottle_ready,});
+
         //grinded logs
         MineFantasyAPI.addCarpenterRecipe(null, new ItemStack(BlockListMF.gr_log_oak), "",
                 chopping, "knife", -1, 10,
@@ -130,6 +152,7 @@ public class CarpenterRecipes {
         MineFantasyAPI.addCarpenterRecipe(null, new ItemStack(BlockListMF.gr_log_big_oak), "",
                 chopping, "knife", -1, 10,
                 new Object[]{"O", 'O', new ItemStack(Blocks.log2, 1, 1)});
+
         //sawing logs
           //oak
        /* MineFantasyAPI.addCarpenterRecipe(null, new ItemStack(Blocks.planks, 4, 0), "",

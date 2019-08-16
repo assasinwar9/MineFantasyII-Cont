@@ -2328,3 +2328,22 @@ item.mfrucksack.tier_1.name=Рюкзак из юфти
 item.mfrucksack.tier_2.name=Укреплённый рюкзак
 
 item.crushed_chamotte.name=Битый шамот
+
+item.glassmould_block_uncooked.name=Сырая стеклолитейная форма: блок
+item.glassmould_bottle_uncooked.name=Сырая стеклолитейная форма: пузырьки
+item.glassmould_panel_uncooked.name=Сырая стеклолитейная форма: панели
+
+item.glassmould_block.name=Стеклолитейная форма: блок
+item.glassmould_bottle.name=Стеклолитейная форма: пузырьки
+item.glassmould_panel.name=Стеклолитейная форма: панели
+
+item.glassmould_block_filled.name=Запескованная стеклолитейная форма: блок
+item.glassmould_bottle_filled.name=Запескованная стеклолитейная форма: пузырьки
+item.glassmould_panel_filled.name=Запескованная стеклолитейная форма: панели
+
+tile.glassmould_block_ready.name=Стеклолитейная форма: блок
+tile.glassmould_bottle_ready.name=Стеклолитейная форма: пузырьки
+tile.glassmould_panel_ready.name=Стеклолитейная форма: панели
+tile.glassmould_block_melted.name=Стеклолитейная форма: блок
+tile.glassmould_bottle_melted.name=Стеклолитейная форма: пузырьки
+tile.glassmould_panel_melted.name=Стеклолитейная форма: панели

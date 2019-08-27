@@ -185,6 +185,9 @@ public class ClientProxyMF extends CommonProxyMF {
             if (tile instanceof TileEntityGlasscaster) {
                 return new GuiGlasscaster(player.inventory, (TileEntityGlasscaster) tile);
             }
+            if (tile instanceof TileEntityRefFurnace) {
+                return new GuiRefFurnace(player.inventory, (TileEntityRefFurnace) tile);
+            }
 
 
             if (tile instanceof TileEntityAnvilMF) {

@@ -4,10 +4,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import minefantasy.mf2.MineFantasyII;
-import minefantasy.mf2.block.list.BlockListMF;
 import minefantasy.mf2.block.tileentity.TileEntityGlasscaster;
-import minefantasy.mf2.block.tileentity.TileEntityTarKiln;
-import minefantasy.mf2.item.list.ComponentListMF;
 import minefantasy.mf2.item.list.CreativeTabMF;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
@@ -48,34 +45,12 @@ public class BlockGlasscaster extends BlockContainer {
     private static TileEntityGlasscaster getTile(IBlockAccess world, int x, int y, int z) {
         return (TileEntityGlasscaster) world.getTileEntity(x, y, z);
     }
-/*
-    public static void updateBlockState(boolean filled, World world, int x, int y, int z) {
-        int l = world.getBlockMetadata(x, y, z);
-        TileEntityGlasscaster tileentity = getTile(world, x, y, z);
-        keepInventory = true;
 
-        Block block = world.getBlock(x, y, z);
-        if (block instanceof BlockGlasscaster) {
-            if (filled) {
-                world.setBlock(x, y, z, getFilledTarKiln());
-            } else {
-                world.setBlock(x, y, z, getNoFilledTarKiln());
-            }
-        }
-
-        keepInventory = false;
-        world.setBlockMetadataWithNotify(x, y, z, l, 2);
-        if (tileentity != null) {
-            tileentity.validate();
-            world.setTileEntity(x, y, z, tileentity);
-        }
-    }*/
-
-    @SideOnly(Side.CLIENT)
     @Override
-    public void randomDisplayTick(World world, int x, int y, int z, Random random) {
-        TileEntityGlasscaster tile = getTile(world, x, y, z);
-        if (tile.isActive) {
+    public void updateTick (World world, int x, int y, int z, Random random) {
+        /*
+        TileEntity tile = getTile(world, x, y, z);
+        if (tile != null && tile instanceof TileEntityGlasscaster && ((TileEntityGlasscaster) tile).isActive) {
             if (random.nextInt(10) < 3) {
                 s = 0.5; //basic centre-position offset
                 if (world.getBlockMetadata(x, y, z) == 4) {
@@ -100,7 +75,37 @@ public class BlockGlasscaster extends BlockContainer {
                 }
                 world.spawnParticle("smoke", x + 0.5D + partOffsetX, y + 0.4D + partOffsetY, z + 0.5D + partOffsetZ, 0.0D, 0.0D, 0.0D);
             }
+        }*/
+    }
+
+/*
+    public static void updateBlockState(boolean filled, World world, int x, int y, int z) {
+        int l = world.getBlockMetadata(x, y, z);
+        TileEntityGlasscaster tileentity = getTile(world, x, y, z);
+        keepInventory = true;
+
+        Block block = world.getBlock(x, y, z);
+        if (block instanceof BlockGlasscaster) {
+            if (filled) {
+                world.setBlock(x, y, z, getFilledTarKiln());
+            } else {
+                world.setBlock(x, y, z, getNoFilledTarKiln());
+            }
         }
+
+        keepInventory = false;
+        world.setBlockMetadataWithNotify(x, y, z, l, 2);
+        if (tileentity != null) {
+            tileentity.validate();
+            world.setTileEntity(x, y, z, tileentity);
+        }
+    }*/
+
+     @SideOnly(Side.CLIENT)
+    @Override
+    public void randomDisplayTick(World world, int x, int y, int z, Random random) {
+        super.randomDisplayTick(world, x, y, z, random);
+
     }
 
     @Override
@@ -190,6 +195,33 @@ public class BlockGlasscaster extends BlockContainer {
 
         super.breakBlock(world, x, y, z, block, meta);
         world.removeTileEntity(x, y, z);
+    }
+
+    public void spawnParticle (World world, int x, int y, int z) {
+        if (rand.nextInt(10) < 3) {
+            s = 0.5; //basic centre-position offset
+            if (world.getBlockMetadata(x, y, z) == 4) {
+                partOffsetX = (double) (rand.nextInt(2) + 1) / 10 - s - 0.2;
+                partOffsetZ = (double) (rand.nextInt(2) + 1) / 10 + s - 0.6;
+                partOffsetY = (double) (rand.nextInt(3) + 1) / 10;
+            }
+            if (world.getBlockMetadata(x, y, z) == 5) {
+                partOffsetX = (double) (rand.nextInt(2) + 1) / 10 + s;
+                partOffsetZ = (double) (rand.nextInt(2) + 1) / 10 + s - 0.6;
+                partOffsetY = (double) (rand.nextInt(3) + 1) / 10;
+            }
+            if (world.getBlockMetadata(x, y, z) == 2) {
+                partOffsetX = (double) (rand.nextInt(2) + 1) / 10 + s - 0.6;
+                partOffsetZ = (double) (rand.nextInt(2) + 1) / 10 - s - 0.2;
+                partOffsetY = (double) (rand.nextInt(3) + 1) / 10;
+            }
+            if (world.getBlockMetadata(x, y, z) == 3) {
+                partOffsetX = (double) (rand.nextInt(2) + 1) / 10 + s - 0.6;
+                partOffsetZ = (double) (rand.nextInt(2) + 1) / 10 + s;
+                partOffsetY = (double) (rand.nextInt(3) + 1) / 10;
+            }
+            world.spawnParticle("smoke", x + 0.5D + partOffsetX, y + 0.4D + partOffsetY, z + 0.5D + partOffsetZ, 0.0D, 0.0D, 0.0D);
+        }
     }
 
     @Override

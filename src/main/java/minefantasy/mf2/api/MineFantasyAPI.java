@@ -4,6 +4,8 @@ import com.google.common.collect.Lists;
 import cpw.mods.fml.common.IFuelHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import minefantasy.mf2.api.alchemy.CraftingManagerRefFurnace;
+import minefantasy.mf2.api.alchemy.IRefFurnaceRecipe;
 import minefantasy.mf2.api.cooking.CookRecipe;
 import minefantasy.mf2.api.crafting.anvil.CraftingManagerAnvil;
 import minefantasy.mf2.api.crafting.anvil.IAnvilRecipe;
@@ -254,6 +256,15 @@ public class MineFantasyAPI {
 
     public static void addBlastFurnaceRecipe(ItemStack input, ItemStack output) {
         BlastFurnaceRecipes.smelting().addRecipe(input, output);
+    }
+
+    //zs-addon
+    public static IRefFurnaceRecipe addRefFurnaceRecipe (ItemStack catalyst, ItemStack slot_1, ItemStack slot_2, ItemStack slot_3,
+                                                         ItemStack res_1, ItemStack res_2, ItemStack res_3,
+                                                         float time, float minTemp, float maxTemp, int slagGenChance) {
+        return CraftingManagerRefFurnace.getInstance().addRecipe(catalyst, slot_1, slot_2, slot_3,
+                res_1, res_2, res_3,
+                time, minTemp, maxTemp, slagGenChance);
     }
 
     public static void registerFuelHandler(IFuelHandler handler) {

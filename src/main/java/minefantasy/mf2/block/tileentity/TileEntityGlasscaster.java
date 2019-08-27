@@ -3,11 +3,13 @@ package minefantasy.mf2.block.tileentity;
 import minefantasy.mf2.api.crafting.IHeatUser;
 import minefantasy.mf2.api.helpers.CustomToolHelper;
 import minefantasy.mf2.api.refine.SmokeMechanics;
+import minefantasy.mf2.block.crafting.BlockGlasscaster;
 import minefantasy.mf2.block.list.BlockListMF;
 import minefantasy.mf2.block.refining.BlockTarKiln;
 import minefantasy.mf2.block.tileentity.blastfurnace.TileEntityBlastFH;
 import minefantasy.mf2.item.food.FoodListMF;
 import minefantasy.mf2.item.list.ComponentListMF;
+import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
@@ -22,81 +24,36 @@ public class TileEntityGlasscaster extends TileEntity implements IInventory, IHe
     private ItemStack[] inv = new ItemStack[4];
     public boolean isActive;
     public float temperature;
-    public float progress_0, progress_1, progress_2, progress_3, progressMax = 500;
+    public float[] progress = new float[4];
+    private float progressMax = 200;
     private Random rand = new Random();
+    private double partOffsetX, partOffsetZ, partOffsetY, s;
+    private Block block;
 
 
     @Override
     public void updateEntity() {
         super.updateEntity();
 
-        isActive = progress_0 > 0 || progress_1 > 0 || progress_2 > 0 || progress_3 > 0;
+        if (progress[0] > 0 || progress[1] > 0 || progress[2] > 0 || progress[3] > 0) {
+            block = worldObj.getBlock(xCoord, yCoord, zCoord);
+            if (block instanceof BlockGlasscaster)
+                ((BlockGlasscaster) block).spawnParticle(worldObj, xCoord, yCoord, zCoord);
+        }
 
         temperature = getTemperature();
 
-        //slot 0
-        if (inv[0] != null && getResult(inv[0]) != null && temperature >= 800F) {
-            progress_0 += temperature / 1000F;
-            if (progress_0 >= progressMax) {
-                progress_0 = 0;
-                setInventorySlotContents(0, new ItemStack(getResult(inv[0]), inv[0].stackSize));
-            }
+        for (int i = 0; i < 4; i++) {
+            if (inv[i] != null && getResult(inv[i]) != null && temperature >= 800F) {
+                progress[i] += temperature / 1000F;
+                if (progress[i] >= (progressMax * inv[i].stackSize * getProgressScale(inv[i].stackSize))) {
+                    progress[i] = 0;
+                    setInventorySlotContents(i, new ItemStack(getResult(inv[i]), inv[i].stackSize));
+                }
+            } else
+                progress[i] = 0;
         }
-        //slot 1
-        if (inv[1] != null && getResult(inv[1]) != null && temperature >= 800F) {
-            progress_1 += temperature / 1000F;
-            if (progress_1 >= progressMax) {
-                progress_1 = 0;
-                setInventorySlotContents(1, new ItemStack(getResult(inv[1]), inv[1].stackSize));
-            }
-        }
-        //slot 3
-        if (inv[2] != null && getResult(inv[2]) != null && temperature >= 800F) {
-            progress_2 += temperature / 1000F;
-            if (progress_2 >= progressMax) {
-                progress_2 = 0;
-                setInventorySlotContents(2, new ItemStack(getResult(inv[2]), inv[2].stackSize));
-            }
-        }
-        //slot 4
-        if (inv[3] != null && getResult(inv[3]) != null && temperature >= 800F) {
-            progress_3 += temperature / 1000F;
-            if (progress_3 >= progressMax) {
-                progress_3 = 0;
-                setInventorySlotContents(3, new ItemStack(getResult(inv[3]), inv[3].stackSize));
-            }
-        }
-        /*
-        if (canWork()) {
-            progress += (temperature / 1000F); //process speed
-            if (progress >= progressMax) {
-                progress = 0;
-            }
-        } else {
-            progress = 0;
-        }
-        if (progress > 0 && rand.nextInt(3) == 0 && !isOutside()) {
-            SmokeMechanics.emitSmokeIndirect(worldObj, xCoord, yCoord, zCoord, 1);
-        }
-        if (!worldObj.isRemote)
-            BlockTarKiln.updateBlockState(getTarOnOut() > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);*/
-
-
     }
-
-    /*
-    private boolean canWork() {
-        if (temperature <= 0) {
-            return false;
-        }
-        if (inv[0] == null || !CustomToolHelper.areEqual(inv[0], getBark()))
-            return false;
-        if (inv[0].stackSize < 8)
-            return false;
-        if (tarOnOut < 8);
-            return true;
-    }
-    */
 
     private Item getResult (ItemStack item) {
         if (item != null) {
@@ -135,6 +92,20 @@ public class TileEntityGlasscaster extends TileEntity implements IInventory, IHe
         return null;
     }
 
+    private float getProgressScale (int stackSize) {
+        if (stackSize <= 4)
+            return 1;
+        else if (stackSize <= 8)
+            return 1.2F;
+        else if (stackSize <= 16)
+            return 1.5F;
+        else if (stackSize <= 32)
+            return 2.0F;
+        else if (stackSize > 32)
+            return 2.5F;
+        else return 1.0F;
+    }
+
     public float getTemperature() {
 
         TileEntity tile = worldObj.getTileEntity(xCoord, yCoord - 1, zCoord);
@@ -143,6 +114,34 @@ public class TileEntityGlasscaster extends TileEntity implements IInventory, IHe
         }
         return 0F;
     }
+
+    /*
+    private void spawnParticle () {
+        if (rand.nextInt(10) < 3) {
+            s = 0.5; //basic centre-position offset
+            if (worldObj.getBlockMetadata(xCoord, yCoord, zCoord) == 4) {
+                partOffsetX = (double) (rand.nextInt(2) + 1) / 10 - s - 0.2;
+                partOffsetZ = (double) (rand.nextInt(2) + 1) / 10 + s - 0.6;
+                partOffsetY = (double) (rand.nextInt(3) + 1) / 10;
+            }
+            if (worldObj.getBlockMetadata(xCoord, yCoord, zCoord) == 5) {
+                partOffsetX = (double) (rand.nextInt(2) + 1) / 10 + s;
+                partOffsetZ = (double) (rand.nextInt(2) + 1) / 10 + s - 0.6;
+                partOffsetY = (double) (rand.nextInt(3) + 1) / 10;
+            }
+            if (worldObj.getBlockMetadata(xCoord, yCoord, zCoord) == 2) {
+                partOffsetX = (double) (rand.nextInt(2) + 1) / 10 + s - 0.6;
+                partOffsetZ = (double) (rand.nextInt(2) + 1) / 10 - s - 0.2;
+                partOffsetY = (double) (rand.nextInt(3) + 1) / 10;
+            }
+            if (worldObj.getBlockMetadata(xCoord, yCoord, zCoord) == 3) {
+                partOffsetX = (double) (rand.nextInt(2) + 1) / 10 + s - 0.6;
+                partOffsetZ = (double) (rand.nextInt(2) + 1) / 10 + s;
+                partOffsetY = (double) (rand.nextInt(3) + 1) / 10;
+            }
+            worldObj.spawnParticle("smoke", xCoord + 0.5D + partOffsetX, yCoord + 0.4D + partOffsetY, zCoord + 0.5D + partOffsetZ, 0.0D, 0.0D, 0.0D);
+        }
+    }*/
 
     @Override
     public ItemStack getStackInSlot(int slot) {
@@ -242,7 +241,7 @@ public class TileEntityGlasscaster extends TileEntity implements IInventory, IHe
 
     @Override
     public int getInventoryStackLimit() {
-        return 4;
+        return 64;
     }
 
     @Override

@@ -3,6 +3,7 @@ package minefantasy.mf2.block.alchemy;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import minefantasy.mf2.MineFantasyII;
 import minefantasy.mf2.block.list.BlockListMF;
 import minefantasy.mf2.block.tileentity.TileEntityRefFurnace;
 import minefantasy.mf2.item.list.CreativeTabMF;
@@ -11,6 +12,7 @@ import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -44,17 +46,17 @@ public class BlockRefFurnace extends BlockContainer {
         return (TileEntityRefFurnace) world.getTileEntity(x, y, z);
     }
 
-    public static void updateBlockState(boolean filled, World world, int x, int y, int z) {
-        /*int l = world.getBlockMetadata(x, y, z);
-        TileEntityTarKiln tileentity = getTile(world, x, y, z);
+    public static void updateBlockState(boolean isActive, World world, int x, int y, int z) {
+        int l = world.getBlockMetadata(x, y, z);
+        TileEntityRefFurnace tileentity = getTile(world, x, y, z);
         keepInventory = true;
 
         Block block = world.getBlock(x, y, z);
         if (block instanceof BlockRefFurnace) {
-            if (filled) {
-                world.setBlock(x, y, z, getFilledTarKiln());
+            if (isActive) {
+                world.setBlock(x, y, z, getActiveBlock());
             } else {
-                world.setBlock(x, y, z, getNoFilledTarKiln());
+                world.setBlock(x, y, z, getStandByBlock());
             }
         }
 
@@ -63,7 +65,7 @@ public class BlockRefFurnace extends BlockContainer {
         if (tileentity != null) {
             tileentity.validate();
             world.setTileEntity(x, y, z, tileentity);
-        }*/
+        }
     }
 
     @Override
@@ -94,12 +96,8 @@ public class BlockRefFurnace extends BlockContainer {
     @Override
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer user, int side, float xOffset,
                                     float yOffset, float zOffset) {
-        Block block = world.getBlock(x, y, z);
-        if (block instanceof BlockRefFurnace) {
-            if (block == BlockListMF.ref_furnace)
-                world.setBlock(x, y, z, getActiveBlock());
-            else if (block == BlockListMF.ref_furnace_active)
-                world.setBlock(x, y, z, getStandByBlock());
+        if (!world.isRemote) {
+            user.openGui(MineFantasyII.instance, 0, world, x, y, z);
         }
         return true;
     }
@@ -161,6 +159,21 @@ public class BlockRefFurnace extends BlockContainer {
         super.breakBlock(world, x, y, z, block, meta);
         world.removeTileEntity(x, y, z);
     }*/
+
+    public void dropItem (World world, int x, int y, int z, ItemStack itemStack) {
+        if (!world.isRemote) {
+            float f = this.rand.nextFloat() * 0.8F + 0.1F;
+            float f1 = this.rand.nextFloat() * 0.8F + 0.1F;
+            float f2 = this.rand.nextFloat() * 0.8F + 0.1F;
+            EntityItem entityitem = new EntityItem(world, x + f, y + f1, z + f2, itemStack);
+
+            float f3 = 0.05F;
+            entityitem.motionX = (float) this.rand.nextGaussian() * f3;
+            entityitem.motionY = (float) this.rand.nextGaussian() * f3 + 0.2F;
+            entityitem.motionZ = (float) this.rand.nextGaussian() * f3;
+            world.spawnEntityInWorld(entityitem);
+        }
+    }
 
     @Override
     @SideOnly(Side.CLIENT)

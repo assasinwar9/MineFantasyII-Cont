@@ -25,7 +25,14 @@ public class WorldGenGeological {
         generateOreWithNeighbour(seed, chunkX, chunkZ, world, BlockListMF.oreMythic, Blocks.stone, Blocks.bedrock,
                 ConfigWorldGen.mythicSize, ConfigWorldGen.mythicFrequencyMin, ConfigWorldGen.mythicFrequencyMax,
                 ConfigWorldGen.mythicRarity, ConfigWorldGen.mythicLayerMin, ConfigWorldGen.mythicLayerMax);
-
+        
+        //NEW ORES
+        generateOreWithNeighbour(seed, chunkX, chunkZ, world, BlockListMF.oreMithril, Blocks.stone, Blocks.bedrock,
+                ConfigWorldGen.mithrilSize, ConfigWorldGen.mithrilFrequencyMin, ConfigWorldGen.mithrilFrequencyMax,
+                ConfigWorldGen.mithrilRarity, ConfigWorldGen.mithrilLayerMin, ConfigWorldGen.mithrilLayerMax);
+        
+        
+        //MF
         generateOre(seed, chunkX, chunkZ, world, BlockListMF.oreKaolinite, Blocks.stone, ConfigWorldGen.kaoliniteSize,
                 ConfigWorldGen.kaoliniteFrequencyMin, ConfigWorldGen.kaoliniteFrequencyMax,
                 ConfigWorldGen.kaoliniteRarity, ConfigWorldGen.kaoliniteLayerMin, ConfigWorldGen.kaoliniteLayerMax);

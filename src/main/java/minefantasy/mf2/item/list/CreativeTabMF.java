@@ -24,6 +24,7 @@ public final class CreativeTabMF extends CreativeTabs {
     public static CreativeTabs tabDragonforged = new CreativeTabMF(CreativeTabs.getNextID(), "MFdragonforged", 12);
     public static CreativeTabs tabOrnate = new CreativeTabMF(CreativeTabs.getNextID(), "MFornate", 13);
     public static CreativeTabs tabOldTools = new CreativeTabMF(CreativeTabs.getNextID(), "MFOld", 14);
+    public static CreativeTabs tabDwarvenforged = new CreativeTabMF(CreativeTabs.getNextID(), "MFdwarvenforged", 15);
 
     private int type;
 
@@ -64,6 +65,8 @@ public final class CreativeTabMF extends CreativeTabs {
                 return new ItemStack(ComponentListMF.ornate_items);
             case 14:
                 return new ItemStack(ToolListMF.pickStone);
+            case 15:
+            	return new ItemStack(CustomToolListMF.standard_longsword);
         }
         return new ItemStack(ComponentListMF.ingots[3]);
     }

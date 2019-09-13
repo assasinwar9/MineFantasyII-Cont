@@ -33,7 +33,7 @@ public class EntityDragon extends EntityFlyingMF
         implements IMob, IBossDisplayData, IArmouredEntity, IArmourPenetrationMob {
     private static final int dataID = 12;
     public static int interestTimeSeconds = 90;
-    public static float heartChance = 1.0F;
+    public static float heartChance = 16.0F;
     public int courseChangeCooldown;
     public double waypointX;
     public double waypointY;
@@ -68,9 +68,9 @@ public class EntityDragon extends EntityFlyingMF
         setBreed(DragonBreed.getRandomDragon(this, tier));
         this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(getType().health);
         setHealth(getMaxHealth());
-        this.setSize(3.0F * getScale(), 2.0F * getScale());
+        this.setSize(4.0F * getScale(), 3.0F * getScale());
         stepHeight = 1.25F + (tier * 0.25F);
-        this.experienceValue = 50 * (tier + 1);
+        this.experienceValue = 75 * (tier + 2);
     }
 
     @Override
@@ -85,15 +85,15 @@ public class EntityDragon extends EntityFlyingMF
         if (f < 25F) {
             return 0;// 0-25 (25%)
         }
-        if (f < 50F) {
-            return 2;// 25-50 (25%)
+        if (f < 20F) {
+            return 0;// 25-50 (25%)
         }
-        if (f < 59F) {
-            return 3;// 50-59 (9%)
+        if (f < 15F) {
+            return 0;// 50-59 (9%)
         }
-        if (f < 60F)// 59-60 (1%)
+        if (f < 10F)// 59-60 (1%)
         {
-            return 4;// 55-60
+            return 0;// 55-60
         }
         return 1;// 60-100 40%
     }
@@ -111,7 +111,7 @@ public class EntityDragon extends EntityFlyingMF
     protected void applyEntityAttributes() {
         super.applyEntityAttributes();
         this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(ConfigMobs.dragonHP);
-        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(1.5D);
+        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(1.0D);
     }
 
     @Override
@@ -453,7 +453,7 @@ public class EntityDragon extends EntityFlyingMF
             targetedEntity.motionY = 2;
             jump();
             setNeckAngle(10);
-            damage = 2.0F;
+            damage = 4.0F;
         }
         worldObj.playSoundAtEntity(this, "minefantasy2:mob.dragon.bite", 1, 1);
         entity.attackEntityFrom(DamageSource.causeMobDamage(this), damage);
@@ -532,7 +532,7 @@ public class EntityDragon extends EntityFlyingMF
             return false;
 
         if (source.getEntity() != null && source.getEntity() instanceof EntityPlayer) {
-            if (getDisengageTime() <= 0 && getAttackTarget() == null || damage > 16
+            if (getDisengageTime() <= 0 && getAttackTarget() == null || damage > 20
                     || (targetedEntity != null && !(targetedEntity instanceof EntityPlayer)))
                 setTarget(source.getEntity());
         }
@@ -634,7 +634,7 @@ public class EntityDragon extends EntityFlyingMF
         }
         if (tier == 1)// Adult
         {
-            return rand.nextFloat() * heartChance > 0.85F;// 15% chance
+            return rand.nextFloat() * heartChance > 1.50F;// 15% chance
         }
         return false;// Young
     }
@@ -672,7 +672,7 @@ public class EntityDragon extends EntityFlyingMF
      * Will return how many at most can spawn in a chunk at once.
      */
     public int getMaxSpawnedInChunk() {
-        return 1;
+        return 2;
     }
 
     /**
@@ -801,7 +801,7 @@ public class EntityDragon extends EntityFlyingMF
     }
 
     public float getScale() {
-        return 0.6F + (getTier() * 0.2F);
+        return 1.0F + (getTier() * 0.6F);
     }
 
     public Shockwave createShockwave(double x, double y, double z, float power, boolean grief) {

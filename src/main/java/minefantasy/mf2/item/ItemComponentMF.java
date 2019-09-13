@@ -200,6 +200,7 @@ public class ItemComponentMF extends Item implements ITieredComponent {
         add(list, ComponentListMF.copper_coin);
         add(list, ComponentListMF.silver_coin);
         add(list, ComponentListMF.gold_coin);
+        add(list, ComponentListMF.dwarven_fuel);
     }
 
     private void add(List list, Item item) {

@@ -36,6 +36,7 @@ public class SmeltingRecipesMF {
         ItemStack mithium = ComponentListMF.bar("Mithium");
         ItemStack ignotumite = ComponentListMF.bar("Ignotumite");
         ItemStack enderforge = ComponentListMF.bar("Ender");
+        ItemStack dwarfsteel = ComponentListMF.bar("Dwarfsteel");
 
         KnowledgeListMF.reStone = MineFantasyAPI.addRatioAlloy(1, new ItemStack(BlockListMF.reinforced_stone, 4), 1,
                 new Object[]{Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone, ComponentListMF.fireclay, iron,
@@ -70,6 +71,9 @@ public class SmeltingRecipesMF {
         GameRegistry.addSmelting(BlockListMF.oreSulfur, new ItemStack(ComponentListMF.sulfur, 4), 0.25F);
         GameRegistry.addSmelting(BlockListMF.oreClay, new ItemStack(Items.clay_ball, 4), 0.25F);
 
+        BigFurnaceRecipes.addRecipe(BlockListMF.oreMithril, ComponentListMF.bar("Mithril"), 2);
+        GameRegistry.addSmelting(BlockListMF.oreMithril, ComponentListMF.bar("Mithril"), 2);
+        
         // ALLOY
         KnowledgeListMF.bronze = MineFantasyAPI.addRatioAlloy(3, ComponentListMF.bar("bronze", 3),
                 new Object[]{copper, copper, tin});
@@ -113,6 +117,18 @@ public class SmeltingRecipesMF {
 
         KnowledgeListMF.enderforge = MineFantasyAPI.addRatioAlloy(2, enderforge, 3,
                 new Object[]{adamant, mithril, Items.ender_pearl, Items.ender_pearl});
+        
+        
+        //NEW
+        
+        //Dwarf
+        ItemStack lapisDye = new ItemStack(Items.dye, 1, 4); 
+        KnowledgeListMF.dwarfsteel = MineFantasyAPI.addRatioAlloy(6, ComponentListMF.bar("dwarfsteel", 5), 1,
+                new Object[]{steel, steel, ComponentListMF.obsidian_rock, Items.coal, Items.coal, (new ItemStack(Items.dye, 1, 4))});
+        //Emerald
+        KnowledgeListMF.emerald = MineFantasyAPI.addRatioAlloy(6, ComponentListMF.bar("emerald", 4), 1,
+                new Object[]{steel, steel, Items.emerald});
+        
 
         MineFantasyAPI.addBlastFurnaceRecipe(ComponentListMF.iron_prep, ComponentListMF.bar("PigIron"));
         MineFantasyAPI.addBlastFurnaceRecipe(ComponentListMF.ingots[6], black);

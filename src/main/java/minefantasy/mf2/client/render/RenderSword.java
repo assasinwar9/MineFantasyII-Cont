@@ -21,9 +21,25 @@ public class RenderSword implements IItemRenderer {
     private Minecraft mc;
     private RenderItem itemRenderer;
     private boolean isAxe = false;
+    private boolean rotate;
+    private float scale;
+    private float offset;
+    private boolean doesRenderParry = false;
+    private boolean willStab = false;
 
     public RenderSword setAxe() {
         isAxe = true;
+        return this;  
+    }
+   
+    public RenderSword setGladius() {
+        offset = 0.75F;
+        willStab = true;
+        return this;
+    }
+    public RenderSword setShortsword() {
+        offset = 0.0F;
+        willStab = true;
         return this;
     }
 
@@ -127,5 +143,5 @@ public class RenderSword implements IItemRenderer {
     @Override
     public boolean shouldUseRenderHelper(ItemRenderType type, ItemStack item, ItemRendererHelper helper) {
         return false;
-    }
+	}
 }

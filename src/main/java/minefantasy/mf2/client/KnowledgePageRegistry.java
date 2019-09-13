@@ -669,6 +669,14 @@ public class KnowledgePageRegistry {
                 new EntryPageRecipeAnvil(KnowledgeListMF.spearR));
         KnowledgeListMF.craftWeapons.addPages(new EntryPageText("knowledge.bow.info"),
                 new EntryPageRecipeAnvil(KnowledgeListMF.bowR));
+        
+        //NEW
+        KnowledgeListMF.craftWeapons.addPages(new EntryPageText("knowledge.saber.info"),
+                new EntryPageRecipeAnvil(KnowledgeListMF.saberR));
+        KnowledgeListMF.craftWeapons.addPages(new EntryPageText("knowledge.gladius.info"),
+                new EntryPageRecipeAnvil(KnowledgeListMF.gladiusR));
+        KnowledgeListMF.craftWeapons.addPages(new EntryPageText("knowledge.shortsword.info"),
+                new EntryPageRecipeAnvil(KnowledgeListMF.shortswordR));
 
         KnowledgeListMF.craftAdvWeapons.addPages(new EntryPageText("knowledge.craftAdvWeapons.1"));
         KnowledgeListMF.craftAdvWeapons.addPages(new EntryPageRecipeAnvil(KnowledgeListMF.katanaR));
@@ -682,6 +690,15 @@ public class KnowledgePageRegistry {
                 new EntryPageRecipeAnvil(KnowledgeListMF.halbeardR));
         KnowledgeListMF.craftAdvWeapons.addPages(new EntryPageText("knowledge.lance.info"),
                 new EntryPageRecipeAnvil(KnowledgeListMF.lanceR));
+        //NEW
+        KnowledgeListMF.craftAdvWeapons.addPages(new EntryPageText("knowledge.claymore.info"),
+                new EntryPageRecipeAnvil(KnowledgeListMF.claymoreR));
+        KnowledgeListMF.craftAdvWeapons.addPages(new EntryPageText("knowledge.longsword.info"),
+                new EntryPageRecipeAnvil(KnowledgeListMF.longswordR));
+        KnowledgeListMF.craftAdvWeapons.addPages(new EntryPageText("knowledge.nodachi.info"),
+                new EntryPageRecipeAnvil(KnowledgeListMF.nodachiR));
+        KnowledgeListMF.craftAdvWeapons.addPages(new EntryPageText("knowledge.trident.info"),
+                new EntryPageRecipeAnvil(KnowledgeListMF.tridentR));
 
         KnowledgeListMF.arrows.addPages(new EntryPageText("knowledge.arrows.1"));
         KnowledgeListMF.arrows.addPages(new EntryPageRecipeCarpenter(KnowledgeListMF.fletchingR),

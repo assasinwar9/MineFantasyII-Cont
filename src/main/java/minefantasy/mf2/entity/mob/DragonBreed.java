@@ -77,15 +77,15 @@ public class DragonBreed {
     public String breedName = "red";
     public DragonBreath rangedAttack;
     public String tex = "dragonGreen";
-    public float health = 200;
-    public float regenRate = 0;
-    public float meleeDamage = 8;
-    public float fireDamage = 5;
-    public float pyro = 0.1F;
+    public float health = 250;
+    public float regenRate = 2;
+    public float meleeDamage = 12;
+    public float fireDamage = 10;
+    public float pyro = 1.0F;
     public int disengageChance = 200;
-    public int fireTimer = 50;
-    public int coolTimer = 200;
-    public int meleeSpeed = 20;
+    public int fireTimer = 25;
+    public int coolTimer = 250;
+    public int meleeSpeed = 25;
     public float DT = 2.0F;
     private boolean isBlind = false;
 

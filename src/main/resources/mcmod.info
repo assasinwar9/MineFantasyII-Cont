@@ -1,16 +1,15 @@
 [
   {
-    "modid":"MineFantasy2",
-    "name":"Mine FantasyII",
-    "description":"NOTE: This is an incomplete mod, crafting has not been implemented. Make sure to have a recipe guide installed. Not all items are obtainable or balanced",
-    "version":"${version}",
+    "modid":"minefantasy2",
+    "name":"FantasyCraft II EbK",
+    "description":"GET READY FOR GREATEST ADVENTURE OF ALL THE TIME",
+    "version":"",
     "mcversion":"${mcversion}",
     "url":"",
     "updateUrl":"",
-    "authors":[
-      "Anonymous"
+    "authors":["Kacpros"]
     ],
-    "credits":"-",
+    "credits":"Kacpros",
     "logoFile":"",
     "screenshots":[
 

@@ -240,6 +240,24 @@ public class ClientProxyMF extends CommonProxyMF {
         MinecraftForgeClient.registerItemRenderer(CustomToolListMF.standard_lumber, new RenderHeavyWeapon().setBlunt());
         MinecraftForgeClient.registerItemRenderer(CustomToolListMF.standard_saw, new RenderSaw());
         MinecraftForgeClient.registerItemRenderer(CustomToolListMF.standard_bow, new RenderBow(false));
+        
+        // NEW
+        MinecraftForgeClient.registerItemRenderer(CustomToolListMF.standard_longsword,
+                new RenderHeavyWeapon().setLongsword().setParryable());
+        MinecraftForgeClient.registerItemRenderer(CustomToolListMF.standard_shortsword, new RenderSword().setShortsword());
+        MinecraftForgeClient.registerItemRenderer(CustomToolListMF.standard_saber,
+                new RenderHeavyWeapon().setSaber().setParryable());
+        MinecraftForgeClient.registerItemRenderer(CustomToolListMF.standard_gladius, new RenderSword().setGladius());
+        MinecraftForgeClient.registerItemRenderer(CustomToolListMF.standard_trident, new RenderSpear());
+        MinecraftForgeClient.registerItemRenderer(CustomToolListMF.standard_nodachi,
+                new RenderHeavyWeapon().setNodachi().setParryable());
+        MinecraftForgeClient.registerItemRenderer(CustomToolListMF.standard_claymore,
+                new RenderHeavyWeapon().setClaymore().setParryable());
+        
+        // DwarvenForged TODO
+       
+        
+        
         // DRAGONFORGED
         MinecraftForgeClient.registerItemRenderer(DragonforgedStyle.dragonforged_dagger, new RenderSword());
         MinecraftForgeClient.registerItemRenderer(DragonforgedStyle.dragonforged_sword, new RenderSword());

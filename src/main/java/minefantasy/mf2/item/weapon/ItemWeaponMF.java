@@ -73,6 +73,42 @@ public abstract class ItemWeaponMF extends ItemSword implements ISpecialDesign, 
     protected static float damageModSword = 0.0F;
     protected static float damageModAxe = 0.5F;
     protected static float damageModMace = 1.0F;
+    
+    
+    //NEW STATS
+    
+    //Shortsword
+    protected static float damageModShortsword = -0.5F;
+    protected static int speedModShortsword = -1;
+    protected static float shortswordStaminaCost = 0.6F;
+    //Longsword
+    protected float[] lsSlashingDamage = new float[]{7F, 0F, 0F};
+    protected static int speedModLongsword = 2;
+    protected float longswordStaminaCost = 1.25F;
+    //Saber
+    protected float saberStaminaCost = 0.8F;
+    protected static int speedModSaber = 1;
+    //Gladius
+    protected float gladiusStaminacost = 0.5F;
+    protected static int speedModGladius = -3;
+    //Trident
+    protected float[] trSlashingDamage = new float[]{1F, 0F, 10F};
+    protected static int speedModTrident = -2;
+    protected float tridentStaminaCost = 1.3F;
+    //Nodachi
+    protected float nodachiStaminaCost = 1.75F;
+    protected static int speedModNodachi = 4;
+    protected int nodachiParryTime = 15;
+    protected float[] nodachiSlashingDamage = new float[]{9.5F, 1F, 4F};
+    //Claymore
+    protected float claymoreStaminaCost = 2.75F;
+    protected static int speedModClaymore = 6;
+    protected int claymoreParryTime = 25;
+    protected float[] claymoreSlashingDamage = new float[]{12.0F, 12F, 0F};
+    protected float claymoreParryFatigue = 2.5F;
+    
+    
+
     protected final ToolMaterial material;
     public String designType = "standard";
     protected String name;

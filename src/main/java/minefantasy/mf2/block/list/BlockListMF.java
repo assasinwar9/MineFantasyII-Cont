@@ -3,6 +3,7 @@ package minefantasy.mf2.block.list;
 import java.util.Random;
 
 import minefantasy.mf2.block.alchemy.BlockRefFurnace;
+import minefantasy.mf2.block.alchemy.BlockRefFurnaceExtractor;
 import minefantasy.mf2.block.basic.*;
 import minefantasy.mf2.block.crafting.*;
 import minefantasy.mf2.block.decor.BlockAmmoBox;
@@ -55,8 +56,11 @@ public class BlockListMF {
 
     public static Block soaking_trough = new BlockSoakingTrough();
 
+    //alchemy
     public static Block ref_furnace = new BlockRefFurnace(false);
     public static Block ref_furnace_active = new BlockRefFurnace(true).setLightLevel(8.0F);
+    public static Block extractor = new BlockRefFurnaceExtractor(false);
+    public static Block extractor_ruined = new BlockRefFurnaceExtractor(true);
 
     //wizardry
     public static Block magic_chalice = new BlockMagicChalice(1, "fire");

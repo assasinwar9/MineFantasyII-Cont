@@ -261,10 +261,10 @@ public class MineFantasyAPI {
     //zs-addon
     public static IRefFurnaceRecipe addRefFurnaceRecipe (ItemStack catalyst, ItemStack slot_1, ItemStack slot_2, ItemStack slot_3,
                                                          ItemStack res_1, ItemStack res_2, ItemStack res_3,
-                                                         float time, float minTemp, float maxTemp, int slagGenChance) {
+                                                         float time, float minTemp, float maxTemp, int slagGenChance, String mod) {
         return CraftingManagerRefFurnace.getInstance().addRecipe(catalyst, slot_1, slot_2, slot_3,
                 res_1, res_2, res_3,
-                time, minTemp, maxTemp, slagGenChance);
+                time, minTemp, maxTemp, slagGenChance, String mod);
     }
 
     public static void registerFuelHandler(IFuelHandler handler) {

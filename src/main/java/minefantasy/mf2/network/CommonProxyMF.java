@@ -8,6 +8,7 @@ import minefantasy.mf2.api.archery.AmmoMechanicsMF;
 import minefantasy.mf2.api.refine.ISmokeHandler;
 import minefantasy.mf2.api.refine.SmokeMechanics;
 import minefantasy.mf2.block.tileentity.*;
+import minefantasy.mf2.block.tileentity.alchemy.TileEntityExtractor;
 import minefantasy.mf2.block.tileentity.blastfurnace.TileEntityBlastFC;
 import minefantasy.mf2.block.tileentity.blastfurnace.TileEntityBlastFH;
 import minefantasy.mf2.block.tileentity.decor.TileEntityAmmoBox;
@@ -62,6 +63,9 @@ public class CommonProxyMF implements IGuiHandler, ISmokeHandler {
             }
             if (tile instanceof TileEntityRefFurnace) {
                 return new ContainerRefFurnace(player.inventory, (TileEntityRefFurnace) tile);
+            }
+            if (tile instanceof TileEntityExtractor) {
+                return new ContainerExtractor(player.inventory, (TileEntityExtractor) tile);
             }
 
             if (tile instanceof TileEntityAnvilMF) {
@@ -142,6 +146,7 @@ public class CommonProxyMF implements IGuiHandler, ISmokeHandler {
         GameRegistry.registerTileEntity(TileEntityGlassmould.class, "Mf_Glassmould");
         GameRegistry.registerTileEntity(TileEntityRefFurnace.class, "Mf_RefFurnace");
         GameRegistry.registerTileEntity(TileEntityCauldronMF.class, "MF_CauldronMF");
+        GameRegistry.registerTileEntity(TileEntityCauldronMF.class, "MF_Extractor");
 
         GameRegistry.registerTileEntity(TileEntityBombPress.class, "MF_BombPress");
         GameRegistry.registerTileEntity(TileEntityBloomery.class, "MF_Bloomery");

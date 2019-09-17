@@ -1,6 +1,5 @@
 package minefantasy.mf2.api.alchemy;
 
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 public interface IRefFurnaceRecipe {
@@ -22,4 +21,7 @@ public interface IRefFurnaceRecipe {
 
     //chance of generation vitro-arkha sordida
     int slagGenChance();
+
+    //block for get result
+    String mod();
 }

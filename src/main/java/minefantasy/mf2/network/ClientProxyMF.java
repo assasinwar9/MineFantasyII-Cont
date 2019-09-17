@@ -8,6 +8,7 @@ import minefantasy.mf2.api.MineFantasyAPI;
 import minefantasy.mf2.api.helpers.ClientTickHandler;
 import minefantasy.mf2.api.knowledge.InformationList;
 import minefantasy.mf2.block.tileentity.*;
+import minefantasy.mf2.block.tileentity.alchemy.TileEntityExtractor;
 import minefantasy.mf2.block.tileentity.blastfurnace.TileEntityBlastFC;
 import minefantasy.mf2.block.tileentity.blastfurnace.TileEntityBlastFH;
 import minefantasy.mf2.block.tileentity.decor.TileEntityAmmoBox;
@@ -20,6 +21,8 @@ import minefantasy.mf2.client.gui.tabs.InventoryTabVanilla;
 import minefantasy.mf2.client.gui.tabs.TabRegistry;
 import minefantasy.mf2.client.render.*;
 import minefantasy.mf2.client.render.block.*;
+import minefantasy.mf2.client.render.block.alchemy.RenderExtractor;
+import minefantasy.mf2.client.render.block.alchemy.TileEntityExtractorRenderer;
 import minefantasy.mf2.client.render.block.component.TileEntityComponentRenderer;
 import minefantasy.mf2.client.render.mob.*;
 import minefantasy.mf2.entity.*;
@@ -109,6 +112,8 @@ public class ClientProxyMF extends CommonProxyMF {
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityMagicPedestal.class, new TileEntityMagicPedestalRenderer());
         RenderingRegistry.registerBlockHandler(new RenderMagicChalice());
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityMagicChalice.class, new TileEntityMagicChaliceRenderer());
+        RenderingRegistry.registerBlockHandler(new RenderExtractor());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityExtractor.class, new TileEntityExtractorRenderer());
         //RenderingRegistry.registerBlockHandler(new RenderCauldronMF());
         //ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCauldronMF.class, new TileEntityCauldronMFRenderer());
 
@@ -187,6 +192,9 @@ public class ClientProxyMF extends CommonProxyMF {
             }
             if (tile instanceof TileEntityRefFurnace) {
                 return new GuiRefFurnace(player.inventory, (TileEntityRefFurnace) tile);
+            }
+            if (tile instanceof TileEntityExtractor) {
+                return new GuiExtractor(player.inventory, (TileEntityExtractor) tile);
             }
 
 

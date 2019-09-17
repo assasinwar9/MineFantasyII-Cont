@@ -4,20 +4,20 @@ package minefantasy.mf2.client.gui;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import minefantasy.mf2.api.helpers.TextureHelperMF;
-import minefantasy.mf2.block.tileentity.TileEntityGlasscaster;
 import minefantasy.mf2.block.tileentity.TileEntityRefFurnace;
-import minefantasy.mf2.container.ContainerGlasscaster;
+import minefantasy.mf2.block.tileentity.alchemy.TileEntityExtractor;
+import minefantasy.mf2.container.ContainerExtractor;
 import minefantasy.mf2.container.ContainerRefFurnace;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
 import org.lwjgl.opengl.GL11;
 
 @SideOnly(Side.CLIENT)
-public class GuiRefFurnace extends GuiContainer {
-    private TileEntityRefFurnace tile;
+public class GuiExtractor extends GuiContainer {
+    private TileEntityExtractor tile;
 
-    public GuiRefFurnace(InventoryPlayer user, TileEntityRefFurnace tile) {
-        super(new ContainerRefFurnace(user, tile));
+    public GuiExtractor(InventoryPlayer user, TileEntityExtractor tile) {
+        super(new ContainerExtractor(user, tile));
         this.ySize = 200;
         this.xSize = 185;
         this.tile = tile;
@@ -39,7 +39,7 @@ public class GuiRefFurnace extends GuiContainer {
 
 
     private String getGuiTex() {
-        return "textures/gui/reffurnace_gui.png";
+        return "textures/gui/gui_reffurnace_extractor.png";
     }
 
     @Override

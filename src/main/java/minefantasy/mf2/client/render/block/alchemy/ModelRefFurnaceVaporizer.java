@@ -1,4 +1,4 @@
-package minefantasy.mf2.client.render.block;//Made with Blockbench
+package minefantasy.mf2.client.render.block.alchemy;//Made with Blockbench
 //Paste this code into your mod.
 
 import net.minecraft.client.model.ModelBase;
@@ -33,9 +33,14 @@ public class ModelRefFurnaceVaporizer extends ModelBase {
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
 		bone.render(f5);
 	}
-	public void setRotationAngle(ModelRenderer modelRenderer, float x, float y, float z) {
+
+	public void setRotation (ModelRenderer modelRenderer, float x, float y, float z) {
 		modelRenderer.rotateAngleX = x;
 		modelRenderer.rotateAngleY = y;
 		modelRenderer.rotateAngleZ = z;
+	}
+
+	public void renderModel(float f) {
+		bone.render(f);
 	}
 }

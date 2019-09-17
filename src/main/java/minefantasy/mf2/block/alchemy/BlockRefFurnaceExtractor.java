@@ -1,17 +1,22 @@
-package minefantasy.mf2.block.refining;
+package minefantasy.mf2.block.alchemy;
 
+import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import minefantasy.mf2.MineFantasyII;
 import minefantasy.mf2.block.list.BlockListMF;
 import minefantasy.mf2.block.tileentity.TileEntityRefFurnace;
+import minefantasy.mf2.block.tileentity.alchemy.TileEntityExtractor;
 import minefantasy.mf2.item.list.CreativeTabMF;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -22,39 +27,42 @@ import net.minecraft.world.World;
 
 import java.util.Random;
 
-public class BlockRefFurnace extends BlockContainer {
-    public final boolean isActive;
+public class BlockRefFurnaceExtractor extends BlockContainer {
+    public static int extractor_RI = RenderingRegistry.getNextAvailableRenderId();
+
     private static boolean keepInventory;
+    public boolean ruined;
     private IIcon sideTex, topTex, frontTex;
     private Random rand = new Random();
 
-    public BlockRefFurnace(boolean isActive) {
+    public BlockRefFurnaceExtractor(boolean ruined) {
         super(Material.iron);
 
-        this.isActive = isActive;
-        GameRegistry.registerBlock(this, "RefFurnace" + (isActive ? "Active" : ""));
-        setBlockName("ref_furnace");
+        this.ruined = ruined;
+        GameRegistry.registerBlock(this, "RefFurnaceExtractor" + (ruined ? "_ruined" : ""));
+        setBlockName("extractor");
         this.setStepSound(Block.soundTypeMetal);
         this.setHardness(3F);
         this.setResistance(4F);
         this.setCreativeTab(CreativeTabMF.tabUtil);
     }
 
-    private static TileEntityRefFurnace getTile(IBlockAccess world, int x, int y, int z) {
-        return (TileEntityRefFurnace) world.getTileEntity(x, y, z);
+    private static TileEntityExtractor getTile(IBlockAccess world, int x, int y, int z) {
+        return (TileEntityExtractor) world.getTileEntity(x, y, z);
     }
 
-    public static void updateBlockState(boolean filled, World world, int x, int y, int z) {
-        /*int l = world.getBlockMetadata(x, y, z);
-        TileEntityTarKiln tileentity = getTile(world, x, y, z);
+    public static void updateBlockState(boolean isActive, World world, int x, int y, int z) {
+        /*
+        int l = world.getBlockMetadata(x, y, z);
+        TileEntityExtractor tileentity = getTile(world, x, y, z);
         keepInventory = true;
 
         Block block = world.getBlock(x, y, z);
-        if (block instanceof BlockRefFurnace) {
-            if (filled) {
-                world.setBlock(x, y, z, getFilledTarKiln());
+        if (block instanceof BlockRefFurnaceExtractor) {
+            if (isActive) {
+                world.setBlock(x, y, z, getActiveBlock());
             } else {
-                world.setBlock(x, y, z, getNoFilledTarKiln());
+                world.setBlock(x, y, z, getStandByBlock());
             }
         }
 
@@ -63,8 +71,10 @@ public class BlockRefFurnace extends BlockContainer {
         if (tileentity != null) {
             tileentity.validate();
             world.setTileEntity(x, y, z, tileentity);
-        }*/
+        }
+        */
     }
+
 
     @Override
     public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase user, ItemStack item) {
@@ -94,23 +104,21 @@ public class BlockRefFurnace extends BlockContainer {
     @Override
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer user, int side, float xOffset,
                                     float yOffset, float zOffset) {
-        Block block = world.getBlock(x, y, z);
-        if (block instanceof BlockRefFurnace) {
-            if (block == BlockListMF.ref_furnace)
-                world.setBlock(x, y, z, getActiveBlock());
-            else if (block == BlockListMF.ref_furnace_active)
-                world.setBlock(x, y, z, getStandByBlock());
+        if (!world.isRemote) {
+            user.openGui(MineFantasyII.instance, 0, world, x, y, z);
         }
         return true;
     }
 
-    private static Block getStandByBlock () { return BlockListMF.ref_furnace; }
 
-    private static Block getActiveBlock () { return BlockListMF.ref_furnace_active; }
+    private static Block getRuinedBlock () { return BlockListMF.extractor_ruined; }
+
+    private static Block getNormalBlock () { return BlockListMF.extractor; }
+
 
     @Override
     public TileEntity createNewTileEntity(World world, int meta) {
-        return new TileEntityRefFurnace();
+        return new TileEntityExtractor();
     }
 
     /*@Override
@@ -162,11 +170,27 @@ public class BlockRefFurnace extends BlockContainer {
         world.removeTileEntity(x, y, z);
     }*/
 
+    public void dropItem (World world, int x, int y, int z, ItemStack itemStack) {
+        if (!world.isRemote) {
+            float f = this.rand.nextFloat() * 0.8F + 0.1F;
+            float f1 = this.rand.nextFloat() * 0.8F + 0.1F;
+            float f2 = this.rand.nextFloat() * 0.8F + 0.1F;
+            EntityItem entityitem = new EntityItem(world, x + f, y + f1, z + f2, itemStack);
+
+            float f3 = 0.05F;
+            entityitem.motionX = (float) this.rand.nextGaussian() * f3;
+            entityitem.motionY = (float) this.rand.nextGaussian() * f3 + 0.2F;
+            entityitem.motionZ = (float) this.rand.nextGaussian() * f3;
+            world.spawnEntityInWorld(entityitem);
+        }
+    }
+
     @Override
     @SideOnly(Side.CLIENT)
     public IIcon getIcon(int side, int meta) {
-        return side == 1 ? topTex : (side != meta ? sideTex : frontTex);
+        return Blocks.iron_block.getIcon(side, meta);
     }
+    /*
     @Override
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister reg) {
@@ -174,16 +198,32 @@ public class BlockRefFurnace extends BlockContainer {
         frontTex = isActive ? reg.registerIcon("minefantasy2:zsAddon/RefFur_front_active") : reg.registerIcon("minefantasy2:zsAddon/RefFur_front");
         sideTex = reg.registerIcon("minefantasy2:zsAddon/RefFur_side");
     }
+    */
 
     @Override
     @SideOnly(Side.CLIENT)
     public Item getItem(World world, int x, int y, int z) {
-        return Item.getItemFromBlock(getStandByBlock());
+        return Item.getItemFromBlock(this);
     }
 
     @Override
     public Item getItemDropped(int meta, Random rand, int fort) {
-        return Item.getItemFromBlock(getStandByBlock());
+        return Item.getItemFromBlock(this);
+    }
+
+    @Override
+    public boolean renderAsNormalBlock() {
+        return false;
+    }
+
+    @Override
+    public boolean isOpaqueCube() {
+        return false;
+    }
+
+    @Override
+    public int getRenderType() {
+        return extractor_RI;
     }
 
 }

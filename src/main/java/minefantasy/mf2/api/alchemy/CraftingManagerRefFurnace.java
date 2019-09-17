@@ -21,16 +21,11 @@ public class CraftingManagerRefFurnace {
     public IRefFurnaceRecipe findMatchingRecipe (ItemStack[] currentInv) {
         for (int rec = 0; rec < recipes.size(); rec++) { //checking on recipes
             Object currentRec = recipes.get(rec);
-            if (currentRec != null && currentRec instanceof IRefFurnaceRecipe) {
+            if (currentRec instanceof IRefFurnaceRecipe) {
                 for (int slot = 0; slot <4; slot++) {
                     reference[slot] = ((IRefFurnaceRecipe) currentRec).slot()[slot];
                 }
-                /*
-                reference[0] = ((IRefFurnaceRecipe) currentRec).catalyst() == null ? null : new ItemStack(((IRefFurnaceRecipe) currentRec).catalyst(), ((IRefFurnaceRecipe) currentRec).catalyst_count());
-                reference[1] = ((IRefFurnaceRecipe) currentRec).slot_1() == null ? null : new ItemStack(((IRefFurnaceRecipe) currentRec).slot_1(), ((IRefFurnaceRecipe) currentRec).slot_1_count());
-                reference[2] = ((IRefFurnaceRecipe) currentRec).slot_2() == null ? null : new ItemStack(((IRefFurnaceRecipe) currentRec).slot_2(), ((IRefFurnaceRecipe) currentRec).slot_2_count());
-                reference[3] = ((IRefFurnaceRecipe) currentRec).slot_3() == null ? null : new ItemStack(((IRefFurnaceRecipe) currentRec).slot_3(), ((IRefFurnaceRecipe) currentRec).slot_3_count());
-                */
+
                 if (compareInventory(currentInv, reference)) {
                     return (IRefFurnaceRecipe) currentRec;
                 }
@@ -54,7 +49,7 @@ public class CraftingManagerRefFurnace {
 
     public IRefFurnaceRecipe addRecipe (ItemStack catalyst, ItemStack slot_1, ItemStack slot_2, ItemStack slot_3,
                                         ItemStack res_1, ItemStack res_2, ItemStack res_3,
-                                        float time, float minTemp, float maxTemp, int slagGenChance) {
+                                        float time, float minTemp, float maxTemp, int slagGenChance, String mod) {
 
         IRefFurnaceRecipe recipe;
         ItemStack[] slot = new ItemStack[4];
@@ -103,6 +98,9 @@ public class CraftingManagerRefFurnace {
             public int slagGenChance() {
                 return slagGenChance;
             }
+
+            @Override
+            public String mod () { return mod; }
         };
 
         this.recipes.add(recipe);

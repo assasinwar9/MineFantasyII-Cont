@@ -106,7 +106,7 @@ public class ComponentListMF {
     public static Item moonflower_bush = new ItemHerbMF("moonflower_bush", 1, BlockListMF.herb_moonflower, 1).setTextureName("minefantasy2:herbs/moonflower_stage_1");
     public static Item sadblossom_item = new ItemHerbMF("sadblossom_item", 0);
     public static Item boneberry_item = new ItemHerbMF("boneberry_item", 0);
-    public static Item thorn_root_item = new ItemHerbMF("thorn_root_item", 0);
+    public static Item thorn_root_item = new ItemHerbMF("thorn_root_item", 0, BlockListMF.herb_thorn_root, 0);
     public static Item savyire_item = new ItemHerbMF("savyire_item", 0);
     public static Item savyire_bush = new ItemHerbMF("savyire_bush", 0, BlockListMF.herb_savyire, 1).setTextureName("minefantasy2:herbs/savyire_stage_1");
 

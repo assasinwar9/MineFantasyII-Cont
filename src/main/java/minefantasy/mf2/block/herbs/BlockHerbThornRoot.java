@@ -9,25 +9,37 @@ import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
+import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.BiomeDictionary;
+
+import java.util.ArrayList;
+import java.util.Random;
 
 public class BlockHerbThornRoot extends BlockHerbsMF {
     private int meta;
     private String name = "thorn_root";
     @SideOnly(Side.CLIENT)
     private IIcon[] icons;
+    private Random rand = new Random();
+
 
     public BlockHerbThornRoot() {
         setBlockName("herb_" + name);
         GameRegistry.registerBlock(this, "herb_" + name);
+        this.setHardness(0.5F);
+        this.setHarvestLevel("shovel", 0);
+        // p_1,2,3 = offset, p_4,5,6 = dimension. One 0.1F = 1.6 pixels
+        this.setBlockBounds(0.1F, 0.0F, 0.1F, 0.9F, 0.9F, 0.9F);
     }
 
     @Override
     public boolean interract (World world, int x, int y, int z, EntityPlayer user) {
+        /*
         ItemStack held = user.getEquipmentInSlot(0);
         meta = world.getBlockMetadata(x, y, z);
 
@@ -41,16 +53,29 @@ public class BlockHerbThornRoot extends BlockHerbsMF {
             }
             world.setBlock(x, y, z, Blocks.air);
             return true;
-        }
+        } */
         return false;
     }
 
     @Override
-    public void getCustomDrop (World world, int x, int y, int z, Block block) {
-        meta = world.getBlockMetadata(x, y, z);
-        if (meta == 1)
-            dropItem(world, x, y, z, ComponentListMF.thorn_root_item, 1, false, false);
+    public Item getItemDropped (int meta, Random random, int fort) {
+        return null;
     }
+
+    @Override
+    public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune)
+    {
+        ArrayList<ItemStack> drop = super.getDrops(world, x, y, z, metadata, fortune);
+
+        if (metadata == 0)
+            drop.add(new ItemStack(ComponentListMF.thorn_root_item, 1));
+        if (metadata == 1) {
+            drop.add(new ItemStack(ComponentListMF.thorn_root_item, MathHelper.getRandomIntegerInRange(rand,1, 3)));
+        }
+
+        return drop;
+    }
+
 
     @Override
     public int getMaxMeta () {
@@ -61,12 +86,6 @@ public class BlockHerbThornRoot extends BlockHerbsMF {
     @Override
     public IIcon getIcon(int side, int meta)
     {
-        /*
-        if (meta < 0 || meta > 7)
-        {
-            meta = 7;
-        }*/
-
         return icons[meta];
     }
 

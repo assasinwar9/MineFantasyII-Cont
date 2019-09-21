@@ -10,12 +10,14 @@ import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.BiomeDictionary;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class BlockHerbFlameflower extends BlockHerbsMF {
@@ -24,12 +26,17 @@ public class BlockHerbFlameflower extends BlockHerbsMF {
     @SideOnly(Side.CLIENT)
     private IIcon[] icons;
     private double partOffsetX, partOffsetZ, partOffsetY;
+    private Random rand = new Random();
 
 
     public BlockHerbFlameflower() {
         setBlockName("herb_" + name);
-
         GameRegistry.registerBlock(this, "herb_" + name);
+        this.setLightLevel(3.0F);
+        this.setHardness(0.3F);
+        this.setHarvestLevel("shovel", 0);
+        // p_1,2,3 = offset, p_4,5,6 = dimension. One 0.1F = 1.6 pixels
+        this.setBlockBounds(0.2F, 0.0F, 0.2F, 0.8F, 0.8F, 0.8F);
     }
 
     @SideOnly(Side.CLIENT)
@@ -55,55 +62,50 @@ public class BlockHerbFlameflower extends BlockHerbsMF {
         meta = world.getBlockMetadata(x, y, z);
 
         if (held != null && held.getItem() instanceof ItemShearsMF && meta == 1) {
-            dropItem(world, x, y, z, ComponentListMF.flameflower_item, 1, false, false);
+            dropItem(world, x, y, z, ComponentListMF.flameflower_item, 3, true, true);
+
             held.damageItem(1, user);
             if (held.getItemDamage() >= held.getMaxDamage()) {
                 if (world.isRemote)
                     user.renderBrokenItemStack(held);
                 user.destroyCurrentEquippedItem();
             }
-            world.setBlock(x, y, z, Blocks.air);
+            --meta;
+            world.setBlockMetadataWithNotify(x, y, z, meta, 2);
+            return true;
+        }
+        else
+        if (meta == 1) {
+            dropItem(world, x, y, z, ComponentListMF.flameflower_item, 2, true, false);
+            --meta;
+            world.setBlockMetadataWithNotify(x, y, z, meta, 2);
             return true;
         }
         return false;
     }
 
     @Override
-    public void getCustomDrop (World world, int x, int y, int z, Block block) {
-        meta = world.getBlockMetadata(x, y, z);
-        if (meta == 1)
-            dropItem(world, x, y, z, ComponentListMF.flameflower_item, 1, false, false);
-    }
-/*
-    @Override
-    public Block getNextGrowStage () {
-        if (stage == 1)
-            return BlockListMF.herb_carxanium_2;
-        if (stage == 2)
-            return BlockListMF.herb_carxanium_3;
-        else return BlockListMF.herb_carxanium_3;
+    public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune)
+    {
+        ArrayList<ItemStack> drop = super.getDrops(world, x, y, z, metadata, fortune);
+
+        if (metadata == 0)
+            drop.add(new ItemStack(Item.getItemFromBlock(this), 1));
+        if (metadata == 1) {
+            drop.add(new ItemStack(ComponentListMF.flameflower_bush, 1));
+        }
+
+        return drop;
     }
 
-    @Override
-    public Block getPrevGrowStage () {
-        return BlockListMF.herb_carxanium_2;
-    }*/
 
     @Override
-    public int getMaxMeta () {
-        return maxMeta; // 0, 1, 2, total = 3 stages
-    }
+    public int getMaxMeta () { return maxMeta;   }
 
     @SideOnly(Side.CLIENT)
     @Override
     public IIcon getIcon(int side, int meta)
     {
-        /*
-        if (meta < 0 || meta > 7)
-        {
-            meta = 7;
-        }*/
-
         return icons[meta];
     }
 
@@ -119,7 +121,6 @@ public class BlockHerbFlameflower extends BlockHerbsMF {
         }
     }
 
-    //@Override
     public String getTexture () {
         return "minefantasy2:herbs/" + name + "_stage_";
     }

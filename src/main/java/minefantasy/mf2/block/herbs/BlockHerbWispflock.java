@@ -17,7 +17,6 @@ import net.minecraftforge.common.BiomeDictionary;
 
 public class BlockHerbWispflock extends BlockHerbsMF {
     private int meta, maxMeta = 1;
-    private Block block;
     private String name = "wispflock";
     @SideOnly(Side.CLIENT)
     private IIcon[] icons;
@@ -26,6 +25,9 @@ public class BlockHerbWispflock extends BlockHerbsMF {
         setBlockName("herb_" + name);
 
         GameRegistry.registerBlock(this, "herb_" + name);
+        this.setHardness(0.3F);
+        // p_1,2,3 = offset, p_4,5,6 = dimension. One 0.1F = 1.6 pixels
+        this.setBlockBounds(0.2F, 0.0F, 0.2F, 0.8F, 0.9F, 0.8F);
     }
 
     @Override
@@ -34,55 +36,37 @@ public class BlockHerbWispflock extends BlockHerbsMF {
         meta = world.getBlockMetadata(x, y, z);
 
         if (held != null && held.getItem() instanceof ItemShearsMF && meta == 1) {
-            dropItem(world, x, y, z, ComponentListMF.wispflock_item, 1, false, false);
+            dropItem(world, x, y, z, ComponentListMF.wispflock_item, 3, true, true);
+
             held.damageItem(1, user);
             if (held.getItemDamage() >= held.getMaxDamage()) {
                 if (world.isRemote)
                     user.renderBrokenItemStack(held);
                 user.destroyCurrentEquippedItem();
             }
-            world.setBlock(x, y, z, Blocks.air);
+            --meta;
+            world.setBlockMetadataWithNotify(x, y, z, meta, 2);
+            return true;
+        }
+        else
+        if (meta == 1) {
+            dropItem(world, x, y, z, ComponentListMF.wispflock_item, 2, true, false);
+            --meta;
+            world.setBlockMetadataWithNotify(x, y, z, meta, 2);
             return true;
         }
         return false;
     }
 
     @Override
-    public void getCustomDrop (World world, int x, int y, int z, Block block) {
-        meta = world.getBlockMetadata(x, y, z);
-        if (meta == 1)
-            dropItem(world, x, y, z, ComponentListMF.wispflock_item, 2, true, false);
-    }
-/*
-    @Override
-    public Block getNextGrowStage () {
-        if (stage == 1)
-            return BlockListMF.herb_carxanium_2;
-        if (stage == 2)
-            return BlockListMF.herb_carxanium_3;
-        else return BlockListMF.herb_carxanium_3;
-    }
-
-    @Override
-    public Block getPrevGrowStage () {
-        return BlockListMF.herb_carxanium_2;
-    }*/
-
-    @Override
     public int getMaxMeta () {
-        return maxMeta; // 0, 1, 2, total = 3 stages
+        return maxMeta;
     }
 
     @SideOnly(Side.CLIENT)
     @Override
     public IIcon getIcon(int side, int meta)
     {
-        /*
-        if (meta < 0 || meta > 7)
-        {
-            meta = 7;
-        }*/
-
         return icons[meta];
     }
 
@@ -98,7 +82,6 @@ public class BlockHerbWispflock extends BlockHerbsMF {
         }
     }
 
-    //@Override
     public String getTexture () {
         return "minefantasy2:herbs/" + name + "_stage_";
     }

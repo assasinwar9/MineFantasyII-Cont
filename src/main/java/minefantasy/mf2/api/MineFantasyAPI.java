@@ -264,7 +264,7 @@ public class MineFantasyAPI {
                                                          float time, float minTemp, float maxTemp, int slagGenChance, String mod) {
         return CraftingManagerRefFurnace.getInstance().addRecipe(catalyst, slot_1, slot_2, slot_3,
                 res_1, res_2, res_3,
-                time, minTemp, maxTemp, slagGenChance, String mod);
+                time, minTemp, maxTemp, slagGenChance, mod);
     }
 
     public static void registerFuelHandler(IFuelHandler handler) {

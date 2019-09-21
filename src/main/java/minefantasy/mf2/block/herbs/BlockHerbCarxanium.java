@@ -63,13 +63,6 @@ public class BlockHerbCarxanium extends BlockHerbsMF {
         return false;
     }
 
-    @Override
-    public void getCustomDrop (World world, int x, int y, int z, Block block) {
-        meta = world.getBlockMetadata(x, y, z);
-        dropItem(world, x, y, z, ComponentListMF.carxanium_items, 3, true, true);
-        if (meta == 1 || meta == 2)
-            dropItem(world, x, y, z, ComponentListMF.carxanium_root, 1, false, false);
-    }
 /*
     @Override
     public Block getNextGrowStage () {

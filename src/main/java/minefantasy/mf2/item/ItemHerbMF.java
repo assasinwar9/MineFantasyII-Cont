@@ -15,19 +15,21 @@ import net.minecraftforge.common.util.ForgeDirection;
 
 public class ItemHerbMF extends Item {
     protected String name;
-    protected int itemRarity;
+    protected int itemRarity, meta;
     private Block plantableBlock;
 
     public ItemHerbMF(String name, int rarity) {
-        this (name, rarity, Blocks.air);
+        this (name, rarity, Blocks.air, 0);
     }
 
 
-    public ItemHerbMF(String name, int rarity, Block plantableBlock) {
+    public ItemHerbMF(String name, int rarity, Block plantableBlock, int meta) {
         itemRarity = rarity;
         this.plantableBlock = plantableBlock;
         this.name = name;
+        this.meta = meta;
         setTextureName("minefantasy2:herbs/" + name);
+
         this.setCreativeTab(CreativeTabMF.tabDecorations);
 
         GameRegistry.registerItem(this, "MF_Herb_" + name, MineFantasyII.MODID);
@@ -49,31 +51,13 @@ public class ItemHerbMF extends Item {
             if (world.isAirBlock(x, y + 1, z) && user.canPlayerEdit(x, y, z, side, held) && user.canPlayerEdit(x, y + 1, z, side, held)
                     && ((BlockHerbsMF) plantableBlock).isRightSoil(target)) {
                 world.setBlock(x, y + 1, z, plantableBlock);
-                world.setBlockMetadataWithNotify(x, y + 1, z, 0, 2);
+                world.setBlockMetadataWithNotify(x, y + 1, z, meta, 2);
                 --held.stackSize;
                 return true;
             }
             else return false;
         }
         else return false;
-/*
-        else if (user.canPlayerEdit(p_77648_4_, p_77648_5_, p_77648_6_, p_77648_7_, itemStack) && user.canPlayerEdit(p_77648_4_, p_77648_5_ + 1, p_77648_6_, p_77648_7_, p_77648_1_))
-        {
-            if (world.getBlock(p_77648_4_, p_77648_5_, p_77648_6_).canSustainPlant(world, p_77648_4_, p_77648_5_, p_77648_6_, ForgeDirection.UP, this) && world.isAirBlock(p_77648_4_, p_77648_5_ + 1, p_77648_6_))
-            {
-                world.setBlock(p_77648_4_, p_77648_5_ + 1, p_77648_6_, plantableBlock);
-                --held.stackSize;
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-        else
-        {
-            return false;
-        }*/
     }
 
 }

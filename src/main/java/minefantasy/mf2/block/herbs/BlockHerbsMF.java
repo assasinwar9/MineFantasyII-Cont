@@ -25,15 +25,14 @@ import net.minecraft.world.biome.BiomeGenBase;
 
 public abstract class BlockHerbsMF extends BlockBush {
     @SideOnly(Side.CLIENT)
-    private IIcon[] icons;
+    public IIcon[] icons;
     private String name;
     private int dropCount;
     private Random rand = new Random();
 
     public BlockHerbsMF() {
-        super(Material.plants);
+        super(Material.rock);
 
-        this.setHardness(0f);
         this.setStepSound(soundTypeGrass);
         this.setResistance(0.1f);
         this.setCreativeTab(CreativeTabs.tabDecorations);
@@ -50,10 +49,10 @@ public abstract class BlockHerbsMF extends BlockBush {
     }
 
 
-    @Override
+    /*@Override
     public boolean canHarvestBlock(EntityPlayer player, int meta) {
-        return false;
-    }
+        return true;
+    }*/
 
 
 
@@ -121,6 +120,7 @@ public abstract class BlockHerbsMF extends BlockBush {
         return isRightSoil(under);
     }
 
+
     @Override
     public Item getItemDropped (int meta, Random random, int fort) {
         return null;
@@ -153,9 +153,6 @@ public abstract class BlockHerbsMF extends BlockBush {
     abstract int getGrowChance();
     //return chance of generation mature harvest
     abstract int getRipeChance();
-
-    //define the drop for breakBlock event
-    abstract void getCustomDrop (World world, int x, int y, int z, Block block);
 
     //return max count of grow stages
     abstract int getMaxMeta ();

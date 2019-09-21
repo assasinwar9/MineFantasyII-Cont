@@ -26,30 +26,36 @@ public class BlockHerbSinisterGrass extends BlockHerbsMF {
     public BlockHerbSinisterGrass() {
         setBlockName("herb_" + name);
         GameRegistry.registerBlock(this, "herb_" + name);
+        this.setHardness(0.5F);
+        // p_1,2,3 = offset, p_4,5,6 = dimension. One 0.1F = 1.6 pixels
+        this.setBlockBounds(0.2F, 0.0F, 0.2F, 0.8F, 1.0F, 0.8F);
     }
-
     @Override
     public boolean interract (World world, int x, int y, int z, EntityPlayer user) {
         ItemStack held = user.getEquipmentInSlot(0);
         meta = world.getBlockMetadata(x, y, z);
 
         if (held != null && held.getItem() instanceof ItemShearsMF && meta == 1) {
-            dropItem(world, x, y, z, ComponentListMF.sinister_grass_item, 1, false, false);
+            dropItem(world, x, y, z, ComponentListMF.sinister_grass_item, 3, true, true);
+
             held.damageItem(1, user);
             if (held.getItemDamage() >= held.getMaxDamage()) {
                 if (world.isRemote)
                     user.renderBrokenItemStack(held);
                 user.destroyCurrentEquippedItem();
             }
-            world.setBlock(x, y, z, Blocks.air);
+            --meta;
+            world.setBlockMetadataWithNotify(x, y, z, meta, 2);
+            return true;
+        }
+        else
+        if (meta == 1) {
+            dropItem(world, x, y, z, ComponentListMF.sinister_grass_item, 2, true, false);
+            --meta;
+            world.setBlockMetadataWithNotify(x, y, z, meta, 2);
             return true;
         }
         return false;
-    }
-
-    @Override
-    public void getCustomDrop (World world, int x, int y, int z, Block block) {
-        //dropItem(world, x, y, z, ComponentListMF.flog_grass_item, 1, false, false);
     }
 
     @Override
@@ -61,12 +67,6 @@ public class BlockHerbSinisterGrass extends BlockHerbsMF {
     @Override
     public IIcon getIcon(int side, int meta)
     {
-        /*
-        if (meta < 0 || meta > 7)
-        {
-            meta = 7;
-        }*/
-
         return icons[meta];
     }
 
@@ -82,7 +82,6 @@ public class BlockHerbSinisterGrass extends BlockHerbsMF {
         }
     }
 
-    //@Override
     public String getTexture () {
         return "minefantasy2:herbs/" + name + "_stage_";
     }

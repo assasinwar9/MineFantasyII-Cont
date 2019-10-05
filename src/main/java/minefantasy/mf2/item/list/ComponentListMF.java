@@ -46,7 +46,8 @@ public class ComponentListMF {
     //zs items
     public static Item halite = new ItemComponentMF("halite", -1).setTextureName("minefantasy2:zsItems/halite");
     public static Item tar = new ItemComponentMF("tar", 0).setTextureName("minefantasy2:zsItems/tar").setContainerItem(clay_pot);
-    public static Item bark = new ItemComponentMF("bark", 0).setTextureName("minefantasy2:zsItems/bark");;
+    public static Item bark = new ItemComponentMF("bark", 0).setTextureName("minefantasy2:zsItems/bark");
+    public static Item bark_pot = new ItemComponentMF("bark_pot", 0).setTextureName("minefantasy2:zsItems/bark_pot").setContainerItem(clay_pot);
     public static Item buildingCompound = new ItemComponentMF("buildingCompound", 0).setTextureName("minefantasy2:zsItems/buildingCompound").setContainerItem(clay_pot);
     public static Item slag = new ItemComponentMF("slag", 0).setTextureName("minefantasy2:zsItems/slag");
     public static Item slag_pot = new ItemComponentMF("slag_pot", 0).setTextureName("minefantasy2:zsItems/slag_pot").setContainerItem(clay_pot);

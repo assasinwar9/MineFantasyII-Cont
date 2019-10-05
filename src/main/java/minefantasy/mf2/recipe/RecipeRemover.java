@@ -35,7 +35,9 @@ public class RecipeRemover {
                     item.getItem() == Items.bucket ||
                     item.getItem() == Items.boat ||
                     item.getItem() == Items.dye ||
-                    item.getItem() == Item.getItemFromBlock(Blocks.stonebrick); // ||item.getItem() == Item.getItemFromBlock(Blocks.planks)
+                    item.getItem() == Item.getItemFromBlock(Blocks.stonebrick) ||
+                    item.getItem() == Item.getItemFromBlock(Blocks.furnace) ||
+                    item.getItem() == Item.getItemFromBlock(Blocks.brick_block); // ||item.getItem() == Item.getItemFromBlock(Blocks.planks)
         }
         return false;
     }

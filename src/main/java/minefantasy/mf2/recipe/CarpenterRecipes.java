@@ -101,8 +101,16 @@ public class CarpenterRecipes {
                 new Object[]{"O", 'O', Blocks.gravel,});
         MineFantasyAPI.addCarpenterRecipe(construction, new ItemStack(Items.boat), woodHammer, "mallet", 1,  80,
                 new Object[]{"PTTP",  "PPPP",  "NNNN",  'P',  ComponentListMF.plank_pane,  'T',  ComponentListMF.tar,  'N',  ComponentListMF.nail,});
+
+        MineFantasyAPI.addCarpenterRecipe(construction, new ItemStack(ComponentListMF.bark_pot, 1), basic, "hands", -1,  1,
+                new Object[]{" B ",  "BPB",  " B ",  'B',  ComponentListMF.bark,  'P',  ComponentListMF.clay_pot,});
+
+        //new stonebrick craft
         MineFantasyAPI.addCarpenterRecipe(construction, new ItemStack(Blocks.stonebrick, 8), basic, "hands", -1,  3,
                 new Object[]{"SSS",  "SBS",  "SSS",  'S',  Blocks.stone,  'B',  ComponentListMF.buildingCompound,});
+        //new clay bricks craft
+        MineFantasyAPI.addCarpenterRecipe(construction, new ItemStack(Blocks.brick_block, 8), basic, "hands", -1,  3,
+                new Object[]{"SSS",  "SBS",  "SSS",  'S',  Items.brick,  'B',  ComponentListMF.buildingCompound,});
         //building compound
         MineFantasyAPI.addCarpenterRecipe(construction, new ItemStack(ComponentListMF.buildingCompound, 1), mixing, "hands", -1,  3,
                 new Object[]{"CC  ",  "LE  ", "P   ",  'C',  Items.clay_ball,  'L',  ComponentListMF.limestone_item_pot,  'E',  Items.egg, 'P', ComponentListMF.clay_pot,});

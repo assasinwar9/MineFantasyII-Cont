@@ -36,6 +36,7 @@ public class BasicRecipesMF {
         OrnateStyle.loadCrafting();
         GameRegistry.addRecipe(new RecipeArmourDyeMF());
         AlchemyRecipes.init();
+        BurningKilnRecipes.init();
 
         ArrayList<CustomMaterial> wood = CustomMaterial.getList("wood");
         Iterator iteratorWood = wood.iterator();

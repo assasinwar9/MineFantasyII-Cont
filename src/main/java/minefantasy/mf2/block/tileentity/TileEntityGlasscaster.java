@@ -1,6 +1,8 @@
 package minefantasy.mf2.block.tileentity;
 
 import minefantasy.mf2.api.crafting.IHeatUser;
+import minefantasy.mf2.api.crafting.kiln.CraftingManagerKiln;
+import minefantasy.mf2.api.crafting.kiln.IKilnRecipe;
 import minefantasy.mf2.api.helpers.CustomToolHelper;
 import minefantasy.mf2.api.refine.SmokeMechanics;
 import minefantasy.mf2.block.crafting.BlockGlasscaster;
@@ -22,10 +24,11 @@ import java.util.Random;
 
 public class TileEntityGlasscaster extends TileEntity implements IInventory, IHeatUser {
     private ItemStack[] inv = new ItemStack[4];
+    private IKilnRecipe[] recipe = new IKilnRecipe[4];
     public boolean isActive;
-    public float temperature;
+    public float currentTemp;
     public float[] progress = new float[4];
-    private float progressMax = 200;
+    private float basicTimeScale = 200;
     private Random rand = new Random();
     private double partOffsetX, partOffsetZ, partOffsetY, s;
     private Block block;
@@ -41,19 +44,26 @@ public class TileEntityGlasscaster extends TileEntity implements IInventory, IHe
                 ((BlockGlasscaster) block).spawnParticle(worldObj, xCoord, yCoord, zCoord);
         }
 
-        temperature = getTemperature();
+        currentTemp = getTemperature();
 
         for (int i = 0; i < 4; i++) {
-            if (inv[i] != null && getResult(inv[i]) != null && temperature >= 800F) {
-                progress[i] += temperature / 1000F;
-                if (progress[i] >= (progressMax * inv[i].stackSize * getProgressScale(inv[i].stackSize))) {
+            updateRecipe(inv[i], i);
+            if (inv[i] != null && recipe[i] != null && currentTemp >= recipe[i].minTemp()) {
+                progress[i] += currentTemp / 1000F;
+                if (progress[i] >= (recipe[i].time() * inv[i].stackSize * getProgressScale(inv[i].stackSize))) {
                     progress[i] = 0;
-                    setInventorySlotContents(i, new ItemStack(getResult(inv[i]), inv[i].stackSize));
+                    setInventorySlotContents(i, new ItemStack(recipe[i].result(), inv[i].stackSize));
                 }
             } else
                 progress[i] = 0;
         }
     }
+
+    private void updateRecipe (ItemStack slot, int i) {
+        if (slot != null)
+            recipe[i] = CraftingManagerKiln.getInstance().findMatchingRecipe(slot.getItem());
+    }
+
 
     private Item getResult (ItemStack item) {
         if (item != null) {

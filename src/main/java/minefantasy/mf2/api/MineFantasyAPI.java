@@ -12,6 +12,8 @@ import minefantasy.mf2.api.crafting.anvil.IAnvilRecipe;
 import minefantasy.mf2.api.crafting.carpenter.CraftingManagerCarpenter;
 import minefantasy.mf2.api.crafting.carpenter.ICarpenterRecipe;
 import minefantasy.mf2.api.crafting.engineer.ICrossbowPart;
+import minefantasy.mf2.api.crafting.kiln.CraftingManagerKiln;
+import minefantasy.mf2.api.crafting.kiln.IKilnRecipe;
 import minefantasy.mf2.api.crafting.refine.QuernRecipes;
 import minefantasy.mf2.api.heating.Heatable;
 import minefantasy.mf2.api.refine.Alloy;
@@ -265,6 +267,10 @@ public class MineFantasyAPI {
         return CraftingManagerRefFurnace.getInstance().addRecipe(catalyst, slot_1, slot_2, slot_3,
                 res_1, res_2, res_3,
                 time, minTemp, maxTemp, slagGenChance, mod);
+    }
+
+    public static void addBurningKilnRecipe (Item rawItem, Item result, float minTemp, float basicTimeScale) {
+        CraftingManagerKiln.getInstance().addRecipe(rawItem, result, minTemp, basicTimeScale);
     }
 
     public static void registerFuelHandler(IFuelHandler handler) {

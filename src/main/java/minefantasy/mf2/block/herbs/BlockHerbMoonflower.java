@@ -31,7 +31,7 @@ public class BlockHerbMoonflower extends BlockHerbsMF {
         setBlockName("herb_" + name);
 
         GameRegistry.registerBlock(this, "herb_" + name);
-        this.setLightLevel(2.0F);
+        //this.setLightLevel(2.0F);
         this.setHardness(0.3F);
         this.setHarvestLevel("shovel", 0);
         // p_1,2,3 = offset, p_4,5,6 = dimension. One 0.1F = 1.6 pixels

@@ -49,6 +49,8 @@ public class BlockListMF {
             .setStepSound(Block.soundTypeStone).setBlockTextureName("minefantasy2:zsAddon/zs_block");
     public static Block ae_block = new BasicBlockMF("ae_block", Material.rock).setLightLevel(8.0F).setBlockUnbreakable()
             .setStepSound(Block.soundTypeStone).setBlockTextureName("minefantasy2:zsAddon/ae_block");
+    public static Block obelisk = new BlockDarkObelisk();
+
     public static Block limestone_friable = new BasicBlockMF("limestone_friable", Material.rock).setHardness(3.0F).setResistance(1.0F)
             .setStepSound(Block.soundTypeGravel).setBlockTextureName("minefantasy2:zsAddon/limestone_friable");
 

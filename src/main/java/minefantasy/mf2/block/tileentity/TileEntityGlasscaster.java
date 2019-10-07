@@ -52,7 +52,10 @@ public class TileEntityGlasscaster extends TileEntity implements IInventory, IHe
                 progress[i] += currentTemp / 1000F;
                 if (progress[i] >= (recipe[i].time() * inv[i].stackSize * getProgressScale(inv[i].stackSize))) {
                     progress[i] = 0;
-                    setInventorySlotContents(i, new ItemStack(recipe[i].result(), inv[i].stackSize));
+                    if (recipe[i].meta() == 0)
+                        setInventorySlotContents(i, new ItemStack(recipe[i].result(), inv[i].stackSize));
+                    else
+                        setInventorySlotContents(i, new ItemStack(recipe[i].result(), inv[i].stackSize, recipe[i].meta()));
                 }
             } else
                 progress[i] = 0;

@@ -49,11 +49,17 @@ public class BurningKilnRecipes {
         MineFantasyAPI.addBurningKilnRecipe(ComponentListMF.ingot_mould_uncooked, ComponentListMF.ingot_mould, 800F, 180);
         MineFantasyAPI.addBurningKilnRecipe(ComponentListMF.mine_casing_uncooked, ComponentListMF.mine_casing, 800F, 180);
         MineFantasyAPI.addBurningKilnRecipe(ComponentListMF.bomb_casing_uncooked, ComponentListMF.bomb_casing, 800F, 180);
-        MineFantasyAPI.addBurningKilnRecipe(ComponentListMF.fireclay_brick, ComponentListMF.strong_brick, 800F, 180);
+        MineFantasyAPI.addBurningKilnRecipe(ComponentListMF.fireclay_brick, ComponentListMF.strong_brick, 1000F, 120);
 
         MineFantasyAPI.addBurningKilnRecipe(ComponentListMF.glassmould_block_uncooked, ComponentListMF.glassmould_block, 800F, 180);
         MineFantasyAPI.addBurningKilnRecipe(ComponentListMF.glassmould_bottle_uncooked, ComponentListMF.glassmould_bottle, 800F, 180);
         MineFantasyAPI.addBurningKilnRecipe(ComponentListMF.glassmould_panel_uncooked, ComponentListMF.glassmould_panel, 800F, 180);
+        //wood coal
+        MineFantasyAPI.addBurningKilnRecipe(Item.getItemFromBlock(Blocks.log), Items.coal, 1, 700F, 160);
+        MineFantasyAPI.addBurningKilnRecipe(Item.getItemFromBlock(Blocks.log2), Items.coal, 1, 700F, 160);
+        //other
+        MineFantasyAPI.addBurningKilnRecipe(Item.getItemFromBlock(Blocks.cobblestone), Item.getItemFromBlock(Blocks.stone), 1200F, 200);
+        MineFantasyAPI.addBurningKilnRecipe(ComponentListMF.bark_pot, ComponentListMF.tar, 600F, 180);
 
     }
 }

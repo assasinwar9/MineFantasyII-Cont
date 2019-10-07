@@ -10,6 +10,9 @@ public interface IKilnRecipe {
     //result item
     Item result ();
 
+    //meta of result, default = 0
+    int meta ();
+
     //temperature param
     float minTemp();
 

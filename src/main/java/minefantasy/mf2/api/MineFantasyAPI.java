@@ -273,6 +273,10 @@ public class MineFantasyAPI {
         CraftingManagerKiln.getInstance().addRecipe(rawItem, result, minTemp, basicTimeScale);
     }
 
+    public static void addBurningKilnRecipe (Item rawItem, Item result, int resultMeta, float minTemp, float basicTimeScale) {
+        CraftingManagerKiln.getInstance().addRecipe(rawItem, result, resultMeta, minTemp, basicTimeScale);
+    }
+
     public static void registerFuelHandler(IFuelHandler handler) {
         fuelHandlers.add(handler);
     }

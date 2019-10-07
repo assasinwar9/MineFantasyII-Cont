@@ -41,8 +41,11 @@ public class CraftingManagerKiln {
         return true;
     }
 
-
     public void addRecipe (Item raw, Item result, float minTemp, float time) {
+        addRecipe(raw, result, 0, minTemp, time);
+    }
+
+    public void addRecipe (Item raw, Item result, int meta, float minTemp, float time) {
 
         IKilnRecipe recipe = new IKilnRecipe() {
             @Override
@@ -54,6 +57,9 @@ public class CraftingManagerKiln {
             public Item result() {
                 return result;
             }
+
+            @Override
+            public int meta() { return meta;}
 
             @Override
             public float minTemp() {

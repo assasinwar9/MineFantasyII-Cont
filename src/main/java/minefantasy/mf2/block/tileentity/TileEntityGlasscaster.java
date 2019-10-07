@@ -65,43 +65,6 @@ public class TileEntityGlasscaster extends TileEntity implements IInventory, IHe
     }
 
 
-    private Item getResult (ItemStack item) {
-        if (item != null) {
-            //glass casting
-            if (item.getItem() == ComponentListMF.glassmould_block_filled)
-                return Item.getItemFromBlock(BlockListMF.glassmould_block_melted);
-            if (item.getItem() == ComponentListMF.glassmould_bottle_filled)
-                return Item.getItemFromBlock(BlockListMF.glassmould_bottle_melted);
-            if (item.getItem() == ComponentListMF.glassmould_panel_filled)
-                return Item.getItemFromBlock(BlockListMF.glassmould_panel_melted);
-            //bake ceramic and chamotte
-            if (item.getItem() == ComponentListMF.clay_pot_uncooked)
-                return ComponentListMF.clay_pot;
-            if (item.getItem() == FoodListMF.jug_uncooked)
-                return FoodListMF.jug_empty;
-            if (item.getItem() == ComponentListMF.pie_tray_uncooked)
-                return FoodListMF.pie_tray;
-            if (item.getItem() == ComponentListMF.ingot_mould_uncooked)
-                return ComponentListMF.ingot_mould;
-            if (item.getItem() == ComponentListMF.mine_casing_uncooked)
-                return ComponentListMF.mine_casing;
-            if (item.getItem() == ComponentListMF.bomb_casing_uncooked)
-                return ComponentListMF.bomb_casing;
-            if (item.getItem() == ComponentListMF.fireclay_brick)
-                return ComponentListMF.strong_brick;
-
-            if (item.getItem() == ComponentListMF.glassmould_block_uncooked)
-                return ComponentListMF.glassmould_block;
-            if (item.getItem() == ComponentListMF.glassmould_bottle_uncooked)
-                return ComponentListMF.glassmould_bottle;
-            if (item.getItem() == ComponentListMF.glassmould_panel_uncooked)
-                return ComponentListMF.glassmould_panel;
-
-            //
-        }
-        return null;
-    }
-
     private float getProgressScale (int stackSize) {
         if (stackSize <= 4)
             return 1;

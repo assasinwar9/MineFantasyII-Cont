@@ -1,5 +1,6 @@
 package minefantasy.mf2.block.tileentity.alchemy;
 
+//import minefantasy.mf2.api.alchemy.CraftingManagerRefFurnace;
 import minefantasy.mf2.api.alchemy.CraftingManagerRefFurnace;
 import minefantasy.mf2.api.alchemy.IRefFurnaceRecipe;
 import minefantasy.mf2.api.crafting.IHeatUser;

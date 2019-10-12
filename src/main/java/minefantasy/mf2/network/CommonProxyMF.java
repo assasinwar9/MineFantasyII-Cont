@@ -9,6 +9,7 @@ import minefantasy.mf2.api.refine.ISmokeHandler;
 import minefantasy.mf2.api.refine.SmokeMechanics;
 import minefantasy.mf2.block.tileentity.*;
 import minefantasy.mf2.block.tileentity.alchemy.TileEntityExtractor;
+import minefantasy.mf2.block.tileentity.alchemy.TileEntityRefFurnace;
 import minefantasy.mf2.block.tileentity.blastfurnace.TileEntityBlastFC;
 import minefantasy.mf2.block.tileentity.blastfurnace.TileEntityBlastFH;
 import minefantasy.mf2.block.tileentity.decor.TileEntityAmmoBox;

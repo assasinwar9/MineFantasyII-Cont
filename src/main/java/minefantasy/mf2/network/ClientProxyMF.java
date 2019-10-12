@@ -9,6 +9,7 @@ import minefantasy.mf2.api.helpers.ClientTickHandler;
 import minefantasy.mf2.api.knowledge.InformationList;
 import minefantasy.mf2.block.tileentity.*;
 import minefantasy.mf2.block.tileentity.alchemy.TileEntityExtractor;
+import minefantasy.mf2.block.tileentity.alchemy.TileEntityRefFurnace;
 import minefantasy.mf2.block.tileentity.blastfurnace.TileEntityBlastFC;
 import minefantasy.mf2.block.tileentity.blastfurnace.TileEntityBlastFH;
 import minefantasy.mf2.block.tileentity.decor.TileEntityAmmoBox;
@@ -140,7 +141,7 @@ public class ClientProxyMF extends CommonProxyMF {
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityChimney.class, new TileEntitySmokePipeRenderer());
 
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityComponent.class, new TileEntityComponentRenderer());
-		
+
 		MinecraftForge.EVENT_BUS.register(new TabRegistry());
         MinecraftForge.EVENT_BUS.register(new IEEPMF2.Handler());
         TabRegistry.registerTab(new InventoryTabVanilla());

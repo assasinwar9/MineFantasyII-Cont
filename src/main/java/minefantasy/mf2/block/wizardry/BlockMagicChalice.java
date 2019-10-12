@@ -10,13 +10,16 @@ import minefantasy.mf2.item.list.CreativeTabMF;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
+import java.util.List;
 import java.util.Random;
 
 public class BlockMagicChalice extends BlockContainer {
@@ -38,7 +41,15 @@ public class BlockMagicChalice extends BlockContainer {
         this.setHardness(8F);
         this.setResistance(8F);
         this.setCreativeTab(CreativeTabMF.tabUtil);
+
+        this.setBlockBounds(0.2F, 0.0F, 0.2F, 0.8F, 0.4F, 0.8F);
         //setBlockTextureName("minefantasy2:zsAddon/zs_block");
+    }
+
+    @Override
+    public void addCollisionBoxesToList(World world, int x, int y, int z, AxisAlignedBB axis, List list, Entity player) {
+        this.setBlockBounds(0.2F, 0.0F, 0.2F, 0.8F, 0.4F, 0.8F);
+        super.addCollisionBoxesToList(world, x, y, z, axis, list, player);
     }
 
     @Override

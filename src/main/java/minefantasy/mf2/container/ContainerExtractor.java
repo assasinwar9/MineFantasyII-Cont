@@ -1,6 +1,5 @@
 package minefantasy.mf2.container;
 
-import minefantasy.mf2.block.tileentity.TileEntityRefFurnace;
 import minefantasy.mf2.block.tileentity.alchemy.TileEntityExtractor;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;

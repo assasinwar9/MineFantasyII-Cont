@@ -1,28 +1,23 @@
 package minefantasy.mf2.block.tileentity;
 
-import minefantasy.mf2.api.crafting.IHeatUser;
-import minefantasy.mf2.api.helpers.CustomToolHelper;
-import minefantasy.mf2.api.refine.Alloy;
-import minefantasy.mf2.api.refine.AlloyRecipes;
-import minefantasy.mf2.api.refine.SmokeMechanics;
-import minefantasy.mf2.block.list.BlockListMF;
-import minefantasy.mf2.block.refining.BlockCrucible;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import minefantasy.mf2.block.tileentity.blastfurnace.TileEntityBlastFH;
 import minefantasy.mf2.block.wizardry.BlockMagicChalice;
-import minefantasy.mf2.block.wizardry.BlockMagicPedestal;
+import minefantasy.mf2.item.tool.ItemSpadeMF;
+import minefantasy.mf2.item.tool.crafting.ItemHammer;
+import minefantasy.mf2.item.tool.crafting.ItemSpanner;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockEndPortalFrame;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
@@ -35,7 +30,7 @@ public class TileEntityMagicChalice extends TileEntity implements IInventory {
     private int downCraftLimit = -60;
     private int upMaxCraftLimit = 60;
     private int upCraftLimit = 60;
-    private int markerPos = 0;
+    private float markerPos = 0;
     private int dropCount;
     private int clickCount;
 
@@ -48,8 +43,8 @@ public class TileEntityMagicChalice extends TileEntity implements IInventory {
     private TileEntity tile;
     private TileEntityMagicPedestal magicPedestal;
 
-    private int speed; //pixel per second
-    private int tickExisted;
+    private float speed = 1;
+    private int tickExisted, ms;
 
     private int direction = 1; //+1 = right, -1 = left
 
@@ -58,30 +53,46 @@ public class TileEntityMagicChalice extends TileEntity implements IInventory {
     @Override
     public void updateEntity() {
         super.updateEntity();
-
-        //if(!worldObj.isRemote) {
             ++tickExisted;
+            if (tickExisted == 10) {
+                ++downCraftLimit;
+                --upCraftLimit;
+            }
             if (tickExisted >= 20) {
                 tickExisted = 0;
                 checkStructure();
             }
+        if (worldObj.isRemote) {
 
+            //moving indicator
+            ++ms;
+            if (ms == 2) //exist 2 ticks or 100 ms
+            {
+                ms = 0;
+                if (craftingPhase) {
+                    markerPos += (float) direction * speed;
+                }
+
+
+            }
+        }
 
             if (markerPos >= upCraftLimit || markerPos <= downCraftLimit) {
-                craftFinalization(true);
+                if (worldObj.isRemote)
+                    craftFinalization(true);
                 progress = 0;
             }
 
+
             if (craftingPhase) {
-                speed = clickCount > 4 ? 2 : 1;
-                ++progress;
-                markerPos += direction * speed;
+                    ++progress;
                 if (progress >= progressMax) {
-                    craftFinalization(false);
+                    craftingPhase = false;
+                    if (worldObj.isRemote)
+                        craftFinalization(false);
                     progress = 0;
                 }
             }
-       // }
 
     }
 
@@ -100,6 +111,36 @@ public class TileEntityMagicChalice extends TileEntity implements IInventory {
     public boolean interract (World world, int x, int y, int z, EntityPlayer user) {
         ItemStack held = user.getHeldItem();
 
+        //debug
+        if (held != null && held.getItem() instanceof ItemSpanner) {
+            speed+=0.2F;
+            if (!world.isRemote)
+                Minecraft.getMinecraft().thePlayer.sendChatMessage("[DEBUG] Speed has been changed. Current speed = " + speed);
+            return true;
+        }
+        if (held != null && held.getItem() instanceof ItemHammer) {
+            speed-=0.2F;
+            if (!world.isRemote)
+                Minecraft.getMinecraft().thePlayer.sendChatMessage("[DEBUG] Speed has been changed. Current speed = " + speed);
+            return true;
+        }
+
+        if (held != null && held.getItem() instanceof ItemSpadeMF) {
+            if (speed < 2.0F)
+                speed = 3.0F;
+            else if (speed < 4.0F)
+                speed = 4.0F;
+            else if (speed < 5.0F)
+                speed = 5.0F;
+            else if (speed > 5.0F)
+                speed = 1.0F;
+            if (!world.isRemote)
+                Minecraft.getMinecraft().thePlayer.sendChatMessage("[DEBUG] Difficulty lvl has been changed. Current speed = " + speed);
+            return true;
+        }
+
+        //end of debug function
+
         if(!craftingPhase && magicPedestal != null && magicPedestal.validStructure) {
             if (held != null && held.getItem() == Items.emerald) {
                 --held.stackSize;
@@ -110,13 +151,13 @@ public class TileEntityMagicChalice extends TileEntity implements IInventory {
         if (craftingPhase) {
             if (held != null && held.getItem() == Items.stick) {
                 if (direction == 1) {
-                    upCraftLimit = markerPos;
-                    markerPos -= 1;
+                    upCraftLimit = Math.round(markerPos);
+                    markerPos -= 2;
                     ++clickCount;
                 }
                 if (direction == -1) {
-                    downCraftLimit = markerPos;
-                    markerPos += 1;
+                    downCraftLimit = Math.round(markerPos);
+                    markerPos += 2;
                     ++clickCount;
                 }
                 direction *= -1;
@@ -130,7 +171,6 @@ public class TileEntityMagicChalice extends TileEntity implements IInventory {
     public void activation () {
         craftingPhase  = true;
         direction = 1;
-        speed = 1;
         upCraftLimit = upMaxCraftLimit;
         downCraftLimit = downMaxCraftLimit;
         magicPedestal.isActive = true;
@@ -146,6 +186,8 @@ public class TileEntityMagicChalice extends TileEntity implements IInventory {
         dropItem(worldObj, xCoord, yCoord, zCoord, ruin ? Item.getItemFromBlock(Blocks.dirt) : Items.diamond, 4, false, false);
         if (worldObj.getBlock(xCoord, yCoord, zCoord) instanceof BlockMagicChalice)
             ((BlockMagicChalice) worldObj.getBlock(xCoord, yCoord, zCoord)).spawnFinalParticle(worldObj, xCoord, yCoord, zCoord, "flame", "smoke");
+        if (!worldObj.isRemote)
+            Minecraft.getMinecraft().thePlayer.sendChatMessage("[DEBUG] craft finalization");
     }
 
     public void dropItem(World world, int x, int y, int z, Item item, int count, boolean isRandom, boolean noLoss) {
@@ -184,7 +226,7 @@ public class TileEntityMagicChalice extends TileEntity implements IInventory {
 
 
     public int getProgressBar () {
-        return (int) Math.floor(progress * 115 / progressMax);
+        return Math.round(progress * 115F / progressMax);
     }
 
 
@@ -193,7 +235,7 @@ public class TileEntityMagicChalice extends TileEntity implements IInventory {
     }
 
     public int getMarkerPosition () {
-        return markerPos;
+        return Math.round(markerPos);
     }
 
     public void moveMarker (int move) {

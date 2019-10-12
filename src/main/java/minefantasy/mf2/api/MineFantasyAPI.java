@@ -13,7 +13,6 @@ import minefantasy.mf2.api.crafting.carpenter.CraftingManagerCarpenter;
 import minefantasy.mf2.api.crafting.carpenter.ICarpenterRecipe;
 import minefantasy.mf2.api.crafting.engineer.ICrossbowPart;
 import minefantasy.mf2.api.crafting.kiln.CraftingManagerKiln;
-import minefantasy.mf2.api.crafting.kiln.IKilnRecipe;
 import minefantasy.mf2.api.crafting.refine.QuernRecipes;
 import minefantasy.mf2.api.heating.Heatable;
 import minefantasy.mf2.api.refine.Alloy;
@@ -261,6 +260,7 @@ public class MineFantasyAPI {
     }
 
     //zs-addon
+
     public static IRefFurnaceRecipe addRefFurnaceRecipe (ItemStack catalyst, ItemStack slot_1, ItemStack slot_2, ItemStack slot_3,
                                                          ItemStack res_1, ItemStack res_2, ItemStack res_3,
                                                          float time, float minTemp, float maxTemp, int slagGenChance, String mod) {

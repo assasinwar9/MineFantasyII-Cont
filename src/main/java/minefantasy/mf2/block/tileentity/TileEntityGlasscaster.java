@@ -1,6 +1,7 @@
 package minefantasy.mf2.block.tileentity;
 
 import minefantasy.mf2.api.crafting.IHeatUser;
+//import minefantasy.mf2.api.crafting.kiln.CraftingManagerKiln;
 import minefantasy.mf2.api.crafting.kiln.CraftingManagerKiln;
 import minefantasy.mf2.api.crafting.kiln.IKilnRecipe;
 import minefantasy.mf2.api.helpers.CustomToolHelper;

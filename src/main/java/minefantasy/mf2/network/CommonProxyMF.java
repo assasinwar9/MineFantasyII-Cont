@@ -8,6 +8,8 @@ import minefantasy.mf2.api.archery.AmmoMechanicsMF;
 import minefantasy.mf2.api.refine.ISmokeHandler;
 import minefantasy.mf2.api.refine.SmokeMechanics;
 import minefantasy.mf2.block.tileentity.*;
+import minefantasy.mf2.block.tileentity.alchemy.TileEntityExtractor;
+import minefantasy.mf2.block.tileentity.alchemy.TileEntityRefFurnace;
 import minefantasy.mf2.block.tileentity.blastfurnace.TileEntityBlastFC;
 import minefantasy.mf2.block.tileentity.blastfurnace.TileEntityBlastFH;
 import minefantasy.mf2.block.tileentity.decor.TileEntityAmmoBox;
@@ -23,8 +25,8 @@ import minefantasy.mf2.integration.minetweaker.MTCompat;
 import minefantasy.mf2.item.archery.ArrowFireFlint;
 import minefantasy.mf2.item.archery.ArrowFirerMF;
 import minefantasy.mf2.mechanics.*;
+import minefantasy.mf2.player.ContainerMF2Player;
 import minefantasy.mf2.util.XSTRandom;
-import minetweaker.MineTweakerAPI;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
@@ -41,13 +43,30 @@ public class CommonProxyMF implements IGuiHandler, ISmokeHandler {
 
     @Override
     public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
-        if (ID == 1 && x == 1 && player.getHeldItem() != null) {
+        if (ID == 1 && x == 10) {
+    		return new ContainerMF2Player(player);
+    	} else if (ID == 1 && x == 1 && player.getHeldItem() != null) {
             return new ContainerReload(player.inventory, player.getHeldItem());
         } else if (ID == 0) {
             TileEntity tile = world.getTileEntity(x, y, z);
             // int meta = world.getBlockMetadata(x, y, z);
             if (tile == null) {
                 return null;
+            }
+            if (tile instanceof TileEntityTarKiln) {
+                return new ContainerTarKiln(player.inventory, (TileEntityTarKiln) tile);
+            }
+            if (tile instanceof TileEntitySoakingTrough) {
+                return new ContainerSoakingTrough(player.inventory, (TileEntitySoakingTrough) tile);
+            }
+            if (tile instanceof TileEntityGlasscaster) {
+                return new ContainerGlasscaster(player.inventory, (TileEntityGlasscaster) tile);
+            }
+            if (tile instanceof TileEntityRefFurnace) {
+                return new ContainerRefFurnace(player.inventory, (TileEntityRefFurnace) tile);
+            }
+            if (tile instanceof TileEntityExtractor) {
+                return new ContainerExtractor(player.inventory, (TileEntityExtractor) tile);
             }
 
             if (tile instanceof TileEntityAnvilMF) {
@@ -105,6 +124,8 @@ public class CommonProxyMF implements IGuiHandler, ISmokeHandler {
     }
 
     protected void registerTileEntities() {
+        GameRegistry.registerTileEntity(TileEntityTarKiln.class, "MF_TarKiln");
+
         GameRegistry.registerTileEntity(TileEntityAnvilMF.class, "MF_Anvil");
         GameRegistry.registerTileEntity(TileEntityCarpenterMF.class, "MF_CarpenterBench");
         GameRegistry.registerTileEntity(TileEntityBombBench.class, "MF_BombBench");
@@ -118,6 +139,16 @@ public class CommonProxyMF implements IGuiHandler, ISmokeHandler {
         GameRegistry.registerTileEntity(TileEntityBellows.class, "MF_Bellows");
         GameRegistry.registerTileEntity(TileEntityResearch.class, "MF_Research");
         GameRegistry.registerTileEntity(TileEntityTrough.class, "MF_Trough");
+
+        GameRegistry.registerTileEntity(TileEntityMagicChalice.class, "MF_MagicChalice");
+        GameRegistry.registerTileEntity(TileEntityRunicPillar.class, "MF_RunicPillar");
+        GameRegistry.registerTileEntity(TileEntitySoakingTrough.class, "MF_SoakingTrough");
+        GameRegistry.registerTileEntity(TileEntityGlasscaster.class, "MF_Glasscaster");
+        GameRegistry.registerTileEntity(TileEntityGlassmould.class, "Mf_Glassmould");
+        GameRegistry.registerTileEntity(TileEntityRefFurnace.class, "Mf_RefFurnace");
+        GameRegistry.registerTileEntity(TileEntityCauldronMF.class, "MF_CauldronMF");
+        GameRegistry.registerTileEntity(TileEntityCauldronMF.class, "MF_Extractor");
+
         GameRegistry.registerTileEntity(TileEntityBombPress.class, "MF_BombPress");
         GameRegistry.registerTileEntity(TileEntityBloomery.class, "MF_Bloomery");
         GameRegistry.registerTileEntity(TileEntityQuern.class, "MF_Quern");
@@ -129,6 +160,7 @@ public class CommonProxyMF implements IGuiHandler, ISmokeHandler {
         GameRegistry.registerTileEntity(TileEntityWorldGenMarker.class, "MF_WorldGenFlag");
         GameRegistry.registerTileEntity(TileEntityComponent.class, "MF_ComponentTile");
         GameRegistry.registerTileEntity(TileEntityRoad.class, "MF_Road");
+        GameRegistry.registerTileEntity(TileEntityTotem.class, "MF_Totem");
     }
 
     public void preInit() {

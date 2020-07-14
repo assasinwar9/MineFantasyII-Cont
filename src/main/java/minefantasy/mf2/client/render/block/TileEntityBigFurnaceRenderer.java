@@ -53,7 +53,13 @@ public class TileEntityBigFurnaceRenderer extends TileEntitySpecialRenderer {
             j = 90;
         }
 
-        String type = tile.getTexture();
+
+        String type;
+
+        if (tile.isSlagged) {
+            type = "furnace_rock_slagged";
+        } else
+            type = tile.getTexture();
 
         bindTextureByName("textures/models/tileentity/" + type + ".png"); // texture
 

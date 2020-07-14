@@ -136,7 +136,7 @@ public class StructureGenDSRoomSml extends StructureModuleMF {
     }
 
     private void buildHomeFurnishings(int width, int depth, int height) {
-        placeBlock(Blocks.furnace, rotateLeft(), width, 2, 2);
+        placeBlock(BlockListMF.glasscaster, rotateLeft(), width, 2, 2);
 
         placeBlock(Blocks.double_stone_slab, 0, width - 3, 1, 1);
         placeBlock(Blocks.double_stone_slab, 0, width - 3, 1, 2);

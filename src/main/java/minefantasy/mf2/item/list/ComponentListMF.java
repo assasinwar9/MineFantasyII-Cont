@@ -28,12 +28,91 @@ public class ComponentListMF {
             "blacksteelweak", "blacksteel", "silver", "redsteelweak", "redsteel", "bluesteelweak", "bluesteel",
             "adamantium", "mithril", "ignotumite", "mithium", "ender", "tungsten", "obsidian", "dwarfsteel", "emerald"};
 
+    public static Item non_defined_item = new ItemComponentMF("non-defined", -1).setTextureName("minefantasy2:zsItems/non-defined");
+
+    public static Item dull_ember = new ItemComponentMF("dull_ember", -1).setTextureName("minefantasy2:zsItems/dull_ember");
+
+    public static Item schichtCopper = new ItemSchichts("schichtCopper", -1);
+    public static Item schichtTin = new ItemSchichts("schichtTin", -1);
+    public static Item schichtIron = new ItemSchichts("schichtIron", 0);
+    public static Item schichtSilver = new ItemSchichts("schichtSilver", 0);
+    public static Item schichtGold = new ItemSchichts("schichtGold", 0);
+
     public static Item clay_pot = new ItemMFBowl("clay_pot").setStoragePlacement("pot", "pot");
     public static Item clay_pot_uncooked = new ItemComponentMF("clay_pot_uncooked", 0);
     public static Item ingot_mould = new ItemComponentMF("ingot_mould").setStoragePlacement("bar", "mould");
     public static Item ingot_mould_uncooked = new ItemComponentMF("ingot_mould_uncooked", 0);
     public static Item pie_tray_uncooked = new ItemComponentMF("pie_tray_uncooked", 0);
+    //zs items
+    public static Item halite = new ItemComponentMF("halite", -1).setTextureName("minefantasy2:zsItems/halite");
+    public static Item tar = new ItemComponentMF("tar", 0).setTextureName("minefantasy2:zsItems/tar").setContainerItem(clay_pot);
+    public static Item bark = new ItemComponentMF("bark", 0).setTextureName("minefantasy2:zsItems/bark");
+    public static Item bark_pot = new ItemComponentMF("bark_pot", 0).setTextureName("minefantasy2:zsItems/bark_pot").setContainerItem(clay_pot);
+    public static Item buildingCompound = new ItemComponentMF("buildingCompound", 0).setTextureName("minefantasy2:zsItems/buildingCompound").setContainerItem(clay_pot);
+    public static Item slag = new ItemComponentMF("slag", 0).setTextureName("minefantasy2:zsItems/slag");
+    public static Item slag_pot = new ItemComponentMF("slag_pot", 0).setTextureName("minefantasy2:zsItems/slag_pot").setContainerItem(clay_pot);
+    public static Item crushed_chamotte = new ItemComponentMF("crushed_chamotte", -1).setTextureName("minefantasy2:zsItems/crushed_chamotte");
+    //glass mould
 
+    public static Item glassmould_block_uncooked = new ItemComponentMF("glassmould_block_uncooked", 0).setTextureName("minefantasy2:zsItems/glass_mould_block_uncooked");
+    public static Item glassmould_bottle_uncooked = new ItemComponentMF("glassmould_bottle_uncooked", 0).setTextureName("minefantasy2:zsItems/glass_mould_bottle_uncooked");
+    public static Item glassmould_panel_uncooked = new ItemComponentMF("glassmould_panel_uncooked", 0).setTextureName("minefantasy2:zsItems/glass_mould_panel_uncooked");
+
+    public static Item glassmould_block = new ItemComponentMF("glassmould_block", 0).setTextureName("minefantasy2:zsItems/glass_mould_block");
+    public static Item glassmould_bottle = new ItemComponentMF("glassmould_bottle", 0).setTextureName("minefantasy2:zsItems/glass_mould_bottle");
+    public static Item glassmould_panel = new ItemComponentMF("glassmould_panel", 0).setTextureName("minefantasy2:zsItems/glass_mould_panel");
+
+    public static Item glassmould_block_filled = new ItemComponentMF("glassmould_block_filled", 0).setTextureName("minefantasy2:zsItems/glass_mould_block_filled");
+    public static Item glassmould_bottle_filled = new ItemComponentMF("glassmould_bottle_filled", 0).setTextureName("minefantasy2:zsItems/glass_mould_bottle_filled");
+    public static Item glassmould_panel_filled = new ItemComponentMF("glassmould_panel_filled", 0).setTextureName("minefantasy2:zsItems/glass_mould_panel_filled");
+
+    //hide
+    public static Item hideSmall_limed = new ItemComponentMF("hideSmall_limed", 0).setTextureName("minefantasy2:zsItems/hideSmall_limed");
+    public static Item hideMedium_limed = new ItemComponentMF("hideMedium_limed", 0).setTextureName("minefantasy2:zsItems/hideMedium_limed");
+    public static Item hideLarge_limed = new ItemComponentMF("hideLarge_limed", 0).setTextureName("minefantasy2:zsItems/hideLarge_limed");
+    public static Item rawhideSmall_washed = new ItemComponentMF("rawhideSmall_washed", 0).setTextureName("minefantasy2:zsItems/rawhideSmall_washed");
+    public static Item rawhideMedium_washed = new ItemComponentMF("rawhideMedium_washed", 0).setTextureName("minefantasy2:zsItems/rawhideMedium_washed");
+    public static Item rawhideLarge_washed = new ItemComponentMF("rawhideLarge_washed", 0).setTextureName("minefantasy2:zsItems/rawhideLarge_washed");
+
+    public static Item leather_clear = new ItemComponentMF("leather_clear", -1).setTextureName("minefantasy2:zsItems/leather_clear");
+
+    //new color materials (zs items)
+    public static Item colormat_black = new ItemColormats("colormat_black");
+    public static Item colormat_red = new ItemColormats("colormat_red");
+    public static Item colormat_green = new ItemColormats("colormat_green");
+    public static Item colormat_brown = new ItemColormats("colormat_brown");
+    public static Item colormat_blue = new ItemColormats("colormat_blue");
+    public static Item colormat_purple = new ItemColormats("colormat_purple");
+    public static Item colormat_cyan = new ItemColormats("colormat_cyan");
+    public static Item colormat_light_gray = new ItemColormats("colormat_light_gray");
+    public static Item colormat_gray = new ItemColormats("colormat_gray");
+    public static Item colormat_pink = new ItemColormats("colormat_pink");
+    public static Item colormat_lime = new ItemColormats("colormat_lime");
+    public static Item colormat_yellow = new ItemColormats("colormat_yellow");
+    public static Item colormat_light_blue = new ItemColormats("colormat_light_blue");
+    public static Item colormat_magenta = new ItemColormats("colormat_magenta");
+    public static Item colormat_orange = new ItemColormats("colormat_orange");
+    public static Item colormat_white = new ItemColormats("colormat_white");
+    //herbs
+    public static Item silverhead_harvest = new ItemHerbMF("silverhead_harvest", 0).setTextureName("minefantasy2:herbs/herb_silverhead_harvest");
+    public static Item carxanium_items = new ItemHerbMF("carxanium_items", 0);
+    public static Item carxanium_root = new ItemHerbMF("carxanium_root", 0);
+    public static Item sinister_grass_item = new ItemHerbMF("sinister_grass_item", 0);
+    public static Item endure_root_item = new ItemHerbMF("endure_root_item", 0, BlockListMF.herb_endure_root, 0);
+    public static Item dogsear_item = new ItemHerbMF("dogsear_item", 0);
+    public static Item flameflower_item = new ItemHerbMF("flameflower_item", 1);
+    public static Item flameflower_bush = new ItemHerbMF("flameflower_bush", 1, BlockListMF.herb_flameflower, 1).setTextureName("minefantasy2:herbs/flameflower_stage_1");
+    public static Item wispflock_item = new ItemHerbMF("wispflock_item", 0);
+    public static Item moonflower_item = new ItemHerbMF("moonflower_item", 1);
+    public static Item moonflower_bush = new ItemHerbMF("moonflower_bush", 1, BlockListMF.herb_moonflower, 1).setTextureName("minefantasy2:herbs/moonflower_stage_1");
+    public static Item sadblossom_item = new ItemHerbMF("sadblossom_item", 0);
+    public static Item boneberry_item = new ItemHerbMF("boneberry_item", 0);
+    public static Item thorn_root_item = new ItemHerbMF("thorn_root_item", 0, BlockListMF.herb_thorn_root, 0);
+    public static Item savyire_item = new ItemHerbMF("savyire_item", 0);
+    public static Item savyire_bush = new ItemHerbMF("savyire_bush", 0, BlockListMF.herb_savyire, 1).setTextureName("minefantasy2:herbs/savyire_stage_1");
+
+
+    //orig mf items
     public static ItemComponentMF[] ingots = new ItemComponentMF[ingotMats.length];
 
     public static ItemComponentMF plank = new ItemComponentMF("plank").setCustom(1, "wood").setStoragePlacement("plank",
@@ -41,8 +120,8 @@ public class ComponentListMF {
     public static Item vine = new ItemComponentMF("vine", -1);
     public static Item sharp_rock = new ItemComponentMF("sharp_rock", -1);
 
-    public static Item flux = new ItemComponentMF("flux", 0);
-    public static Item flux_strong = new ItemComponentMF("flux_strong", 0);
+    public static Item limestone_item = new ItemComponentMF("limestone_item", 0);
+    public static Item borax = new ItemComponentMF("borax", 0);
 
     public static Item coalDust = new ItemComponentMF("coalDust", 0).setContainerItem(clay_pot);
     public static Item nitre = new ItemComponentMF("nitre", 0);
@@ -88,9 +167,9 @@ public class ComponentListMF {
     public static Item hideSmall = new ItemComponentMF("hideSmall", 0);
     public static Item hideMedium = new ItemComponentMF("hideMedium", 0);
     public static Item hideLarge = new ItemComponentMF("hideLarge", 0);
-    public static Item rawhideSmall = new ItemHide("rawhideSmall", hideSmall, 1.0F);
-    public static Item rawhideMedium = new ItemHide("rawhideMedium", hideMedium, 1.5F);
-    public static Item rawhideLarge = new ItemHide("rawhideLarge", hideLarge, 3.0F);
+    public static Item rawhideSmall = new ItemHide("rawhideSmall", rawhideSmall_washed, 1.0F);
+    public static Item rawhideMedium = new ItemHide("rawhideMedium", rawhideMedium_washed, 1.5F);
+    public static Item rawhideLarge = new ItemHide("rawhideLarge", rawhideLarge_washed, 3.0F);
 
     public static Item dragon_heart = new ItemSpecialDesign("dragon_heart", 1, "dragon");
 
@@ -167,7 +246,7 @@ public class ComponentListMF {
     public static ItemCustomComponent bar = (ItemCustomComponent) new ItemCustomComponent("bar", 1F, "metal")
             .setStoragePlacement("bar", "bar").setCreativeTab(CreativeTabMF.tabMaterialsMF);
 
-    public static Item flux_pot = new ItemComponentMF("flux_pot", 0).setContainerItem(clay_pot);
+    public static Item limestone_item_pot = new ItemComponentMF("limestone_item_pot", 0).setContainerItem(clay_pot);
     public static Item coal_flux = new ItemComponentMF("coal_flux", 0);
 
     public static Item copper_coin = new ItemComponentMF("copper_coin", 0);
@@ -211,6 +290,7 @@ public class ComponentListMF {
         OreDictionary.registerOre("ingotGold", Items.gold_ingot);
 
         AdvancedFuelHandlerMF.registerItems();
+        HerbalicListMF.init();
     }
 
     private static void initFuels() {
@@ -231,10 +311,10 @@ public class ComponentListMF {
 
     private static void addRandomDrops() {
         RandomOre.addOre(new ItemStack(kaolinite), 1.5F, Blocks.stone, -1, 32, 128, false);
-        RandomOre.addOre(new ItemStack(flux), 2F, Blocks.stone, -1, 0, 128, false);
-        RandomOre.addOre(new ItemStack(flux_strong), 1F, Blocks.stone, 2, 0, 128, false);
-        RandomOre.addOre(new ItemStack(flux), 20F, BlockListMF.limestone, 0, -1, 0, 256, true);
-        RandomOre.addOre(new ItemStack(flux_strong), 10F, BlockListMF.limestone, 0, 2, 0, 256, true);
+        RandomOre.addOre(new ItemStack(limestone_item), 2F, Blocks.stone, -1, 0, 128, false);
+        RandomOre.addOre(new ItemStack(borax), 1F, Blocks.stone, 2, 0, 128, false);
+        RandomOre.addOre(new ItemStack(limestone_item), 20F, BlockListMF.limestone, 0, -1, 0, 256, true);
+        RandomOre.addOre(new ItemStack(borax), 10F, BlockListMF.limestone, 0, 2, 0, 256, true);
         RandomOre.addOre(new ItemStack(Items.coal), 2F, Blocks.stone, -1, 0, 128, false);
         RandomOre.addOre(new ItemStack(sulfur), 2F, Blocks.stone, -1, 0, 16, false);
         RandomOre.addOre(new ItemStack(nitre), 3F, Blocks.stone, -1, 0, 64, false);

@@ -31,7 +31,7 @@ public class TileEntityBlastFC extends TileEntity implements IInventory, ISidedI
         return MineFantasyFuels.isCarbon(item);
     }
 
-    public static boolean isFlux(ItemStack item) {
+    public static boolean islimestone_item(ItemStack item) {
         return true;
     }
 

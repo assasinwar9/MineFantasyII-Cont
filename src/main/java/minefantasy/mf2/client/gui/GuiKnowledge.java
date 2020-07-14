@@ -79,7 +79,6 @@ public class GuiKnowledge extends GuiScreen {
                 * 24 - short1 / 2 - 12;
         GuiKnowledge.field_146568_t = GuiKnowledge.field_146566_v = GuiKnowledge.field_146573_x = KnowledgeListMF.gettingStarted.displayRow
                 * 24 - short2 / 2;
-        informationList.clear();
         for (Object achievement : InformationList.knowledgeList) {
             if (!InformationPage.isInfoInPages((InformationBase) achievement)) {
                 informationList.add((InformationBase) achievement);

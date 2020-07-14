@@ -58,7 +58,7 @@ public class Cooking {
         public void undo() {
             for (Map.Entry<String, CookRecipe> recipeEntry : CookRecipe.recipeList.entrySet()) {
                 for (CookRecipe recipe : addedRecipes) {
-                    if (recipe.equals(recipe)) {
+                    if (recipe.equals(recipeEntry.getValue())) {
                         CookRecipe.recipeList.remove(recipeEntry);
                     }
                 }

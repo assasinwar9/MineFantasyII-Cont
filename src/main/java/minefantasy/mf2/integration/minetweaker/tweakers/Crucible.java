@@ -12,6 +12,7 @@ import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @ZenClass("mods.minefantasy.Crucible")
@@ -35,9 +36,7 @@ public class Crucible {
             this.level = level;
             this.ingreds = new ArrayList<IIngredient>();
             this.dupe = dupe;
-            for (IIngredient i : ingreds) {
-                this.ingreds.add(i);
-            }
+            this.ingreds.addAll(Arrays.asList(ingreds));
             alloy = new TweakedAlloyRecipe(out, level, this.ingreds);
         }
 

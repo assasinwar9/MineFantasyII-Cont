@@ -144,6 +144,84 @@ public class ConfigWorldGen extends ConfigurationBaseMF {
     public static float DSChance;
     public static int DSGrid, DSLength, DSDeviations;
 
+    //herbs
+    public static String carxa = "7A: [Plant Gen] carxanium";
+    public static float carxaRarity;
+    public static float carxaMinTemp;
+    public static float carxaMaxTemp;
+    public static float carxaMinRain;
+    public static float carxaMaxRain;
+
+    public static String sinister = "7B: [Plant Gen] sinister grass";
+    public static float sinisterRarity;
+    public static float sinisterMinTemp;
+    public static float sinisterMaxTemp;
+    public static float sinisterMinRain;
+    public static float sinisterMaxRain;
+
+    public static String endure = "7C: [Plant Gen] endure root";
+    public static float endureRarity;
+    public static float endureMinTemp;
+    public static float endureMaxTemp;
+    public static float endureMinRain;
+    public static float endureMaxRain;
+
+    public static String dogsear = "7D: [Plant Gen] dogsear";
+    public static float dogsearRarity;
+    public static float dogsearMinTemp;
+    public static float dogsearMaxTemp;
+    public static float dogsearMinRain;
+    public static float dogsearMaxRain;
+
+    public static String flamefl = "7E: [Plant Gen] flameflower";
+    public static float flameflRarity;
+    public static float flameflMinTemp;
+    public static float flameflMaxTemp;
+    public static float flameflMinRain;
+    public static float flameflMaxRain;
+
+    public static String wispfl = "7F: [Plant Gen] wispflock";
+    public static float wispflRarity;
+    public static float wispflMinTemp;
+    public static float wispflMaxTemp;
+    public static float wispflMinRain;
+    public static float wispflMaxRain;
+
+    public static String moonfl = "7G: [Plant Gen] moonflower";
+    public static float moonflRarity;
+    public static float moonflMinTemp;
+    public static float moonflMaxTemp;
+    public static float moonflMinRain;
+    public static float moonflMaxRain;
+
+    public static String sadblos = "7H: [Plant Gen] sadblossom";
+    public static float sadblosRarity;
+    public static float sadblosMinTemp;
+    public static float sadblosMaxTemp;
+    public static float sadblosMinRain;
+    public static float sadblosMaxRain;
+
+    public static String boneber = "7I: [Plant Gen] boneberry";
+    public static float boneberRarity;
+    public static float boneberMinTemp;
+    public static float boneberMaxTemp;
+    public static float boneberMinRain;
+    public static float boneberMaxRain;
+
+    public static String thorn = "7B: [Plant Gen] thorn root";
+    public static float thornRarity;
+    public static float thornMinTemp;
+    public static float thornMaxTemp;
+    public static float thornMinRain;
+    public static float thornMaxRain;
+
+    public static String savyire = "7B: [Plant Gen] savyire";
+    public static float savyireRarity;
+    public static float savyireMinTemp;
+    public static float savyireMaxTemp;
+    public static float savyireMinRain;
+    public static float savyireMaxRain;
+
     @Override
     protected void loadConfig() {
         copperRarity = Float.parseFloat(config.get(copper, "Copper Rarity", 1.0D,
@@ -443,6 +521,195 @@ public class ConfigWorldGen extends ConfigurationBaseMF {
         DSDeviations = Integer.parseInt(config.get(dwarvenSH, "Stronghold max deviations", 1,
                 "Max amount of intersections in dwarf stronghold hallways (not including living hubs). This can significantly increase complexity of strongholds and in turn lag when generating")
                 .getString());
+
+        //herbs
+        carxaRarity = Float.parseFloat(config.get(carxa, "carxa Rarity", 3.0E-2D, //3.0E-2D
+                "The chance for herb to spawn in a chunk. (0=never, 1.0=always), this means some chunks may not have any berries")
+                .getString());
+
+        carxaMinTemp = Float.parseFloat(
+                config.get(carxa, "carxa Spawn Temp Min", 0.2D, "The minimal biome temperature berries can spawn")
+                        .getString());
+        carxaMaxTemp = Float.parseFloat(
+                config.get(carxa, "carxa Spawn Temp Max", 1.0D, "The maximum biome temperature berries can spawn")
+                        .getString());
+        carxaMinRain = Float.parseFloat(
+                config.get(carxa, "carxa Spawn Rain Min", 0.3D, "The minimal biome rainfall berries can spawn")
+                        .getString());
+        carxaMaxRain = Float.parseFloat(
+                config.get(carxa, "carxa Spawn Rain Max", 1.0D, "The maximum biome rainfall berries can spawn")
+                        .getString());
+
+        sinisterRarity = Float.parseFloat(config.get(sinister, "sinister Rarity", 3.0E-2D,
+                "The chance for herb to spawn in a chunk. (0=never, 1.0=always), this means some chunks may not have any berries")
+                .getString());
+
+        sinisterMinTemp = Float.parseFloat(
+                config.get(sinister, "sinister Spawn Temp Min", 0.2D, "The minimal biome temperature berries can spawn")
+                        .getString());
+        sinisterMaxTemp = Float.parseFloat(
+                config.get(sinister, "sinister Spawn Temp Max", 1.0D, "The maximum biome temperature berries can spawn")
+                        .getString());
+        sinisterMinRain = Float.parseFloat(
+                config.get(sinister, "sinister Spawn Rain Min", 0.3D, "The minimal biome rainfall berries can spawn")
+                        .getString());
+        sinisterMaxRain = Float.parseFloat(
+                config.get(sinister, "sinister Spawn Rain Max", 1.0D, "The maximum biome rainfall berries can spawn")
+                        .getString());
+
+        endureRarity = Float.parseFloat(config.get(endure, "endure Rarity", 3.0E-2D,
+                "The chance for herb to spawn in a chunk. (0=never, 1.0=always), this means some chunks may not have any berries")
+                .getString());
+
+        endureMinTemp = Float.parseFloat(
+                config.get(endure, "endure Spawn Temp Min", 0.2D, "The minimal biome temperature berries can spawn")
+                        .getString());
+        endureMaxTemp = Float.parseFloat(
+                config.get(endure, "endure Spawn Temp Max", 1.0D, "The maximum biome temperature berries can spawn")
+                        .getString());
+        endureMinRain = Float.parseFloat(
+                config.get(endure, "endure Spawn Rain Min", 0.3D, "The minimal biome rainfall berries can spawn")
+                        .getString());
+        endureMaxRain = Float.parseFloat(
+                config.get(endure, "endure Spawn Rain Max", 1.0D, "The maximum biome rainfall berries can spawn")
+                        .getString());
+
+        dogsearRarity = Float.parseFloat(config.get(dogsear, "dogsear Rarity", 3.0E-2D,
+                "The chance for herb to spawn in a chunk. (0=never, 1.0=always), this means some chunks may not have any berries")
+                .getString());
+
+        dogsearMinTemp = Float.parseFloat(
+                config.get(dogsear, "dogsear Spawn Temp Min", 0.2D, "The minimal biome temperature berries can spawn")
+                        .getString());
+        dogsearMaxTemp = Float.parseFloat(
+                config.get(dogsear, "dogsear Spawn Temp Max", 1.0D, "The maximum biome temperature berries can spawn")
+                        .getString());
+        dogsearMinRain = Float.parseFloat(
+                config.get(dogsear, "dogsear Spawn Rain Min", 0.3D, "The minimal biome rainfall berries can spawn")
+                        .getString());
+        dogsearMaxRain = Float.parseFloat(
+                config.get(dogsear, "dogsear Spawn Rain Max", 1.0D, "The maximum biome rainfall berries can spawn")
+                        .getString());
+
+        flameflRarity = Float.parseFloat(config.get(flamefl, "flamefl Rarity", 3.0E-2D,
+                "The chance for herb to spawn in a chunk. (0=never, 1.0=always), this means some chunks may not have any berries")
+                .getString());
+
+        flameflMinTemp = Float.parseFloat(
+                config.get(flamefl, "flamefl Spawn Temp Min", 0.2D, "The minimal biome temperature berries can spawn")
+                        .getString());
+        flameflMaxTemp = Float.parseFloat(
+                config.get(flamefl, "flamefl Spawn Temp Max", 1.0D, "The maximum biome temperature berries can spawn")
+                        .getString());
+        flameflMinRain = Float.parseFloat(
+                config.get(flamefl, "flamefl Spawn Rain Min", 0.3D, "The minimal biome rainfall berries can spawn")
+                        .getString());
+        flameflMaxRain = Float.parseFloat(
+                config.get(flamefl, "flamefl Spawn Rain Max", 1.0D, "The maximum biome rainfall berries can spawn")
+                        .getString());
+
+        wispflRarity = Float.parseFloat(config.get(wispfl, "wispfl Rarity", 3.0E-2D,
+                "The chance for herb to spawn in a chunk. (0=never, 1.0=always), this means some chunks may not have any berries")
+                .getString());
+
+        wispflMinTemp = Float.parseFloat(
+                config.get(wispfl, "wispfl Spawn Temp Min", 0.2D, "The minimal biome temperature berries can spawn")
+                        .getString());
+        wispflMaxTemp = Float.parseFloat(
+                config.get(wispfl, "wispfl Spawn Temp Max", 1.0D, "The maximum biome temperature berries can spawn")
+                        .getString());
+        wispflMinRain = Float.parseFloat(
+                config.get(wispfl, "wispfl Spawn Rain Min", 0.3D, "The minimal biome rainfall berries can spawn")
+                        .getString());
+        wispflMaxRain = Float.parseFloat(
+                config.get(wispfl, "wispfl Spawn Rain Max", 1.0D, "The maximum biome rainfall berries can spawn")
+                        .getString());
+
+        moonflRarity = Float.parseFloat(config.get(moonfl, "moonfl Rarity", 3.0E-2D,
+                "The chance for herb to spawn in a chunk. (0=never, 1.0=always), this means some chunks may not have any berries")
+                .getString());
+
+        moonflMinTemp = Float.parseFloat(
+                config.get(moonfl, "moonfl Spawn Temp Min", 0.2D, "The minimal biome temperature berries can spawn")
+                        .getString());
+        moonflMaxTemp = Float.parseFloat(
+                config.get(moonfl, "moonfl Spawn Temp Max", 1.0D, "The maximum biome temperature berries can spawn")
+                        .getString());
+        moonflMinRain = Float.parseFloat(
+                config.get(moonfl, "moonfl Spawn Rain Min", 0.3D, "The minimal biome rainfall berries can spawn")
+                        .getString());
+        moonflMaxRain = Float.parseFloat(
+                config.get(moonfl, "moonfl Spawn Rain Max", 1.0D, "The maximum biome rainfall berries can spawn")
+                        .getString());
+
+        sadblosRarity = Float.parseFloat(config.get(sadblos, "sadblos Rarity", 3.0E-2D,
+                "The chance for herb to spawn in a chunk. (0=never, 1.0=always), this means some chunks may not have any berries")
+                .getString());
+
+        sadblosMinTemp = Float.parseFloat(
+                config.get(sadblos, "sadblos Spawn Temp Min", 0.2D, "The minimal biome temperature berries can spawn")
+                        .getString());
+        sadblosMaxTemp = Float.parseFloat(
+                config.get(sadblos, "sadblos Spawn Temp Max", 1.0D, "The maximum biome temperature berries can spawn")
+                        .getString());
+        sadblosMinRain = Float.parseFloat(
+                config.get(sadblos, "sadblos Spawn Rain Min", 0.3D, "The minimal biome rainfall berries can spawn")
+                        .getString());
+        sadblosMaxRain = Float.parseFloat(
+                config.get(sadblos, "sadblos Spawn Rain Max", 1.0D, "The maximum biome rainfall berries can spawn")
+                        .getString());
+
+        boneberRarity = Float.parseFloat(config.get(boneber, "boneber Rarity", 3.0E-2D,
+                "The chance for herb to spawn in a chunk. (0=never, 1.0=always), this means some chunks may not have any berries")
+                .getString());
+
+        boneberMinTemp = Float.parseFloat(
+                config.get(boneber, "boneber Spawn Temp Min", 0.2D, "The minimal biome temperature berries can spawn")
+                        .getString());
+        boneberMaxTemp = Float.parseFloat(
+                config.get(boneber, "boneber Spawn Temp Max", 1.0D, "The maximum biome temperature berries can spawn")
+                        .getString());
+        boneberMinRain = Float.parseFloat(
+                config.get(boneber, "boneber Spawn Rain Min", 0.3D, "The minimal biome rainfall berries can spawn")
+                        .getString());
+        boneberMaxRain = Float.parseFloat(
+                config.get(boneber, "boneber Spawn Rain Max", 1.0D, "The maximum biome rainfall berries can spawn")
+                        .getString());
+
+        thornRarity = Float.parseFloat(config.get(thorn, "thorn Rarity", 3.0E-2D,
+                "The chance for herb to spawn in a chunk. (0=never, 1.0=always), this means some chunks may not have any berries")
+                .getString());
+
+        thornMinTemp = Float.parseFloat(
+                config.get(thorn, "thorn Spawn Temp Min", 0.2D, "The minimal biome temperature berries can spawn")
+                        .getString());
+        thornMaxTemp = Float.parseFloat(
+                config.get(thorn, "thorn Spawn Temp Max", 1.0D, "The maximum biome temperature berries can spawn")
+                        .getString());
+        thornMinRain = Float.parseFloat(
+                config.get(thorn, "thorn Spawn Rain Min", 0.3D, "The minimal biome rainfall berries can spawn")
+                        .getString());
+        thornMaxRain = Float.parseFloat(
+                config.get(thorn, "thorn Spawn Rain Max", 1.0D, "The maximum biome rainfall berries can spawn")
+                        .getString());
+
+        savyireRarity = Float.parseFloat(config.get(savyire, "savyire Rarity", 3.0E-2D,
+                "The chance for herb to spawn in a chunk. (0=never, 1.0=always), this means some chunks may not have any berries")
+                .getString());
+
+        savyireMinTemp = Float.parseFloat(
+                config.get(savyire, "savyire Spawn Temp Min", 0.2D, "The minimal biome temperature berries can spawn")
+                        .getString());
+        savyireMaxTemp = Float.parseFloat(
+                config.get(savyire, "savyire Spawn Temp Max", 1.0D, "The maximum biome temperature berries can spawn")
+                        .getString());
+        savyireMinRain = Float.parseFloat(
+                config.get(savyire, "savyire Spawn Rain Min", 0.3D, "The minimal biome rainfall berries can spawn")
+                        .getString());
+        savyireMaxRain = Float.parseFloat(
+                config.get(savyire, "savyire Spawn Rain Max", 1.0D, "The maximum biome rainfall berries can spawn")
+                        .getString());
+
 
     }
 

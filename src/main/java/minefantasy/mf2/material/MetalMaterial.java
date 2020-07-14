@@ -90,11 +90,11 @@ public class MetalMaterial extends CustomMaterial {
         getOrAddMetal("Adamantium", 7, 12.0F, 0.8F, 8.0F, 80F, 3.5F, 100, 200, 100).setMeltingPoint(2500)
                 .setCrafterTiers(6).setRarity(1);
         getOrAddMetal("Mithium", 8, 15.0F, 0.8F, 10.0F, 95F, 2.0F, 60, 200, 255).setMeltingPoint(2500)
-                .setCrafterTiers(7).setRarity(2).setUnbreakable();
+                .setCrafterTiers(7).setRarity(2); //original color 60 200 255
         getOrAddMetal("Ignotumite", 8, 15.0F, 0.8F, 14.0F, 85F, 3.5F, 20, 255, 100).setMeltingPoint(3000)
-                .setCrafterTiers(7).setRarity(2).setUnbreakable();
+                .setCrafterTiers(7).setRarity(2);
         getOrAddMetal("Ender", 8, 15.0F, 0.8F, 12.0F, 90F, 3.0F, 255, 63, 243).setMeltingPoint(3000).setCrafterTiers(7)
-                .setRarity(2).setUnbreakable();
+                .setRarity(2); //setUnbreakable();
 
         // Non-MF
         getOrAddMetal("StainlessSteel", 3, 5.0F, 1.0F, 2.5F, 40F, 2.5F, 188, 188, 198).setMeltingPoint(1600)

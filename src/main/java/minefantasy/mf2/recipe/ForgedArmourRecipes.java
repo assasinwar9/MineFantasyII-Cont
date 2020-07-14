@@ -246,7 +246,7 @@ public class ForgedArmourRecipes {
                                 'H', hunk, 'R', ComponentListMF.rivet,}));
         time = 4;
         KnowledgeListMF.plateRecipes.add(MineFantasyAPI.addAnvilToolRecipe(artisanry, ComponentListMF.plate, "", true,
-                "hvyhammer", -1, -1, time, new Object[]{"FF", "II", 'F', ComponentListMF.flux, 'I', bar}));
+                "hvyhammer", -1, -1, time, new Object[]{"FF", "II", 'F', ComponentListMF.limestone_item, 'I', bar}));
 
         Salvage.addSalvage(ComponentListMF.chainmesh, hunk);
         Salvage.addSalvage(ComponentListMF.scalemesh, hunk);

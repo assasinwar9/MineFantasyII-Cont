@@ -20,6 +20,7 @@ import minefantasy.mf2.config.*;
 import minefantasy.mf2.integration.minetweaker.MTCompat;
 import minefantasy.mf2.item.gadget.ItemLootSack;
 import minefantasy.mf2.item.list.ComponentListMF;
+import minefantasy.mf2.item.list.HerbalicListMF;
 import minefantasy.mf2.item.list.ToolListMF;
 import minefantasy.mf2.knowledge.ArtefactListMF;
 import minefantasy.mf2.knowledge.KnowledgeListMF;
@@ -41,6 +42,8 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 
 import java.io.File;
+
+//zs-edition
 
 /**
  * @author Anonymous Productions
@@ -118,6 +121,7 @@ public class MineFantasyII {
         RecipeRemover.removeRecipes();
         ToolListMF.load();
         ComponentListMF.load();
+
     }
 
     @EventHandler

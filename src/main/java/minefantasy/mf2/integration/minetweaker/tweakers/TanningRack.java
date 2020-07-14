@@ -118,9 +118,7 @@ public class TanningRack {
 
         @Override
         public void undo() {
-            for (TanningRecipe recipe : recipes) {
-                TanningRecipe.recipeList.add(recipe);
-            }
+            TanningRecipe.recipeList.addAll(recipes);
             recipes.clear();
         }
 

@@ -3,6 +3,8 @@ package minefantasy.mf2.api.helpers;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import minefantasy.mf2.api.armour.*;
+import minefantasy.mf2.api.crafting.CraftingQualityHelper;
+import minefantasy.mf2.api.crafting.EnumCraftingQualityType;
 import minefantasy.mf2.api.weapon.IDamageType;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
@@ -499,9 +501,9 @@ public class ArmourCalculator {
      * damage and NBT) DT OR DR
      */
     public static float getArmourValueMod(ItemStack armour, float DT) {
-        float initDT = DT;
-        if (armour.hasTagCompound() && armour.getTagCompound().hasKey("MF_Inferior")) {
-            DT *= (armour.getTagCompound().getBoolean("MF_Inferior") ? 0.8F : 1.2F);
+        EnumCraftingQualityType qualityType = CraftingQualityHelper.getQualityTypeByItemStack(armour);
+        if (qualityType != null) {
+            DT *= CraftingQualityHelper.getArmourValueModByQualityType(qualityType);
         }
         DT *= modifyDTOnDura(armour);
         return DT;

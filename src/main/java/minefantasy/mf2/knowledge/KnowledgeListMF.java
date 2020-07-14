@@ -56,11 +56,14 @@ public class KnowledgeListMF {
     public static InformationPage engineering = InformationList.engineering;
     public static InformationPage provisioning = InformationList.provisioning;
     public static InformationPage mastery = InformationList.mastery;
+    public static InformationPage alchemy = InformationList.alchemy;
     // BASICS -FREE
+    public static InformationBase non_defined;
+    public static InformationBase reserved_1, reserved_2, reserved_3, reserved_4, reserved_5, reserved_6, reserved_7, reserved_8, reserved_9, reserved_10;
     public static InformationBase carpenter, gettingStarted, salvage, research, talisman, ores, plants, chimney,
             tanning, commodities, dust, craftCrafters, stamina, combat, craftArmourBasic, craftHCCTools, firemaker,
-            dragons, minotaurs;
-    public static InformationBase bloomery, crucible, crucible2, smeltCopper, smeltBronze, smeltIron, coalflux, bigfurn,
+            dragons, minotaurs, limestone_farm, limestone_friable;
+    public static InformationBase bloomery, crucible, crucible2, smeltCopper, smeltBronze, smeltIron, coal_flux, bigfurn,
             blastfurn, smeltPig, smeltSteel, encrusted, obsidian, smeltBlackSteel, smeltDragonforge, smeltBlueSteel,
             smeltRedSteel, smeltMithril, smeltAdamant, smeltMaster, smeltMithium, smeltIgnotumite, smeltEnderforge, smeltEmerald;
     public static InformationBase bellows, trough, forge, anvil, bar, apron, craftTools, craftAdvTools, craftWeapons,
@@ -87,14 +90,15 @@ public class KnowledgeListMF {
     public static ICarpenterRecipe fireclayR, fireBrickR, fireBricksR, fireBrickStairR, refinedPlankBlockR, clayWallR,
             bSalvageR, tannerRecipe, stoneAnvilRecipe, forgeRecipe, apronRecipe, woodTroughRecipe;
     public static ICarpenterRecipe researchTableRecipe, framedGlassR, windowR, thatchR, thatchStairR;
-    public static IAnvilRecipe smokePipeR, framedStoneR, iframedStoneR, fluxR, nailR, rivetR;
-    public static IAnvilRecipe tinderboxR, flintAndSteelR, dwarvenfuelR;
+    public static IAnvilRecipe smokePipeR, framedStoneR, iframedStoneR, limestone_itemR, fluxR, nailR, rivetR;
+    public static IAnvilRecipe tinderboxR, flintAndSteelR, dwarvenfuelR;;
     public static ICarpenterRecipe dirtRockR, lStripsR, threadR, stringR, sharpRocksR, stonePickR, stoneAxeR,
             stoneSpadeR, stoneHoeR, stoneSwordR, stoneWarR, stoneMaceR, stoneSpearR, stoneHammerR, stoneTongsR,
             boneNeedleR, stoneKnifeR, quernR, stoneovenRecipe;
     public static Alloy[] reStone, bronze, steel, obsidalloy, black, red, blue, mithril, adamantium, ignotumite,
             mithium, enderforge, wolframiteR, dwarfsteel, emerald;
     public static IAnvilRecipe coalfluxR, encrustedR, steelR, obsidianHunkR, diamondR, dwarfsteelR, dwarffuelR, emeraldR;
+
     public static ICarpenterRecipe nailPlanksR, nailStairR, refinedStairR, strongRackR, bellowsRecipe, bloomeryR,
             crucibleRecipe, advCrucibleRecipe, trilogyRecipe, chimneyRecipe, wideChimneyRecipe, extractChimneyRecipe;
     public static ICarpenterRecipe hideHelmR, hideChestR, hideLegsR, hideBootsR, roughHelmetR, roughChestR, roughLegsR,
@@ -178,6 +182,10 @@ public class KnowledgeListMF {
                 .registerStat().setUnlocked();
         minotaurs = (new InformationBase("minotaurs", 1, 3, 0, Items.beef, (InformationBase) null)).registerStat()
                 .setUnlocked();
+        //basic - zsAddon
+
+        limestone_farm = (new InformationBase("limestone_farm", 3, -2, 0, ComponentListMF.limestone_item, (InformationBase) null))
+                .registerStat().setUnlocked();
 
         // ARTISANRY -From Not very to the most Expensive
         bloomery = (new InformationBase("bloomery", 4, -2, 0, BlockListMF.bloomery, crucible)).registerStat()
@@ -193,7 +201,7 @@ public class KnowledgeListMF {
                 .setPage(artisanry).addSkill(SkillList.artisanry, 5).setDescriptValues(getMetalTier("bronze"));
         smeltIron = (new InformationBase("smeltIron", 1, 4, 1, Items.iron_ingot, null)).registerStat()
                 .setPage(artisanry).addSkill(SkillList.artisanry, 10).setDescriptValues(getMetalTier("iron"));
-        coalflux = (new InformationBase("coalflux", 1, 6, 2, ComponentListMF.coal_flux, smeltIron)).registerStat()
+        coal_flux = (new InformationBase("coal_flux", 1, 6, 2, ComponentListMF.coal_flux, smeltIron)).registerStat()
                 .setPage(artisanry).addSkill(SkillList.artisanry, 15);
         blastfurn = (new InformationBase("blastfurn", 2, 5, 5, BlockListMF.blast_heater_active, smeltIron))
                 .registerStat().setPage(artisanry).setSpecial().addSkill(SkillList.artisanry, 25);
@@ -483,6 +491,28 @@ public class KnowledgeListMF {
                 .addSkill(SkillList.provisioning, 50).setPerk();
         scrapper = (new InformationBase("scrapper", 0, -1, 0, BlockListMF.salvage_basic, (InformationBase) null))
                 .registerStat().setPage(mastery).addSkill(SkillList.artisanry, 35).setPerk();
+
+        //ALCHEMY - zsAddon
+        reserved_1 = (new InformationBase("non-defined", 0, -1, 0, ComponentListMF.non_defined_item, (InformationBase) null))
+                .registerStat().setUnlocked().setPage(alchemy);
+        reserved_2 = (new InformationBase("non-defined", -2, -1, 0, ComponentListMF.non_defined_item, (InformationBase) null))
+                .registerStat().setUnlocked().setPage(alchemy);
+        reserved_3 = (new InformationBase("non-defined", -1, 1, 0, ComponentListMF.non_defined_item, reserved_1))
+                .registerStat().setUnlocked().setPage(alchemy);
+        reserved_4 = (new InformationBase("non-defined", -3, 1, 0, ComponentListMF.non_defined_item, reserved_3))
+                .registerStat().setUnlocked().setPage(alchemy);
+        reserved_5 = (new InformationBase("non-defined", -3, 3, 0, ComponentListMF.non_defined_item, reserved_4))
+                .registerStat().setUnlocked().setPage(alchemy);
+        reserved_6 = (new InformationBase("non-defined", -5, 4, 0, ComponentListMF.non_defined_item, reserved_5))
+                .registerStat().setUnlocked().setPage(alchemy);
+        reserved_7 = (new InformationBase("non-defined", -3, 5, 0, ComponentListMF.non_defined_item, reserved_5))
+                .registerStat().setUnlocked().setPage(alchemy);
+        reserved_8 = (new InformationBase("non-defined", -3, 7, 0, ComponentListMF.non_defined_item, reserved_7))
+                .registerStat().setUnlocked().setPage(alchemy);
+        reserved_9 = (new InformationBase("non-defined", -4, 9, 0, ComponentListMF.non_defined_item, reserved_8))
+                .registerStat().setUnlocked().setPage(alchemy);
+        reserved_10 = (new InformationBase("non-defined", -2, 9, 0, ComponentListMF.non_defined_item, reserved_8))
+                .registerStat().setUnlocked().setPage(alchemy);
 
     }
 

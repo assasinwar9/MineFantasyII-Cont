@@ -14,7 +14,7 @@ import net.minecraft.util.StatCollector;
 import org.lwjgl.opengl.GL11;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -78,7 +78,7 @@ public class RecipeHandlerBloom extends TemplateRecipeHandler {
         ItemStack result = BloomRecipe.getSmeltingResult(ingredient);
         if (result != null) {
             SmeltingPair arecipe = new SmeltingPair(ingredient, result);
-            arecipe.setIngredientPermutation(Arrays.asList(arecipe.ingred), ingredient);
+            arecipe.setIngredientPermutation(Collections.singletonList(arecipe.ingred), ingredient);
             arecipes.add(arecipe);
         }
     }
@@ -102,7 +102,7 @@ public class RecipeHandlerBloom extends TemplateRecipeHandler {
 
         @Override
         public List<PositionedStack> getIngredients() {
-            return getCycledIngredients(cycleticks / 48, Arrays.asList(ingred));
+            return getCycledIngredients(cycleticks / 48, Collections.singletonList(ingred));
         }
 
         @Override

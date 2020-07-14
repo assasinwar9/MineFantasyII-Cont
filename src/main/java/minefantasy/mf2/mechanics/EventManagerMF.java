@@ -7,6 +7,8 @@ import minefantasy.mf2.MineFantasyII;
 import minefantasy.mf2.api.armour.IPowerArmour;
 import minefantasy.mf2.api.armour.ISpecialArmourMF;
 import minefantasy.mf2.api.armour.ItemArmourMFBase;
+import minefantasy.mf2.api.crafting.CraftingQualityHelper;
+import minefantasy.mf2.api.crafting.EnumCraftingQualityType;
 import minefantasy.mf2.api.heating.IHotItem;
 import minefantasy.mf2.api.heating.TongsHelper;
 import minefantasy.mf2.api.helpers.*;
@@ -77,6 +79,8 @@ import net.minecraftforge.oredict.OreDictionary;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
+import static minefantasy.mf2.api.crafting.CraftingQualityHelper.getQualityTypeByItemStack;
 
 public class EventManagerMF {
 
@@ -664,16 +668,11 @@ public class EventManagerMF {
                 }
             }
 
-            if (event.itemStack.hasTagCompound() && event.itemStack.getTagCompound().hasKey("MF_Inferior")) {
-                if (event.itemStack.getTagCompound().getBoolean("MF_Inferior")) {
-                    event.toolTip
-                            .add(EnumChatFormatting.RED + StatCollector.translateToLocal("attribute.inferior.name"));
-                }
-                if (!event.itemStack.getTagCompound().getBoolean("MF_Inferior")) {
-                    event.toolTip
-                            .add(EnumChatFormatting.GREEN + StatCollector.translateToLocal("attribute.superior.name"));
-                }
+            EnumCraftingQualityType qualityType = getQualityTypeByItemStack(event.itemStack);
+            if (qualityType != null) {
+                event.toolTip.add(CraftingQualityHelper.getFormattedTooltipByQualityType(qualityType));
             }
+
             if (event.itemStack.getItem() instanceof ItemArmor
                     && (!(event.itemStack.getItem() instanceof ItemArmourMFBase) || ClientItemsMF.showSpecials(
                     event.itemStack, event.entityPlayer, event.toolTip, event.showAdvancedItemTooltips))) {
@@ -793,7 +792,7 @@ public class EventManagerMF {
         EntityPlayer player = event.entityPlayer;
         if (event.item != null && event.item.getItemUseAction() == EnumAction.block) {
             if ((StaminaBar.isSystemActive && TacticalManager.shouldStaminaBlock
-                    && !StaminaBar.isAnyStamina(player, false)) || !CombatMechanics.isParryAvailable(player)) {
+                    && !StaminaBar.isAnyStamina(player, false)) || CombatMechanics.isParryAvailable(player)) {
                 event.setCanceled(true);
             }
         }

@@ -49,6 +49,7 @@ public class TileEntityBigFurnace extends TileEntity implements IBellowsUseable,
     public int justShared;
     // FURNACE
     public int progress;
+    public boolean isSlagged;
     /**
      * CLIENT VAR This is used to determine if the block is able to emit smoke
      */
@@ -149,6 +150,7 @@ public class TileEntityBigFurnace extends TileEntity implements IBellowsUseable,
         }
         if (!worldObj.isRemote) {
             sendPacketToClients();
+            isSlagged = progress > 0;
         }
         wasBurning = isBurning();
     }

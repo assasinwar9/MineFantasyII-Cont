@@ -192,7 +192,7 @@ public class BlockCakeMF extends Block {
 
     /**
      * Can this block stay at this position. Similar to canPlaceBlockAt except gets
-     * checked often with plants.
+     * checked often with herbs.
      */
     @Override
     public boolean canBlockStay(World world, int x, int y, int z) {

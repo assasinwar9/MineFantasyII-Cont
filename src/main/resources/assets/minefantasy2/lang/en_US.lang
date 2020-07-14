@@ -16,9 +16,6 @@ attribute.kit.repairRate_normal.name=Repair Value (Normal Items)
 attribute.kit.repairChance.name=Repair Success Rate
 attribute.kit.breakChance.name=Kit Break Chance
 
-attribute.inferior.name=Inferior
-attribute.superior.name=Superior
-
 item.infobook.name=Research Book
 item.research_scroll.name=Research Scroll
 item.research_scroll_complete.name=Completed Research
@@ -54,6 +51,14 @@ research.null=There is nothing to learn from this.
 research.addArtefact=Added Knowledge to %1$s (%2$s/%3$s)
 research.finishResearch=Finished Research for %1$s
 research.cluecount= (%1$s/%2$s)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/CRAFTING QUALITIES/
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+attribute.flawed.name=Flawed
+attribute.poor.name=Poor
+attribute.ordinary.name=Ordinary
+attribute.perfect.name=Perfect
+attribute.flawless.name=Flawless
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 /MOBS/
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -367,14 +372,14 @@ item.nail.name=Nails
 item.thread.name=Thread
 item.lime_rock.name=Limestone Rock
 item.borax_rock.name=Borax
-item.flux.name=Flux
-item.flux_strong.name=Strong Flux
+item.limestone_item.name=limestone_item
+item.borax.name=Strong limestone_item
 item.coal_prep.name=Prepared Coal
 item.coke.name=Coke
 item.blackpowder.name=Blackpowder
 item.blackpowder_advanced.name=Advanced Blackpowder
 item.bolt.name=Bolts
-item.flux_pot.name=Fine Flux
+item.limestone_item_pot.name=Fine limestone_item
 item.coal_flux.name=Coal Flux
 
 item.ingotCopper.name=Copper Ingot
@@ -415,6 +420,16 @@ item.gold_coin.name=Gold Coin
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 /COMPONENT/
+item.schichtCopper.name=Copper Schicht
+item.schichtTin.name=Tin Schicht
+item.schichtIron.name=Iron Schicht
+item.schichtSilver.name=Silver Schicht
+item.schichtGold.name=Gold Schicht
+
+item.buildingCompound.name=Building Compound
+item.slag.name=Slag
+item.slag_pot.name=Slag Powder
+
 item.ingot_mould.name=Ingot Mould
 item.ingot_mould_uncooked.name=Raw Ingot Mould
 
@@ -616,6 +631,18 @@ tile.oreNitre.name=Niter Deposit
 tile.oreSulfur.name=Sulfur Deposit
 tile.oreCoalRich.name=Rich Coal Deposit
 
+tile.gr_log_acacia.name=Grinded Acacia Log
+tile.gr_log_big_oak.name=Grinded Big Oak Log
+tile.gr_log_birch.name=Grinded Birch Log
+tile.gr_log_jungle.name=Grinded Jungle Log
+tile.gr_log_oak.name=Grinded Oak Log
+tile.gr_log_spruce.name=Grinded Spruce Log
+
+tile.limestone_friable.name=Loose Limestone
+tile.dense_gravel.name=Dense Gravel
+tile.tarKiln.name=Tar Kiln
+tile.soaking_trough.name=Trough for Soaking
+
 tile.window.name=Window
 tile.window_pane.name=Window Pane
 tile.mud_pavement.name=Rough Mud Bricks
@@ -650,6 +677,8 @@ tile.firebrick_stair.name=Fire Brick Steps
 tile.cobble_pavement.name=Cobblestone Pavement
 tile.cobble_pavement_stair.name=Cobblestone Pavement Steps
 tile.cobble_brick.name=Cobblestone Bricks
+tile.zs_block.name=ZS block
+tile.ae_block.name=Block Emberlight
 tile.cobble_brick_stair.name=Cobblestone Brick Steps
 tile.clayWall.name=Clay Wall Panel
 tile.ironbark_log.name=Ironbark Log
@@ -1116,11 +1145,14 @@ item.flour.name=Flour
 item.sugarpot.name=Sugar Pot
 item.bread_uncooked.name=Uncooked Bread
 item.guts.name=Guts
+item.tar.name=Tar
 
 item.raw_bread.name=Bread Dough
 item.dough.name=Dough
 item.pastry.name=Pastry
 item.stew.name=Stew
+item.dead_porridge.name=Dead Porridge
+item.bark.name=Bark
 item.oats.name=Oats
 
 item.curds.name=Curds
@@ -1315,7 +1347,7 @@ knowledge.minotaur_dread.1=Not as much is known about what some call the Dread M
 knowledge.dragons=Dragons
 knowledge.dragons.desc=Death from above
 
-knowledge.dragons.1=Dragons are proud but destructive reptiles found stalking their prey from above. Many breeds of dragon are found in the world, varying greatly in their offensive capabilities. Keep an eye on the skies when travelling to avoid an ill omen.^Each dragon has a unique ability to emit deadly substances from their breath, though the actual mechanics behind this still remain unknown, it’s always a decent idea to prepare for these dangers.^ Although their young may be easy to kill, the elder dragons are powerful monsters to
+knowledge.dragons.1=Dragons are proud but destructive reptiles found stalking their prey from above. Many breeds of dragon are found in the world, varying greatly in their offensive capabilities. Keep an eye on the skies when travelling to avoid an ill omen.^Each dragon has a unique ability to emit deadly substances from their breath, though the actual mechanics behind this still remain unknown, itï¿½s always a decent idea to prepare for these dangers.^ Although their young may be easy to kill, the elder dragons are powerful monsters to
 
 knowledge.dragons.2=face. The skin of these reptiles are so strong that most weapons are ineffective. Special dragonforged weapons can be made to penetrate their powerful scales.^ Dragons are hunted for their hearts, which have been useful for skilled artisans. Young dragon hearts aren't worth anything however and only older dragons are hunted for these purposes.
 
@@ -1351,7 +1383,7 @@ knowledge.gettingStarted.tanning=$hTanning-$r^By now you likely would have gathe
 knowledge.gettingStarted.forging=$hForging-$r^Forging is the main method of crafting. Pretty much every tool and metal object is made through this process. Start off by making a stone forge, anvil and tools. Place the anvil near the forge and some water. The artisanty tab has an entry of how forging works. Be sure to make a basic firestarter (Dry rocks-Craft-Tools), and wear an apron too!
 
 knowledge.gettingStarted.forgingbars=Most recipes use bars rather than ingots. A bar is an easy to forge component made from metal. Create bars from placing a hot ingot on an anvil and hammering them.
-knowledge.gettingStarted.flux=Flux is an important purification agent for metalworks. Primarily this is used for the treatment of metals in the forging process and some alloy creation. Flux is required or hunks and plates, required for some tools and armour.^The best source of flux is limestone. Make sure to keep a look out in your travels.
+knowledge.gettingStarted.limestone_item=limestone_item is an important purification agent for metalworks. Primarily this is used for the treatment of metals in the forging process and some alloy creation. limestone_item is required or hunks and plates, required for some tools and armour.^The best source of limestone_item is limestone. Make sure to keep a look out in your travels.
 knowledge.gettingStarted.3=Now you need some leather strips for tools. Gather 2 copper (crafted into bars), 2 planks and 1 leather to craft a set of copper shears.
 knowledge.gettingStarted.4=With these shears, you can cut leather to strips on the carpenter's bench OR a tanning rack by right-clicking them on the block with leather on it.
 
@@ -1380,7 +1412,7 @@ knowledge.dust.icing=Some food based recipes (like Icing) are made from multiple
 knowledge.research=Research Book
 knowledge.research.desc=Keeping track
 
-knowledge.research.1=There is a lot out there in the world to discover, all you have to do is find it. Research is a method of finding what’s hidden within the world and using it to better your own works. Most of what you can do or make must be researched, and requires both skill and study to uncover its secrets.^To begin research, you enter without knowing what you may find. A research table must be crafted, and used to study items. Depending on your skill and what items you study may unlock some clues to new knowledge.
+knowledge.research.1=There is a lot out there in the world to discover, all you have to do is find it. Research is a method of finding whatï¿½s hidden within the world and using it to better your own works. Most of what you can do or make must be researched, and requires both skill and study to uncover its secrets.^To begin research, you enter without knowing what you may find. A research table must be crafted, and used to study items. Depending on your skill and what items you study may unlock some clues to new knowledge.
 
 //Table recipe
 
@@ -1409,9 +1441,9 @@ knowledge.commodities.plank=Timber planks are nice solid pieces of wood, a commo
 
 knowledge.commodities.refinedplank=Some timber can be refined with a simple mixture, hardening its finish. Refined timber will be used for more advanced works. Only tier 1 woods can be used.
 
-knowledge.commodities.flux=Flux is commonly used in refining metals. Standard flux can be used in devices such as blast furnaces for refining ingots. Strong flux is used in advanced alloys.
+knowledge.commodities.limestone_item=limestone_item is commonly used in refining metals. Standard limestone_item can be used in devices such as blast furnaces for refining ingots. Strong limestone_item is used in advanced alloys.
 
-knowledge.commodities.hunks=For the smaller creations, hunks are used. You can turn bars into hunks with the application of flux.
+knowledge.commodities.hunks=For the smaller creations, hunks are used. You can turn bars into hunks with the application of limestone_item.
 
 knowledge.commodities.nail=Nails are basic items used in woodworking. They can be made from Copper, Tin, Bronze, Iron or Steel. (This doesn't affect quality, just amount made)
 
@@ -1449,8 +1481,8 @@ knowledge.ores.mythic=Little is known about this "Mythic ore" only that it is so
 knowledge.ores.2=Minerals also can be found generating within the world. Unlike ores: these can't be smelted into ingots, but have other uses instead.
 knowledge.minerals.clay=Just as well as sand, clay can be found within dirt. Dirt-bearing clay can be found underneath grass, grass cannot grow on it either so it can be easy to find in hills.
 knowledge.minerals.kaolinite=Kaolinite has a rather specific use. Mixed with clay: this mineral can beef up the strength of bricks.^It is found near the surface at layers 48-72 and although it's uncommon, comes in large vein sizes.
-knowledge.minerals.limestone=A common source of flux. Limestone generates in large hunks throughout the world.
-knowledge.minerals.borax=This is a relitively rare substance, Borax is the best source of strong flux: which is needed for powerful alloys.^This is a rare find but can be found at layers 48-96.
+knowledge.minerals.limestone=A common source of limestone_item. Limestone generates in large hunks throughout the world.
+knowledge.minerals.borax=This is a relitively rare substance, Borax is the best source of strong limestone_item: which is needed for powerful alloys.^This is a rare find but can be found at layers 48-96.
 knowledge.minerals.nitre=A common occurance within some cave walls in layers 16-64. Nitre is used in explosive creation.
 knowledge.minerals.sulfur=Sulfur is found deep underground near lava at layers <16. It can be used to make explosives.
 
@@ -1472,7 +1504,7 @@ knowledge.tanning.desc=Dead animal working
 
 knowledge.tanning.1=Leather is a useful resource to have. Nearly any tool, weapon or armour uses leather.^Tanning is a simple method of cleaning up raw hide into a useable commodity.^To start off: You will need a tanning rack.
 
-knowledge.tanning.2=To tan hide you first need to clean it. Either right-click the hide on water or put flux and hide on a crafting grid. When cleaned; right-click the tanning rack with hide to place it. then right-click with a knife steadily to prepare. For shabby tanning racks: there's a 1/10 chance to break the block.^A properly crafted tanning rack however does not break. It's recommended to craft these when their affordable.
+knowledge.tanning.2=To tan hide you first need to clean it. Either right-click the hide on water or put limestone_item and hide on a crafting grid. When cleaned; right-click the tanning rack with hide to place it. then right-click with a knife steadily to prepare. For shabby tanning racks: there's a 1/10 chance to break the block.^A properly crafted tanning rack however does not break. It's recommended to craft these when their affordable.
 
 knowledge.stamina=Stamina Mechanics
 knowledge.stamina.desc=Keep fit
@@ -1516,11 +1548,11 @@ knowledge.smeltBronze.1=With further refinement; both tin and copper are able to
 knowledge.smeltIron=Iron Smithing
 knowledge.smeltIron.desc=Tier %1$s, Common material
 knowledge.smeltIron.1=After some study on local rock formations, it appears rich levels of iron ore can be found. With correct refinement, the metal can be separated from the stone and formed into an ingot.^Iron is stronger than bronze and far more common, allowing for a low-cost and practical material.
-knowledge.smeltIron.2=Smelting iron into workable ingots isn’t too difficult, but a certain level of skill is used to work it into a decent shape. You have refined some smithing techniques to enable proper construction of iron tools.
+knowledge.smeltIron.2=Smelting iron into workable ingots isnï¿½t too difficult, but a certain level of skill is used to work it into a decent shape. You have refined some smithing techniques to enable proper construction of iron tools.
 
 knowledge.smeltPig=Pig Iron
 knowledge.smeltPig.desc=Iron preparation
-knowledge.smeltPig.1=Natural iron is full of impurities and defects and proper refining of it is crucial to create a decent alloy. The blast furnace has been developed to achieve this. Iron ore can be refined with a particular mixture containing flux. Upon heating: the furnace will be able to draw more impurities away from the ore than other methods, this will yield a purer form of iron.^Pig iron, the product of this process is very brittle however, and further refinement is needed to make any use of it.
+knowledge.smeltPig.1=Natural iron is full of impurities and defects and proper refining of it is crucial to create a decent alloy. The blast furnace has been developed to achieve this. Iron ore can be refined with a particular mixture containing limestone_item. Upon heating: the furnace will be able to draw more impurities away from the ore than other methods, this will yield a purer form of iron.^Pig iron, the product of this process is very brittle however, and further refinement is needed to make any use of it.
 
 knowledge.smeltSteel=Steel Smithing
 knowledge.smeltSteel.desc=Tier %1$s, Common material
@@ -1552,34 +1584,34 @@ knowledge.smeltDragonforge.2=Unlike other designs; dragonforged items require th
 knowledge.smeltBlueSteel=Blue Steel Smithing
 knowledge.smeltBlueSteel.desc=Tier %1$s, Common material
 
-knowledge.smeltBlueSteel.1=With further research into complex alloys, black steel seem to be nearing the peak of capability. However it seems apparent that some improvements can be made to the weight of the alloy. By mixing lapis lazuli and silver you can remove some particular elements from black steel and refine it to a much more lightweight material. How this works isn’t fully understood, but it should provide a decent upgrade.
+knowledge.smeltBlueSteel.1=With further research into complex alloys, black steel seem to be nearing the peak of capability. However it seems apparent that some improvements can be made to the weight of the alloy. By mixing lapis lazuli and silver you can remove some particular elements from black steel and refine it to a much more lightweight material. How this works isnï¿½t fully understood, but it should provide a decent upgrade.
 
 knowledge.smeltRedSteel=Red Steel Smithing
 knowledge.smeltRedSteel.desc=Tier %1$s, Common material
 
-knowledge.smeltRedSteel.1=Black steel is nearing the limits of metal capabilities and doesn’t appear to be getting much better. Although after studying the effects of redstone and gold had revealed an unusual reaction take place. Redstone when mixed with gold appears to draw material such as black steel closer together, improving strength and weight. An alloy can be developed using this method to create a superior alloy with unimaginable strength.
+knowledge.smeltRedSteel.1=Black steel is nearing the limits of metal capabilities and doesnï¿½t appear to be getting much better. Although after studying the effects of redstone and gold had revealed an unusual reaction take place. Redstone when mixed with gold appears to draw material such as black steel closer together, improving strength and weight. An alloy can be developed using this method to create a superior alloy with unimaginable strength.
 
 knowledge.smeltMithril=Mithril Smithing
 knowledge.smeltMithril.desc=Tier %1$s, Exotic material
 
-knowledge.smeltMithril.1=This mythic ore you found is very strange indeed. Any form of alterations made to this significantly changes its physical properties. You have found that interacting silver seems to alter its mass and hardness, but you don’t know why or how to control it.^This amulet appears to contain a form of metallurgical instruction in its design. It appears these trinkets are for the purpose of showing off how they are created, likely for the ancient artisans to pass off their knowledge to later generations, that’s the theory anyway.
+knowledge.smeltMithril.1=This mythic ore you found is very strange indeed. Any form of alterations made to this significantly changes its physical properties. You have found that interacting silver seems to alter its mass and hardness, but you donï¿½t know why or how to control it.^This amulet appears to contain a form of metallurgical instruction in its design. It appears these trinkets are for the purpose of showing off how they are created, likely for the ancient artisans to pass off their knowledge to later generations, thatï¿½s the theory anyway.
 
-knowledge.smeltMithril.2=From the readings of this “schematic talisman” it appears possible to use silver to force the mythic ore into a particular lightweight design. Seemingly the silver takes a large part in turning mythic ore into mithril.^It seems the trinket itself however, though complicated has no purpose.
+knowledge.smeltMithril.2=From the readings of this ï¿½schematic talismanï¿½ it appears possible to use silver to force the mythic ore into a particular lightweight design. Seemingly the silver takes a large part in turning mythic ore into mithril.^It seems the trinket itself however, though complicated has no purpose.
 
 
 knowledge.smeltAdamantium=Adamantium Smithing
 knowledge.smeltAdamantium.desc=Tier %1$s, Exotic material
 
-knowledge.smeltAdamantium.1=Mythic ore seems to follow its own rules and research into its properties have yielded strange results… upon exposing gold to this material, it increases greatly in density, becoming hard and heavy, this baffles you. ^This amulet appears to contain a form of metallurgical instruction in its design. It appears these trinkets are for the purpose of showing off how they are created, likely for the ancient artisans to pass off their knowledge to later generations, that’s the theory anyway.
+knowledge.smeltAdamantium.1=Mythic ore seems to follow its own rules and research into its properties have yielded strange resultsï¿½ upon exposing gold to this material, it increases greatly in density, becoming hard and heavy, this baffles you. ^This amulet appears to contain a form of metallurgical instruction in its design. It appears these trinkets are for the purpose of showing off how they are created, likely for the ancient artisans to pass off their knowledge to later generations, thatï¿½s the theory anyway.
 
-knowledge.smeltAdamantium.2=From the readings of this “schematic talisman” it appears possible to use gold to force the mythic ore into its green, heavy state. Gold must play a part in the transformation of mythic ore into this particular set of chemistry. ^It seems the trinket itself however, though complicated has no purpose.
+knowledge.smeltAdamantium.2=From the readings of this ï¿½schematic talismanï¿½ it appears possible to use gold to force the mythic ore into its green, heavy state. Gold must play a part in the transformation of mythic ore into this particular set of chemistry. ^It seems the trinket itself however, though complicated has no purpose.
 
 knowledge.smeltMaster=Masterwork Mythics
 knowledge.smeltMaster.desc=The next level
 
 knowledge.smeltMaster.1=Your seeing some patterns emerging here. Whatever civilisation left these talismans behind appear to use them as a basic form of storing information, though it seems a book would have done just fine, but why judge.^You have found a new one, similar to the rest with the anvil shaped edges on a barbed shield shape, this follows the same set of instructions as the previously found artefacts. However with all three of these; it appears that they fit together like a puzzle. The master talisman appears to be carried by an elite artisan, with the two apprentices carrying the
 
-knowledge.smeltMaster.2=lesser talismans. There are also markings on the back of the master talisman describing a combined piece being placed into a working mythic crucible… This may be able to improve the crucible in some way.^The interesting part is the locations you have found these artefacts. Though the master talisman could be found anywhere, the lesser talismans were found depending on geographical location. Further south regions had the mithril workers while the northern regions had the adamantium workers.This pattern reinforces the idea that the mythic works were formed
+knowledge.smeltMaster.2=lesser talismans. There are also markings on the back of the master talisman describing a combined piece being placed into a working mythic crucibleï¿½ This may be able to improve the crucible in some way.^The interesting part is the locations you have found these artefacts. Though the master talisman could be found anywhere, the lesser talismans were found depending on geographical location. Further south regions had the mithril workers while the northern regions had the adamantium workers.This pattern reinforces the idea that the mythic works were formed
 
 knowledge.smeltMaster.3=between different cultures in different regions. This has no effect on what forges can create what materials however, so their design must be the same.^In any case; this trilogy appears to hold great power and likely comes from the master artisans from both regions, perhaps using it on an active crucible may allow further refinements.
 
@@ -1596,11 +1628,11 @@ knowledge.smeltMithium.1=This material is a purer form of regular mithril in the
 knowledge.smeltEnder=Enderforge Smithing
 knowledge.smeltEnderforge.desc=Tier %1$s, Master material
 
-knowledge.smeltEnderforge.1=There's always been something strange about those ender creatures... And this discovery may lead to their origins, perhaps they were the ones that created these artefacts, can’t explain how though, ender creatures don’t appear too civilised.^Enderforge appears to be designed as a compromise between the two materials of mithril and adamantium, taking the best from both to create a new material. It appears that ender pearls can act as a catalyst to form these two materials together.^This can only be made in a master crucible.
+knowledge.smeltEnderforge.1=There's always been something strange about those ender creatures... And this discovery may lead to their origins, perhaps they were the ones that created these artefacts, canï¿½t explain how though, ender creatures donï¿½t appear too civilised.^Enderforge appears to be designed as a compromise between the two materials of mithril and adamantium, taking the best from both to create a new material. It appears that ender pearls can act as a catalyst to form these two materials together.^This can only be made in a master crucible.
 
-knowledge.coalflux=Coal Flux
-knowledge.coalflux.desc=Conservative
-knowledge.coalflux.1=A growing problem with smelting equipment is the large amount of coal required for proper reactions to take place. This results in difficulty refining large loads of material without a lot of coal to back it up.^You believe mixing flux with coal would be able to reduce the cost taken in these reactions, this would potentially halve the cost of coal for each use, allowing a single piece to create two equally useful materials.^This does come at a cost, the coal processed would no longer serve as a viable fuel source.
+knowledge.coal_flux=Coal flux
+knowledge.coal_flux.desc=Conservative
+knowledge.coal_flux.1=A growing problem with smelting equipment is the large amount of coal required for proper reactions to take place. This results in difficulty refining large loads of material without a lot of coal to back it up.^You believe mixing limestone_item with coal would be able to reduce the cost taken in these reactions, this would potentially halve the cost of coal for each use, allowing a single piece to create two equally useful materials.^This does come at a cost, the coal processed would no longer serve as a viable fuel source.
 
 knowledge.bigfurn=Furnace
 knowledge.bigfurn.desc=Mass Producing
@@ -1634,7 +1666,7 @@ knowledge.blastfurn.hcc=$hHardcore Crafting-$r^With Hardcore crafting; A crucibl
 
 #Prepared Iron
 
-knowledge.blastfurn.9=Prepared iron ore is used to make pig iron.^Pig iron can be turned into steel.^You may use strong flux to double production, but strong flux is rare and should be used wisely.
+knowledge.blastfurn.9=Prepared iron ore is used to make pig iron.^Pig iron can be turned into steel.^You may use strong limestone_item to double production, but strong limestone_item is rare and should be used wisely.
 
 knowledge.bloomery=Bloomery
 knowledge.bloomery.desc=Early Metalworks
@@ -1711,17 +1743,17 @@ knowledge.trough.2=With some nails and a little bit of effort, troughs can be as
 knowledge.repair_basic=Repair Kits
 knowledge.repair_basic.desc=Keeping tools in condition
 
-knowledge.repair_basic.1=Tools get damaged a lot, and replacing them is wasteful. You’ve been studying various bits of leather and some nails and had found a new use for them.^Simple materials with some tools should be enough to repair some items, it’s not perfect but seems to be better than nothing. Perhaps more research would yield something more effective.^To use: right-click damaged items onto a placed kit, the kit has a chance of breaking.
+knowledge.repair_basic.1=Tools get damaged a lot, and replacing them is wasteful. Youï¿½ve been studying various bits of leather and some nails and had found a new use for them.^Simple materials with some tools should be enough to repair some items, itï¿½s not perfect but seems to be better than nothing. Perhaps more research would yield something more effective.^To use: right-click damaged items onto a placed kit, the kit has a chance of breaking.
 
 knowledge.repair_advanced=Advanced Repairing
 knowledge.repair_advanced.desc=Better conditioning
 
-knowledge.repair_advanced.1=You’ve taken a look at this strange slime produced by the gelatinous cubes. Whatever their made of seems to stick like no one’s business. And this silk from the local giant spiders is extremely strong and sticky as well.^Together they should be able to upgrade one of these repair kits for more effective use.
+knowledge.repair_advanced.1=Youï¿½ve taken a look at this strange slime produced by the gelatinous cubes. Whatever their made of seems to stick like no oneï¿½s business. And this silk from the local giant spiders is extremely strong and sticky as well.^Together they should be able to upgrade one of these repair kits for more effective use.
 
 knowledge.repair_ornate=Ornate Repair Kits
 knowledge.repair_ornate.desc=Enchantment Repair
 
-knowledge.repair_ornate.1=Magical items seem to play by their own rules here… Stuff just doesn’t stick to them. It however appears that gold and diamond can counteract these effects. If the tools are used with these materials in a particular way, they may be able to repair enchanted items.^This also offers some increased effectiveness over a regular advanced repair kit.
+knowledge.repair_ornate.1=Magical items seem to play by their own rules hereï¿½ Stuff just doesnï¿½t stick to them. It however appears that gold and diamond can counteract these effects. If the tools are used with these materials in a particular way, they may be able to repair enchanted items.^This also offers some increased effectiveness over a regular advanced repair kit.
 
 knowledge.craftArmourBasic=Basic Armor
 knowledge.craftArmourBasic.desc=Nothing fancy
@@ -1870,7 +1902,7 @@ knowledge.tungsten.desc=Machine-Worthy Metal
 
 knowledge.tungsten.1=There's always a limit to using iron based materials in engineering; It just cannot handle the stress some machines have applied. Wolframite is a rare metal found within lower layers of stone. The ore itself can be found in some occasions, but can also be found by use of a handpick.
 
-knowledge.tungsten.2=If you use a high enough tier (such as encrusted) below layer 16: It is possible to mine raw Wolframite ore.^After that, it's only a matter of refining it. Wolframite requires to be melted down with large amounts of coal and flux to separate the ore.
+knowledge.tungsten.2=If you use a high enough tier (such as encrusted) below layer 16: It is possible to mine raw Wolframite ore.^After that, it's only a matter of refining it. Wolframite requires to be melted down with large amounts of coal and limestone_item to separate the ore.
 
 knowledge.tungsten.3=Although this material is highly valued to engineers, it does require some decent smithing skills to refine the ore, making it even more difficult to acquire.
 
@@ -2287,4 +2319,8 @@ knowledge.firstaid.1=You need to be fast when tending to some injuries and need 
 knowledge.doctor=Doctor
 knowledge.doctor.desc=Duty to benefit
 knowledge.doctor.1=Your constant use of aiding your fellow humans has yielded you experience in medicine.^Bandages heal 50% more damage.
+
+item.mfrucksack.tier_0.name=Common bag
+item.mfrucksack.tier_1.name=Yuft bag
+item.mfrucksack.tier_2.name=Reinforced bag
 

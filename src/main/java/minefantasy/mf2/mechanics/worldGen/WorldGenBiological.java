@@ -36,6 +36,52 @@ public class WorldGenBiological {
             generateTree(seed, chunkX, chunkZ, world, BlockListMF.log_ebony, BlockListMF.leaves_ebony,
                     ConfigWorldGen.ebonyRarity);
         }
+
+        //herbs
+        if (isBiomeInConstraint(biome, ConfigWorldGen.carxaMinTemp, ConfigWorldGen.carxaMaxTemp,
+                ConfigWorldGen.carxaMinRain, ConfigWorldGen.carxaMaxRain)) {
+            generatePlant(seed, chunkX, chunkZ, world, BlockListMF.herb_carxanium, 2, ConfigWorldGen.carxaRarity, 3);
+        }
+        if (isBiomeInConstraint(biome, ConfigWorldGen.sinisterMinTemp, ConfigWorldGen.sinisterMaxTemp,
+                ConfigWorldGen.sinisterMinRain, ConfigWorldGen.sinisterMaxRain)) {
+            generatePlant(seed, chunkX, chunkZ, world, BlockListMF.herb_sinister_grass, 1, ConfigWorldGen.sinisterRarity, 3);
+        }
+        if (isBiomeInConstraint(biome, ConfigWorldGen.endureMinTemp, ConfigWorldGen.endureMaxTemp,
+                ConfigWorldGen.endureMinRain, ConfigWorldGen.endureMaxRain)) {
+            generatePlant(seed, chunkX, chunkZ, world, BlockListMF.herb_endure_root, 0, ConfigWorldGen.endureRarity, 4);
+        }
+        if (isBiomeInConstraint(biome, ConfigWorldGen.dogsearMinTemp, ConfigWorldGen.dogsearMaxTemp,
+                ConfigWorldGen.dogsearMinRain, ConfigWorldGen.dogsearMaxRain)) {
+            generatePlant(seed, chunkX, chunkZ, world, BlockListMF.herb_dogsear, 1, ConfigWorldGen.dogsearRarity, 3);
+        }
+        if (isBiomeInConstraint(biome, ConfigWorldGen.flameflMinTemp, ConfigWorldGen.flameflMaxTemp,
+                ConfigWorldGen.flameflMinRain, ConfigWorldGen.flameflMaxRain)) {
+            generatePlant(seed, chunkX, chunkZ, world, BlockListMF.herb_flameflower, 1, ConfigWorldGen.flameflRarity, 2);
+        }
+        if (isBiomeInConstraint(biome, ConfigWorldGen.wispflMinTemp, ConfigWorldGen.wispflMaxTemp,
+                ConfigWorldGen.wispflMinRain, ConfigWorldGen.wispflMaxRain)) {
+            generatePlant(seed, chunkX, chunkZ, world, BlockListMF.herb_wispflock, 1, ConfigWorldGen.wispflRarity, 3);
+        }
+        if (isBiomeInConstraint(biome, ConfigWorldGen.moonflMinTemp, ConfigWorldGen.moonflMaxTemp,
+                ConfigWorldGen.moonflMinRain, ConfigWorldGen.moonflMaxRain)) {
+            generatePlant(seed, chunkX, chunkZ, world, BlockListMF.herb_moonflower, 1, ConfigWorldGen.moonflRarity, 2);
+        }
+        if (isBiomeInConstraint(biome, ConfigWorldGen.sadblosMinTemp, ConfigWorldGen.sadblosMaxTemp,
+                ConfigWorldGen.sadblosMinRain, ConfigWorldGen.sadblosMaxRain)) {
+            generatePlant(seed, chunkX, chunkZ, world, BlockListMF.herb_sadblossom, 1, ConfigWorldGen.sadblosRarity, 3);
+        }
+        if (isBiomeInConstraint(biome, ConfigWorldGen.boneberMinTemp, ConfigWorldGen.boneberMaxTemp,
+                ConfigWorldGen.boneberMinRain, ConfigWorldGen.boneberMaxRain)) {
+            generatePlant(seed, chunkX, chunkZ, world, BlockListMF.herb_boneberry, 1, ConfigWorldGen.boneberRarity, 3);
+        }
+        if (isBiomeInConstraint(biome, ConfigWorldGen.thornMinTemp, ConfigWorldGen.thornMaxTemp,
+                ConfigWorldGen.thornMinRain, ConfigWorldGen.thornMaxRain)) {
+            generatePlant(seed, chunkX, chunkZ, world, BlockListMF.herb_thorn_root, 1, ConfigWorldGen.thornRarity, 3);
+        }
+        if (isBiomeInConstraint(biome, ConfigWorldGen.savyireMinTemp, ConfigWorldGen.savyireMaxTemp,
+                ConfigWorldGen.savyireMinRain, ConfigWorldGen.savyireMaxRain)) {
+            generatePlant(seed, chunkX, chunkZ, world, BlockListMF.herb_savyire, 1, ConfigWorldGen.savyireRarity, 3);
+        }
     }
 
     public static boolean isBiomeInConstraint(BiomeGenBase biome, float tempMin, float tempMax, float rainMin,

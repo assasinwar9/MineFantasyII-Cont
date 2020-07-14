@@ -99,6 +99,7 @@ public class BlockBigFurnace extends BlockContainer {
 
             ItemStack item = player.getHeldItem();
 
+
             if (tile != null) {
                 player.openGui(MineFantasyII.instance, 0, world, x, y, z);
             }

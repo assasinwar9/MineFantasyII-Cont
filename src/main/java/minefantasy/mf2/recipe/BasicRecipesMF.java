@@ -6,6 +6,7 @@ import minefantasy.mf2.api.crafting.tanning.TanningRecipe;
 import minefantasy.mf2.api.material.CustomMaterial;
 import minefantasy.mf2.block.basic.ConstructionBlockMF;
 import minefantasy.mf2.block.list.BlockListMF;
+import minefantasy.mf2.block.tree.BlockGrindedLogs;
 import minefantasy.mf2.config.ConfigHardcore;
 import minefantasy.mf2.item.food.FoodListMF;
 import minefantasy.mf2.item.list.ComponentListMF;
@@ -34,9 +35,26 @@ public class BasicRecipesMF {
         DragonforgedStyle.loadCrafting();
         OrnateStyle.loadCrafting();
         GameRegistry.addRecipe(new RecipeArmourDyeMF());
+        AlchemyRecipes.init();
+        BurningKilnRecipes.init();
 
         ArrayList<CustomMaterial> wood = CustomMaterial.getList("wood");
         Iterator iteratorWood = wood.iterator();
+        //grinded logs => coal
+        GameRegistry.addSmelting(BlockListMF.gr_log_acacia, new ItemStack(Items.coal, 1, 1), 0.15F);
+        GameRegistry.addSmelting(BlockListMF.gr_log_big_oak, new ItemStack(Items.coal, 1, 1), 0.15F);
+        GameRegistry.addSmelting(BlockListMF.gr_log_birch, new ItemStack(Items.coal, 1, 1), 0.15F);
+        GameRegistry.addSmelting(BlockListMF.gr_log_jungle, new ItemStack(Items.coal, 1, 1), 0.15F);
+        GameRegistry.addSmelting(BlockListMF.gr_log_oak, new ItemStack(Items.coal, 1, 1), 0.15F);
+        GameRegistry.addSmelting(BlockListMF.gr_log_spruce, new ItemStack(Items.coal, 1, 1), 0.15F);
+        //new planks craft
+        //GameRegistry.addShapelessRecipe(new ItemStack(Blocks.planks, 2, 0), new Object[] {new ItemStack(Blocks.log, 1, 0)});
+        //GameRegistry.addShapelessRecipe(new ItemStack(Blocks.planks, 2, 1), new Object[] {new ItemStack(Blocks.log, 1, 1)});
+        //GameRegistry.addShapelessRecipe(new ItemStack(Blocks.planks, 2, 2), new Object[] {new ItemStack(Blocks.log, 1, 2)});
+        //GameRegistry.addShapelessRecipe(new ItemStack(Blocks.planks, 2, 3), new Object[] {new ItemStack(Blocks.log, 1, 3)});
+        //GameRegistry.addShapelessRecipe(new ItemStack(Blocks.planks, 2, 4), new Object[] {new ItemStack(Blocks.log2, 1, 0)});
+        //GameRegistry.addShapelessRecipe(new ItemStack(Blocks.planks, 2, 5), new Object[] {new ItemStack(Blocks.log2, 1, 1)});
+
 
         KnowledgeListMF.stickRecipe = GameRegistry.addShapedRecipe(new ItemStack(Items.stick, 2),
                 new Object[]{"S", 'S', ComponentListMF.plank});
@@ -109,18 +127,34 @@ public class BasicRecipesMF {
         BaseMaterialMF mat = BaseMaterialMF.iron;
 
         GameRegistry.addShapelessRecipe(new ItemStack(ComponentListMF.hideSmall),
-                new Object[]{ComponentListMF.rawhideSmall, ComponentListMF.flux});
+                new Object[]{ComponentListMF.rawhideSmall, ComponentListMF.limestone_item});
         GameRegistry.addShapelessRecipe(new ItemStack(ComponentListMF.hideMedium),
-                new Object[]{ComponentListMF.rawhideMedium, ComponentListMF.flux});
+                new Object[]{ComponentListMF.rawhideMedium, ComponentListMF.limestone_item});
         GameRegistry.addShapelessRecipe(new ItemStack(ComponentListMF.hideLarge),
-                new Object[]{ComponentListMF.rawhideLarge, ComponentListMF.flux});
+                new Object[]{ComponentListMF.rawhideLarge, ComponentListMF.limestone_item});
 
-        TanningRecipe.addRecipe(ComponentListMF.hideSmall, mat.craftTimeModifier * 2F, -1,
-                new ItemStack(Items.leather));
-        TanningRecipe.addRecipe(ComponentListMF.hideMedium, mat.craftTimeModifier * 3F, -1,
-                new ItemStack(Items.leather, 3));
-        TanningRecipe.addRecipe(ComponentListMF.hideLarge, mat.craftTimeModifier * 4F, -1,
-                new ItemStack(Items.leather, 5));
+        //rawhide
+        TanningRecipe.addRecipe(ComponentListMF.rawhideSmall_washed, mat.craftTimeModifier * 18F, -1,
+                new ItemStack(ComponentListMF.hideSmall, 1));
+        TanningRecipe.addRecipe(ComponentListMF.rawhideMedium_washed, mat.craftTimeModifier * 20F, -1,
+                new ItemStack(ComponentListMF.hideMedium, 1));
+        TanningRecipe.addRecipe(ComponentListMF.rawhideLarge_washed, mat.craftTimeModifier * 22F, -1,
+                new ItemStack(ComponentListMF.hideLarge, 1));
+        //limed hide
+        TanningRecipe.addRecipe(ComponentListMF.hideSmall_limed, mat.craftTimeModifier * 3F, -1,
+                new ItemStack(ComponentListMF.hideSmall, 1));
+        TanningRecipe.addRecipe(ComponentListMF.hideMedium_limed, mat.craftTimeModifier * 4F, -1,
+                new ItemStack(ComponentListMF.hideMedium, 1));
+        TanningRecipe.addRecipe(ComponentListMF.hideLarge_limed, mat.craftTimeModifier * 5F, -1,
+                new ItemStack(ComponentListMF.hideLarge, 1));
+        //chopped hide
+        TanningRecipe.addRecipe(ComponentListMF.hideSmall, mat.craftTimeModifier * 2F, -1, "shears",
+                new ItemStack(ComponentListMF.leather_clear, 1));
+        TanningRecipe.addRecipe(ComponentListMF.hideMedium, mat.craftTimeModifier * 3F, -1, "shears",
+                new ItemStack(ComponentListMF.leather_clear, 3));
+        TanningRecipe.addRecipe(ComponentListMF.hideLarge, mat.craftTimeModifier * 4F, -1, "shears",
+                new ItemStack(ComponentListMF.leather_clear, 5));
+
         TanningRecipe.addRecipe(Items.leather, mat.craftTimeModifier * 2F, -1, "shears",
                 new ItemStack(ComponentListMF.leather_strip, 4));
 

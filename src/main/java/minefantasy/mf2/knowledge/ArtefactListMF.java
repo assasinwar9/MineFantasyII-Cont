@@ -94,7 +94,7 @@ public class ArtefactListMF {
                 add(KnowledgeListMF.smeltBronze, copper, tin);
             }
         }
-        add(KnowledgeListMF.coalflux, Items.coal, ComponentListMF.flux);
+        add(KnowledgeListMF.coal_flux, Items.coal, ComponentListMF.limestone_item);
         add(KnowledgeListMF.smeltIron, Blocks.iron_ore);
         add(KnowledgeListMF.crucible2, ComponentListMF.fireclay);
         add(KnowledgeListMF.blastfurn, Items.iron_ingot, Blocks.iron_ore, Blocks.furnace, BlockListMF.bloomery,
@@ -114,10 +114,10 @@ public class ArtefactListMF {
         for (ItemStack black : OreDictionary.getOres("ingotBlackSteel")) {
             for (ItemStack silver : OreDictionary.getOres("ingotSilver")) {
                 add(KnowledgeListMF.smeltBlueSteel, Items.blaze_powder, silver, black, new ItemStack(Items.dye, 1, 4),
-                        ComponentListMF.flux_strong);
+                        ComponentListMF.borax);
             }
             add(KnowledgeListMF.smeltRedSteel, Items.blaze_powder, Items.gold_ingot, Items.redstone, black,
-                    ComponentListMF.flux_strong);
+                    ComponentListMF.borax);
         }
 
         for (ItemStack silver : OreDictionary.getOres("ingotSilver")) {

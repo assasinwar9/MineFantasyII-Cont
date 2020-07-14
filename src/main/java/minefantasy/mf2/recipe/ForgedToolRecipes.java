@@ -67,7 +67,7 @@ public class ForgedToolRecipes {
         Item hunk = ComponentListMF.metalHunk;
 
         KnowledgeListMF.hunkR = MineFantasyAPI.addAnvilToolRecipe(artisanry, new ItemStack(hunk, 4), "", true, "hammer",
-                0, 0, time, new Object[]{"F", "I", 'F', ComponentListMF.flux, 'I', bar,});
+                0, 0, time, new Object[]{"F", "I", 'F', ComponentListMF.limestone_item, 'I', bar,});
 
         KnowledgeListMF.ingotR = MineFantasyAPI.addAnvilToolRecipe(artisanry, bar, "", true, "hammer", 0, 0, time,
                 new Object[]{"II", "II", 'I', hunk});

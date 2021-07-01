@@ -130,9 +130,9 @@ public class ItemComponentMF extends Item implements ITieredComponent {
         add(list, ComponentListMF.oreGold);
         add(list, ComponentListMF.oreTungsten);
 
-        add(list, ComponentListMF.flux);
-        add(list, ComponentListMF.flux_strong);
-        add(list, ComponentListMF.flux_pot);
+        add(list, ComponentListMF.limestone_item);
+        add(list, ComponentListMF.borax);
+        add(list, ComponentListMF.limestone_item_pot);
         add(list, ComponentListMF.coal_flux);
         add(list, ComponentListMF.coke);
         add(list, ComponentListMF.diamond_shards);

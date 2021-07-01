@@ -49,7 +49,7 @@ public class CraftingManagerAnvil {
      */
     private IAnvilRecipe addRecipe(ItemStack result, Skill skill, String research, boolean hot, String tool,
                                    int hammer, int anvil, int time, byte recipeType, Object... input) {
-        String var3 = "";
+        StringBuilder var3 = new StringBuilder();
         int var4 = 0;
         int var5 = 0;
         int var6 = 0;
@@ -64,14 +64,14 @@ public class CraftingManagerAnvil {
                 String var11 = var8[var10];
                 ++var6;
                 var5 = var11.length();
-                var3 = var3 + var11;
+                var3.append(var11);
             }
         } else {
             while (input[var4] instanceof String) {
                 String var13 = (String) input[var4++];
                 ++var6;
                 var5 = var13.length();
-                var3 = var3 + var13;
+                var3.append(var13);
             }
         }
 
@@ -195,11 +195,8 @@ public class CraftingManagerAnvil {
 
     private boolean canRepair(ItemStack item1, ItemStack item2) {
         if (item1.getItem() == item2.getItem() && item1.stackSize == 1 && item2.stackSize == 1
-                && item1.getItem().isRepairable()) {
-            return true;
-        }
-        if (item1.getItem() == item2.getItem() && item1.stackSize == 1 && item2.stackSize == 1 && item1.isItemDamaged()
-                && CustomToolHelper.areToolsSame(item1, item2)) {
+                && ((item1.isItemDamaged()
+                && CustomToolHelper.areToolsSame(item1, item2)) || item1.getItem().isRepairable())) {
             return true;
         }
         return false;

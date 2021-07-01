@@ -1,15 +1,31 @@
 package minefantasy.mf2.block.list;
 
+import java.util.Random;
+
+import minefantasy.mf2.block.alchemy.BlockRefFurnace;
+import minefantasy.mf2.block.alchemy.BlockRefFurnaceExtractor;
 import minefantasy.mf2.block.basic.*;
 import minefantasy.mf2.block.crafting.*;
-import minefantasy.mf2.block.decor.*;
+import minefantasy.mf2.block.decor.BlockAmmoBox;
+import minefantasy.mf2.block.decor.BlockBedMF;
+import minefantasy.mf2.block.decor.BlockComponent;
+import minefantasy.mf2.block.decor.BlockRack;
+import minefantasy.mf2.block.decor.BlockRoad;
+import minefantasy.mf2.block.decor.BlockSchematic;
+import minefantasy.mf2.block.decor.BlockTrough;
 import minefantasy.mf2.block.food.BlockBerryBush;
 import minefantasy.mf2.block.food.BlockCakeMF;
 import minefantasy.mf2.block.food.BlockPie;
+import minefantasy.mf2.block.herbs.*;
 import minefantasy.mf2.block.refining.*;
+import minefantasy.mf2.block.tree.BlockGrindedLogs;
 import minefantasy.mf2.block.tree.BlockLeavesMF;
 import minefantasy.mf2.block.tree.BlockLogMF;
 import minefantasy.mf2.block.tree.BlockSaplingMF;
+import minefantasy.mf2.block.wizardry.BlockMagicChalice;
+import minefantasy.mf2.block.wizardry.BlockMagicPedestal;
+import minefantasy.mf2.block.wizardry.BlockRunicPillar;
+import minefantasy.mf2.block.wizardry.BlockTotem;
 import minefantasy.mf2.item.food.FoodListMF;
 import minefantasy.mf2.item.list.ComponentListMF;
 import minefantasy.mf2.material.BaseMaterialMF;
@@ -21,12 +37,95 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
 public class BlockListMF {
+
     public static final String[] metalBlocks = new String[]{"copper", "tin", "silver", "bronze", "pigiron", "steel",
             "blacksteel", "redsteel", "bluesteel", "adamantium", "mithril", "ignotumite", "mithium", "ender"};
     public static final String[] specialMetalBlocks = new String[]{"bronze", "iron", "steel", "blacksteel",
             "redsteel", "bluesteel"};
     public static final String[] anvils = new String[]{"bronze", "iron", "steel", "blacksteel", "bluesteel",
             "redsteel"};
+
+    public static Block zs_block = new BasicBlockMF("zs_block", Material.rock).setLightLevel(5.0F).setBlockUnbreakable()
+            .setStepSound(Block.soundTypeStone).setBlockTextureName("minefantasy2:zsAddon/zs_block");
+    public static Block ae_block = new BasicBlockMF("ae_block", Material.rock).setLightLevel(8.0F).setBlockUnbreakable()
+            .setStepSound(Block.soundTypeStone).setBlockTextureName("minefantasy2:zsAddon/ae_block");
+    public static Block obelisk = new BlockDarkObelisk();
+
+    public static Block limestone_friable = new BasicBlockMF("limestone_friable", Material.rock).setHardness(3.0F).setResistance(1.0F)
+            .setStepSound(Block.soundTypeGravel).setBlockTextureName("minefantasy2:zsAddon/limestone_friable");
+
+    public static Block dense_gravel = new BlockDenseGravel("dense_gravel");
+
+    public static Block soaking_trough = new BlockSoakingTrough();
+
+    //alchemy
+    public static Block ref_furnace = new BlockRefFurnace(false);
+    public static Block ref_furnace_active = new BlockRefFurnace(true).setLightLevel(8.0F);
+    public static Block extractor = new BlockRefFurnaceExtractor(false);
+    public static Block extractor_ruined = new BlockRefFurnaceExtractor(true);
+
+    //wizardry
+    public static Block magic_chalice = new BlockMagicChalice(1, "fire");
+    public static Block magic_pedestal = new BlockMagicPedestal();
+    public static Block runic_pillar_anc = new BlockRunicPillar("anc");
+    public static Block runic_pillar_fire = new BlockRunicPillar("fire");
+
+
+    public static Block stonebrick_white = new BasicBlockMF("stonebrick_white", Material.rock).setHardness(3.0F).setResistance(4.0F)
+            .setStepSound(Block.soundTypeStone).setBlockTextureName("minefantasy2:zsAddon/stonebrick_white");
+    public static Block stonebrick_white_stair = new ConstructionBlockMF.StairsConstBlock("stonebrick_white_stair", stonebrick_white)
+            .register("stonebrick_white_stair").setBlockTextureName("minefantasy2:zsAddon/stonebrick_white");
+
+    public static Block stonebrick_dark = new BasicBlockMF("stonebrick_dark", Material.rock).setHardness(3.0F).setResistance(4.0F)
+            .setStepSound(Block.soundTypeStone);
+    public static Block stonebrick_dark_stair = new ConstructionBlockMF.StairsConstBlock("stonebrick_dark_stair", stonebrick_dark)
+            .register("stonebrick_dark_stair");
+    public static Block stonebrick_dark_slab = new ConstructionBlockMF.SlabConstBlock("stonebrick_white_slab", stonebrick_dark)
+            .register("stonebrick_dark_slab");
+
+    public static Block stonebrick_white_slab = new BlockSlabMF("stonebrick_white", Material.rock);
+
+    //grinded logs
+    public static Block gr_log_acacia = new BlockGrindedLogs("gr_log_acacia", "acacia");
+    public static Block gr_log_big_oak = new BlockGrindedLogs("gr_log_big_oak", "big_oak");
+    public static Block gr_log_birch = new BlockGrindedLogs("gr_log_birch", "birch");
+    public static Block gr_log_jungle = new BlockGrindedLogs("gr_log_jungle", "jungle");
+    public static Block gr_log_oak = new BlockGrindedLogs("gr_log_oak", "oak");
+    public static Block gr_log_spruce = new BlockGrindedLogs("gr_log_spruce", "spruce");
+    //
+    public static Block tarKiln = new BlockTarKiln(false);
+    public static Block tarKiln_filled = new BlockTarKiln(true);
+
+    public static Block glasscaster = new BlockGlasscaster();
+    public static Block glassmould_block_ready = new BlockGlassmouldMF("glassmould_block_ready", null);
+    public static Block glassmould_block_melted = new BlockGlassmouldMF("glassmould_block_melted", glassmould_block_ready);
+    public static Block glassmould_bottle_ready = new BlockGlassmouldMF("glassmould_bottle_ready", null);
+    public static Block glassmould_bottle_melted = new BlockGlassmouldMF("glassmould_bottle_melted", glassmould_bottle_ready);
+    public static Block glassmould_panel_ready = new BlockGlassmouldMF("glassmould_panel_ready", null);
+    public static Block glassmould_panel_melted = new BlockGlassmouldMF("glassmould_panel_melted", glassmould_panel_ready);
+
+
+    //herbs
+
+    public static Block herb_carxanium = new BlockHerbCarxanium();
+    public static Block herb_sinister_grass = new BlockHerbSinisterGrass();
+    public static Block herb_endure_root = new BlockHerbEndureRoot();
+    public static Block herb_dogsear = new BlockHerbDogsear();
+    public static Block herb_flameflower = new BlockHerbFlameflower();
+    public static Block herb_wispflock = new BlockHerbWispflock();
+    public static Block herb_moonflower = new BlockHerbMoonflower();
+    public static Block herb_sadblossom = new BlockHerbSadblossom();
+    public static Block herb_boneberry = new BlockHerbBoneberry();
+    public static Block herb_thorn_root = new BlockHerbThornRoot();
+    public static Block herb_savyire = new BlockHerbSavyire();
+
+    //zsEdition ores
+
+    public static Block mineral_ore_onyx = new BlockMineralOreMF("mineral_ore_1", 1, null, 3);
+    public static Block mineral_ore_berillium = new BlockMineralOreMF("mineral_ore_2", 1, null, 5);
+    public static Block mineral_ore_alums = new BlockMineralOreMF("mineral_ore_3", 1, null, 4);
+    public static Block salt_deposit = new BlockMineralOreMF("salt_deposit", 0, ComponentListMF.halite, 2);
+    // orig mf blocks
 
     public static Block oreCopper = new BlockOreMF("oreCopper", 0, -1).setHardness(2.0F).setResistance(3.0F);
     public static Block oreTin = new BlockOreMF("oreTin", 0).setHardness(2.5F).setResistance(4.0F);
@@ -39,7 +138,7 @@ public class BlockListMF {
             .setResistance(5.0F);
     public static Block oreSulfur = new BlockOreMF("oreSulfur", 2, 0, ComponentListMF.sulfur, 1, 4, 2).setHardness(3.0F)
             .setResistance(2.0F);
-    public static Block oreBorax = new BlockOreMF("oreBorax", 2, 1, ComponentListMF.flux_strong, 1, 8, 4)
+    public static Block oreBorax = new BlockOreMF("oreBorax", 2, 1, ComponentListMF.borax, 1, 8, 4)
             .setHardness(3.0F).setResistance(2.0F);
     public static Block oreTungsten = new BlockOreMF("oreTungsten", 3, 1, ComponentListMF.oreTungsten, 1, 1, 4)
             .setHardness(4.0F).setResistance(2.5F);
@@ -241,6 +340,8 @@ public class BlockListMF {
     public static Block WG_Mark = new BlockWorldGenMarker();
     public static Block components = new BlockComponent();
     public static Block schematic_general = new BlockSchematic("schematic_general");
+    
+    public static Block totem = new BlockTotem();
 
     public static void load() {
         anvilStone = new BlockAnvilMF(BaseMaterialMF.getMaterial("stone"));

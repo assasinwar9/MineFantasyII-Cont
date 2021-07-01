@@ -8,10 +8,7 @@ import minefantasy.mf2.api.crafting.IQualityBalance;
 import minefantasy.mf2.api.helpers.*;
 import minefantasy.mf2.api.material.CustomMaterial;
 import minefantasy.mf2.api.stamina.StaminaBar;
-import minefantasy.mf2.block.tileentity.TileEntityAnvilMF;
-import minefantasy.mf2.block.tileentity.TileEntityCarpenterMF;
-import minefantasy.mf2.block.tileentity.TileEntityRoad;
-import minefantasy.mf2.block.tileentity.TileEntityTanningRack;
+import minefantasy.mf2.block.tileentity.*;
 import minefantasy.mf2.config.ConfigClient;
 import minefantasy.mf2.entity.EntityCogwork;
 import minefantasy.mf2.item.gadget.IScope;
@@ -98,6 +95,10 @@ public class MineFantasyHUD extends Gui {
             if (tile != null) {
                 if (tile instanceof TileEntityAnvilMF) {
                     this.renderCraftMetre(world, player, (TileEntityAnvilMF) tile);
+                }
+                if (tile instanceof TileEntityMagicChalice) {
+                    this.renderCraftMetre(world, player, (TileEntityMagicChalice) tile);
+                    this.renderCraftingAltarBalance(world, player, (TileEntityMagicChalice) tile);
                 }
                 if (tile instanceof TileEntityCarpenterMF) {
                     this.renderCraftMetre(world, player, (TileEntityCarpenterMF) tile);
@@ -427,6 +428,80 @@ public class MineFantasyHUD extends Gui {
             }
         }
 
+        GL11.glPopMatrix();
+    }
+
+    private void renderCraftMetre(World world, EntityPlayer player, TileEntityMagicChalice tile) {
+        //boolean knowsCraft = tile.doesPlayerKnowCraft(player);
+        GL11.glPushMatrix();
+        ScaledResolution scaledresolution = new ScaledResolution(MineFantasyHUD.mc, MineFantasyHUD.mc.displayWidth,
+                MineFantasyHUD.mc.displayHeight);
+        int width = scaledresolution.getScaledWidth();
+        int height = scaledresolution.getScaledHeight();
+
+        bindTexture("textures/gui/hud_overlay.png");
+        int xPos = width / 2 + -86;
+        int yPos = height - 69;
+
+        this.drawTexturedModalRect(xPos, yPos, 84, 60, 172, 20);
+        this.drawTexturedModalRect(xPos + 29, yPos + 13, 113, 93, tile.getProgressBar(), 3); //0 = progress bar
+
+        String s = "test";
+        mc.fontRenderer.drawString(s, xPos + 86 - (mc.fontRenderer.getStringWidth(s) / 2), yPos + 3, 0);
+        GL11.glColor3f(1.0F, 1.0F, 1.0F);
+
+        /*if (knowsCraft && !tile.resName.equalsIgnoreCase("") && tile.getToolNeeded() != null) {
+            boolean available = ToolHelper.isToolSufficient(player.getHeldItem(), tile.getToolNeeded(),
+                    tile.getToolTierNeeded());
+            GuiHelper.renderToolIcon(this, tile.getToolNeeded(), tile.getToolTierNeeded(), xPos - 20, yPos, available);
+            if (tile.getAnvilTierNeeded() > -1) {
+                GuiHelper.renderToolIcon(this, "anvil", tile.getAnvilTierNeeded(), xPos + 172, yPos,
+                        tile.tier >= tile.getAnvilTierNeeded());
+            }
+        }*/
+
+        GL11.glPopMatrix();
+    }
+
+    private void renderCraftingAltarBalance(World world, EntityPlayer player, TileEntityMagicChalice tile) {
+        GL11.glPushMatrix();
+        ScaledResolution scaledresolution = new ScaledResolution(MineFantasyHUD.mc, MineFantasyHUD.mc.displayWidth,
+                MineFantasyHUD.mc.displayHeight);
+        int width = scaledresolution.getScaledWidth();
+        int height = scaledresolution.getScaledHeight();
+
+        bindTexture("textures/gui/hud_overlay.png");
+        int xPos = width / 2 + -86;
+        int yPos = height - 69 + 20;
+        int barwidth = 121;
+        int centre = xPos + 25 + 60;
+
+        this.drawTexturedModalRect(xPos, yPos, 84, 80, 172, 12);
+
+        //marker
+        int markerPos = centre + tile.getMarkerPosition();
+        this.drawTexturedModalRect(centre + tile.getMarkerPosition(), yPos, 108, 93, 2, 9);
+
+        //limit render
+        if (tile.isCraftingPhase()) {
+            //down limit
+            int downOffset = centre + tile.getDownCraftLimit();
+            this.drawTexturedModalRect(downOffset, yPos, 105, 93, 2, 9);
+
+            //up limit
+            int upOffset = centre + tile.getUpCraftLimit();
+            this.drawTexturedModalRect(upOffset, yPos, 105, 93, 2, 9);
+        }
+
+        /*int offset = (int) (tile.getThresholdPosition() / 2F * barwidth);
+        this.drawTexturedModalRect(centre - offset - 1, yPos + 1, 87, 33, 2, 4);
+        this.drawTexturedModalRect(centre + offset, yPos + 1, 89, 33, 2, 4);
+
+        int offset2 = (int) (tile.getSuperThresholdPosition() / 2F * barwidth);
+        this.drawTexturedModalRect(centre - offset2, yPos + 1, 91, 33, 1, 4);
+        this.drawTexturedModalRect(centre + offset2, yPos + 1, 91, 33, 1, 4);*/
+
+        GL11.glColor3f(1.0F, 1.0F, 1.0F);
         GL11.glPopMatrix();
     }
 

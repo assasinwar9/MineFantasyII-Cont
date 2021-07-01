@@ -1,9 +1,11 @@
 package minefantasy.mf2.item.list;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import minefantasy.mf2.api.armour.ArmourDesign;
 import minefantasy.mf2.api.armour.ArmourMaterialMF;
 import minefantasy.mf2.item.armour.ItemApron;
 import minefantasy.mf2.item.armour.ItemArmourMF;
+import minefantasy.mf2.item.armour.ItemRucksack;
 import minefantasy.mf2.material.BaseMaterialMF;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
@@ -19,9 +21,13 @@ public class ArmourListMF {
     public static ArmourMaterialMF APRON = new ArmourMaterialMF("Apron", 6, 0.30F, 0, 1.00F);
     public static ItemArmourMF[] leather = new ItemArmourMF[leathermats.length * 4];
     public static ItemArmourMF leatherapron;
+    public static ItemRucksack rucksack;
 
     public static void load() {
         leatherapron = new ItemApron("leatherapron", BaseMaterialMF.leatherapron, "leatherapron_layer_1", 0);
+        rucksack = (ItemRucksack) new ItemRucksack().setUnlocalizedName("mfrucksack").setTextureName("minefantasy2:rucksack");
+        
+        GameRegistry.registerItem(rucksack, "rucksack");
 
         for (int a = 0; a < leathermats.length; a++) {
             BaseMaterialMF baseMat = BaseMaterialMF.getMaterial(leathermats[a]);

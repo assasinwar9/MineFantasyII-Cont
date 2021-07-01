@@ -276,7 +276,7 @@ public class TacticalManager {
     }
 
     /**
-     * Gets the modifer for magic resistance 1.0=no effect
+     * Gets the modifer for wizardry resistance 1.0=no effect
      */
     public static float resistMagic(EntityLivingBase user, DamageSource source) {
         float resistance = 100F;
@@ -347,7 +347,7 @@ public class TacticalManager {
     }
 
     /**
-     * Gets the modifer for base resistance(non magic/fire)
+     * Gets the modifer for base resistance(non wizardry/fire)
      */
     public static float resistBase(EntityLivingBase user, DamageSource source) {
         float resistance = 100F;

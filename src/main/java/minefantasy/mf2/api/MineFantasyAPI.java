@@ -4,12 +4,15 @@ import com.google.common.collect.Lists;
 import cpw.mods.fml.common.IFuelHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import minefantasy.mf2.api.alchemy.CraftingManagerRefFurnace;
+import minefantasy.mf2.api.alchemy.IRefFurnaceRecipe;
 import minefantasy.mf2.api.cooking.CookRecipe;
 import minefantasy.mf2.api.crafting.anvil.CraftingManagerAnvil;
 import minefantasy.mf2.api.crafting.anvil.IAnvilRecipe;
 import minefantasy.mf2.api.crafting.carpenter.CraftingManagerCarpenter;
 import minefantasy.mf2.api.crafting.carpenter.ICarpenterRecipe;
 import minefantasy.mf2.api.crafting.engineer.ICrossbowPart;
+import minefantasy.mf2.api.crafting.kiln.CraftingManagerKiln;
 import minefantasy.mf2.api.crafting.refine.QuernRecipes;
 import minefantasy.mf2.api.heating.Heatable;
 import minefantasy.mf2.api.refine.Alloy;
@@ -254,6 +257,24 @@ public class MineFantasyAPI {
 
     public static void addBlastFurnaceRecipe(ItemStack input, ItemStack output) {
         BlastFurnaceRecipes.smelting().addRecipe(input, output);
+    }
+
+    //zs-addon
+
+    public static IRefFurnaceRecipe addRefFurnaceRecipe (ItemStack catalyst, ItemStack slot_1, ItemStack slot_2, ItemStack slot_3,
+                                                         ItemStack res_1, ItemStack res_2, ItemStack res_3,
+                                                         float time, float minTemp, float maxTemp, int slagGenChance, String mod) {
+        return CraftingManagerRefFurnace.getInstance().addRecipe(catalyst, slot_1, slot_2, slot_3,
+                res_1, res_2, res_3,
+                time, minTemp, maxTemp, slagGenChance, mod);
+    }
+
+    public static void addBurningKilnRecipe (Item rawItem, Item result, float minTemp, float basicTimeScale) {
+        CraftingManagerKiln.getInstance().addRecipe(rawItem, result, minTemp, basicTimeScale);
+    }
+
+    public static void addBurningKilnRecipe (Item rawItem, Item result, int resultMeta, float minTemp, float basicTimeScale) {
+        CraftingManagerKiln.getInstance().addRecipe(rawItem, result, resultMeta, minTemp, basicTimeScale);
     }
 
     public static void registerFuelHandler(IFuelHandler handler) {

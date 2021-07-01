@@ -44,6 +44,7 @@ public class PacketHandlerMF {
         packetList.put(WoodDecorPacket.packetName, new WoodDecorPacket());
         packetList.put(CogworkControlPacket.packetName, new CogworkControlPacket());
         packetList.put(StorageBlockPacket.packetName, new StorageBlockPacket());
+        packetList.put(MFPlayerGUIPacket.packetName, new MFPlayerGUIPacket());
     }
 
     @SubscribeEvent

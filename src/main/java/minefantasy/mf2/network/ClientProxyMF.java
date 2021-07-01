@@ -8,6 +8,8 @@ import minefantasy.mf2.api.MineFantasyAPI;
 import minefantasy.mf2.api.helpers.ClientTickHandler;
 import minefantasy.mf2.api.knowledge.InformationList;
 import minefantasy.mf2.block.tileentity.*;
+import minefantasy.mf2.block.tileentity.alchemy.TileEntityExtractor;
+import minefantasy.mf2.block.tileentity.alchemy.TileEntityRefFurnace;
 import minefantasy.mf2.block.tileentity.blastfurnace.TileEntityBlastFC;
 import minefantasy.mf2.block.tileentity.blastfurnace.TileEntityBlastFH;
 import minefantasy.mf2.block.tileentity.decor.TileEntityAmmoBox;
@@ -15,8 +17,13 @@ import minefantasy.mf2.block.tileentity.decor.TileEntityRack;
 import minefantasy.mf2.block.tileentity.decor.TileEntityTrough;
 import minefantasy.mf2.client.KnowledgePageRegistry;
 import minefantasy.mf2.client.gui.*;
+import minefantasy.mf2.client.gui.tabs.InventoryTabMF2;
+import minefantasy.mf2.client.gui.tabs.InventoryTabVanilla;
+import minefantasy.mf2.client.gui.tabs.TabRegistry;
 import minefantasy.mf2.client.render.*;
 import minefantasy.mf2.client.render.block.*;
+import minefantasy.mf2.client.render.block.alchemy.RenderExtractor;
+import minefantasy.mf2.client.render.block.alchemy.TileEntityExtractorRenderer;
 import minefantasy.mf2.client.render.block.component.TileEntityComponentRenderer;
 import minefantasy.mf2.client.render.mob.*;
 import minefantasy.mf2.entity.*;
@@ -29,6 +36,7 @@ import minefantasy.mf2.item.list.styles.DragonforgedStyle;
 import minefantasy.mf2.item.list.styles.OrnateStyle;
 import minefantasy.mf2.mechanics.ExtendedReachMF;
 import minefantasy.mf2.mechanics.PlayerTickHandlerMF;
+import minefantasy.mf2.player.IEEPMF2;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -98,6 +106,18 @@ public class ClientProxyMF extends CommonProxyMF {
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityResearch.class, new TileEntityResearchRenderer());
         RenderingRegistry.registerBlockHandler(new RenderTrough());
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityTrough.class, new TileEntityTroughRenderer());
+
+        RenderingRegistry.registerBlockHandler(new RenderSoakingTrough());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySoakingTrough.class, new TileEntitySoakingTroughRenderer());
+        RenderingRegistry.registerBlockHandler(new RenderMagicPedestal());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityMagicPedestal.class, new TileEntityMagicPedestalRenderer());
+        RenderingRegistry.registerBlockHandler(new RenderMagicChalice());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityMagicChalice.class, new TileEntityMagicChaliceRenderer());
+        RenderingRegistry.registerBlockHandler(new RenderExtractor());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityExtractor.class, new TileEntityExtractorRenderer());
+        //RenderingRegistry.registerBlockHandler(new RenderCauldronMF());
+        //ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCauldronMF.class, new TileEntityCauldronMFRenderer());
+
         RenderingRegistry.registerBlockHandler(new RenderBombPress());
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityBombPress.class, new TileEntityBombPressRenderer());
         RenderingRegistry.registerBlockHandler(new RenderBloomery());
@@ -121,6 +141,11 @@ public class ClientProxyMF extends CommonProxyMF {
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityChimney.class, new TileEntitySmokePipeRenderer());
 
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityComponent.class, new TileEntityComponentRenderer());
+
+		MinecraftForge.EVENT_BUS.register(new TabRegistry());
+        MinecraftForge.EVENT_BUS.register(new IEEPMF2.Handler());
+        TabRegistry.registerTab(new InventoryTabVanilla());
+        TabRegistry.registerTab(new InventoryTabMF2());
     }
 
     public void registerEntityRenderer() {
@@ -157,6 +182,22 @@ public class ClientProxyMF extends CommonProxyMF {
             if (tile == null) {
                 return null;
             }
+            if (tile instanceof TileEntityTarKiln) {
+                return new GuiTarKiln(player.inventory, (TileEntityTarKiln) tile);
+            }
+            if (tile instanceof TileEntitySoakingTrough) {
+                return new GuiSoakingTrough(player.inventory, (TileEntitySoakingTrough) tile);
+            }
+            if (tile instanceof TileEntityGlasscaster) {
+                return new GuiGlasscaster(player.inventory, (TileEntityGlasscaster) tile);
+            }
+            if (tile instanceof TileEntityRefFurnace) {
+                return new GuiRefFurnace(player.inventory, (TileEntityRefFurnace) tile);
+            }
+            if (tile instanceof TileEntityExtractor) {
+                return new GuiExtractor(player.inventory, (TileEntityExtractor) tile);
+            }
+
 
             if (tile instanceof TileEntityAnvilMF) {
                 return new GuiAnvilMF(player.inventory, (TileEntityAnvilMF) tile);
@@ -205,6 +246,9 @@ public class ClientProxyMF extends CommonProxyMF {
             }
             if (x == 1 && player.getHeldItem() != null) {
                 return new GuiReload(player.inventory, player.getHeldItem());
+            }
+			if (x == 10) {
+            	return new GuiMF2Player();
             }
         }
         return null;

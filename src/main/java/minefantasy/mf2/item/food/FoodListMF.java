@@ -43,6 +43,8 @@ public class FoodListMF {
     // Util: Roast, Prep Block (Stone-Bronze Age)
     public static Item stew = (new ItemFoodMF("stew", 5, 1.0F, false, 0)).setFoodStats(1, 0.0F, 0.0F, 1.0F)
             .setReturnItem(Items.bowl).setMaxStackSize(1);
+    public static Item dead_porridge = (new ItemFoodMF("dead_porridge", 1, 1.0F, false, 0)).setEatTime(60).setReturnItem(Items.bowl).
+            setCreativeTab(CreativeTabMF.tabFood).setMaxStackSize(1);
     public static Item oats = (new ItemFoodMF("oats", 5, 1.0F, false, 0)).setFoodStats(1, 0.0F, 0.8F, 0.2F)
             .setReturnItem(Items.bowl).setMaxStackSize(1);
     // T2 (Basic baking, stone oven, processed mixing)

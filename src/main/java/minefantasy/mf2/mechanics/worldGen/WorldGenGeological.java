@@ -7,6 +7,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldType;
 import net.minecraft.world.gen.feature.WorldGenMinable;
 
 import java.util.Random;
@@ -51,6 +52,10 @@ public class WorldGenGeological {
         generateOre(seed, chunkX, chunkZ, world, BlockListMF.limestone, Blocks.stone, ConfigWorldGen.limestoneSize,
                 ConfigWorldGen.limestoneFrequencyMin, ConfigWorldGen.limestoneFrequencyMax,
                 ConfigWorldGen.limestoneRarity, ConfigWorldGen.limestoneLayerMin, ConfigWorldGen.limestoneLayerMax);
+        //clay layer
+        generateClayLayer(seed, chunkX, chunkZ, world);
+        //salt deposits
+        generateSaltDeposit(seed, chunkX, chunkZ, world);
     }
 
     /**
@@ -150,5 +155,29 @@ public class WorldGenGeological {
                 || world.getBlock(x, y + 1, z).getMaterial() == neighbour
                 || world.getBlock(x, y, z - 1).getMaterial() == neighbour
                 || world.getBlock(x, y, z + 1).getMaterial() == neighbour;
+    }
+
+    private static void generateClayLayer(Random seed, int chunkX, int chunkZ, World world) {
+        boolean doGen = world.getWorldInfo().getTerrainType() != WorldType.FLAT;
+        if (doGen) {
+            for (int x = 1; x <= 16; x++) {
+                for (int z = 1; z <= 16; z++) {
+                    int j = chunkX * 16 + x;
+                    int k = chunkZ * 16 + z;
+                    int l = world.getTopSolidOrLiquidBlock(j, k);
+                    (new WorldGenClayLayer()).generate(world, seed, j, l, k);
+                }
+            }
+
+        }
+    }
+
+    private static void generateSaltDeposit(Random seed, int chunkX, int chunkZ, World world) {
+        if (seed.nextInt(10) < 1) {
+            int x = chunkX * 16 + seed.nextInt(16);
+            int z = chunkZ * 16 + seed.nextInt(16);
+            int y = world.getTopSolidOrLiquidBlock(x, z) - 5 - seed.nextInt(10);
+            (new WorldGenSaltDeposit()).generate(world, seed, x, y, z);
+        }
     }
 }

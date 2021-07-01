@@ -294,7 +294,7 @@ public class RenderPowerArmour extends RendererLivingEntity {
             }
 
             GL11.glDisable(GL12.GL_RESCALE_NORMAL);
-        } catch (Exception exception) {
+        } catch (Exception ignored) {
         }
 
         OpenGlHelper.setActiveTexture(OpenGlHelper.lightmapTexUnit);
@@ -362,7 +362,6 @@ public class RenderPowerArmour extends RendererLivingEntity {
         float f3;
 
         for (f3 = p_77034_2_ - p_77034_1_; f3 < -180.0F; f3 += 360.0F) {
-            ;
         }
 
         while (f3 >= 180.0F) {

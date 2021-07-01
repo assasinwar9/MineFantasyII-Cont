@@ -328,7 +328,7 @@ public class EntityDragon extends EntityFlyingMF
         if (this.targetedEntity != null && getDisengageTime() <= 0
                 && this.targetedEntity.getDistanceSqToEntity(this) < var9 * var9) {
             if (!worldObj.isRemote && !this.canEntityBeSeen(this.targetedEntity) && getDisengageTime() <= 0
-                    && (targetedEntity instanceof EntityPlayer ? rand.nextInt(40) == 0 : true)) {
+                    && (!(targetedEntity instanceof EntityPlayer) || rand.nextInt(40) == 0)) {
                 disengage(200);
                 return;
             }
@@ -884,7 +884,6 @@ public class EntityDragon extends EntityFlyingMF
     }
 
     private double getSound(EntityLivingBase target, float speed) {
-        float value = 10F * (60F + ArmourCalculator.getTotalWeightOfWorn(target, false)) * speed;
-        return value;
+        return 10F * (60F + ArmourCalculator.getTotalWeightOfWorn(target, false)) * speed;
     }
 }

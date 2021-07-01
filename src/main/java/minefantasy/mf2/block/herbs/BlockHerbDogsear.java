@@ -58,10 +58,6 @@ public class BlockHerbDogsear extends BlockHerbsMF {
         }
 
         if (random.nextInt(100) <= getBreedingChance() && l == getMaxMeta()) {
-            //debug
-            Minecraft.getMinecraft().thePlayer.sendChatMessage(">>>>>");
-            Minecraft.getMinecraft().thePlayer.sendChatMessage("Breeding has been caused at coords x: " + x + "  y: " + y + "  z: " + z);
-
             breeding(world, x, y, z);
         }
     }
@@ -73,14 +69,8 @@ public class BlockHerbDogsear extends BlockHerbsMF {
             z2 = z - 1 + rand.nextInt(3);
             if (canPlaceBlockOn(world.getBlock(x2, y - 1, z2)) && world.isAirBlock(x2, y, z2)) {
                 world.setBlock(x2, y, z2, this);
-                //debug
-                Minecraft.getMinecraft().thePlayer.sendChatMessage("Breeding success!! at coords x: " + x2 + "  y: " + y + "  z: " + z2);
-                Minecraft.getMinecraft().thePlayer.sendChatMessage("<<<<<");
             }
             else {
-                //debug
-                Minecraft.getMinecraft().thePlayer.sendChatMessage("Invalid place for new herbs. coords x: " + x2 + "  y: " + y + "  z: " + z2);
-                Minecraft.getMinecraft().thePlayer.sendChatMessage("<<<<<");
             }
         }
     }
@@ -89,15 +79,10 @@ public class BlockHerbDogsear extends BlockHerbsMF {
         for (int x1 = 0; x1 < 3; x1++) {
             for (int z1 = 0; z1 < 3; z1++) {
                 if (world.getBlock(x - 1 + x1, y - 1, z - 1 + z1) == Blocks.water) {
-                    //debug
-                    Minecraft.getMinecraft().thePlayer.sendChatMessage("Water detected! at coords x: " + (x - 1 + x1) + "  y: " + (y - 1) + "  z: " + (z - 1 + z1));
                     return true;
                 }
             }
         }
-        //debug
-        Minecraft.getMinecraft().thePlayer.sendChatMessage("Invalid condition for breeding. No water. Coords x: " + x + "  y: " + y + "  z: " + z);
-        Minecraft.getMinecraft().thePlayer.sendChatMessage("<<<<<");
         return false;
     }
 
@@ -108,17 +93,10 @@ public class BlockHerbDogsear extends BlockHerbsMF {
                         && world.getBlockMetadata(x - 1 + x1, y, z - 1 + z1) > 0
                         && !(x1 == 1 && z1 == 1) ) {
 
-                    //debug
-                    //world.setBlock(x - 1 + x1, y, z - 1 + z1, BlockListMF.zs_block);
-                    Minecraft.getMinecraft().thePlayer.sendChatMessage("Valid herb instance detected! at coords x: " + (x - 1 + x1) + "  y: " + y + "  z: " + (z - 1 + z1));
-
                     return true;
                 }
             }
         }
-        //debug
-        Minecraft.getMinecraft().thePlayer.sendChatMessage("Invalid condition for breeding. Valid couple not detected. Coords x: " + x + "  y: " + y + "  z: " + z);
-        Minecraft.getMinecraft().thePlayer.sendChatMessage("<<<<<");
         return false;
     }
 

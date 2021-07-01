@@ -111,36 +111,6 @@ public class TileEntityMagicChalice extends TileEntity implements IInventory {
     public boolean interract (World world, int x, int y, int z, EntityPlayer user) {
         ItemStack held = user.getHeldItem();
 
-        //debug
-        if (held != null && held.getItem() instanceof ItemSpanner) {
-            speed+=0.2F;
-            if (!world.isRemote)
-                Minecraft.getMinecraft().thePlayer.sendChatMessage("[DEBUG] Speed has been changed. Current speed = " + speed);
-            return true;
-        }
-        if (held != null && held.getItem() instanceof ItemHammer) {
-            speed-=0.2F;
-            if (!world.isRemote)
-                Minecraft.getMinecraft().thePlayer.sendChatMessage("[DEBUG] Speed has been changed. Current speed = " + speed);
-            return true;
-        }
-
-        if (held != null && held.getItem() instanceof ItemSpadeMF) {
-            if (speed < 2.0F)
-                speed = 3.0F;
-            else if (speed < 4.0F)
-                speed = 4.0F;
-            else if (speed < 5.0F)
-                speed = 5.0F;
-            else if (speed > 5.0F)
-                speed = 1.0F;
-            if (!world.isRemote)
-                Minecraft.getMinecraft().thePlayer.sendChatMessage("[DEBUG] Difficulty lvl has been changed. Current speed = " + speed);
-            return true;
-        }
-
-        //end of debug function
-
         if(!craftingPhase && magicPedestal != null && magicPedestal.validStructure) {
             if (held != null && held.getItem() == Items.emerald) {
                 --held.stackSize;
